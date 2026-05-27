@@ -1,0 +1,1757 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#0a73be;--pd:#085a96;--pdd:#064880;--pl:#e8f3fb;--ps:#b5d5ec;
+  --bg:#f0f4f8;--surface:#ffffff;--surface2:#f7fafd;
+  --border:#dde6ef;--border2:#c8d8e8;
+  --txt:#0d1f2d;--txt2:#4a6278;--txt3:#8aa2b3;
+  --ok:#1a7f4b;--okbg:#e6f5ee;
+  --warn:#a16207;--warnbg:#fef9e7;
+  --err:#b91c1c;--errbg:#fef2f2;
+  --info:#0a73be;--infobg:#e8f3fb;
+  --sb:#0d2137;--sb2:#162d45;--sb3:#1d3a56;
+  --r:8px;--rl:12px;--rxl:16px;
+  font-family:'Noto Sans JP',sans-serif;
+}
+body{background:var(--bg);color:var(--txt);min-height:800px}
+
+.screen{display:none}
+.screen.active{display:flex;flex-direction:column}
+
+/* ── LOGIN ── */
+#loginScreen{min-height:760px;background:var(--bg);align-items:center;justify-content:center;padding:40px 20px}
+.login-wrap{display:flex;gap:0;width:100%;max-width:900px;border-radius:var(--rxl);overflow:hidden;border:1px solid var(--border)}
+.login-left{flex:1;background:var(--sb);padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between}
+.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.login-logo{width:44px;height:44px;background:var(--p);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.login-logo .ti{font-size:22px;color:#fff}
+.login-brand-name{color:#fff;font-size:15px;font-weight:700;line-height:1.3}
+.login-brand-sub{color:var(--ps);font-size:11px;font-weight:400;letter-spacing:.4px}
+.login-hero-title{color:#fff;font-size:26px;font-weight:700;line-height:1.35;margin-bottom:14px}
+.login-hero-sub{color:var(--ps);font-size:13px;line-height:1.7;margin-bottom:32px}
+.login-features{display:flex;flex-direction:column;gap:12px}
+.login-feat{display:flex;align-items:center;gap:10px;color:var(--ps);font-size:13px}
+.login-feat .ti{font-size:16px;color:var(--p);background:rgba(181,213,236,.15);padding:5px;border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.login-footer-txt{color:rgba(181,213,236,.5);font-size:11px;margin-top:32px}
+.login-right{flex:1;background:var(--surface);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.login-welcome{font-size:22px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.login-hint{font-size:13px;color:var(--txt2);margin-bottom:32px}
+.login-field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.login-label{font-size:11px;font-weight:700;color:var(--txt2);letter-spacing:.5px;text-transform:uppercase}
+.login-input-wrap{position:relative;display:flex;align-items:center}
+.login-input-wrap .ti{position:absolute;left:12px;font-size:17px;color:var(--txt3)}
+.login-input{width:100%;padding:10px 12px 10px 38px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--txt);background:var(--surface2);outline:none;transition:border .15s}
+.login-input:focus{border-color:var(--p);background:#fff}
+.login-input-wrap .eye-btn{position:absolute;right:10px;background:none;border:none;cursor:pointer;color:var(--txt3);font-size:17px;display:flex;align-items:center}
+.login-btn{width:100%;padding:12px;background:var(--p);color:#fff;border:none;border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s;margin-top:8px}
+.login-btn:hover{background:var(--pd)}
+.login-divider{display:flex;align-items:center;gap:12px;margin:20px 0}
+.login-divider-line{flex:1;height:1px;background:var(--border)}
+.login-divider-txt{font-size:11px;color:var(--txt3)}
+.login-sso{width:100%;padding:10px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:border .15s}
+.login-sso:hover{border-color:var(--ps);color:var(--p)}
+.login-links{display:flex;justify-content:space-between;margin-top:20px}
+.login-link{font-size:12px;color:var(--p);cursor:pointer;text-decoration:none}
+.login-badge{display:inline-flex;align-items:center;gap:5px;background:var(--okbg);color:var(--ok);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;margin-bottom:20px}
+
+/* ── APP SHELL ── */
+#appScreen{min-height:760px;flex-direction:row!important}
+
+/* SIDEBAR */
+.sidebar{width:228px;background:#fff;display:flex;flex-direction:column;flex-shrink:0;min-height:760px;border-right:1px solid var(--border)}
+.sb-top{padding:18px 16px 14px;border-bottom:1px solid var(--border)}
+.sb-brand{display:flex;align-items:center;gap:10px}
+.sb-logo{width:36px;height:36px;background:var(--p);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(10,115,190,.22)}
+.sb-logo .ti{font-size:19px;color:#fff}
+.sb-name{color:var(--txt);font-size:13px;font-weight:700;line-height:1.25}
+.sb-sub{color:var(--txt3);font-size:10px;font-weight:400}
+.sb-search{margin:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;gap:8px;padding:7px 10px;transition:border .15s}
+.sb-search:focus-within{border-color:var(--ps);background:#fff}
+.sb-search .ti{font-size:14px;color:var(--txt3)}
+.sb-search input{background:none;border:none;outline:none;color:var(--txt);font-family:'Noto Sans JP',sans-serif;font-size:12px;width:100%}
+.sb-search input::placeholder{color:var(--txt3)}
+.sb-body{flex:1;overflow-y:auto;padding:6px 0 12px}
+.sb-section{font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.8px;text-transform:uppercase;padding:12px 18px 4px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 12px;margin:1px 8px;font-size:13px;font-weight:400;color:var(--txt2);cursor:pointer;border-radius:var(--r);transition:all .15s;position:relative}
+.nav-item:hover{background:var(--pl);color:var(--p)}
+.nav-item.active{background:rgba(10,115,190,.09);color:var(--p);font-weight:600}
+.nav-item.active .ti{color:var(--p)}
+.nav-item .ti{font-size:16px;width:18px;flex-shrink:0;color:var(--txt3);transition:color .15s}
+.nav-item:hover .ti{color:var(--p)}
+.nav-item .nb{margin-left:auto;background:var(--err);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;min-width:18px;text-align:center}
+.nav-item .nb.warn{background:#d97706}
+.nav-chevron{margin-left:auto;font-size:13px;transition:transform .2s;color:var(--txt3)}
+.nav-chevron.open{transform:rotate(180deg)}
+.nav-sub{display:none;background:transparent}
+.nav-sub.open{display:block}
+.nav-sub-item{display:flex;align-items:center;gap:8px;padding:7px 12px 7px 38px;margin:1px 8px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:var(--r);transition:all .15s}
+.nav-sub-item:hover{background:var(--pl);color:var(--p)}
+.nav-sub-item.active{color:var(--p);background:rgba(10,115,190,.09);font-weight:600}
+.nav-sub-item .ti{font-size:13px;color:var(--txt3);transition:color .15s}
+.nav-sub-item:hover .ti{color:var(--p)}
+.nav-sub-item.active .ti{color:var(--p)}
+.sb-footer{padding:12px;border-top:1px solid var(--border)}
+.sb-user{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r);cursor:pointer;transition:background .15s}
+.sb-user:hover{background:var(--surface2)}
+.sb-avatar{width:32px;height:32px;background:var(--p);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;flex-shrink:0;box-shadow:0 2px 6px rgba(10,115,190,.25)}
+.sb-uname{color:var(--txt);font-size:12px;font-weight:600}
+.sb-urole{color:var(--txt2);font-size:10px}
+.sb-user .ti{margin-left:auto;font-size:14px;color:var(--txt3)}
+
+/* MAIN AREA */
+.main-area{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.tb-left{display:flex;align-items:center;gap:10px}
+.tb-breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--txt2)}
+.tb-breadcrumb .ti{font-size:14px}
+.tb-breadcrumb span.cur{color:var(--txt);font-weight:600}
+.tb-right{display:flex;align-items:center;gap:14px}
+.tb-chip{background:var(--infobg);color:var(--p);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:4px}
+.tb-chip .ti{font-size:12px}
+.tb-icon-btn{width:34px;height:34px;border-radius:var(--r);background:none;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);transition:all .15s;position:relative}
+.tb-icon-btn:hover{background:var(--pl);border-color:var(--ps);color:var(--p)}
+.tb-icon-btn .ti{font-size:17px}
+.tb-icon-btn .dot{width:7px;height:7px;background:var(--err);border-radius:50%;position:absolute;top:5px;right:5px;border:1.5px solid var(--surface)}
+.tb-avatar-btn{width:34px;height:34px;background:var(--p);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;cursor:pointer;border:2px solid var(--ps)}
+
+/* PAGE CONTENT */
+.page-body{flex:1;overflow-y:auto;padding:24px}
+.page-content{display:none}
+.page-content.active{display:block}
+
+.pg-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:12px}
+.pg-title{font-size:20px;font-weight:700;color:var(--txt)}
+.pg-sub{font-size:12px;color:var(--txt3);margin-top:3px;display:flex;align-items:center;gap:5px}
+.pg-sub .ti{font-size:13px}
+.pg-actions{display:flex;gap:8px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--txt2);transition:all .15s}
+.btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl)}
+.btn .ti{font-size:15px}
+.btn-primary{background:var(--p);color:#fff;border-color:var(--p)}
+.btn-primary:hover{background:var(--pd);border-color:var(--pd);color:#fff}
+.btn-danger{background:var(--errbg);color:var(--err);border-color:#fca5a5}
+.btn-danger:hover{background:#fee2e2;border-color:#f87171;color:#991b1b}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px 20px;position:relative;overflow:hidden}
+.stat-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--rl) var(--rl) 0 0}
+.stat-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.stat-lbl{font-size:12px;color:var(--txt2);font-weight:500}
+.stat-icon{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:19px}
+.si-blue{background:var(--infobg);color:var(--p)}
+.si-green{background:var(--okbg);color:var(--ok)}
+.si-amber{background:var(--warnbg);color:var(--warn)}
+.si-red{background:var(--errbg);color:var(--err)}
+.stat-val{font-size:28px;font-weight:700;color:var(--txt);line-height:1}
+.stat-foot{font-size:11px;color:var(--txt3);margin-top:6px;display:flex;align-items:center;gap:4px}
+.trend-up{color:var(--ok);font-weight:600}
+.trend-dn{color:var(--err);font-weight:600}
+
+/* FILTER BAR */
+.filter-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.srch{display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;flex:1;min-width:160px}
+.srch .ti{color:var(--txt3);font-size:15px}
+.srch input{border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--txt);outline:none;width:100%}
+.srch input::placeholder{color:var(--txt3)}
+.fsel{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--txt2);outline:none;cursor:pointer}
+.tabs{display:flex;gap:2px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:3px}
+.tab{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;color:var(--txt2);background:transparent;border:none;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
+.tab.on{background:var(--surface);color:var(--p);font-weight:600;box-shadow:0 1px 4px rgba(10,115,190,.1)}
+
+/* TABLE */
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.tbl-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
+.tbl-title{font-size:14px;font-weight:700;color:var(--txt)}
+.tbl-meta{font-size:12px;color:var(--txt3)}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px}
+thead th{background:var(--surface2);padding:10px 14px;text-align:left;font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s;cursor:pointer}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--pl)}
+tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drug-nm{font-weight:600;font-size:13px}
+.drug-gen{font-size:11px;color:var(--txt3);margin-top:1px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.badge .ti{font-size:10px}
+.bge{background:var(--okbg);color:var(--ok)}
+.bga{background:var(--warnbg);color:var(--warn)}
+.bgr{background:var(--errbg);color:var(--err)}
+.bgb{background:var(--infobg);color:var(--p)}
+.bar-wrap{width:72px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block}
+.bar-fill{height:100%;border-radius:3px}
+.tbl-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;color:var(--txt2);font-family:'Noto Sans JP',sans-serif;display:inline-flex;align-items:center;gap:3px;margin-right:3px;transition:all .12s}
+.tbl-btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl)}
+.tbl-btn .ti{font-size:13px}
+
+/* PURCHASE ORDERS PAGE */
+.po-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.po-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px}
+.po-card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.po-card-title{font-size:13px;font-weight:600;color:var(--txt)}
+.po-card-id{font-size:11px;color:var(--txt3);font-family:monospace}
+.po-items{display:flex;flex-direction:column;gap:6px}
+.po-row{display:flex;justify-content:space-between;font-size:12px;color:var(--txt2)}
+.po-row span:last-child{font-weight:500;color:var(--txt)}
+
+/* EXPIRY PAGE */
+.exp-timeline{display:flex;flex-direction:column;gap:10px}
+.exp-row{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:14px 18px}
+.exp-icon-wrap{width:40px;height:40px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.exp-info{flex:1}
+.exp-name{font-size:13px;font-weight:600;color:var(--txt)}
+.exp-meta{font-size:12px;color:var(--txt2);margin-top:2px;display:flex;gap:10px}
+.exp-days{font-size:13px;font-weight:700;flex-shrink:0}
+
+/* ANALYTICS */
+.analytics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.a-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px}
+.a-card-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.a-card-title .ti{font-size:16px;color:var(--p)}
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bc-row{display:flex;align-items:center;gap:10px;font-size:12px}
+.bc-label{width:90px;color:var(--txt2);flex-shrink:0;text-align:right}
+.bc-track{flex:1;height:22px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.bc-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:600;color:#fff}
+.bc-val{width:36px;color:var(--txt);font-weight:600;text-align:right;flex-shrink:0}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--txt2)}
+.leg-dot{width:10px;height:10px;border-radius:50%}
+
+/* SETTINGS */
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.setting-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px}
+.sc-title{font-size:13px;font-weight:700;color:var(--txt);display:flex;align-items:center;gap:7px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sc-title .ti{color:var(--p);font-size:16px}
+.sc-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);gap:10px}
+.sc-row:last-child{border-bottom:none}
+.sc-lbl{font-size:13px;color:var(--txt)}
+.sc-desc{font-size:11px;color:var(--txt3);margin-top:1px}
+.toggle{width:38px;height:20px;border-radius:10px;cursor:pointer;transition:background .2s;position:relative;flex-shrink:0;border:none}
+.toggle.on{background:var(--p)}
+.toggle.off{background:var(--border2)}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;background:#fff;border-radius:50%;transition:left .2s}
+.toggle.on::after{left:21px}
+
+/* ICON LEGEND */
+.icon-legend{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px;margin-top:16px}
+.il-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.il-title .ti{color:var(--p);font-size:16px}
+.il-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.il-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r)}
+.il-item .ti{font-size:18px;color:var(--p);flex-shrink:0}
+.il-item-info{min-width:0}
+.il-item-name{font-size:11px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.il-item-code{font-size:10px;color:var(--txt3);font-family:monospace}
+
+/* MODAL */
+.modal-bg{display:none;position:absolute;inset:0;background:rgba(13,33,55,.45);z-index:50;align-items:center;justify-content:center;min-height:760px}
+.modal-bg.open{display:flex}
+.modal-box{background:#fff;border-radius:var(--rxl);width:480px;max-width:96%;overflow:hidden;box-shadow:0 4px 32px rgba(10,115,190,.18)}
+.modal-head{background:var(--p);padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.modal-head-title{color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-head-title .ti{font-size:18px}
+.modal-x{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:22px;font-family:'Noto Sans JP',sans-serif;line-height:1;padding:0}
+.modal-body{padding:22px;display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:11px;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.4px}
+.fi{padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--txt);background:var(--surface2);outline:none;transition:border .12s;width:100%}
+.fi:focus{border-color:var(--p);background:#fff}
+.modal-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+
+/* DESIGN SYSTEM */
+.ds-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:18px;display:none}
+.ds-panel.open{display:block}
+.ds-inner{display:flex;flex-direction:column;gap:18px}
+.ds-sec-title{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.ds-colors{display:flex;gap:10px;flex-wrap:wrap}
+.ds-chip{display:flex;flex-direction:column;align-items:center;gap:5px}
+.ds-swatch{width:42px;height:42px;border-radius:var(--r);border:1px solid var(--border)}
+.ds-clbl{font-size:10px;color:var(--txt3);text-align:center;font-weight:500;line-height:1.3}
+.ds-type-item{display:flex;align-items:baseline;gap:14px;padding:6px 0;border-bottom:1px solid var(--border)}
+.ds-type-meta{font-size:11px;color:var(--txt3);width:110px;flex-shrink:0}
+
+/* ── AUTH FLOW ── */
+.step-dots{display:flex;gap:6px;justify-content:center;margin-bottom:22px}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .2s}
+.step-dot.on{background:var(--p);width:22px;border-radius:4px}
+.otp-wrap{display:flex;gap:8px;justify-content:center}
+.otp-inp{width:48px;height:56px;border:1.5px solid var(--border);border-radius:var(--r);font-size:22px;font-weight:700;text-align:center;font-family:'Noto Sans JP',sans-serif;color:var(--txt);background:var(--surface2);outline:none;transition:border .15s,background .15s}
+.otp-inp:focus{border-color:var(--p);background:#fff}
+.auth-back{display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;color:var(--p);cursor:pointer;margin-top:16px;font-weight:500}
+.auth-back:hover{text-decoration:underline}
+.pw-strength{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px;margin-bottom:4px}
+.pw-bars{display:flex;gap:4px;margin:6px 0}
+.pw-bar{flex:1;height:4px;border-radius:2px;background:var(--border);transition:background .3s}
+
+/* ── COMPONENT LIBRARY ── */
+.comp-section{margin-bottom:36px}
+.comp-section-title{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.comp-section-title .ti{color:var(--p);font-size:18px}
+.comp-section-sub{font-size:12px;color:var(--txt3);margin-bottom:14px}
+.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px}
+.comp-preview{padding:22px 20px;background:var(--surface2);display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:1px solid var(--border);min-height:72px}
+.comp-code-box{background:#16263a}
+.comp-code-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#0f1e2d;border-bottom:1px solid rgba(255,255,255,.06)}
+.comp-code-label{font-size:10px;font-weight:700;color:#6d8fa8;letter-spacing:.8px;text-transform:uppercase}
+.copy-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#6d8fa8;font-size:11px;font-weight:600;padding:4px 10px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:inline-flex;align-items:center;gap:4px;transition:all .15s}
+.copy-btn:hover{background:rgba(255,255,255,.14);color:#c8e0f0}
+.copy-btn.copied{background:rgba(26,127,75,.2);border-color:rgba(26,127,75,.35);color:#34d399}
+.comp-code-pre{padding:14px 16px;font-family:'Cascadia Code','Fira Code','Courier New',monospace;font-size:12px;color:#a8c8e0;line-height:1.65;margin:0;white-space:pre;overflow-x:auto}
+.comp-nav-pills{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:26px}
+.comp-nav-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;background:var(--infobg);color:var(--p);text-decoration:none;transition:all .15s;border:1px solid var(--ps)}
+.comp-nav-pill:hover{background:var(--p);color:#fff;border-color:var(--p)}
+</style>
+
+<div style="position:relative;min-height:760px;overflow:hidden;border-radius:var(--rl)">
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="screen active">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div>
+        <div class="login-brand">
+          <div class="login-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+          <div>
+            <div class="login-brand-name">Pinnacle Family Clinic</div>
+            <div class="login-brand-sub">Medicine Inventory System</div>
+          </div>
+        </div>
+        <div class="login-hero-title">Enterprise-grade medicine<br>inventory management</div>
+        <div class="login-hero-sub">Securely manage your clinic's drug inventory, track expiry dates, manage controlled substances, and generate compliance reports — all in one place.</div>
+        <div class="login-features">
+          <div class="login-feat"><i class="ti ti-shield-check" aria-hidden="true" style="font-size:14px"></i> MOH-compliant controlled drug tracking</div>
+          <div class="login-feat"><i class="ti ti-bell-ringing" aria-hidden="true" style="font-size:14px"></i> Real-time expiry & low-stock alerts</div>
+          <div class="login-feat"><i class="ti ti-chart-bar" aria-hidden="true" style="font-size:14px"></i> Dispensing analytics & audit trails</div>
+          <div class="login-feat"><i class="ti ti-users" aria-hidden="true" style="font-size:14px"></i> Role-based staff access control</div>
+        </div>
+      </div>
+      <div class="login-footer-txt">© 2026 Pinnacle Family Clinic Pte. Ltd. · Singapore · MOH Licensed</div>
+    </div>
+    <div class="login-right">
+      <div class="login-welcome">Welcome back</div>
+      <div class="login-hint">Sign in to your inventory dashboard</div>
+      <div class="login-field">
+        <label class="login-label">Staff ID or Email</label>
+        <div class="login-input-wrap">
+          <i class="ti ti-user" aria-hidden="true"></i>
+          <input class="login-input" type="text" placeholder="e.g. dr.chan@pinnacle.sg" value="dr.chan@pinnacle.sg" />
+        </div>
+      </div>
+      <div class="login-field">
+        <label class="login-label">Password</label>
+        <div class="login-input-wrap">
+          <i class="ti ti-lock" aria-hidden="true"></i>
+          <input class="login-input" type="password" id="pwInput" placeholder="Enter your password" value="••••••••" />
+          <button class="eye-btn" onclick="togglePw()" aria-label="Toggle password visibility"><i class="ti ti-eye" id="eyeIcon" style="font-size:16px;color:var(--txt3)"></i></button>
+        </div>
+      </div>
+      <button class="login-btn" onclick="goApp()"><i class="ti ti-login" aria-hidden="true"></i> Sign in to Dashboard</button>
+      <div class="login-divider"><div class="login-divider-line"></div><span class="login-divider-txt">or continue with</span><div class="login-divider-line"></div></div>
+      <button class="login-sso"><i class="ti ti-building-hospital" style="font-size:16px;color:var(--p)" aria-hidden="true"></i> Sign in with Hospital SSO</button>
+      <div class="login-links">
+        <a class="login-link" href="#" onclick="goForgot();return false;"><i class="ti ti-key" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Forgot password?</a>
+        <a class="login-link" href="#"><i class="ti ti-headset" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> IT Support</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD SCREEN -->
+<div id="forgotScreen" class="screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div>
+        <div class="login-brand">
+          <div class="login-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+          <div><div class="login-brand-name">Pinnacle Family Clinic</div><div class="login-brand-sub">Medicine Inventory System</div></div>
+        </div>
+        <div class="login-hero-title">Password recovery</div>
+        <div class="login-hero-sub">Enter your registered email and we'll send a one-time code to verify your identity before resetting your password.</div>
+        <div class="login-features">
+          <div class="login-feat"><i class="ti ti-mail" aria-hidden="true" style="font-size:14px"></i> Code sent to registered email</div>
+          <div class="login-feat"><i class="ti ti-clock" aria-hidden="true" style="font-size:14px"></i> Code expires in 10 minutes</div>
+          <div class="login-feat"><i class="ti ti-shield-check" aria-hidden="true" style="font-size:14px"></i> Secure encrypted reset link</div>
+        </div>
+      </div>
+      <div class="login-footer-txt">© 2026 Pinnacle Family Clinic Pte. Ltd. · Singapore · MOH Licensed</div>
+    </div>
+    <div class="login-right">
+      <div class="step-dots"><div class="step-dot on"></div><div class="step-dot"></div><div class="step-dot"></div></div>
+      <div class="login-welcome">Forgot password?</div>
+      <div class="login-hint">Enter your staff email to receive an OTP code.</div>
+      <div class="login-field">
+        <label class="login-label">Staff email</label>
+        <div class="login-input-wrap">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <input class="login-input" type="email" id="forgotEmail" placeholder="e.g. dr.chan@pinnacle.sg"/>
+        </div>
+      </div>
+      <button class="login-btn" onclick="goOtp()"><i class="ti ti-send" aria-hidden="true"></i> Send OTP code</button>
+      <div class="auth-back" onclick="goLogin()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back to sign in</div>
+    </div>
+  </div>
+</div>
+
+<!-- OTP SCREEN -->
+<div id="otpScreen" class="screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div>
+        <div class="login-brand">
+          <div class="login-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+          <div><div class="login-brand-name">Pinnacle Family Clinic</div><div class="login-brand-sub">Medicine Inventory System</div></div>
+        </div>
+        <div class="login-hero-title">Verify your identity</div>
+        <div class="login-hero-sub">We've sent a 6-digit code to your registered email. Check your inbox and enter the code to continue.</div>
+        <div class="login-features">
+          <div class="login-feat"><i class="ti ti-inbox" aria-hidden="true" style="font-size:14px"></i> Check your email inbox</div>
+          <div class="login-feat"><i class="ti ti-clock" aria-hidden="true" style="font-size:14px"></i> Code valid for 10 minutes</div>
+          <div class="login-feat"><i class="ti ti-refresh" aria-hidden="true" style="font-size:14px"></i> Request a new code if needed</div>
+        </div>
+      </div>
+      <div class="login-footer-txt">© 2026 Pinnacle Family Clinic Pte. Ltd. · Singapore · MOH Licensed</div>
+    </div>
+    <div class="login-right">
+      <div class="step-dots"><div class="step-dot"></div><div class="step-dot on"></div><div class="step-dot"></div></div>
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="width:54px;height:54px;background:var(--infobg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><i class="ti ti-mail-opened" style="font-size:26px;color:var(--p)" aria-hidden="true"></i></div>
+        <div class="login-welcome" style="text-align:center">Check your email</div>
+        <div class="login-hint" style="text-align:center">We sent a 6-digit code to<br><strong style="color:var(--txt)" id="otpEmailDisplay">dr.chan@pinnacle.sg</strong></div>
+      </div>
+      <div class="otp-wrap">
+        <input class="otp-inp" type="text" maxlength="1" id="otp0" oninput="otpAdvance(this,0)" onkeydown="otpBack(event,0)" aria-label="OTP digit 1"/>
+        <input class="otp-inp" type="text" maxlength="1" id="otp1" oninput="otpAdvance(this,1)" onkeydown="otpBack(event,1)" aria-label="OTP digit 2"/>
+        <input class="otp-inp" type="text" maxlength="1" id="otp2" oninput="otpAdvance(this,2)" onkeydown="otpBack(event,2)" aria-label="OTP digit 3"/>
+        <input class="otp-inp" type="text" maxlength="1" id="otp3" oninput="otpAdvance(this,3)" onkeydown="otpBack(event,3)" aria-label="OTP digit 4"/>
+        <input class="otp-inp" type="text" maxlength="1" id="otp4" oninput="otpAdvance(this,4)" onkeydown="otpBack(event,4)" aria-label="OTP digit 5"/>
+        <input class="otp-inp" type="text" maxlength="1" id="otp5" oninput="otpAdvance(this,5)" onkeydown="otpBack(event,5)" aria-label="OTP digit 6"/>
+      </div>
+      <button class="login-btn" onclick="goReset()" style="margin-top:22px"><i class="ti ti-check" aria-hidden="true"></i> Verify code</button>
+      <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--txt2)">Didn't receive it? <span style="color:var(--p);cursor:pointer;font-weight:600" onclick="resendOtp()">Resend code</span> <span id="resendTimer" style="color:var(--txt3)"></span></div>
+      <div class="auth-back" onclick="goForgot()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESET PASSWORD SCREEN -->
+<div id="resetScreen" class="screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div>
+        <div class="login-brand">
+          <div class="login-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+          <div><div class="login-brand-name">Pinnacle Family Clinic</div><div class="login-brand-sub">Medicine Inventory System</div></div>
+        </div>
+        <div class="login-hero-title">Set a new password</div>
+        <div class="login-hero-sub">Choose a strong password you haven't used before. Minimum 8 characters — include numbers and symbols for best security.</div>
+        <div class="login-features">
+          <div class="login-feat"><i class="ti ti-lock" aria-hidden="true" style="font-size:14px"></i> Minimum 8 characters</div>
+          <div class="login-feat"><i class="ti ti-123" aria-hidden="true" style="font-size:14px"></i> Include numbers &amp; symbols</div>
+          <div class="login-feat"><i class="ti ti-shield" aria-hidden="true" style="font-size:14px"></i> Avoid reusing old passwords</div>
+        </div>
+      </div>
+      <div class="login-footer-txt">© 2026 Pinnacle Family Clinic Pte. Ltd. · Singapore · MOH Licensed</div>
+    </div>
+    <div class="login-right">
+      <div class="step-dots"><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot on"></div></div>
+      <div class="login-welcome">New password</div>
+      <div class="login-hint">Choose a strong password for your account.</div>
+      <div class="login-field">
+        <label class="login-label">New password</label>
+        <div class="login-input-wrap">
+          <i class="ti ti-lock" aria-hidden="true"></i>
+          <input class="login-input" type="password" id="newPw" placeholder="Minimum 8 characters" oninput="checkPwStrength()"/>
+          <button class="eye-btn" onclick="togglePwField('newPw','eyeNew')" aria-label="Toggle visibility"><i class="ti ti-eye" id="eyeNew" style="font-size:16px;color:var(--txt3)"></i></button>
+        </div>
+      </div>
+      <div class="pw-strength">
+        <div style="font-size:11px;font-weight:700;color:var(--txt2);margin-bottom:4px">Password strength</div>
+        <div class="pw-bars">
+          <div class="pw-bar" id="pwb1"></div><div class="pw-bar" id="pwb2"></div>
+          <div class="pw-bar" id="pwb3"></div><div class="pw-bar" id="pwb4"></div>
+        </div>
+        <div style="font-size:11px;color:var(--txt3)" id="pwStrengthLbl">Enter a password</div>
+      </div>
+      <div class="login-field" style="margin-top:10px">
+        <label class="login-label">Confirm password</label>
+        <div class="login-input-wrap">
+          <i class="ti ti-lock-check" aria-hidden="true"></i>
+          <input class="login-input" type="password" id="confirmPw" placeholder="Re-enter password"/>
+          <button class="eye-btn" onclick="togglePwField('confirmPw','eyeConf')" aria-label="Toggle visibility"><i class="ti ti-eye" id="eyeConf" style="font-size:16px;color:var(--txt3)"></i></button>
+        </div>
+      </div>
+      <button class="login-btn" onclick="goResetSuccess()" style="margin-top:8px"><i class="ti ti-check" aria-hidden="true"></i> Reset password</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESET SUCCESS SCREEN -->
+<div id="resetSuccessScreen" class="screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div>
+        <div class="login-brand">
+          <div class="login-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+          <div><div class="login-brand-name">Pinnacle Family Clinic</div><div class="login-brand-sub">Medicine Inventory System</div></div>
+        </div>
+        <div class="login-hero-title">You're all set!</div>
+        <div class="login-hero-sub">Your password has been securely updated. You can now sign in to your inventory dashboard with your new credentials.</div>
+        <div class="login-features">
+          <div class="login-feat"><i class="ti ti-circle-check" aria-hidden="true" style="font-size:14px"></i> Password updated successfully</div>
+          <div class="login-feat"><i class="ti ti-device-mobile" aria-hidden="true" style="font-size:14px"></i> All active sessions signed out</div>
+          <div class="login-feat"><i class="ti ti-mail" aria-hidden="true" style="font-size:14px"></i> Confirmation email sent</div>
+        </div>
+      </div>
+      <div class="login-footer-txt">© 2026 Pinnacle Family Clinic Pte. Ltd. · Singapore · MOH Licensed</div>
+    </div>
+    <div class="login-right" style="align-items:center;justify-content:center;text-align:center">
+      <div style="width:68px;height:68px;background:var(--okbg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border:2px solid var(--ok)"><i class="ti ti-check" style="font-size:30px;color:var(--ok)" aria-hidden="true"></i></div>
+      <div class="login-welcome">Password reset!</div>
+      <div class="login-hint" style="text-align:center;margin-bottom:28px">Your password has been successfully reset.<br>Sign in with your new credentials.</div>
+      <button class="login-btn" onclick="goLogin()"><i class="ti ti-login" aria-hidden="true"></i> Back to sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- APP SCREEN -->
+<div id="appScreen" class="screen">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sb-top">
+      <div class="sb-brand">
+        <div class="sb-logo"><i class="ti ti-medical-cross" aria-hidden="true"></i></div>
+        <div>
+          <div class="sb-name">Pinnacle Clinic</div>
+          <div class="sb-sub">Inventory System</div>
+        </div>
+      </div>
+    </div>
+    <div class="sb-search">
+      <i class="ti ti-search" aria-hidden="true"></i>
+      <input placeholder="Search menu..." aria-label="Search navigation" />
+    </div>
+    <div class="sb-body">
+      <div class="sb-section">Overview</div>
+      <div class="nav-item active" onclick="navTo(this,'dashboard')" role="menuitem" tabindex="0">
+        <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard
+      </div>
+
+      <div class="sb-section">Inventory</div>
+      <div class="nav-item" onclick="toggleSub('inventorySub',this)" role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true">
+        <i class="ti ti-pill" aria-hidden="true"></i> Medicines <span class="nb warn">3</span>
+        <i class="ti ti-chevron-down nav-chevron" id="chevron-inventorySub" aria-hidden="true"></i>
+      </div>
+      <div class="nav-sub" id="inventorySub" role="menu">
+        <div class="nav-sub-item active" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-list" aria-hidden="true"></i> All Medicines</div>
+        <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-shield-lock" aria-hidden="true"></i> Controlled Drugs</div>
+        <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-temperature" aria-hidden="true"></i> Cold Chain Items</div>
+        <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-needle" aria-hidden="true"></i> Vaccines</div>
+      </div>
+
+      <div class="nav-item" onclick="toggleSub('procSub',this)" role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true">
+        <i class="ti ti-shopping-cart" aria-hidden="true"></i> Procurement
+        <i class="ti ti-chevron-down nav-chevron" id="chevron-procSub" aria-hidden="true"></i>
+      </div>
+      <div class="nav-sub" id="procSub" role="menu">
+        <div class="nav-sub-item" onclick="navTo(null,'orders')" role="menuitem"><i class="ti ti-file-invoice" aria-hidden="true"></i> Purchase Orders</div>
+        <div class="nav-sub-item" onclick="navTo(null,'orders')" role="menuitem"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Suppliers</div>
+        <div class="nav-sub-item" onclick="navTo(null,'orders')" role="menuitem"><i class="ti ti-receipt" aria-hidden="true"></i> Invoices</div>
+      </div>
+
+      <div class="sb-section">Clinical</div>
+      <div class="nav-item" onclick="navTo(this,'expiry')" role="menuitem" tabindex="0">
+        <i class="ti ti-calendar-x" aria-hidden="true"></i> Expiry Alerts <span class="nb">7</span>
+      </div>
+      <div class="nav-item" onclick="navTo(this,'orders')" role="menuitem" tabindex="0">
+        <i class="ti ti-notebook" aria-hidden="true"></i> Dispensing Log
+      </div>
+      <div class="nav-item" onclick="toggleSub('compSub',this)" role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true">
+        <i class="ti ti-file-certificate" aria-hidden="true"></i> Compliance
+        <i class="ti ti-chevron-down nav-chevron" id="chevron-compSub" aria-hidden="true"></i>
+      </div>
+      <div class="nav-sub" id="compSub" role="menu">
+        <div class="nav-sub-item" onclick="navTo(null,'analytics')" role="menuitem"><i class="ti ti-clipboard-check" aria-hidden="true"></i> MOH Reports</div>
+        <div class="nav-sub-item" onclick="navTo(null,'analytics')" role="menuitem"><i class="ti ti-lock-check" aria-hidden="true"></i> Audit Trail</div>
+      </div>
+
+      <div class="sb-section">Reports</div>
+      <div class="nav-item" onclick="navTo(this,'analytics')" role="menuitem" tabindex="0">
+        <i class="ti ti-chart-bar" aria-hidden="true"></i> Analytics
+      </div>
+
+      <div class="sb-section">Admin</div>
+      <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0">
+        <i class="ti ti-users" aria-hidden="true"></i> Staff Access
+      </div>
+      <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0">
+        <i class="ti ti-settings" aria-hidden="true"></i> System Settings
+      </div>
+    </div>
+    <div class="sb-footer">
+      <div class="sb-user" role="button" tabindex="0" aria-label="User profile menu">
+        <div class="sb-avatar">CW</div>
+        <div>
+          <div class="sb-uname">Dr. Chan Wei Ling</div>
+          <div class="sb-urole">Pharmacist-in-Charge</div>
+        </div>
+        <i class="ti ti-dots-vertical" aria-hidden="true"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <header class="topbar" role="banner">
+      <div class="tb-left">
+        <div class="tb-breadcrumb">
+          <i class="ti ti-home" aria-hidden="true"></i>
+          <i class="ti ti-chevron-right" style="font-size:12px" aria-hidden="true"></i>
+          <span class="cur" id="breadcrumb">Dashboard</span>
+        </div>
+      </div>
+      <div class="tb-right">
+        <div class="tb-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Singapore</div>
+        <button class="tb-icon-btn" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button>
+        <button class="tb-icon-btn" aria-label="Notifications, 3 unread">
+          <i class="ti ti-bell" aria-hidden="true"></i><div class="dot" aria-hidden="true"></div>
+        </button>
+        <button class="tb-icon-btn" aria-label="Help"><i class="ti ti-help-circle" aria-hidden="true"></i></button>
+        <div class="tb-avatar-btn" role="button" tabindex="0" aria-label="Profile menu">CW</div>
+        <button class="btn" onclick="toggleDS()" style="padding:6px 12px;font-size:12px"><i class="ti ti-palette" aria-hidden="true" style="font-size:13px"></i> Design System</button>
+        <button class="btn" onclick="navTo(null,'components')" style="padding:6px 12px;font-size:12px;background:var(--infobg);border-color:var(--ps);color:var(--p)"><i class="ti ti-components" aria-hidden="true" style="font-size:13px"></i> Components</button>
+        <button class="btn" onclick="goLogin()" style="padding:6px 12px;font-size:12px"><i class="ti ti-logout" aria-hidden="true" style="font-size:13px"></i> Sign out</button>
+      </div>
+    </header>
+
+    <main class="page-body" role="main">
+
+      <!-- DASHBOARD PAGE -->
+      <div class="page-content active" id="page-dashboard">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Dashboard</div>
+            <div class="pg-sub"><i class="ti ti-clock" aria-hidden="true"></i> Last updated: 26 May 2026, 09:14 AM SGT</div>
+          </div>
+          <div class="pg-actions">
+            <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
+            <button class="btn btn-primary" onclick="openModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add Medicine</button>
+          </div>
+        </div>
+
+        <div class="ds-panel" id="dsPanel">
+          <div class="ds-inner">
+            <div>
+              <div class="ds-sec-title">Color palette</div>
+              <div class="ds-colors">
+                <div class="ds-chip"><div class="ds-swatch" style="background:#0a73be"></div><div class="ds-clbl">Primary<br>#0a73be</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#b5d5ec"></div><div class="ds-clbl">Secondary<br>#b5d5ec</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#085a96"></div><div class="ds-clbl">Primary dark<br>#085a96</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#e8f3fb"></div><div class="ds-clbl">Surface<br>#e8f3fb</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#1a7f4b"></div><div class="ds-clbl">Success<br>#1a7f4b</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#a16207"></div><div class="ds-clbl">Warning<br>#a16207</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#b91c1c"></div><div class="ds-clbl">Danger<br>#b91c1c</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#0d2137"></div><div class="ds-clbl">Sidebar<br>#0d2137</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#0d1f2d"></div><div class="ds-clbl">Text primary<br>#0d1f2d</div></div>
+                <div class="ds-chip"><div class="ds-swatch" style="background:#f0f4f8;border:1px solid #dde6ef"></div><div class="ds-clbl">Page bg<br>#f0f4f8</div></div>
+              </div>
+            </div>
+            <div>
+              <div class="ds-sec-title">Typography — Noto Sans JP</div>
+              <div style="display:flex;flex-direction:column;gap:0">
+                <div class="ds-type-item"><span class="ds-type-meta">H1 · 20px · 700</span><span style="font-size:20px;font-weight:700;color:var(--txt)">Inventory Overview</span></div>
+                <div class="ds-type-item"><span class="ds-type-meta">H2 · 16px · 700</span><span style="font-size:16px;font-weight:700;color:var(--txt)">Medicine Categories</span></div>
+                <div class="ds-type-item"><span class="ds-type-meta">Body · 13px · 400</span><span style="font-size:13px;color:var(--txt)">Amoxicillin 500mg — batch #SG2026-011</span></div>
+                <div class="ds-type-item"><span class="ds-type-meta">Caption · 11px · 500</span><span style="font-size:11px;color:var(--txt2)">Expires 31 Dec 2026 · MOH Approved</span></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:28px;flex-wrap:wrap">
+              <div>
+                <div class="ds-sec-title">Radius tokens</div>
+                <div style="display:flex;gap:10px;align-items:center">
+                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">8px</div>
+                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">12px</div>
+                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">16px</div>
+                  <div style="width:56px;height:24px;background:var(--p);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700">pill</div>
+                </div>
+              </div>
+              <div>
+                <div class="ds-sec-title">Status badges</div>
+                <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+                  <span class="badge bge"><i class="ti ti-circle-check" style="font-size:11px" aria-hidden="true"></i>In stock</span>
+                  <span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:11px" aria-hidden="true"></i>Low stock</span>
+                  <span class="badge bgr"><i class="ti ti-circle-x" style="font-size:11px" aria-hidden="true"></i>Out of stock</span>
+                  <span class="badge bgb"><i class="ti ti-shield-lock" style="font-size:11px" aria-hidden="true"></i>Controlled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+            <div class="stat-top"><div class="stat-lbl">Total medicines</div><div class="stat-icon si-blue"><i class="ti ti-pill" aria-hidden="true"></i></div></div>
+            <div class="stat-val">1,284</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 4.2%</span> vs last month</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
+            <div class="stat-top"><div class="stat-lbl">In-stock items</div><div class="stat-icon si-green"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
+            <div class="stat-val">1,098</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 1.8%</span> vs last month</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
+            <div class="stat-top"><div class="stat-lbl">Low stock alerts</div><div class="stat-icon si-amber"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div></div>
+            <div class="stat-val">38</div>
+            <div class="stat-foot"><span class="trend-dn"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 12%</span> needs reorder</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--err)"></div>
+            <div class="stat-top"><div class="stat-lbl">Expiring soon</div><div class="stat-icon si-red"><i class="ti ti-calendar-x" aria-hidden="true"></i></div></div>
+            <div class="stat-val">7</div>
+            <div class="stat-foot">Within <span style="font-weight:700;color:var(--err)">30 days</span></div>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input id="srchInp" oninput="filterTbl()" placeholder="Search medicine, batch, supplier..." aria-label="Search medicines"/></div>
+          <select class="fsel" id="catSel" onchange="filterTbl()" aria-label="Filter by category"><option value="">All categories</option><option value="Antibiotic">Antibiotics</option><option value="Analgesic">Analgesics</option><option value="Controlled">Controlled drugs</option><option value="Cardiovascular">Cardiovascular</option><option value="Respiratory">Respiratory</option></select>
+          <select class="fsel" id="stSel" onchange="filterTbl()" aria-label="Filter by status"><option value="">All status</option><option value="In Stock">In stock</option><option value="Low Stock">Low stock</option><option value="Out of Stock">Out of stock</option></select>
+          <div class="tabs" role="tablist">
+            <button class="tab on" onclick="setView(this,'all')" role="tab" aria-selected="true">All</button>
+            <button class="tab" onclick="setView(this,'alerts')" role="tab" aria-selected="false">Alerts</button>
+            <button class="tab" onclick="setView(this,'expiring')" role="tab" aria-selected="false">Expiring</button>
+          </div>
+        </div>
+
+        <div class="tbl-wrap" role="region" aria-label="Medicine inventory table">
+          <div class="tbl-hdr"><div class="tbl-title">Medicine inventory</div><div class="tbl-meta" id="tblCount">Showing 10 of 10</div></div>
+          <div style="overflow-x:auto">
+          <table aria-label="Medicines">
+            <colgroup><col style="width:20%"><col style="width:11%"><col style="width:11%"><col style="width:10%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:16%"></colgroup>
+            <thead><tr>
+              <th scope="col">Medicine</th><th scope="col">Category</th><th scope="col">Batch no.</th><th scope="col">Stock level</th>
+              <th scope="col">Qty / unit</th><th scope="col">Expiry date</th><th scope="col">Status</th><th scope="col">Actions</th>
+            </tr></thead>
+            <tbody id="tblBody"></tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="icon-legend" role="region" aria-label="Icon reference">
+          <div class="il-title"><i class="ti ti-icons" aria-hidden="true"></i> Icon reference — Tabler Icons (outline)</div>
+          <div class="il-grid" id="iconGrid"></div>
+        </div>
+      </div>
+
+      <!-- INVENTORY PAGE -->
+      <div class="page-content" id="page-inventory">
+        <div class="pg-header">
+          <div><div class="pg-title">All medicines</div><div class="pg-sub"><i class="ti ti-database" aria-hidden="true"></i> Full inventory · 1,284 SKUs registered</div></div>
+          <div class="pg-actions">
+            <button class="btn"><i class="ti ti-upload" aria-hidden="true"></i> Import CSV</button>
+            <button class="btn btn-primary" onclick="openModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add medicine</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search medicines..." aria-label="Search medicines"/></div>
+          <select class="fsel" aria-label="Category"><option>All categories</option></select>
+          <select class="fsel" aria-label="Supplier"><option>All suppliers</option><option>Zuellig Pharma</option><option>DKSH Healthcare</option></select>
+          <select class="fsel" aria-label="Status"><option>All status</option><option>In stock</option><option>Low stock</option></select>
+        </div>
+        <div class="tbl-wrap">
+          <div class="tbl-hdr"><div class="tbl-title">All medicines</div><div class="tbl-meta">Showing 10 of 1,284</div></div>
+          <div style="overflow-x:auto">
+          <table>
+            <colgroup><col style="width:20%"><col style="width:11%"><col style="width:11%"><col style="width:10%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:16%"></colgroup>
+            <thead><tr><th>Medicine</th><th>Category</th><th>Batch no.</th><th>Stock level</th><th>Qty / unit</th><th>Expiry date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="invBody"></tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS PAGE -->
+      <div class="page-content" id="page-orders">
+        <div class="pg-header">
+          <div><div class="pg-title">Purchase orders</div><div class="pg-sub"><i class="ti ti-shopping-cart" aria-hidden="true"></i> Procurement management</div></div>
+          <div class="pg-actions">
+            <button class="btn btn-primary"><i class="ti ti-plus" aria-hidden="true"></i> New purchase order</button>
+          </div>
+        </div>
+        <div class="po-cards">
+          <div class="po-card">
+            <div class="po-card-hdr"><div class="po-card-title">Zuellig Pharma SG</div><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px"></i>Delivered</span></div>
+            <div class="po-card-id">PO-2026-0118</div>
+            <div class="po-items" style="margin-top:10px">
+              <div class="po-row"><span>Amoxicillin 500mg</span><span>×500 caps</span></div>
+              <div class="po-row"><span>Paracetamol 500mg</span><span>×1,000 tabs</span></div>
+              <div class="po-row"><span>Total value</span><span>S$1,240.00</span></div>
+              <div class="po-row"><span>Delivery date</span><span>22 May 2026</span></div>
+            </div>
+          </div>
+          <div class="po-card" style="border-color:var(--ps)">
+            <div class="po-card-hdr"><div class="po-card-title">DKSH Healthcare</div><span class="badge bga"><i class="ti ti-clock" style="font-size:10px"></i>Pending</span></div>
+            <div class="po-card-id">PO-2026-0119</div>
+            <div class="po-items" style="margin-top:10px">
+              <div class="po-row"><span>Salbutamol inhaler</span><span>×50 units</span></div>
+              <div class="po-row"><span>Cetirizine 10mg</span><span>×200 tabs</span></div>
+              <div class="po-row"><span>Total value</span><span>S$890.00</span></div>
+              <div class="po-row"><span>Expected delivery</span><span>29 May 2026</span></div>
+            </div>
+          </div>
+          <div class="po-card">
+            <div class="po-card-hdr"><div class="po-card-title">Pharmaniaga SG</div><span class="badge bgb"><i class="ti ti-send" style="font-size:10px"></i>Submitted</span></div>
+            <div class="po-card-id">PO-2026-0120</div>
+            <div class="po-items" style="margin-top:10px">
+              <div class="po-row"><span>Atorvastatin 20mg</span><span>×300 tabs</span></div>
+              <div class="po-row"><span>Metformin 850mg</span><span>×400 tabs</span></div>
+              <div class="po-row"><span>Total value</span><span>S$660.00</span></div>
+              <div class="po-row"><span>Submitted</span><span>25 May 2026</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tbl-wrap">
+          <div class="tbl-hdr"><div class="tbl-title">Order history</div><div class="tbl-meta">Last 30 days</div></div>
+          <table>
+            <colgroup><col style="width:14%"><col style="width:20%"><col style="width:16%"><col style="width:14%"><col style="width:14%"><col style="width:14%"><col style="width:8%"></colgroup>
+            <thead><tr><th>PO number</th><th>Supplier</th><th>Items</th><th>Value (SGD)</th><th>Order date</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td style="font-family:monospace;font-size:12px">PO-2026-0118</td><td>Zuellig Pharma SG</td><td>2 items</td><td style="font-weight:600">S$1,240.00</td><td>18 May 2026</td><td><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px"></i>Delivered</span></td><td><button class="tbl-btn"><i class="ti ti-eye" aria-label="View order"></i></button></td></tr>
+              <tr><td style="font-family:monospace;font-size:12px">PO-2026-0117</td><td>DKSH Healthcare</td><td>4 items</td><td style="font-weight:600">S$2,105.00</td><td>12 May 2026</td><td><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px"></i>Delivered</span></td><td><button class="tbl-btn"><i class="ti ti-eye" aria-label="View order"></i></button></td></tr>
+              <tr><td style="font-family:monospace;font-size:12px">PO-2026-0116</td><td>Pharmaniaga SG</td><td>3 items</td><td style="font-weight:600">S$780.00</td><td>5 May 2026</td><td><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px"></i>Delivered</span></td><td><button class="tbl-btn"><i class="ti ti-eye" aria-label="View order"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EXPIRY PAGE -->
+      <div class="page-content" id="page-expiry">
+        <div class="pg-header">
+          <div><div class="pg-title">Expiry alerts</div><div class="pg-sub"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 7 items expiring within 30 days</div></div>
+          <div class="pg-actions"><button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export report</button></div>
+        </div>
+        <div class="exp-timeline" role="list" aria-label="Expiry alerts">
+          <div class="exp-row" role="listitem">
+            <div class="exp-icon-wrap si-red"><i class="ti ti-alert-circle" style="font-size:20px;color:var(--err)" aria-hidden="true"></i></div>
+            <div class="exp-info">
+              <div class="exp-name">Diazepam 5mg <span class="badge bgb" style="margin-left:6px;font-size:10px"><i class="ti ti-shield-lock" style="font-size:9px"></i>CD</span></div>
+              <div class="exp-meta"><span>Batch: SG2025-202</span><span>18 tabs remaining</span><span>Supplier: DKSH</span></div>
+            </div>
+            <div class="exp-days" style="color:var(--err)">4 days</div>
+            <button class="btn btn-danger" style="padding:6px 12px;font-size:12px"><i class="ti ti-trash" style="font-size:13px" aria-hidden="true"></i> Quarantine</button>
+          </div>
+          <div class="exp-row" role="listitem">
+            <div class="exp-icon-wrap si-red"><i class="ti ti-alert-circle" style="font-size:20px;color:var(--err)" aria-hidden="true"></i></div>
+            <div class="exp-info">
+              <div class="exp-name">Amlodipine 5mg</div>
+              <div class="exp-meta"><span>Batch: SG2025-198</span><span>30 tabs remaining</span><span>Supplier: Zuellig</span></div>
+            </div>
+            <div class="exp-days" style="color:var(--err)">9 days</div>
+            <button class="btn btn-danger" style="padding:6px 12px;font-size:12px"><i class="ti ti-trash" style="font-size:13px" aria-hidden="true"></i> Quarantine</button>
+          </div>
+          <div class="exp-row" role="listitem">
+            <div class="exp-icon-wrap si-amber"><i class="ti ti-clock" style="font-size:20px;color:var(--warn)" aria-hidden="true"></i></div>
+            <div class="exp-info">
+              <div class="exp-name">Paracetamol 500mg</div>
+              <div class="exp-meta"><span>Batch: SG2026-034</span><span>150 tabs remaining</span><span>Supplier: DKSH</span></div>
+            </div>
+            <div class="exp-days" style="color:var(--warn)">15 days</div>
+            <button class="btn" style="padding:6px 12px;font-size:12px"><i class="ti ti-rotate" style="font-size:13px" aria-hidden="true"></i> Reorder</button>
+          </div>
+          <div class="exp-row" role="listitem">
+            <div class="exp-icon-wrap si-amber"><i class="ti ti-clock" style="font-size:20px;color:var(--warn)" aria-hidden="true"></i></div>
+            <div class="exp-info">
+              <div class="exp-name">Azithromycin 500mg</div>
+              <div class="exp-meta"><span>Batch: SG2026-019</span><span>44 tabs remaining</span><span>Supplier: Pharmaniaga</span></div>
+            </div>
+            <div class="exp-days" style="color:var(--warn)">22 days</div>
+            <button class="btn" style="padding:6px 12px;font-size:12px"><i class="ti ti-rotate" style="font-size:13px" aria-hidden="true"></i> Reorder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS PAGE -->
+      <div class="page-content" id="page-analytics">
+        <div class="pg-header">
+          <div><div class="pg-title">Analytics</div><div class="pg-sub"><i class="ti ti-chart-bar" aria-hidden="true"></i> Inventory & dispensing insights</div></div>
+          <div class="pg-actions">
+            <select class="fsel" aria-label="Time period"><option>Last 30 days</option><option>Last 90 days</option><option>This year</option></select>
+            <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
+          </div>
+        </div>
+        <div class="stat-grid" style="margin-bottom:20px">
+          <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+            <div class="stat-top"><div class="stat-lbl">Total dispensed (30d)</div><div class="stat-icon si-blue"><i class="ti ti-activity" aria-hidden="true"></i></div></div>
+            <div class="stat-val">3,842</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 8.1%</span> vs prior period</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
+            <div class="stat-top"><div class="stat-lbl">Reorders initiated</div><div class="stat-icon si-green"><i class="ti ti-refresh" aria-hidden="true"></i></div></div>
+            <div class="stat-val">14</div>
+            <div class="stat-foot">Avg lead time <span style="font-weight:600;color:var(--txt)">3.2 days</span></div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
+            <div class="stat-top"><div class="stat-lbl">Stockouts prevented</div><div class="stat-icon si-amber"><i class="ti ti-shield" aria-hidden="true"></i></div></div>
+            <div class="stat-val">6</div>
+            <div class="stat-foot">Via <span style="font-weight:600;color:var(--txt)">low stock alerts</span></div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+            <div class="stat-top"><div class="stat-lbl">Inventory value</div><div class="stat-icon si-blue"><i class="ti ti-currency-dollar" aria-hidden="true"></i></div></div>
+            <div class="stat-val">S$48k</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 2.4%</span> vs last month</div>
+          </div>
+        </div>
+        <div class="analytics-grid">
+          <div class="a-card">
+            <div class="a-card-title"><i class="ti ti-chart-bar" aria-hidden="true"></i> Top dispensed medicines</div>
+            <div class="bar-chart" role="img" aria-label="Bar chart: top dispensed medicines">
+              <div class="bc-row"><span class="bc-label">Paracetamol</span><div class="bc-track"><div class="bc-bar" style="width:90%;background:var(--p)">842</div></div><span class="bc-val">842</span></div>
+              <div class="bc-row"><span class="bc-label">Amoxicillin</span><div class="bc-track"><div class="bc-bar" style="width:72%;background:var(--p)">674</div></div><span class="bc-val">674</span></div>
+              <div class="bc-row"><span class="bc-label">Metformin</span><div class="bc-track"><div class="bc-bar" style="width:58%;background:var(--ps)">543</div></div><span class="bc-val">543</span></div>
+              <div class="bc-row"><span class="bc-label">Cetirizine</span><div class="bc-track"><div class="bc-bar" style="width:44%;background:var(--ps)">412</div></div><span class="bc-val">412</span></div>
+              <div class="bc-row"><span class="bc-label">Atorvastatin</span><div class="bc-track"><div class="bc-bar" style="width:38%;background:var(--ps)">356</div></div><span class="bc-val">356</span></div>
+            </div>
+          </div>
+          <div class="a-card">
+            <div class="a-card-title"><i class="ti ti-chart-donut" aria-hidden="true"></i> Stock by category</div>
+            <div class="bar-chart">
+              <div class="bc-row"><span class="bc-label">Analgesics</span><div class="bc-track"><div class="bc-bar" style="width:85%;background:#1a7f4b">28%</div></div><span class="bc-val">28%</span></div>
+              <div class="bc-row"><span class="bc-label">Antibiotics</span><div class="bc-track"><div class="bc-bar" style="width:62%;background:var(--p)">22%</div></div><span class="bc-val">22%</span></div>
+              <div class="bc-row"><span class="bc-label">Cardiovascular</span><div class="bc-track"><div class="bc-bar" style="width:48%;background:#d97706">18%</div></div><span class="bc-val">18%</span></div>
+              <div class="bc-row"><span class="bc-label">Respiratory</span><div class="bc-track"><div class="bc-bar" style="width:36%;background:#0891b2">15%</div></div><span class="bc-val">15%</span></div>
+              <div class="bc-row"><span class="bc-label">Controlled</span><div class="bc-track"><div class="bc-bar" style="width:20%;background:#b91c1c">10%</div></div><span class="bc-val">10%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS PAGE -->
+      <div class="page-content" id="page-settings">
+        <div class="pg-header">
+          <div><div class="pg-title">System settings</div><div class="pg-sub"><i class="ti ti-settings" aria-hidden="true"></i> Clinic configuration & access management</div></div>
+          <div class="pg-actions"><button class="btn btn-primary"><i class="ti ti-device-floppy" aria-hidden="true"></i> Save changes</button></div>
+        </div>
+        <div class="settings-grid">
+          <div class="setting-card">
+            <div class="sc-title"><i class="ti ti-bell" aria-hidden="true"></i> Alert thresholds</div>
+            <div class="sc-row"><div><div class="sc-lbl">Low stock threshold</div><div class="sc-desc">Trigger alert when qty drops below</div></div><input type="number" value="50" style="width:70px;padding:6px 8px;border:1px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;text-align:center" aria-label="Low stock threshold"/></div>
+            <div class="sc-row"><div><div class="sc-lbl">Expiry warning (days)</div><div class="sc-desc">Alert days before expiry date</div></div><input type="number" value="30" style="width:70px;padding:6px 8px;border:1px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:13px;text-align:center" aria-label="Expiry warning days"/></div>
+            <div class="sc-row"><div><div class="sc-lbl">Email notifications</div><div class="sc-desc">Send alerts to registered email</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')" aria-label="Toggle email notifications" role="switch"></button></div>
+            <div class="sc-row"><div><div class="sc-lbl">SMS notifications</div><div class="sc-desc">Send alerts via SMS</div></div><button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')" aria-label="Toggle SMS notifications" role="switch"></button></div>
+          </div>
+          <div class="setting-card">
+            <div class="sc-title"><i class="ti ti-users" aria-hidden="true"></i> Staff access</div>
+            <div class="sc-row"><div><div class="sc-lbl">Dr. Chan Wei Ling</div><div class="sc-desc">Pharmacist-in-Charge · Admin</div></div><span class="badge bgb">Admin</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Nurse Tan Mei Ling</div><div class="sc-desc">Dispense only · Active</div></div><span class="badge bge">Dispense</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Dr. Lim Ah Kow</div><div class="sc-desc">Read only · Active</div></div><span class="badge" style="background:#f3f4f6;color:#6b7280">View</span></div>
+            <div class="sc-row" style="border-bottom:none"><button class="btn" style="font-size:12px;padding:6px 12px"><i class="ti ti-user-plus" style="font-size:13px" aria-hidden="true"></i> Add staff member</button></div>
+          </div>
+          <div class="setting-card">
+            <div class="sc-title"><i class="ti ti-building-hospital" aria-hidden="true"></i> Clinic information</div>
+            <div class="sc-row"><div><div class="sc-lbl">Clinic name</div></div><span style="font-size:13px;color:var(--txt2)">Pinnacle Family Clinic</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">MOH licence no.</div></div><span style="font-size:13px;font-family:monospace;color:var(--txt2)">MHC-2024-0832</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Location</div></div><span style="font-size:13px;color:var(--txt2)">Singapore</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Timezone</div></div><span style="font-size:13px;color:var(--txt2)">Asia/Singapore (SGT)</span></div>
+          </div>
+          <div class="setting-card">
+            <div class="sc-title"><i class="ti ti-shield-check" aria-hidden="true"></i> Security</div>
+            <div class="sc-row"><div><div class="sc-lbl">Two-factor authentication</div><div class="sc-desc">Require for all staff logins</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')" aria-label="Toggle 2FA" role="switch"></button></div>
+            <div class="sc-row"><div><div class="sc-lbl">Session timeout</div><div class="sc-desc">Auto-logout after inactivity</div></div><select style="padding:5px 8px;border:1px solid var(--border);border-radius:var(--r);font-family:'Noto Sans JP',sans-serif;font-size:12px" aria-label="Session timeout"><option>30 minutes</option><option>1 hour</option><option>4 hours</option></select></div>
+            <div class="sc-row"><div><div class="sc-lbl">Audit logging</div><div class="sc-desc">Log all inventory changes</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')" aria-label="Toggle audit logging" role="switch"></button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPONENT LIBRARY PAGE -->
+      <div class="page-content" id="page-components">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Component Library</div>
+            <div class="pg-sub"><i class="ti ti-components" aria-hidden="true"></i> All UI components used in this system — copy HTML &amp; CSS instantly</div>
+          </div>
+          <div class="pg-actions">
+            <button class="btn" onclick="copyCode(this,'snip-tokens')"><i class="ti ti-copy" aria-hidden="true"></i> Copy CSS variables</button>
+          </div>
+        </div>
+
+        <div class="comp-nav-pills">
+          <a class="comp-nav-pill" href="#cs-tokens"><i class="ti ti-palette" style="font-size:12px" aria-hidden="true"></i> Tokens</a>
+          <a class="comp-nav-pill" href="#cs-buttons"><i class="ti ti-hand-click" style="font-size:12px" aria-hidden="true"></i> Buttons</a>
+          <a class="comp-nav-pill" href="#cs-badges"><i class="ti ti-tag" style="font-size:12px" aria-hidden="true"></i> Badges</a>
+          <a class="comp-nav-pill" href="#cs-stat"><i class="ti ti-chart-bar" style="font-size:12px" aria-hidden="true"></i> Stat Cards</a>
+          <a class="comp-nav-pill" href="#cs-form"><i class="ti ti-forms" style="font-size:12px" aria-hidden="true"></i> Form Inputs</a>
+          <a class="comp-nav-pill" href="#cs-table"><i class="ti ti-table" style="font-size:12px" aria-hidden="true"></i> Data Table</a>
+          <a class="comp-nav-pill" href="#cs-filter"><i class="ti ti-filter" style="font-size:12px" aria-hidden="true"></i> Filter &amp; Tabs</a>
+          <a class="comp-nav-pill" href="#cs-toggle"><i class="ti ti-toggle-right" style="font-size:12px" aria-hidden="true"></i> Toggle</a>
+          <a class="comp-nav-pill" href="#cs-modal"><i class="ti ti-layout-bottombar" style="font-size:12px" aria-hidden="true"></i> Modal</a>
+          <a class="comp-nav-pill" href="#cs-settings"><i class="ti ti-adjustments" style="font-size:12px" aria-hidden="true"></i> Settings Card</a>
+        </div>
+
+        <!-- DESIGN TOKENS -->
+        <div class="comp-section" id="cs-tokens">
+          <div class="comp-section-title"><i class="ti ti-palette" aria-hidden="true"></i> Design tokens</div>
+          <div class="comp-section-sub">CSS custom properties — paste these :root variables into your stylesheet to use any component</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="gap:14px;flex-wrap:wrap">
+              <div class="ds-chip"><div class="ds-swatch" style="background:#0a73be"></div><div class="ds-clbl">--p<br>#0a73be</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#085a96"></div><div class="ds-clbl">--pd<br>#085a96</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#e8f3fb"></div><div class="ds-clbl">--pl<br>#e8f3fb</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#b5d5ec"></div><div class="ds-clbl">--ps<br>#b5d5ec</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#1a7f4b"></div><div class="ds-clbl">--ok<br>#1a7f4b</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#a16207"></div><div class="ds-clbl">--warn<br>#a16207</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#b91c1c"></div><div class="ds-clbl">--err<br>#b91c1c</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#0d1f2d"></div><div class="ds-clbl">--txt<br>#0d1f2d</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#4a6278"></div><div class="ds-clbl">--txt2<br>#4a6278</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#f0f4f8;border:1px solid #dde6ef"></div><div class="ds-clbl">--bg<br>#f0f4f8</div></div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">CSS</span><button class="copy-btn" onclick="copyCode(this,'snip-tokens')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-tokens" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="comp-section" id="cs-buttons">
+          <div class="comp-section-title"><i class="ti ti-hand-click" aria-hidden="true"></i> Buttons</div>
+          <div class="comp-section-sub">Primary, default, danger, and small size variants — all with icon support</div>
+          <div class="comp-card">
+            <div class="comp-preview">
+              <button class="btn btn-primary"><i class="ti ti-plus" aria-hidden="true"></i> Add Medicine</button>
+              <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
+              <button class="btn btn-danger"><i class="ti ti-trash" aria-hidden="true"></i> Delete</button>
+              <button class="btn" style="opacity:.45;cursor:not-allowed" disabled>Disabled</button>
+              <button class="btn" style="padding:6px 12px;font-size:12px"><i class="ti ti-filter" style="font-size:13px" aria-hidden="true"></i> Small</button>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-btn')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-btn" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- BADGES -->
+        <div class="comp-section" id="cs-badges">
+          <div class="comp-section-title"><i class="ti ti-tag" aria-hidden="true"></i> Status badges</div>
+          <div class="comp-section-sub">Semantic pill badges for stock status, drug classification, and custom states</div>
+          <div class="comp-card">
+            <div class="comp-preview">
+              <span class="badge bge"><i class="ti ti-circle-check" style="font-size:11px" aria-hidden="true"></i> In stock</span>
+              <span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:11px" aria-hidden="true"></i> Low stock</span>
+              <span class="badge bgr"><i class="ti ti-circle-x" style="font-size:11px" aria-hidden="true"></i> Out of stock</span>
+              <span class="badge bgb"><i class="ti ti-shield-lock" style="font-size:11px" aria-hidden="true"></i> Controlled</span>
+              <span class="badge" style="background:#f3f4f6;color:#6b7280">View only</span>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-badge')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-badge" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAT CARDS -->
+        <div class="comp-section" id="cs-stat">
+          <div class="comp-section-title"><i class="ti ti-chart-bar" aria-hidden="true"></i> Stat cards</div>
+          <div class="comp-section-sub">KPI summary cards with coloured accent bar, icon, value and trend footer</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:100%">
+              <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+                <div class="stat-top"><div class="stat-lbl">Total medicines</div><div class="stat-icon si-blue"><i class="ti ti-pill" aria-hidden="true"></i></div></div>
+                <div class="stat-val">1,284</div>
+                <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 4.2%</span> vs last month</div>
+              </div>
+              <div class="stat-card"><div class="stat-accent" style="background:var(--err)"></div>
+                <div class="stat-top"><div class="stat-lbl">Expiring soon</div><div class="stat-icon si-red"><i class="ti ti-calendar-x" aria-hidden="true"></i></div></div>
+                <div class="stat-val">7</div>
+                <div class="stat-foot">Within <span style="font-weight:700;color:var(--err)">30 days</span></div>
+              </div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-stat')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-stat" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM INPUTS -->
+        <div class="comp-section" id="cs-form">
+          <div class="comp-section-title"><i class="ti ti-forms" aria-hidden="true"></i> Form inputs</div>
+          <div class="comp-section-sub">Text, select, number, date — label + focus ring, ready for modals or inline forms</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%">
+              <div class="fg"><label class="fl">Medicine name</label><input class="fi" type="text" placeholder="e.g. Amoxicillin" aria-label="Medicine name"/></div>
+              <div class="fg"><label class="fl">Category</label><select class="fi" aria-label="Category"><option>Antibiotic</option><option>Analgesic</option><option>Cardiovascular</option></select></div>
+              <div class="fg"><label class="fl">Quantity</label><input class="fi" type="number" placeholder="0" aria-label="Quantity"/></div>
+              <div class="fg"><label class="fl">Expiry date</label><input class="fi" type="date" aria-label="Expiry date"/></div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-form')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-form" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="comp-section" id="cs-table">
+          <div class="comp-section-title"><i class="ti ti-table" aria-hidden="true"></i> Data table</div>
+          <div class="comp-section-sub">Striped hover rows, badge status column, stock progress bar, and row action buttons</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="padding:0;overflow-x:auto">
+              <table>
+                <thead><tr><th>Medicine</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><div class="drug-nm">Amoxicillin 500mg <span class="badge bgb" style="font-size:10px;padding:2px 6px"><i class="ti ti-shield-lock" style="font-size:9px" aria-hidden="true"></i>CD</span></div><div class="drug-gen">Amoxicillin trihydrate</div></td>
+                    <td style="font-size:12px;color:var(--txt2)">Antibiotic</td>
+                    <td><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px" aria-hidden="true"></i>In stock</span></td>
+                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td><div class="drug-nm">Paracetamol 500mg</div><div class="drug-gen">Acetaminophen</div></td>
+                    <td style="font-size:12px;color:var(--txt2)">Analgesic</td>
+                    <td><span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:10px" aria-hidden="true"></i>Low stock</span></td>
+                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-table')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-table" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER BAR & TABS -->
+        <div class="comp-section" id="cs-filter">
+          <div class="comp-section-title"><i class="ti ti-filter" aria-hidden="true"></i> Filter bar &amp; tabs</div>
+          <div class="comp-section-sub">Inline search, select dropdowns, and segmented tab switcher — composable in any order</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="width:100%">
+              <div class="filter-bar" style="margin-bottom:0;width:100%">
+                <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search medicine..." aria-label="Search"/></div>
+                <select class="fsel" aria-label="Category"><option>All categories</option><option>Antibiotic</option><option>Analgesic</option></select>
+                <div class="tabs" role="tablist">
+                  <button class="tab on" role="tab" aria-selected="true">All</button>
+                  <button class="tab" role="tab" aria-selected="false">Alerts</button>
+                  <button class="tab" role="tab" aria-selected="false">Expiring</button>
+                </div>
+              </div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-filter')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-filter" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOGGLE -->
+        <div class="comp-section" id="cs-toggle">
+          <div class="comp-section-title"><i class="ti ti-toggle-right" aria-hidden="true"></i> Toggle switch</div>
+          <div class="comp-section-sub">On/off toggle for settings panels — pure CSS, toggled via JS classList swap</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="gap:28px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-checked="true" aria-label="Enabled toggle"></button>
+                <span style="font-size:13px;color:var(--txt2)">Enabled</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-checked="false" aria-label="Disabled toggle"></button>
+                <span style="font-size:13px;color:var(--txt2)">Disabled</span>
+              </div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML + CSS</span><button class="copy-btn" onclick="copyCode(this,'snip-toggle')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-toggle" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL -->
+        <div class="comp-section" id="cs-modal">
+          <div class="comp-section-title"><i class="ti ti-layout-bottombar" aria-hidden="true"></i> Modal dialog</div>
+          <div class="comp-section-sub">Overlay dialog with branded header, scrollable body, and footer actions — opened/closed via JS</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="justify-content:center;min-height:200px;position:relative;overflow:hidden">
+              <div style="background:rgba(13,33,55,.18);position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <div style="background:#fff;border-radius:var(--rxl);width:340px;overflow:hidden;box-shadow:0 4px 32px rgba(10,115,190,.18)">
+                  <div class="modal-head" style="padding:14px 18px"><div class="modal-head-title" style="font-size:13px"><i class="ti ti-plus" aria-hidden="true"></i> Add new medicine</div><button class="modal-x" style="font-size:18px">×</button></div>
+                  <div class="modal-body" style="padding:16px;gap:10px">
+                    <div class="fg"><label class="fl">Medicine name</label><input class="fi" type="text" placeholder="e.g. Amoxicillin" aria-label="Medicine name"/></div>
+                    <div class="fg"><label class="fl">Category</label><select class="fi" aria-label="Category"><option>Antibiotic</option><option>Analgesic</option></select></div>
+                  </div>
+                  <div class="modal-foot" style="padding:12px 16px"><button class="btn" style="font-size:12px;padding:6px 12px">Cancel</button><button class="btn btn-primary" style="font-size:12px;padding:6px 12px"><i class="ti ti-circle-check" aria-hidden="true"></i> Save</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-modal')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-modal" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS CARD -->
+        <div class="comp-section" id="cs-settings">
+          <div class="comp-section-title"><i class="ti ti-adjustments" aria-hidden="true"></i> Settings card</div>
+          <div class="comp-section-sub">Configuration card with labelled rows, toggle switches, number inputs and inline badges</div>
+          <div class="comp-card">
+            <div class="comp-preview" style="align-items:stretch">
+              <div class="setting-card" style="flex:1;min-width:0">
+                <div class="sc-title"><i class="ti ti-bell" aria-hidden="true"></i> Alert thresholds</div>
+                <div class="sc-row"><div><div class="sc-lbl">Email notifications</div><div class="sc-desc">Send alerts to registered email</div></div><button class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-label="Toggle email"></button></div>
+                <div class="sc-row"><div><div class="sc-lbl">SMS notifications</div><div class="sc-desc">Send alerts via SMS</div></div><button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-label="Toggle SMS"></button></div>
+                <div class="sc-row"><div><div class="sc-lbl">Low stock threshold</div><div class="sc-desc">Alert when qty drops below</div></div><input type="number" value="50" style="width:70px;padding:6px 8px;border:1px solid var(--border);border-radius:var(--r);font-size:13px;text-align:center" aria-label="Threshold"/></div>
+              </div>
+            </div>
+            <div class="comp-code-box">
+              <div class="comp-code-hdr"><span class="comp-code-label">HTML</span><button class="copy-btn" onclick="copyCode(this,'snip-settings')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button></div>
+              <pre id="snip-settings" class="comp-code-pre"></pre>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /page-components -->
+
+    </main>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title" id="modalTitle"><i class="ti ti-plus" aria-hidden="true"></i> Add new medicine</div>
+      <button class="modal-x" onclick="closeModal()" aria-label="Close dialog">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="fg"><label class="fl">Medicine name</label><input class="fi" type="text" placeholder="e.g. Amoxicillin" aria-label="Medicine name"/></div>
+        <div class="fg"><label class="fl">Generic name</label><input class="fi" type="text" placeholder="INN / generic name" aria-label="Generic name"/></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Category</label><select class="fi" aria-label="Category"><option>Antibiotic</option><option>Analgesic</option><option>Controlled drug</option><option>Cardiovascular</option><option>Respiratory</option></select></div>
+        <div class="fg"><label class="fl">Batch number</label><input class="fi" type="text" placeholder="e.g. SG2026-099" aria-label="Batch number"/></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Quantity</label><input class="fi" type="number" placeholder="0" aria-label="Quantity"/></div>
+        <div class="fg"><label class="fl">Unit</label><select class="fi" aria-label="Unit"><option>Tablet</option><option>Capsule</option><option>Vial</option><option>Syrup (ml)</option><option>Inhaler</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Expiry date</label><input class="fi" type="date" aria-label="Expiry date"/></div>
+        <div class="fg"><label class="fl">Supplier</label><select class="fi" aria-label="Supplier"><option>Zuellig Pharma SG</option><option>DKSH Healthcare</option><option>Pharmaniaga SG</option><option>Other</option></select></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Add to inventory</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const meds=[
+  {name:"Amoxicillin 500mg",gen:"Amoxicillin trihydrate",cat:"Antibiotic",batch:"SG2026-011",qty:820,max:1000,unit:"Capsule",exp:"2027-03-15",status:"In Stock"},
+  {name:"Paracetamol 500mg",gen:"Acetaminophen",cat:"Analgesic",batch:"SG2026-034",qty:150,max:1000,unit:"Tablet",exp:"2026-06-10",status:"Low Stock"},
+  {name:"Morphine 10mg/ml",gen:"Morphine sulfate",cat:"Controlled",batch:"SG2026-007",qty:45,max:100,unit:"Vial",exp:"2026-12-01",status:"In Stock"},
+  {name:"Amlodipine 5mg",gen:"Amlodipine besylate",cat:"Cardiovascular",batch:"SG2025-198",qty:30,max:500,unit:"Tablet",exp:"2026-06-04",status:"Low Stock"},
+  {name:"Salbutamol inhaler",gen:"Albuterol sulfate",cat:"Respiratory",batch:"SG2026-055",qty:0,max:200,unit:"Inhaler",exp:"2027-08-22",status:"Out of Stock"},
+  {name:"Metformin 850mg",gen:"Metformin HCl",cat:"Analgesic",batch:"SG2026-021",qty:680,max:800,unit:"Tablet",exp:"2027-01-30",status:"In Stock"},
+  {name:"Diazepam 5mg",gen:"Diazepam",cat:"Controlled",batch:"SG2025-202",qty:18,max:60,unit:"Tablet",exp:"2026-05-30",status:"Low Stock"},
+  {name:"Atorvastatin 20mg",gen:"Atorvastatin calcium",cat:"Cardiovascular",batch:"SG2026-043",qty:410,max:500,unit:"Tablet",exp:"2028-02-14",status:"In Stock"},
+  {name:"Azithromycin 500mg",gen:"Azithromycin dihydrate",cat:"Antibiotic",batch:"SG2026-066",qty:88,max:300,unit:"Tablet",exp:"2027-11-05",status:"Low Stock"},
+  {name:"Cetirizine 10mg",gen:"Cetirizine HCl",cat:"Respiratory",batch:"SG2026-012",qty:560,max:600,unit:"Tablet",exp:"2028-06-18",status:"In Stock"}
+];
+
+const ICONS=[
+  {icon:"ti-layout-dashboard",name:"Dashboard",usage:"Main dashboard nav"},
+  {icon:"ti-pill",name:"Medicines",usage:"Medicine inventory nav"},
+  {icon:"ti-shopping-cart",name:"Procurement",usage:"Purchase orders"},
+  {icon:"ti-calendar-x",name:"Expiry alerts",usage:"Expiry warnings"},
+  {icon:"ti-notebook",name:"Dispensing log",usage:"Clinical records"},
+  {icon:"ti-file-certificate",name:"Compliance",usage:"MOH reports nav"},
+  {icon:"ti-chart-bar",name:"Analytics",usage:"Reports & insights"},
+  {icon:"ti-users",name:"Staff access",usage:"User management"},
+  {icon:"ti-settings",name:"Settings",usage:"System configuration"},
+  {icon:"ti-shield-lock",name:"Controlled",usage:"Controlled drugs badge"},
+  {icon:"ti-medical-cross",name:"Clinic logo",usage:"Sidebar & login brand"},
+  {icon:"ti-bell",name:"Notifications",usage:"Topbar alerts"},
+  {icon:"ti-search",name:"Search",usage:"Filter bar & sidebar"},
+  {icon:"ti-plus",name:"Add item",usage:"Primary action buttons"},
+  {icon:"ti-edit",name:"Edit",usage:"Table row edit action"},
+  {icon:"ti-eye",name:"View",usage:"Table row view action"},
+  {icon:"ti-download",name:"Export",usage:"Export data action"},
+  {icon:"ti-upload",name:"Import",usage:"CSV import action"},
+  {icon:"ti-alert-triangle",name:"Low stock",usage:"Warning badges"},
+  {icon:"ti-circle-check",name:"In stock",usage:"Success status badge"},
+  {icon:"ti-circle-x",name:"Out of stock",usage:"Error status badge"},
+  {icon:"ti-trending-up",name:"Trend up",usage:"Stat card footer"},
+  {icon:"ti-truck-delivery",name:"Supplier",usage:"Procurement sub-nav"},
+  {icon:"ti-chevron-down",name:"Expand",usage:"Submenu chevron"},
+  {icon:"ti-login",name:"Sign in",usage:"Login button"},
+  {icon:"ti-logout",name:"Sign out",usage:"Topbar sign out"},
+  {icon:"ti-lock",name:"Password",usage:"Login password field"},
+  {icon:"ti-shield-check",name:"Secure",usage:"Login security badge"},
+  {icon:"ti-map-pin",name:"Location",usage:"Singapore topbar chip"},
+  {icon:"ti-help-circle",name:"Help",usage:"Topbar help button"},
+  {icon:"ti-clock",name:"Timestamp",usage:"Page last-updated"},
+  {icon:"ti-rotate",name:"Reorder",usage:"Expiry alert action"}
+];
+
+let curView='all';
+
+function fmtDate(d){const dt=new Date(d);return dt.toLocaleDateString('en-SG',{day:'2-digit',month:'short',year:'numeric'});}
+function isSoon(d){return (new Date(d)-new Date('2026-05-26'))/(864e5)<=30;}
+function barColor(q,m){const p=q/m;return p===0?'#b91c1c':p<.2?'#d97706':'#1a7f4b';}
+function stBadge(s){if(s==='In Stock')return'<span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px" aria-hidden="true"></i>'+s+'</span>';if(s==='Low Stock')return'<span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:10px" aria-hidden="true"></i>'+s+'</span>';return'<span class="badge bgr"><i class="ti ti-circle-x" style="font-size:10px" aria-hidden="true"></i>'+s+'</span>';}
+
+function renderTbl(data,bodyId){
+  const b=document.getElementById(bodyId);
+  if(!b)return;
+  b.innerHTML=data.map(m=>{
+    const pct=Math.round((m.qty/m.max)*100);
+    const bc=barColor(m.qty,m.max);
+    const expCls=isSoon(m.exp)?'style="color:var(--err);font-weight:700"':'';
+    const cd=m.cat==='Controlled'?'<span class="badge bgb" style="margin-left:5px;font-size:10px;padding:2px 6px"><i class="ti ti-shield-lock" style="font-size:9px" aria-hidden="true"></i>CD</span>':'';
+    return`<tr><td><div class="drug-nm">${m.name}${cd}</div><div class="drug-gen">${m.gen}</div></td>
+<td style="font-size:12px;color:var(--txt2)">${m.cat}</td>
+<td style="font-size:12px;font-family:monospace;color:var(--txt2)">${m.batch}</td>
+<td><div style="display:flex;align-items:center;gap:7px"><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:${bc}"></div></div><span style="font-size:11px;color:var(--txt3)">${pct}%</span></div></td>
+<td style="font-weight:600">${m.qty.toLocaleString()}<span style="font-size:11px;color:var(--txt3);font-weight:400"> ${m.unit}</span></td>
+<td ${expCls}>${fmtDate(m.exp)}${isSoon(m.exp)?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:12px;color:var(--err)" aria-hidden="true"></i>':''}</td>
+<td>${stBadge(m.status)}</td>
+<td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View details"></i></button></td></tr>`;
+  }).join('');
+}
+
+function filterTbl(){
+  const s=(document.getElementById('srchInp')||{value:''}).value.toLowerCase();
+  const c=(document.getElementById('catSel')||{value:''}).value;
+  const st=(document.getElementById('stSel')||{value:''}).value;
+  let d=meds;
+  if(curView==='alerts')d=d.filter(m=>m.status!=='In Stock');
+  if(curView==='expiring')d=d.filter(m=>isSoon(m.exp));
+  if(s)d=d.filter(m=>m.name.toLowerCase().includes(s)||m.gen.toLowerCase().includes(s)||m.batch.toLowerCase().includes(s));
+  if(c)d=d.filter(m=>m.cat===c);
+  if(st)d=d.filter(m=>m.status===st);
+  renderTbl(d,'tblBody');
+  const tc=document.getElementById('tblCount');
+  if(tc)tc.textContent='Showing '+d.length+' of '+meds.length;
+}
+
+function setView(el,v){
+  curView=v;
+  document.querySelectorAll('.tab').forEach(t=>{t.classList.remove('on');t.setAttribute('aria-selected','false');});
+  el.classList.add('on');el.setAttribute('aria-selected','true');
+  filterTbl();
+}
+
+function navTo(el,page){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.nav-sub-item').forEach(n=>n.classList.remove('active'));
+  if(el){el.classList.add('active');}
+  document.querySelectorAll('.page-content').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+page);
+  if(pg)pg.classList.add('active');
+  const bc=document.getElementById('breadcrumb');
+  const labels={dashboard:'Dashboard',inventory:'Medicines',orders:'Purchase orders',expiry:'Expiry alerts',analytics:'Analytics',settings:'Settings',components:'Component Library'};
+  if(bc)bc.textContent=labels[page]||page;
+  if(page==='inventory')renderTbl(meds,'invBody');
+}
+
+function toggleSub(id,el){
+  const sub=document.getElementById(id);
+  const chev=document.getElementById('chevron-'+id);
+  if(!sub)return;
+  const isOpen=sub.classList.contains('open');
+  sub.classList.toggle('open');
+  if(chev)chev.classList.toggle('open');
+  el.setAttribute('aria-expanded',!isOpen);
+}
+
+function openModal(){document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function toggleDS(){document.getElementById('dsPanel').classList.toggle('open');}
+function togglePw(){const i=document.getElementById('pwInput');const e=document.getElementById('eyeIcon');i.type=i.type==='password'?'text':'password';e.className=i.type==='password'?'ti ti-eye':'ti ti-eye-off';}
+const SCREENS=['loginScreen','forgotScreen','otpScreen','resetScreen','resetSuccessScreen','appScreen'];
+function showScreen(id){SCREENS.forEach(s=>{const el=document.getElementById(s);if(el)el.classList.remove('active');});const t=document.getElementById(id);if(t)t.classList.add('active');}
+function goApp(){showScreen('appScreen');}
+function goLogin(){showScreen('loginScreen');}
+function goForgot(){showScreen('forgotScreen');}
+function goOtp(){const e=document.getElementById('forgotEmail');const disp=document.getElementById('otpEmailDisplay');if(disp&&e)disp.textContent=e.value||'your email';showScreen('otpScreen');setTimeout(()=>{const o=document.getElementById('otp0');if(o)o.focus();},100);startResendTimer();}
+function goReset(){showScreen('resetScreen');}
+function goResetSuccess(){showScreen('resetSuccessScreen');}
+function otpAdvance(el,idx){el.value=el.value.replace(/[^0-9]/g,'');if(el.value&&idx<5){const next=document.getElementById('otp'+(idx+1));if(next)next.focus();}}
+function otpBack(e,idx){if(e.key==='Backspace'&&!e.target.value&&idx>0){const prev=document.getElementById('otp'+(idx-1));if(prev){prev.value='';prev.focus();}}}
+function startResendTimer(){let s=30;const t=document.getElementById('resendTimer');if(!t)return;t.textContent='('+s+'s)';const iv=setInterval(()=>{s--;if(s<=0){clearInterval(iv);t.textContent='';}else{t.textContent='('+s+'s)';}},1000);}
+function resendOtp(){startResendTimer();}
+function togglePwField(fid,eid){const i=document.getElementById(fid);const e=document.getElementById(eid);if(!i||!e)return;i.type=i.type==='password'?'text':'password';e.className=i.type==='password'?'ti ti-eye':'ti ti-eye-off';}
+function checkPwStrength(){const v=document.getElementById('newPw').value;const bars=['pwb1','pwb2','pwb3','pwb4'];const lbl=document.getElementById('pwStrengthLbl');let score=0;if(v.length>=8)score++;if(/[0-9]/.test(v))score++;if(/[A-Z]/.test(v))score++;if(/[^A-Za-z0-9]/.test(v))score++;const colors=['#b91c1c','#d97706','#0a73be','#1a7f4b'];const labels=['Weak — add more characters','Fair — add uppercase letters','Good — add symbols','Strong password!'];bars.forEach((id,i)=>{const b=document.getElementById(id);if(b)b.style.background=i<score?(colors[score-1]||'#dde6ef'):'#dde6ef';});if(lbl){lbl.style.color=score>0?(colors[score-1]||'var(--txt3)'):'var(--txt3)';lbl.textContent=score>0?labels[score-1]:'Enter a password';}}
+
+function buildIconGrid(){
+  const g=document.getElementById('iconGrid');
+  if(!g)return;
+  g.innerHTML=ICONS.map(ic=>`<div class="il-item"><i class="ti ${ic.icon}" aria-hidden="true"></i><div class="il-item-info"><div class="il-item-name">${ic.name}</div><div class="il-item-code">${ic.icon}</div></div></div>`).join('');
+}
+
+renderTbl(meds,'tblBody');
+buildIconGrid();
+
+/* ── COMPONENT LIBRARY ── */
+function copyCode(btn,id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  navigator.clipboard.writeText(el.textContent.trim()).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=el.textContent.trim();
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+  });
+  const orig=btn.innerHTML;
+  btn.innerHTML='<i class="ti ti-check" style="font-size:12px"></i> Copied!';
+  btn.classList.add('copied');
+  setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('copied');},2000);
+}
+
+const SNIPS={
+'snip-tokens':`:root {
+  --p:#0a73be;   /* primary blue */
+  --pd:#085a96;  /* primary dark */
+  --pdd:#064880; /* primary darker */
+  --pl:#e8f3fb;  /* primary light surface */
+  --ps:#b5d5ec;  /* primary subtle */
+  --bg:#f0f4f8;  /* page background */
+  --surface:#ffffff;
+  --surface2:#f7fafd;
+  --border:#dde6ef;
+  --border2:#c8d8e8;
+  --txt:#0d1f2d;     /* text primary */
+  --txt2:#4a6278;    /* text secondary */
+  --txt3:#8aa2b3;    /* text muted */
+  --ok:#1a7f4b;   --okbg:#e6f5ee;   /* success */
+  --warn:#a16207; --warnbg:#fef9e7; /* warning */
+  --err:#b91c1c;  --errbg:#fef2f2;  /* error */
+  --info:#0a73be; --infobg:#e8f3fb; /* info */
+  --r:8px; --rl:12px; --rxl:16px;   /* border radii */
+}`,
+'snip-btn':`<!-- Primary -->
+<button class="btn btn-primary">
+  <i class="ti ti-plus"></i> Add Medicine
+</button>
+
+<!-- Default -->
+<button class="btn">
+  <i class="ti ti-download"></i> Export
+</button>
+
+<!-- Danger -->
+<button class="btn btn-danger">
+  <i class="ti ti-trash"></i> Delete
+</button>
+
+<!-- Small size override -->
+<button class="btn" style="padding:6px 12px;font-size:12px">
+  <i class="ti ti-filter" style="font-size:13px"></i> Filter
+</button>
+
+/* CSS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+  border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--txt2);transition:all .15s;}
+.btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl);}
+.btn-primary{background:var(--p);color:#fff;border-color:var(--p);}
+.btn-primary:hover{background:var(--pd);border-color:var(--pd);color:#fff;}
+.btn-danger{background:var(--errbg);color:var(--err);border-color:#fca5a5;}
+.btn-danger:hover{background:#fee2e2;border-color:#f87171;}`,
+'snip-badge':`<span class="badge bge">
+  <i class="ti ti-circle-check" style="font-size:11px"></i> In stock
+</span>
+<span class="badge bga">
+  <i class="ti ti-alert-triangle" style="font-size:11px"></i> Low stock
+</span>
+<span class="badge bgr">
+  <i class="ti ti-circle-x" style="font-size:11px"></i> Out of stock
+</span>
+<span class="badge bgb">
+  <i class="ti ti-shield-lock" style="font-size:11px"></i> Controlled
+</span>
+
+/* CSS */
+.badge{display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:20px;
+  font-size:11px;font-weight:600;white-space:nowrap;}
+.bge{background:var(--okbg);color:var(--ok);}
+.bga{background:var(--warnbg);color:var(--warn);}
+.bgr{background:var(--errbg);color:var(--err);}
+.bgb{background:var(--infobg);color:var(--p);}`,
+'snip-stat':`<div class="stat-card">
+  <div class="stat-accent" style="background:var(--p)"></div>
+  <div class="stat-top">
+    <div class="stat-lbl">Total medicines</div>
+    <div class="stat-icon si-blue">
+      <i class="ti ti-pill"></i>
+    </div>
+  </div>
+  <div class="stat-val">1,284</div>
+  <div class="stat-foot">
+    <span class="trend-up">
+      <i class="ti ti-trending-up" style="font-size:12px"></i> 4.2%
+    </span> vs last month
+  </div>
+</div>
+
+/* CSS */
+.stat-card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:18px 20px;position:relative;overflow:hidden;}
+.stat-accent{position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:var(--rl) var(--rl) 0 0;}
+.stat-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
+.stat-lbl{font-size:12px;color:var(--txt2);font-weight:500;}
+.stat-icon{width:38px;height:38px;border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;font-size:19px;}
+.si-blue{background:var(--infobg);color:var(--p);}
+.si-green{background:var(--okbg);color:var(--ok);}
+.si-amber{background:var(--warnbg);color:var(--warn);}
+.si-red{background:var(--errbg);color:var(--err);}
+.stat-val{font-size:28px;font-weight:700;color:var(--txt);line-height:1;}
+.stat-foot{font-size:11px;color:var(--txt3);margin-top:6px;}
+.trend-up{color:var(--ok);font-weight:600;}
+.trend-dn{color:var(--err);font-weight:600;}`,
+'snip-form':`<div class="form-row"> <!-- grid: 2 cols -->
+  <div class="fg">
+    <label class="fl">Medicine name</label>
+    <input class="fi" type="text" placeholder="e.g. Amoxicillin"/>
+  </div>
+  <div class="fg">
+    <label class="fl">Category</label>
+    <select class="fi">
+      <option>Antibiotic</option>
+      <option>Analgesic</option>
+    </select>
+  </div>
+</div>
+<div class="form-row">
+  <div class="fg">
+    <label class="fl">Quantity</label>
+    <input class="fi" type="number" placeholder="0"/>
+  </div>
+  <div class="fg">
+    <label class="fl">Expiry date</label>
+    <input class="fi" type="date"/>
+  </div>
+</div>
+
+/* CSS */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fl{font-size:11px;font-weight:700;color:var(--txt2);
+  text-transform:uppercase;letter-spacing:.4px;}
+.fi{padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r);
+  font-size:13px;color:var(--txt);background:var(--surface2);
+  outline:none;transition:border .12s;width:100%;}
+.fi:focus{border-color:var(--p);background:#fff;}`,
+'snip-table':`<div class="tbl-wrap">
+  <div class="tbl-hdr">
+    <div class="tbl-title">Medicine inventory</div>
+    <div class="tbl-meta">Showing 2 of 1,284</div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Medicine</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="drug-nm">Amoxicillin 500mg</div>
+          <div class="drug-gen">Amoxicillin trihydrate</div>
+        </td>
+        <td>Antibiotic</td>
+        <td><span class="badge bge">
+          <i class="ti ti-circle-check" style="font-size:10px"></i>In stock
+        </span></td>
+        <td>
+          <button class="tbl-btn"><i class="ti ti-edit"></i> Edit</button>
+          <button class="tbl-btn"><i class="ti ti-eye"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+/* CSS */
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);overflow:hidden;}
+.tbl-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{background:var(--surface2);padding:10px 14px;text-align:left;
+  font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;
+  border-bottom:1px solid var(--border);}
+tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;}
+tbody tr:hover{background:var(--pl);}
+tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;}
+.drug-nm{font-weight:600;font-size:13px;}
+.drug-gen{font-size:11px;color:var(--txt3);margin-top:1px;}
+.tbl-btn{background:none;border:1px solid var(--border);border-radius:6px;
+  padding:4px 8px;font-size:11px;cursor:pointer;color:var(--txt2);
+  display:inline-flex;align-items:center;gap:3px;transition:all .12s;}
+.tbl-btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl);}`,
+'snip-filter':`<div class="filter-bar">
+  <div class="srch">
+    <i class="ti ti-search"></i>
+    <input placeholder="Search medicine, batch, supplier..."/>
+  </div>
+  <select class="fsel">
+    <option value="">All categories</option>
+    <option value="Antibiotic">Antibiotics</option>
+    <option value="Analgesic">Analgesics</option>
+  </select>
+  <div class="tabs" role="tablist">
+    <button class="tab on" role="tab" aria-selected="true">All</button>
+    <button class="tab" role="tab" aria-selected="false">Alerts</button>
+    <button class="tab" role="tab" aria-selected="false">Expiring</button>
+  </div>
+</div>
+
+/* CSS */
+.filter-bar{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:14px 16px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.srch{display:flex;align-items:center;gap:7px;background:var(--surface2);
+  border:1px solid var(--border);border-radius:var(--r);
+  padding:7px 12px;flex:1;min-width:160px;}
+.fsel{background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--r);padding:7px 12px;font-size:13px;color:var(--txt2);}
+.tabs{display:flex;gap:2px;background:var(--surface2);
+  border:1px solid var(--border);border-radius:var(--r);padding:3px;}
+.tab{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:500;
+  cursor:pointer;color:var(--txt2);background:transparent;border:none;}
+.tab.on{background:var(--surface);color:var(--p);font-weight:600;
+  box-shadow:0 1px 4px rgba(10,115,190,.1);}`,
+'snip-toggle':`<!-- On state -->
+<button class="toggle on"
+  onclick="this.classList.toggle('on');this.classList.toggle('off')"
+  role="switch" aria-checked="true" aria-label="Enable feature">
+</button>
+
+<!-- Off state -->
+<button class="toggle off"
+  onclick="this.classList.toggle('on');this.classList.toggle('off')"
+  role="switch" aria-checked="false" aria-label="Enable feature">
+</button>
+
+/* CSS */
+.toggle{width:38px;height:20px;border-radius:10px;cursor:pointer;
+  transition:background .2s;position:relative;flex-shrink:0;border:none;}
+.toggle.on{background:var(--p);}
+.toggle.off{background:var(--border2);}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;
+  width:14px;height:14px;background:#fff;border-radius:50%;transition:left .2s;}
+.toggle.on::after{left:21px;}`,
+'snip-modal':`<div class="modal-bg" id="myModal" role="dialog"
+  aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title" id="modalTitle">
+        <i class="ti ti-plus"></i> Add new medicine
+      </div>
+      <button class="modal-x" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="fg">
+          <label class="fl">Medicine name</label>
+          <input class="fi" type="text" placeholder="e.g. Amoxicillin"/>
+        </div>
+        <div class="fg">
+          <label class="fl">Category</label>
+          <select class="fi"><option>Antibiotic</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary">
+        <i class="ti ti-circle-check"></i> Save
+      </button>
+    </div>
+  </div>
+</div>
+
+/* JS */
+function openModal(){document.getElementById('myModal').classList.add('open');}
+function closeModal(){document.getElementById('myModal').classList.remove('open');}
+
+/* CSS */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(13,33,55,.45);
+  z-index:50;align-items:center;justify-content:center;}
+.modal-bg.open{display:flex;}
+.modal-box{background:#fff;border-radius:var(--rxl);width:480px;max-width:96%;
+  overflow:hidden;box-shadow:0 4px 32px rgba(10,115,190,.18);}
+.modal-head{background:var(--p);padding:18px 22px;
+  display:flex;align-items:center;justify-content:space-between;}
+.modal-head-title{color:#fff;font-size:15px;font-weight:700;
+  display:flex;align-items:center;gap:8px;}
+.modal-x{background:none;border:none;color:rgba(255,255,255,.7);
+  cursor:pointer;font-size:22px;line-height:1;}
+.modal-body{padding:22px;display:flex;flex-direction:column;gap:14px;}
+.modal-foot{padding:14px 22px;border-top:1px solid var(--border);
+  display:flex;justify-content:flex-end;gap:8px;}`,
+'snip-settings':`<div class="setting-card">
+  <div class="sc-title">
+    <i class="ti ti-bell"></i> Alert thresholds
+  </div>
+
+  <div class="sc-row">
+    <div>
+      <div class="sc-lbl">Email notifications</div>
+      <div class="sc-desc">Send alerts to registered email</div>
+    </div>
+    <button class="toggle on"
+      onclick="this.classList.toggle('on');this.classList.toggle('off')"
+      role="switch" aria-label="Toggle email">
+    </button>
+  </div>
+
+  <div class="sc-row">
+    <div>
+      <div class="sc-lbl">Low stock threshold</div>
+      <div class="sc-desc">Alert when qty drops below</div>
+    </div>
+    <input type="number" value="50"
+      style="width:70px;padding:6px 8px;border:1px solid var(--border);
+             border-radius:var(--r);font-size:13px;text-align:center"/>
+  </div>
+</div>
+
+/* CSS */
+.setting-card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:18px;}
+.sc-title{font-size:13px;font-weight:700;color:var(--txt);
+  display:flex;align-items:center;gap:7px;
+  margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.sc-row{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 0;border-bottom:1px solid var(--border);gap:10px;}
+.sc-row:last-child{border-bottom:none;}
+.sc-lbl{font-size:13px;color:var(--txt);}
+.sc-desc{font-size:11px;color:var(--txt3);margin-top:1px;}`
+};
+
+function initCompLib(){
+  Object.entries(SNIPS).forEach(([id,code])=>{
+    const el=document.getElementById(id);
+    if(el)el.textContent=code;
+  });
+}
+initCompLib();
+</script>
