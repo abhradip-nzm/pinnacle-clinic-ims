@@ -23,7 +23,7 @@ body{background:var(--bg);color:var(--txt);min-height:800px}
 .screen.active{display:flex;flex-direction:column}
 
 /* ── LOGIN ── */
-#loginScreen{min-height:760px;background:var(--bg);align-items:center;justify-content:center;padding:40px 20px}
+#loginScreen,#forgotScreen,#otpScreen,#resetScreen,#resetSuccessScreen{min-height:760px;background:var(--bg);align-items:center;justify-content:center;padding:40px 20px}
 .login-wrap{display:flex;gap:0;width:100%;max-width:900px;border-radius:var(--rxl);overflow:hidden;border:1px solid var(--border)}
 .login-left{flex:1;background:var(--sb);padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between}
 .login-brand{display:flex;align-items:center;gap:12px;margin-bottom:40px}
@@ -208,9 +208,19 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .bg-tele-admin{background:var(--purplebg);color:var(--purple)}
 .bar-wrap{width:72px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block}
 .bar-fill{height:100%;border-radius:3px}
-.tbl-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;color:var(--txt2);font-family:'Noto Sans JP',sans-serif;display:inline-flex;align-items:center;gap:3px;margin-right:3px;transition:all .12s}
+.tbl-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:500;cursor:pointer;color:var(--txt2);font-family:'Noto Sans JP',sans-serif;display:inline-flex;align-items:center;gap:4px;margin-right:3px;transition:all .12s;white-space:nowrap}
 .tbl-btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl)}
-.tbl-btn .ti{font-size:13px}
+.tbl-btn .ti,.tbl-btn i{font-size:13px}
+.tbl-btn-danger{border-color:#fca5a5;color:var(--err);background:var(--errbg)}
+.tbl-btn-danger:hover{border-color:#f87171;color:#991b1b;background:#fee2e2}
+
+/* DEVELOPER PAGES */
+.dev-banner{background:linear-gradient(135deg,#0d2137 0%,#0a73be 100%);border-radius:var(--rl);padding:22px 28px;margin-bottom:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.dev-banner-left{display:flex;flex-direction:column;gap:4px}
+.dev-banner-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);color:rgba(181,213,236,.9);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px;width:fit-content}
+.dev-banner-title{font-size:22px;font-weight:700;color:#fff;line-height:1.2}
+.dev-banner-sub{font-size:13px;color:rgba(181,213,236,.75);margin-top:2px}
+.dev-banner-actions{display:flex;gap:8px;flex-shrink:0;align-items:flex-start;margin-top:4px}
 
 /* PURCHASE ORDERS PAGE */
 .po-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}
@@ -419,9 +429,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
       </div>
       <button class="login-btn" onclick="goApp()"><i class="ti ti-login" aria-hidden="true"></i> Sign in to Dashboard</button>
-      <div class="login-divider"><div class="login-divider-line"></div><span class="login-divider-txt">or continue with</span><div class="login-divider-line"></div></div>
-      <button class="login-sso"><i class="ti ti-building-hospital" style="font-size:16px;color:var(--p)" aria-hidden="true"></i> Sign in with Hospital SSO</button>
-      <div class="login-links">
+      <div class="login-links" style="margin-top:18px">
         <a class="login-link" href="#" onclick="goForgot();return false;"><i class="ti ti-key" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Forgot password?</a>
         <a class="login-link" href="#"><i class="ti ti-headset" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> IT Support</a>
       </div>
@@ -617,6 +625,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       </div>
       <div class="nav-sub" id="stockSub" role="menu">
         <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-list" aria-hidden="true"></i> Stock Overview</div>
+        <div class="nav-sub-item" onclick="navTo(null,'batches')" role="menuitem"><i class="ti ti-layers-intersect" aria-hidden="true"></i> Inventory Batches</div>
         <div class="nav-sub-item" onclick="navTo(null,'expiry')" role="menuitem"><i class="ti ti-calendar-x" aria-hidden="true"></i> Batch Expiry <span style="margin-left:4px;background:var(--err);color:#fff;font-size:10px;padding:1px 5px;border-radius:8px">7</span></div>
       </div>
 
@@ -655,6 +664,14 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0">
         <i class="ti ti-settings" aria-hidden="true"></i> System Settings
       </div>
+
+      <div class="sb-section">Developer</div>
+      <div class="nav-item" onclick="navTo(this,'design-system')" role="menuitem" tabindex="0">
+        <i class="ti ti-palette" aria-hidden="true"></i> Design System
+      </div>
+      <div class="nav-item" onclick="navTo(this,'components')" role="menuitem" tabindex="0">
+        <i class="ti ti-components" aria-hidden="true"></i> Component Library
+      </div>
     </div>
     <div class="sb-footer">
       <div class="sb-user" role="button" tabindex="0" aria-label="User profile menu">
@@ -686,8 +703,8 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </button>
         <button class="tb-icon-btn" aria-label="Help"><i class="ti ti-help-circle" aria-hidden="true"></i></button>
         <div class="tb-avatar-btn" role="button" tabindex="0" aria-label="Profile menu">AY</div>
-        <button class="btn" onclick="toggleDS()" style="padding:6px 12px;font-size:12px"><i class="ti ti-palette" aria-hidden="true" style="font-size:13px"></i> Design System</button>
-        <button class="btn" onclick="navTo(null,'components')" style="padding:6px 12px;font-size:12px;background:var(--infobg);border-color:var(--ps);color:var(--p)"><i class="ti ti-components" aria-hidden="true" style="font-size:13px"></i> Components</button>
+        <button class="btn" onclick="navTo(null,'design-system')" style="padding:6px 12px;font-size:12px"><i class="ti ti-palette" aria-hidden="true" style="font-size:13px"></i> Design System</button>
+        <button class="btn" onclick="navTo(null,'components')" style="padding:6px 12px;font-size:12px"><i class="ti ti-components" aria-hidden="true" style="font-size:13px"></i> Components</button>
         <button class="btn" onclick="goLogin()" style="padding:6px 12px;font-size:12px"><i class="ti ti-logout" aria-hidden="true" style="font-size:13px"></i> Sign out</button>
       </div>
     </header>
@@ -704,55 +721,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
             <button class="btn btn-primary" onclick="openModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add Medicine</button>
-          </div>
-        </div>
-
-        <div class="ds-panel" id="dsPanel">
-          <div class="ds-inner">
-            <div>
-              <div class="ds-sec-title">Color palette</div>
-              <div class="ds-colors">
-                <div class="ds-chip"><div class="ds-swatch" style="background:#0a73be"></div><div class="ds-clbl">Primary<br>#0a73be</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#b5d5ec"></div><div class="ds-clbl">Secondary<br>#b5d5ec</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#085a96"></div><div class="ds-clbl">Primary dark<br>#085a96</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#e8f3fb"></div><div class="ds-clbl">Surface<br>#e8f3fb</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#1a7f4b"></div><div class="ds-clbl">Success<br>#1a7f4b</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#a16207"></div><div class="ds-clbl">Warning<br>#a16207</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#b91c1c"></div><div class="ds-clbl">Danger<br>#b91c1c</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#0d2137"></div><div class="ds-clbl">Sidebar<br>#0d2137</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#0d1f2d"></div><div class="ds-clbl">Text primary<br>#0d1f2d</div></div>
-                <div class="ds-chip"><div class="ds-swatch" style="background:#f0f4f8;border:1px solid #dde6ef"></div><div class="ds-clbl">Page bg<br>#f0f4f8</div></div>
-              </div>
-            </div>
-            <div>
-              <div class="ds-sec-title">Typography — Noto Sans JP</div>
-              <div style="display:flex;flex-direction:column;gap:0">
-                <div class="ds-type-item"><span class="ds-type-meta">H1 · 20px · 700</span><span style="font-size:20px;font-weight:700;color:var(--txt)">Inventory Overview</span></div>
-                <div class="ds-type-item"><span class="ds-type-meta">H2 · 16px · 700</span><span style="font-size:16px;font-weight:700;color:var(--txt)">Medicine Categories</span></div>
-                <div class="ds-type-item"><span class="ds-type-meta">Body · 13px · 400</span><span style="font-size:13px;color:var(--txt)">Amoxicillin 500mg — batch #SG2026-011</span></div>
-                <div class="ds-type-item"><span class="ds-type-meta">Caption · 11px · 500</span><span style="font-size:11px;color:var(--txt2)">Expires 31 Dec 2026 · SHP-2026-0118 batch received</span></div>
-              </div>
-            </div>
-            <div style="display:flex;gap:28px;flex-wrap:wrap">
-              <div>
-                <div class="ds-sec-title">Radius tokens</div>
-                <div style="display:flex;gap:10px;align-items:center">
-                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">8px</div>
-                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">12px</div>
-                  <div style="width:36px;height:36px;background:var(--infobg);border:1px solid var(--ps);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--p);font-weight:700">16px</div>
-                  <div style="width:56px;height:24px;background:var(--p);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700">pill</div>
-                </div>
-              </div>
-              <div>
-                <div class="ds-sec-title">Status badges</div>
-                <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
-                  <span class="badge bge"><i class="ti ti-circle-check" style="font-size:11px" aria-hidden="true"></i>In stock</span>
-                  <span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:11px" aria-hidden="true"></i>Low stock</span>
-                  <span class="badge bgr"><i class="ti ti-circle-x" style="font-size:11px" aria-hidden="true"></i>Out of stock</span>
-                  <span class="badge bgb"><i class="ti ti-shield-lock" style="font-size:11px" aria-hidden="true"></i>Controlled</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1055,13 +1023,14 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 
       <!-- COMPONENT LIBRARY PAGE -->
       <div class="page-content" id="page-components">
-        <div class="pg-header">
-          <div>
-            <div class="pg-title">Component Library</div>
-            <div class="pg-sub"><i class="ti ti-components" aria-hidden="true"></i> All UI components used in this system — copy HTML &amp; CSS instantly</div>
+        <div class="dev-banner">
+          <div class="dev-banner-left">
+            <div class="dev-banner-tag"><i class="ti ti-components" style="font-size:11px" aria-hidden="true"></i> Developer Resource</div>
+            <div class="dev-banner-title">Component Library</div>
+            <div class="dev-banner-sub">All UI components used in Pinnacle IMS — copy HTML &amp; CSS instantly. Paste into any page with the CSS variables loaded.</div>
           </div>
-          <div class="pg-actions">
-            <button class="btn" onclick="copyCode(this,'snip-tokens')"><i class="ti ti-copy" aria-hidden="true"></i> Copy CSS variables</button>
+          <div class="dev-banner-actions">
+            <button class="btn" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff;font-size:12px" onclick="copyCode(this,'snip-tokens')"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy CSS variables</button>
           </div>
         </div>
 
@@ -1195,13 +1164,13 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
                     <td><div class="drug-nm">Amoxicillin 500mg <span class="badge bgb" style="font-size:10px;padding:2px 6px"><i class="ti ti-shield-lock" style="font-size:9px" aria-hidden="true"></i>CD</span></div><div class="drug-gen">Amoxicillin trihydrate</div></td>
                     <td style="font-size:12px;color:var(--txt2)">Antibiotic</td>
                     <td><span class="badge bge"><i class="ti ti-circle-check" style="font-size:10px" aria-hidden="true"></i>In stock</span></td>
-                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View"></i></button></td>
+                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td>
                   </tr>
                   <tr>
                     <td><div class="drug-nm">Paracetamol 500mg</div><div class="drug-gen">Acetaminophen</div></td>
                     <td style="font-size:12px;color:var(--txt2)">Analgesic</td>
                     <td><span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:10px" aria-hidden="true"></i>Low stock</span></td>
-                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View"></i></button></td>
+                    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -1303,6 +1272,134 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
 
       </div><!-- /page-components -->
+
+      <!-- INVENTORY BATCHES PAGE -->
+      <div class="page-content" id="page-batches">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Inventory Batches</div>
+            <div class="pg-sub"><i class="ti ti-layers-intersect" aria-hidden="true"></i> Batch-level stock — expiry dates, quantities remaining and unit prices per branch</div>
+          </div>
+          <div class="pg-actions">
+            <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search batch number, medicine, SKU..." aria-label="Search batches"/></div>
+          <select class="fsel" aria-label="Branch"><option value="">All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option><option>Telemedicine Hub</option></select>
+          <div class="tabs" role="tablist">
+            <button class="tab on" role="tab">All batches</button>
+            <button class="tab" role="tab">Expiring soon</button>
+            <button class="tab" role="tab">Out of stock</button>
+          </div>
+        </div>
+        <div class="tbl-wrap">
+          <div class="tbl-hdr"><div class="tbl-title">Inventory Batches</div><div class="tbl-meta" id="batchesCount"></div></div>
+          <div style="overflow-x:auto">
+          <table>
+            <colgroup><col style="width:10%"><col style="width:18%"><col style="width:10%"><col style="width:12%"><col style="width:11%"><col style="width:10%"><col style="width:12%"><col style="width:12%"><col style="width:5%"></colgroup>
+            <thead><tr><th>Branch</th><th>Medicine / SKU</th><th>Batch No.</th><th>Expiry Date</th><th>Qty Remaining</th><th>Unit Price</th><th>Shipment Ref</th><th>Received At</th><th>Actions</th></tr></thead>
+            <tbody id="batchesBody"></tbody>
+          </table>
+          </div>
+          <div class="pg-wrap" id="pg-batches"></div>
+        </div>
+      </div>
+
+      <!-- DESIGN SYSTEM PAGE -->
+      <div class="page-content" id="page-design-system">
+        <div class="dev-banner">
+          <div class="dev-banner-left">
+            <div class="dev-banner-tag"><i class="ti ti-palette" style="font-size:11px" aria-hidden="true"></i> Developer Resource</div>
+            <div class="dev-banner-title">Design System</div>
+            <div class="dev-banner-sub">Colour tokens, typography scale, spacing, radius values and status badge variants for Pinnacle IMS</div>
+          </div>
+          <div class="dev-banner-actions">
+            <button class="btn" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff;font-size:12px" onclick="copyCode(this,'snip-tokens')"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy CSS variables</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <!-- Colour palette -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-droplet" style="color:var(--p)" aria-hidden="true"></i> Colour palette &amp; semantic tokens</div>
+            <div class="ds-colors" style="gap:14px;flex-wrap:wrap">
+              <div class="ds-chip"><div class="ds-swatch" style="background:#0a73be"></div><div class="ds-clbl">Primary<br>--p · #0a73be</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#085a96"></div><div class="ds-clbl">Primary Dark<br>--pd · #085a96</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#e8f3fb"></div><div class="ds-clbl">Primary Light<br>--pl · #e8f3fb</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#b5d5ec"></div><div class="ds-clbl">Primary Subtle<br>--ps · #b5d5ec</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#1a7f4b"></div><div class="ds-clbl">Success<br>--ok · #1a7f4b</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#e6f5ee"></div><div class="ds-clbl">Success Bg<br>--okbg · #e6f5ee</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#a16207"></div><div class="ds-clbl">Warning<br>--warn · #a16207</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#fef9e7"></div><div class="ds-clbl">Warning Bg<br>--warnbg · #fef9e7</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#b91c1c"></div><div class="ds-clbl">Danger<br>--err · #b91c1c</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#fef2f2"></div><div class="ds-clbl">Danger Bg<br>--errbg · #fef2f2</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#6d28d9"></div><div class="ds-clbl">Purple<br>--purple · #6d28d9</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#0d2137"></div><div class="ds-clbl">Sidebar<br>--sb · #0d2137</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#0d1f2d"></div><div class="ds-clbl">Text Primary<br>--txt · #0d1f2d</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#4a6278"></div><div class="ds-clbl">Text Secondary<br>--txt2 · #4a6278</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#f0f4f8;border:1px solid #dde6ef"></div><div class="ds-clbl">Page BG<br>--bg · #f0f4f8</div></div>
+              <div class="ds-chip"><div class="ds-swatch" style="background:#ffffff;border:1px solid #dde6ef"></div><div class="ds-clbl">Surface<br>--surface · #fff</div></div>
+            </div>
+          </div>
+          <!-- Typography -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-typography" style="color:var(--p)" aria-hidden="true"></i> Typography scale — Noto Sans JP</div>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div class="ds-type-item"><span class="ds-type-meta">Heading 1 · 20px · 700</span><span style="font-size:20px;font-weight:700;color:var(--txt)">Dashboard — Supply Chain IMS</span></div>
+              <div class="ds-type-item"><span class="ds-type-meta">Heading 2 · 16px · 700</span><span style="font-size:16px;font-weight:700;color:var(--txt)">Shipment Register</span></div>
+              <div class="ds-type-item"><span class="ds-type-meta">Body · 13px · 400</span><span style="font-size:13px;color:var(--txt)">Amoxicillin 500mg — SHP-2026-0118 · Clinic Orchard</span></div>
+              <div class="ds-type-item"><span class="ds-type-meta">Caption · 11px · 500</span><span style="font-size:11px;color:var(--txt2)">Batch: SG2026-011 · Expires 15 Mar 2027 · Qty: 820</span></div>
+              <div class="ds-type-item"><span class="ds-type-meta">Label · 10px · 700 · UPPER</span><span style="font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.8px;text-transform:uppercase">Medicines · Shipments · Analytics</span></div>
+            </div>
+          </div>
+          <!-- Radius + Spacing -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-radius-bottom-right" style="color:var(--p)" aria-hidden="true"></i> Radius tokens</div>
+            <div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap">
+              <div style="text-align:center"><div style="width:44px;height:44px;background:var(--infobg);border:1px solid var(--ps);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--p);font-weight:700">8px</div><div style="font-size:10px;color:var(--txt3);margin-top:5px">--r<br>Cards, inputs</div></div>
+              <div style="text-align:center"><div style="width:44px;height:44px;background:var(--infobg);border:1px solid var(--ps);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--p);font-weight:700">12px</div><div style="font-size:10px;color:var(--txt3);margin-top:5px">--rl<br>Panels, tables</div></div>
+              <div style="text-align:center"><div style="width:44px;height:44px;background:var(--infobg);border:1px solid var(--ps);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--p);font-weight:700">16px</div><div style="font-size:10px;color:var(--txt3);margin-top:5px">--rxl<br>Modals, auth</div></div>
+              <div style="text-align:center"><div style="width:60px;height:24px;background:var(--p);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700">20px</div><div style="font-size:10px;color:var(--txt3);margin-top:5px">pill<br>Badges, tags</div></div>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-tag" style="color:var(--p)" aria-hidden="true"></i> Status badges &amp; branch type tokens</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+              <span class="badge bge"><i class="ti ti-circle-check" style="font-size:11px" aria-hidden="true"></i>In Stock</span>
+              <span class="badge bga"><i class="ti ti-alert-triangle" style="font-size:11px" aria-hidden="true"></i>Low Stock</span>
+              <span class="badge bgr"><i class="ti ti-circle-x" style="font-size:11px" aria-hidden="true"></i>Out of Stock</span>
+              <span class="badge bgb"><i class="ti ti-shield-lock" style="font-size:11px" aria-hidden="true"></i>Controlled</span>
+              <span class="badge bg-warehouse"><i class="ti ti-building-warehouse" style="font-size:11px" aria-hidden="true"></i>Warehouse</span>
+              <span class="badge bg-clinic"><i class="ti ti-building-hospital" style="font-size:11px" aria-hidden="true"></i>Clinic</span>
+              <span class="badge bg-telemed"><i class="ti ti-video" style="font-size:11px" aria-hidden="true"></i>Telemedicine</span>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+              <span class="badge bg-draft">Draft</span>
+              <span class="badge bg-confirmed">Confirmed</span>
+              <span class="badge bg-in-transit"><i class="ti ti-truck" style="font-size:11px" aria-hidden="true"></i>In Transit</span>
+              <span class="badge bg-received">Received</span>
+              <span class="badge bg-cancelled">Cancelled</span>
+              <span class="badge bg-pending">Pending</span>
+              <span class="badge bg-submitted">Submitted</span>
+              <span class="badge bg-acknowledged">Acknowledged</span>
+              <span class="badge bg-rejected">Rejected</span>
+              <span class="badge bg-partial">Partial</span>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="badge bg-super">Super Admin</span>
+              <span class="badge bg-clinic-admin">Clinic Admin</span>
+              <span class="badge bg-wh-admin">Warehouse Admin</span>
+              <span class="badge bg-tele-admin">Telemedicine Admin</span>
+            </div>
+          </div>
+          <!-- Icon legend -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-icons" style="color:var(--p)" aria-hidden="true"></i> Icon reference — Tabler Icons (outline)</div>
+            <div class="il-grid" id="iconGrid"></div>
+          </div>
+        </div>
+      </div>
 
       <!-- NOTIFICATIONS PAGE -->
       <div class="page-content" id="page-notifications">
@@ -1667,7 +1764,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Master Data Management</div>
-            <div class="pg-sub"><i class="ti ti-database" aria-hidden="true"></i> Medicines, suppliers, categories, units &amp; drug schedules</div>
+            <div class="pg-sub"><i class="ti ti-database" aria-hidden="true"></i> Medicine master, suppliers, categories and units of measure</div>
           </div>
           <div class="pg-actions" id="mdmActions">
             <button class="btn btn-primary" id="mdmAddBtn" onclick="openMdmAddModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add medicine</button>
@@ -1679,7 +1776,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-suppliers')"><i class="ti ti-truck-delivery" style="font-size:14px" aria-hidden="true"></i> Suppliers</button>
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-categories')"><i class="ti ti-tags" style="font-size:14px" aria-hidden="true"></i> Categories</button>
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-units')"><i class="ti ti-ruler" style="font-size:14px" aria-hidden="true"></i> Units of Measure</button>
-            <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-batches')"><i class="ti ti-layers-intersect" style="font-size:14px" aria-hidden="true"></i> Inventory Batches</button>
           </div>
 
           <!-- Medicine Master -->
@@ -2355,7 +2451,7 @@ function renderTbl(data,bodyId){
 <td style="font-weight:600">${m.qty.toLocaleString()}<span style="font-size:11px;color:var(--txt3);font-weight:400"> ${m.unit}</span></td>
 <td ${expCls}>${fmtDate(m.exp)}${isSoon(m.exp)?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:12px;color:var(--err)" aria-hidden="true"></i>':''}</td>
 <td>${stBadge(m.status)}</td>
-<td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View details"></i></button></td></tr>`;
+<td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td></tr>`;
   }).join('');
 }
 
@@ -2438,7 +2534,7 @@ function renderInv(){
       <td style="font-size:12px;font-weight:600;color:${m.qty<m.reorder_threshold?'var(--warn)':'var(--txt2)'}">${m.reorder_threshold}</td>
       <td style="font-size:12px;font-family:monospace;color:var(--txt2)">${m.batch}</td>
       <td><span class="badge ${m.status==='In Stock'?'bge':m.status==='Low Stock'?'bga':'bgr'}">${m.status}</span></td>
-      <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View details"></i></button></td>
+      <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td>
     </tr>`;
   }).join('');
   const mc=document.getElementById('invCount');
@@ -2460,7 +2556,7 @@ function renderShipments(){
     <td><span class="badge ${statusBadge[s.status]||'bg-draft'}">${fmtEnum(s.status)}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${s.created}</td>
     <td style="text-align:center;font-weight:600">${s.batches}</td>
-    <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i></button></td>
+    <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button></td>
   </tr>`).join('');
   const sc=document.getElementById('shipCount');
   if(sc)sc.textContent=shipmentsData.length+' shipments';
@@ -2546,9 +2642,10 @@ function navTo(el,page){
   const pg=document.getElementById('page-'+page);
   if(pg)pg.classList.add('active');
   const bc=document.getElementById('breadcrumb');
-  const labels={dashboard:'Dashboard',inventory:'Stock Overview',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns',audit:'Audit Trail',mdm:'Master Data'};
+  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns',audit:'Audit Trail',mdm:'Master Data'};
   if(bc)bc.textContent=labels[page]||page;
   if(page==='inventory'){renderInv();}
+  else if(page==='batches'){renderBatchesPage();}
   else if(page==='notifications'){renderNotifications();}
   else if(page==='branches'){renderBranches();}
   else if(page==='staff'){renderStaff();}
@@ -2658,7 +2755,7 @@ function renderBranchTbl(){
     <td style="text-align:center;font-weight:600">${br.staff}</td>
     <td style="text-align:center;font-weight:600">${br.meds.toLocaleString()}</td>
     <td><span class="badge ${br.is_active?'bge':'bgr'}">${br.is_active?'Active':'Inactive'}</span></td>
-    <td><button class="tbl-btn" onclick="viewBranchInventory('${br.id}')"><i class="ti ti-stack-2" aria-hidden="true"></i> Stock</button><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i></button></td>
+    <td><button class="tbl-btn" onclick="viewBranchInventory('${br.id}')"><i class="ti ti-stack-2" aria-hidden="true"></i> Stock</button><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button></td>
   </tr>`).join('');
   const bc=document.getElementById('branchCount');
   if(bc)bc.textContent=branches.length+' branches';
@@ -2698,7 +2795,7 @@ function renderStaff(){
     <td style="font-size:12px">${s.branch}</td>
     <td><span class="badge ${s.is_active?'bge':'bgr'}">${s.is_active?'Active':'Inactive'}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${s.lastLogin}</td>
-    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn" style="color:var(--err)"><i class="ti ti-trash" aria-hidden="true"></i></button></td>
+    <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn tbl-btn-danger"><i class="ti ti-trash" aria-hidden="true"></i> Delete</button></td>
   </tr>`).join('');
   const sc=document.getElementById('staffCount');
   if(sc)sc.textContent=staffData.length+' users';
@@ -2798,7 +2895,7 @@ function renderMdmTab(tabId){
         <td style="font-size:12px;text-align:right">S$${bt.unit_price.toFixed(2)}</td>
         <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${bt.ship_ref}</td>
         <td style="font-size:12px;color:var(--txt2)">${bt.received_at}</td>
-        <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+        <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
       </tr>`;
     }).join('');
     const mc=document.getElementById('mdmBatchCount');
@@ -2814,7 +2911,32 @@ function switchMdmTab(btn,panelId){
 }
 function changeMdmMedPage(p){mdmMedPage=p;renderMdmTab('mdm-meds');}
 function changeMdmBatchPage(p){mdmBatchPage=p;renderMdmTab('mdm-batches');}
-function openMdmAddModal(){openModal();}
+
+/* ── INVENTORY BATCHES STANDALONE PAGE ── */
+let batchesPage=1;
+function renderBatchesPage(){
+  const b=document.getElementById('batchesBody');if(!b)return;
+  const pg=invBatchesData.slice((batchesPage-1)*PER_PAGE,batchesPage*PER_PAGE);
+  b.innerHTML=pg.map(bt=>{
+    const expCls=isSoon(bt.expiry)?'color:var(--err);font-weight:700':'color:var(--txt2)';
+    const qtyColor=bt.qty_remaining===0?'color:var(--err)':bt.qty_remaining<30?'color:var(--warn)':'color:var(--ok)';
+    return`<tr>
+      <td style="font-size:12px">${bt.branch}</td>
+      <td><span style="font-family:monospace;font-size:11px;color:var(--p)">${bt.sku}</span><br><span style="font-size:12px">${bt.med}</span></td>
+      <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${bt.batch}</td>
+      <td style="font-size:12px;${expCls}">${fmtDate(bt.expiry)}${isSoon(bt.expiry)?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:11px;color:var(--err)" aria-hidden="true"></i>':''}</td>
+      <td style="font-weight:600;text-align:right;${qtyColor}">${bt.qty_remaining}</td>
+      <td style="font-size:12px;text-align:right">S$${bt.unit_price.toFixed(2)}</td>
+      <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${bt.ship_ref}</td>
+      <td style="font-size:12px;color:var(--txt2)">${bt.received_at}</td>
+      <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
+    </tr>`;
+  }).join('');
+  const bc=document.getElementById('batchesCount');
+  if(bc)bc.textContent=invBatchesData.length+' batches';
+  renderPagination('pg-batches',invBatchesData.length,batchesPage,PER_PAGE,'changeBatchesPage');
+}
+function changeBatchesPage(p){batchesPage=p;renderBatchesPage();}
 
 function openBranchModal(){document.getElementById('branchModal').classList.add('open');}
 function closeBranchModal(){document.getElementById('branchModal').classList.remove('open');}
@@ -3033,7 +3155,7 @@ const SNIPS={
         </span></td>
         <td>
           <button class="tbl-btn"><i class="ti ti-edit"></i> Edit</button>
-          <button class="tbl-btn"><i class="ti ti-eye"></i></button>
+          <button class="tbl-btn"><i class="ti ti-eye"></i> View</button>
         </td>
       </tr>
     </tbody>
