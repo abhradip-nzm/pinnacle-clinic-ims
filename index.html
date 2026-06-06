@@ -1741,7 +1741,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
         <div class="tbl-wrap">
           <div class="tbl-hdr">
-            <div class="tbl-title">audit_trail</div>
+            <div class="tbl-title">Audit Trail</div>
             <div style="display:flex;align-items:center;gap:8px"><span class="badge bga" style="font-size:10px"><i class="ti ti-lock" style="font-size:10px"></i>Append-only</span></div>
           </div>
           <div style="overflow-x:auto">
@@ -2479,6 +2479,21 @@ const ENUM_LABELS={
 };
 function fmtEnum(v){return ENUM_LABELS[v]||v;}
 
+const TABLE_LABELS={
+  shipments:'Shipments', disbursement_notes:'Disbursement Notes',
+  acknowledgement_receipts:'Acknowledgement Receipts',
+  return_disbursement_notes:'Return Notes',
+  return_disbursement_items:'Return Items',
+  return_acknowledgement_receipts:'Return Acknowledgements',
+  branch_inventory:'Branch Inventory', inventory_batches:'Inventory Batches',
+  shipment_batches:'Shipment Batches', medicines:'Medicines',
+  suppliers:'Suppliers', users:'Users', branches:'Branches',
+  medicine_categories:'Medicine Categories', units_of_measurement:'Units of Measure',
+  stock_ledger:'Stock Ledger', transaction_logs:'Transaction Logs',
+  audit_trail:'Audit Trail'
+};
+function fmtTable(v){return TABLE_LABELS[v]||v.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());}
+
 /* ── PAGINATION ENGINE ── */
 function renderPagination(cid,total,page,perPage,fnName){
   const c=document.getElementById(cid);if(!c)return;
@@ -2609,7 +2624,7 @@ function renderAudit(){
   const opBadge={'INSERT':'bge','UPDATE':'bgb','DELETE':'bgr'};
   const pg=auditData.slice((auditPage-1)*PER_PAGE,auditPage*PER_PAGE);
   b.innerHTML=pg.map(a=>`<tr>
-    <td style="font-size:12px;font-weight:600;color:var(--p)">${a.tbl}</td>
+    <td style="font-size:12px;font-weight:600;color:var(--p)">${fmtTable(a.tbl)}</td>
     <td style="font-family:monospace;font-size:11px;color:var(--txt2)">${a.record}</td>
     <td><span class="badge ${opBadge[a.op]||'bgb'}">${fmtEnum(a.op)}</span></td>
     <td style="font-size:12px">${a.actor}</td>
