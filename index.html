@@ -663,6 +663,9 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <div class="nav-item" onclick="navTo(this,'analytics')" role="menuitem" tabindex="0">
         <i class="ti ti-chart-bar" aria-hidden="true"></i> Analytics
       </div>
+      <div class="nav-item" onclick="navTo(this,'txn-log')" role="menuitem" tabindex="0">
+        <i class="ti ti-list-details" aria-hidden="true"></i> Transaction Log
+      </div>
       <div class="nav-item" onclick="navTo(this,'audit')" role="menuitem" tabindex="0">
         <i class="ti ti-shield-check" aria-hidden="true"></i> Audit Trail
       </div>
@@ -1723,6 +1726,72 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
       </div>
 
+      <!-- TRANSACTION LOG PAGE (transaction_logs table) -->
+      <div class="page-content" id="page-txn-log">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Transaction Log</div>
+            <div class="pg-sub"><i class="ti ti-list-details" aria-hidden="true"></i> All business-level events — Create, Update, Approve, Reject, Cancel and Receive actions across every entity</div>
+          </div>
+          <div class="pg-actions">
+            <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
+          </div>
+        </div>
+        <div class="stat-grid" style="margin-bottom:20px">
+          <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
+            <div class="stat-top"><div class="stat-lbl">Create</div><div class="stat-icon si-green"><i class="ti ti-plus-circle" aria-hidden="true"></i></div></div>
+            <div class="stat-val">5</div><div class="stat-foot">New entities created</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+            <div class="stat-top"><div class="stat-lbl">Approve / Receive</div><div class="stat-icon si-blue"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
+            <div class="stat-val">4</div><div class="stat-foot">Actions confirmed</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
+            <div class="stat-top"><div class="stat-lbl">Update</div><div class="stat-icon si-amber"><i class="ti ti-pencil" aria-hidden="true"></i></div></div>
+            <div class="stat-val">2</div><div class="stat-foot">Records modified</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--err)"></div>
+            <div class="stat-top"><div class="stat-lbl">Reject / Cancel</div><div class="stat-icon si-red"><i class="ti ti-circle-x" aria-hidden="true"></i></div></div>
+            <div class="stat-val">1</div><div class="stat-foot">Actions reversed</div>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search entity ID, actor, branch..." aria-label="Search"/></div>
+          <select class="fsel" aria-label="Entity type">
+            <option value="">All entity types</option>
+            <option value="SHIPMENT">Shipment</option>
+            <option value="DISBURSEMENT">Disbursement</option>
+            <option value="ACK_RECEIPT">Acknowledgement Receipt</option>
+            <option value="RETURN">Return</option>
+            <option value="INVENTORY">Inventory</option>
+            <option value="USER">User</option>
+            <option value="MEDICINE">Medicine</option>
+            <option value="SUPPLIER">Supplier</option>
+          </select>
+          <select class="fsel" aria-label="Action">
+            <option value="">All actions</option>
+            <option value="CREATE">Create</option>
+            <option value="UPDATE">Update</option>
+            <option value="APPROVE">Approve</option>
+            <option value="REJECT">Reject</option>
+            <option value="CANCEL">Cancel</option>
+            <option value="RECEIVE">Receive</option>
+          </select>
+          <select class="fsel" aria-label="Branch"><option value="">All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option><option>Telemedicine Hub</option></select>
+        </div>
+        <div class="tbl-wrap">
+          <div class="tbl-hdr"><div class="tbl-title">Transaction Log</div><div class="tbl-meta" id="txnLogCount"></div></div>
+          <div style="overflow-x:auto">
+          <table>
+            <colgroup><col style="width:14%"><col style="width:16%"><col style="width:16%"><col style="width:10%"><col style="width:13%"><col style="width:13%"><col style="width:11%"><col style="width:7%"></colgroup>
+            <thead><tr><th>Date / Time</th><th>Entity Type</th><th>Entity ID / Ref</th><th>Action</th><th>Actor</th><th>Branch</th><th>IP Address</th><th>Log ID</th></tr></thead>
+            <tbody id="txnLogBody"></tbody>
+          </table>
+          </div>
+          <div class="pg-wrap" id="pg-txn-log"></div>
+        </div>
+      </div>
+
       <!-- AUDIT TRAIL PAGE -->
       <div class="page-content" id="page-audit">
         <div class="pg-header">
@@ -2450,6 +2519,21 @@ const rdnData=[
   {rdn:'RDN-2026-00004',orig_ship:'SHP-2026-0115',rdn_status:'PENDING',src:'Telemedicine Hub',by:'—',at:'—',rar_status:'—'},
 ];
 /* Audit Trail data */
+/* transaction_logs — application-level business events */
+const txnLogsData=[
+  {id:'TL-001',at:'26 May 2026, 09:02',entity_type:'SHIPMENT',entity_id:'SHP-2026-0121',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-002',at:'25 May 2026, 14:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0119',action:'RECEIVE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-003',at:'24 May 2026, 15:30',entity_type:'DISBURSEMENT',entity_id:'DN-2026-00004',action:'APPROVE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-004',at:'24 May 2026, 11:05',entity_type:'SHIPMENT',entity_id:'SHP-2026-0120',action:'UPDATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-005',at:'23 May 2026, 12:00',entity_type:'ACK_RECEIPT',entity_id:'AR-2026-00004',action:'CREATE',actor:'Ms. Rachel Chua',branch:'Clinic Tampines',ip:'192.168.1.22',ua:'Safari/17 · iOS'},
+  {id:'TL-006',at:'22 May 2026, 15:30',entity_type:'ACK_RECEIPT',entity_id:'AR-2026-00003',action:'CREATE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
+  {id:'TL-007',at:'22 May 2026, 14:55',entity_type:'RETURN',entity_id:'RDN-2026-00002',action:'CREATE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
+  {id:'TL-008',at:'22 May 2026, 09:00',entity_type:'DISBURSEMENT',entity_id:'DN-2026-00003',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-009',at:'22 May 2026, 10:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0118',action:'RECEIVE',actor:'Ahmad Bin Yusof',branch:'Clinic Orchard',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-010',at:'20 May 2026, 14:22',entity_type:'USER',entity_id:'USR-007',action:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-011',at:'20 May 2026, 09:10',entity_type:'MEDICINE',entity_id:'MED-005',action:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-012',at:'18 May 2026, 11:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0118',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+];
 const auditData=[
   {tbl:'shipments',record:'SHP-2026-0120',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'24 May 2026, 11:05'},
   {tbl:'disbursement_notes',record:'DN-2026-00003',op:'INSERT',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'22 May 2026, 09:00'},
@@ -2702,6 +2786,35 @@ function renderReturns(){
 let rdnPage=1;
 function changeRdnPage(p){rdnPage=p;renderReturns();}
 
+/* ── TRANSACTION LOG (transaction_logs table) ── */
+let txnLogPage=1;
+const ACTION_BADGE={
+  CREATE:'bge', UPDATE:'bgb', APPROVE:'bge', RECEIVE:'bge',
+  REJECT:'bgr', CANCEL:'bg-draft'
+};
+const ACTION_ICON={
+  CREATE:'ti-plus-circle', UPDATE:'ti-pencil', APPROVE:'ti-circle-check',
+  RECEIVE:'ti-package', REJECT:'ti-circle-x', CANCEL:'ti-ban'
+};
+function renderTxnLog(){
+  const b=document.getElementById('txnLogBody');if(!b)return;
+  const pg=txnLogsData.slice((txnLogPage-1)*PER_PAGE,txnLogPage*PER_PAGE);
+  b.innerHTML=pg.map(t=>`<tr>
+    <td style="font-size:12px;color:var(--txt2);white-space:nowrap">${t.at}</td>
+    <td><span class="badge bgb" style="font-size:11px">${fmtTable(t.entity_type)}</span></td>
+    <td style="font-family:monospace;font-size:12px;color:var(--p)">${t.entity_id}</td>
+    <td><span class="badge ${ACTION_BADGE[t.action]||'bgb'}"><i class="ti ${ACTION_ICON[t.action]||'ti-circle'}" style="font-size:10px" aria-hidden="true"></i>${t.action.charAt(0)+t.action.slice(1).toLowerCase()}</span></td>
+    <td style="font-size:12px">${t.actor}</td>
+    <td style="font-size:12px">${t.branch}</td>
+    <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${t.ip}</td>
+    <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${t.id}</td>
+  </tr>`).join('');
+  const tc=document.getElementById('txnLogCount');
+  if(tc)tc.textContent=txnLogsData.length+' events';
+  renderPagination('pg-txn-log',txnLogsData.length,txnLogPage,PER_PAGE,'changeTxnLogPage');
+}
+function changeTxnLogPage(p){txnLogPage=p;renderTxnLog();}
+
 function renderAudit(){
   const b=document.getElementById('auditBody');if(!b)return;
   const opBadge={'INSERT':'bge','UPDATE':'bgb','DELETE':'bgr'};
@@ -2736,7 +2849,7 @@ function navTo(el,page){
   const pg=document.getElementById('page-'+page);
   if(pg)pg.classList.add('active');
   const bc=document.getElementById('breadcrumb');
-  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns',audit:'Audit Trail',mdm:'Master Data'};
+  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data'};
   if(bc)bc.textContent=labels[page]||page;
   if(page==='inventory'){renderInv();}
   else if(page==='batches'){renderBatchesPage();}
@@ -2747,6 +2860,7 @@ function navTo(el,page){
   else if(page==='shipments'){renderShipments();}
   else if(page==='disbursements'){renderDisbursements();}
   else if(page==='returns'){renderReturns();}
+  else if(page==='txn-log'){renderTxnLog();}
   else if(page==='audit'){renderAudit();}
   else if(page==='mdm'){renderMdmTab('mdm-meds');}
 }
