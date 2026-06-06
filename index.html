@@ -230,6 +230,26 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .modal-box-wide{width:min(1080px,96vw)}
 .modal-body-scroll{max-height:76vh;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px}
 
+/* FEEDBACK MODAL VARIANTS */
+.modal-head-success{background:var(--ok)}
+.modal-head-danger{background:var(--err)}
+.modal-head-warn{background:var(--warn)}
+.modal-head-info{background:var(--p)}
+.mfb-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;flex-shrink:0}
+.mfb-icon-success{background:var(--okbg);color:var(--ok);border:2.5px solid #bbf7d0}
+.mfb-icon-danger{background:var(--errbg);color:var(--err);border:2.5px solid #fca5a5}
+.mfb-icon-warn{background:var(--warnbg);color:var(--warn);border:2.5px solid #fde68a}
+.mfb-icon-info{background:var(--infobg);color:var(--p);border:2.5px solid var(--ps)}
+.modal-body-center{text-align:center;padding:28px 28px 8px;display:flex;flex-direction:column;align-items:center}
+.mfb-title{font-size:17px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.mfb-desc{font-size:13px;color:var(--txt2);line-height:1.65;max-width:340px;margin:0 auto}
+/* DS preview cards */
+.ds-modal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:4px}
+.ds-modal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;display:flex;flex-direction:column}
+.ds-modal-card-preview{padding:20px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;border-bottom:1px solid var(--border);flex:1}
+.ds-modal-card-footer{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--surface2)}
+.ds-modal-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+
 /* DEVELOPER PAGES */
 .dev-banner{background:linear-gradient(135deg,#0d2137 0%,#0a73be 100%);border-radius:var(--rl);padding:22px 28px;margin-bottom:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .dev-banner-left{display:flex;flex-direction:column;gap:4px}
@@ -1408,6 +1428,129 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               <span class="badge bg-tele-admin">Telemedicine Admin</span>
             </div>
           </div>
+          <!-- Feedback Modals -->
+          <div class="tbl-wrap" style="padding:20px">
+            <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:4px;display:flex;align-items:center;gap:7px">
+              <i class="ti ti-message-circle-check" style="color:var(--p)" aria-hidden="true"></i> Feedback modals
+            </div>
+            <div style="font-size:12px;color:var(--txt3);margin-bottom:18px">
+              Use these modal patterns for system responses — confirming success, requesting dangerous action confirmation, issuing warnings, and surfacing informational messages.
+            </div>
+
+            <div class="ds-modal-grid">
+
+              <!-- Success -->
+              <div class="ds-modal-card">
+                <div class="ds-modal-card-preview">
+                  <div style="width:100%;background:var(--ok);border-radius:8px 8px 0 0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;margin:-20px -18px 0;width:calc(100% + 36px)">
+                    <span style="color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-circle-check" aria-hidden="true"></i> Success</span>
+                    <span style="color:rgba(255,255,255,.6);font-size:16px">×</span>
+                  </div>
+                  <div style="padding-top:16px;text-align:center;width:100%">
+                    <div class="mfb-icon mfb-icon-success"><i class="ti ti-check" aria-hidden="true"></i></div>
+                    <div class="mfb-title" style="font-size:14px">Shipment created</div>
+                    <div class="mfb-desc" style="font-size:12px;margin-top:4px">SHP-2026-0122 has been created and 3 batch line items recorded.</div>
+                  </div>
+                  <div style="width:100%;padding-top:12px;display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:4px">
+                    <button class="btn btn-primary" style="font-size:12px;padding:6px 24px;background:var(--ok);border-color:var(--ok)"><i class="ti ti-check" aria-hidden="true"></i> Done</button>
+                  </div>
+                </div>
+                <div class="ds-modal-card-footer">
+                  <span class="ds-modal-badge" style="background:var(--okbg);color:var(--ok)"><i class="ti ti-check" style="font-size:10px" aria-hidden="true"></i> Success</span>
+                  <button class="btn btn-primary" style="font-size:11px;padding:5px 12px;background:var(--ok);border-color:var(--ok)" onclick="document.getElementById('demoSuccessModal').classList.add('open')">
+                    <i class="ti ti-eye" aria-hidden="true"></i> Preview
+                  </button>
+                </div>
+              </div>
+
+              <!-- Danger confirmation -->
+              <div class="ds-modal-card">
+                <div class="ds-modal-card-preview">
+                  <div style="width:100%;background:var(--err);border-radius:8px 8px 0 0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;margin:-20px -18px 0;width:calc(100% + 36px)">
+                    <span style="color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Confirm action</span>
+                    <span style="color:rgba(255,255,255,.6);font-size:16px">×</span>
+                  </div>
+                  <div style="padding-top:16px;text-align:center;width:100%">
+                    <div class="mfb-icon mfb-icon-danger"><i class="ti ti-trash" aria-hidden="true"></i></div>
+                    <div class="mfb-title" style="font-size:14px">Write off batch?</div>
+                    <div class="mfb-desc" style="font-size:12px;margin-top:4px">Batch SG2025-202 (18 tabs) will be written off. This cannot be undone.</div>
+                  </div>
+                  <div style="width:100%;padding-top:12px;display:flex;justify-content:flex-end;gap:6px;border-top:1px solid var(--border);margin-top:4px">
+                    <button class="btn" style="font-size:11px;padding:5px 10px">Cancel</button>
+                    <button class="btn btn-danger" style="font-size:11px;padding:5px 10px"><i class="ti ti-trash" aria-hidden="true"></i> Write off</button>
+                  </div>
+                </div>
+                <div class="ds-modal-card-footer">
+                  <span class="ds-modal-badge" style="background:var(--errbg);color:var(--err)"><i class="ti ti-alert-triangle" style="font-size:10px" aria-hidden="true"></i> Danger</span>
+                  <button class="btn" style="font-size:11px;padding:5px 12px;color:var(--err);border-color:#fca5a5;background:var(--errbg)" onclick="document.getElementById('demoDangerModal').classList.add('open')">
+                    <i class="ti ti-eye" aria-hidden="true"></i> Preview
+                  </button>
+                </div>
+              </div>
+
+              <!-- Warning -->
+              <div class="ds-modal-card">
+                <div class="ds-modal-card-preview">
+                  <div style="width:100%;background:var(--warn);border-radius:8px 8px 0 0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;margin:-20px -18px 0;width:calc(100% + 36px)">
+                    <span style="color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ti ti-alert-circle" aria-hidden="true"></i> Warning</span>
+                    <span style="color:rgba(255,255,255,.6);font-size:16px">×</span>
+                  </div>
+                  <div style="padding-top:16px;text-align:center;width:100%">
+                    <div class="mfb-icon mfb-icon-warn"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div>
+                    <div class="mfb-title" style="font-size:14px">Stock below reorder level</div>
+                    <div class="mfb-desc" style="font-size:12px;margin-top:4px">Paracetamol 500mg is at 150 tabs — below the threshold of 200.</div>
+                  </div>
+                  <div style="width:100%;padding-top:12px;display:flex;justify-content:flex-end;gap:6px;border-top:1px solid var(--border);margin-top:4px">
+                    <button class="btn" style="font-size:11px;padding:5px 10px">Dismiss</button>
+                    <button class="btn btn-primary" style="font-size:11px;padding:5px 10px;background:var(--warn);border-color:var(--warn)"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Create shipment</button>
+                  </div>
+                </div>
+                <div class="ds-modal-card-footer">
+                  <span class="ds-modal-badge" style="background:var(--warnbg);color:var(--warn)"><i class="ti ti-alert-triangle" style="font-size:10px" aria-hidden="true"></i> Warning</span>
+                  <button class="btn" style="font-size:11px;padding:5px 12px;color:var(--warn);border-color:#fde68a;background:var(--warnbg)" onclick="document.getElementById('demoWarnModal').classList.add('open')">
+                    <i class="ti ti-eye" aria-hidden="true"></i> Preview
+                  </button>
+                </div>
+              </div>
+
+            </div><!-- /ds-modal-grid -->
+
+            <!-- Code snippets for each modal type -->
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+
+              <div class="comp-card">
+                <div class="comp-code-box">
+                  <div class="comp-code-hdr">
+                    <span class="comp-code-label">Success modal — HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this,'snip-modal-success')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button>
+                  </div>
+                  <pre id="snip-modal-success" class="comp-code-pre"></pre>
+                </div>
+              </div>
+
+              <div class="comp-card">
+                <div class="comp-code-box">
+                  <div class="comp-code-hdr">
+                    <span class="comp-code-label">Danger confirmation modal — HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this,'snip-modal-danger')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button>
+                  </div>
+                  <pre id="snip-modal-danger" class="comp-code-pre"></pre>
+                </div>
+              </div>
+
+              <div class="comp-card">
+                <div class="comp-code-box">
+                  <div class="comp-code-hdr">
+                    <span class="comp-code-label">Warning modal — HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this,'snip-modal-warn')"><i class="ti ti-copy" style="font-size:12px" aria-hidden="true"></i> Copy</button>
+                  </div>
+                  <pre id="snip-modal-warn" class="comp-code-pre"></pre>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- Icon legend -->
           <div class="tbl-wrap" style="padding:20px">
             <div style="font-size:13px;font-weight:700;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px"><i class="ti ti-icons" style="color:var(--p)" aria-hidden="true"></i> Icon reference — Tabler Icons (outline)</div>
@@ -2073,6 +2216,105 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
     <div class="modal-foot">
       <button class="btn" onclick="closeStaffModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
       <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Create account</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO: SUCCESS MODAL -->
+<div class="modal-bg" id="demoSuccessModal" role="dialog" aria-modal="true" aria-labelledby="demoSuccessTitle">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-success">
+      <div class="modal-head-title" id="demoSuccessTitle"><i class="ti ti-circle-check" aria-hidden="true"></i> Success</div>
+      <button class="modal-x" onclick="document.getElementById('demoSuccessModal').classList.remove('open')" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-success"><i class="ti ti-check" style="font-size:30px" aria-hidden="true"></i></div>
+      <div class="mfb-title">Shipment created successfully</div>
+      <div class="mfb-desc">
+        <strong>SHP-2026-0122</strong> has been created and submitted for processing.
+        3 batch line items have been recorded in <em>shipment_batches</em>.
+        The stock ledger will be updated once the shipment is received.
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;justify-content:center">
+        <div style="background:var(--okbg);border:1px solid #bbf7d0;border-radius:var(--r);padding:10px 16px;text-align:center;min-width:100px">
+          <div style="font-size:18px;font-weight:700;color:var(--ok)">SHP-2026-0122</div>
+          <div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Shipment ref</div>
+        </div>
+        <div style="background:var(--okbg);border:1px solid #bbf7d0;border-radius:var(--r);padding:10px 16px;text-align:center;min-width:100px">
+          <div style="font-size:18px;font-weight:700;color:var(--ok)">3</div>
+          <div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Batch items</div>
+        </div>
+        <div style="background:var(--okbg);border:1px solid #bbf7d0;border-radius:var(--r);padding:10px 16px;text-align:center;min-width:100px">
+          <div style="font-size:18px;font-weight:700;color:var(--ok)">Draft</div>
+          <div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Status</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:center;gap:10px;padding:16px 22px">
+      <button class="btn" onclick="document.getElementById('demoSuccessModal').classList.remove('open')"><i class="ti ti-list" aria-hidden="true"></i> View shipments</button>
+      <button class="btn btn-primary" style="background:var(--ok);border-color:var(--ok)" onclick="document.getElementById('demoSuccessModal').classList.remove('open')"><i class="ti ti-check" aria-hidden="true"></i> Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO: DANGER CONFIRMATION MODAL -->
+<div class="modal-bg" id="demoDangerModal" role="dialog" aria-modal="true" aria-labelledby="demoDangerTitle">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-danger">
+      <div class="modal-head-title" id="demoDangerTitle"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Confirm action</div>
+      <button class="modal-x" onclick="document.getElementById('demoDangerModal').classList.remove('open')" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-danger"><i class="ti ti-trash" style="font-size:28px" aria-hidden="true"></i></div>
+      <div class="mfb-title">Write off this batch?</div>
+      <div class="mfb-desc">
+        You are about to write off <strong>batch SG2025-202</strong> — Diazepam 5mg, 18 tablets remaining at Clinic Orchard.
+        <br><br>
+        This will create a <strong>Manual Adjustment</strong> entry in the Stock Ledger and <strong>cannot be undone</strong>.
+      </div>
+      <div style="background:var(--errbg);border:1px solid #fca5a5;border-radius:var(--r);padding:12px 16px;margin-top:14px;text-align:left;width:100%">
+        <div style="font-size:11px;font-weight:700;color:var(--err);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-info-circle" aria-hidden="true"></i> What will happen</div>
+        <ul style="font-size:12px;color:var(--txt2);margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px">
+          <li>branch_inventory.quantity reduced by 18</li>
+          <li>stock_ledger entry created (ADJUST, MANUAL_ADJUSTMENT)</li>
+          <li>transaction_logs entry created (APPROVE)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end;gap:8px">
+      <button class="btn" onclick="document.getElementById('demoDangerModal').classList.remove('open')"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-danger" onclick="document.getElementById('demoDangerModal').classList.remove('open')"><i class="ti ti-trash" aria-hidden="true"></i> Write off batch</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO: WARNING MODAL -->
+<div class="modal-bg" id="demoWarnModal" role="dialog" aria-modal="true" aria-labelledby="demoWarnTitle">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-warn">
+      <div class="modal-head-title" id="demoWarnTitle"><i class="ti ti-alert-circle" aria-hidden="true"></i> Warning</div>
+      <button class="modal-x" onclick="document.getElementById('demoWarnModal').classList.remove('open')" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-warn"><i class="ti ti-alert-triangle" style="font-size:28px" aria-hidden="true"></i></div>
+      <div class="mfb-title">Stock below reorder level</div>
+      <div class="mfb-desc">
+        <strong>Paracetamol 500mg (MED-002)</strong> at <strong>Clinic Tampines</strong> has fallen below its reorder threshold.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;width:100%">
+        <div style="background:var(--warnbg);border:1px solid #fde68a;border-radius:var(--r);padding:10px;text-align:center">
+          <div style="font-size:20px;font-weight:700;color:var(--warn)">150</div>
+          <div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Current qty</div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center">
+          <div style="font-size:20px;font-weight:700;color:var(--txt)">200</div>
+          <div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Reorder threshold</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end;gap:8px">
+      <button class="btn" onclick="document.getElementById('demoWarnModal').classList.remove('open')"><i class="ti ti-x" aria-hidden="true"></i> Dismiss</button>
+      <button class="btn btn-primary" style="background:var(--warn);border-color:var(--warn)" onclick="document.getElementById('demoWarnModal').classList.remove('open')"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Create shipment</button>
     </div>
   </div>
 </div>
@@ -3583,6 +3825,122 @@ function closeModal(){document.getElementById('myModal').classList.remove('open'
 .modal-body{padding:22px;display:flex;flex-direction:column;gap:14px;}
 .modal-foot{padding:14px 22px;border-top:1px solid var(--border);
   display:flex;justify-content:flex-end;gap:8px;}`,
+'snip-modal-success':`<!-- Success Modal -->
+<div class="modal-bg open" id="successModal"
+  role="dialog" aria-modal="true">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-success">
+      <div class="modal-head-title">
+        <i class="ti ti-circle-check"></i> Success
+      </div>
+      <button class="modal-x" onclick="closeModal('successModal')">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-success">
+        <i class="ti ti-check" style="font-size:30px"></i>
+      </div>
+      <div class="mfb-title">Action completed</div>
+      <div class="mfb-desc">
+        Describe what was successfully completed here.
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:center">
+      <button class="btn btn-primary"
+        style="background:var(--ok);border-color:var(--ok)"
+        onclick="closeModal('successModal')">
+        <i class="ti ti-check"></i> Done
+      </button>
+    </div>
+  </div>
+</div>
+
+/* CSS */
+.modal-head-success { background: var(--ok); }
+.mfb-icon { width:64px;height:64px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px; }
+.mfb-icon-success { background:var(--okbg);color:var(--ok);
+  border:2.5px solid #bbf7d0; }
+.modal-body-center { text-align:center;padding:28px 28px 8px;
+  display:flex;flex-direction:column;align-items:center; }
+.mfb-title { font-size:17px;font-weight:700;color:var(--txt);margin-bottom:6px; }
+.mfb-desc { font-size:13px;color:var(--txt2);line-height:1.65;
+  max-width:340px;margin:0 auto; }`,
+
+'snip-modal-danger':`<!-- Danger Confirmation Modal -->
+<div class="modal-bg open" id="dangerModal"
+  role="dialog" aria-modal="true">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-danger">
+      <div class="modal-head-title">
+        <i class="ti ti-alert-triangle"></i> Confirm action
+      </div>
+      <button class="modal-x" onclick="closeModal('dangerModal')">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-danger">
+        <i class="ti ti-trash" style="font-size:28px"></i>
+      </div>
+      <div class="mfb-title">Are you sure?</div>
+      <div class="mfb-desc">
+        Describe the irreversible action and its consequences here.
+        This action <strong>cannot be undone</strong>.
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end;gap:8px">
+      <button class="btn" onclick="closeModal('dangerModal')">
+        <i class="ti ti-x"></i> Cancel
+      </button>
+      <button class="btn btn-danger"
+        onclick="closeModal('dangerModal')">
+        <i class="ti ti-trash"></i> Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+/* CSS */
+.modal-head-danger { background: var(--err); }
+.mfb-icon-danger { background:var(--errbg);color:var(--err);
+  border:2.5px solid #fca5a5; }`,
+
+'snip-modal-warn':`<!-- Warning Modal -->
+<div class="modal-bg open" id="warnModal"
+  role="dialog" aria-modal="true">
+  <div class="modal-box" style="width:440px">
+    <div class="modal-head modal-head-warn">
+      <div class="modal-head-title">
+        <i class="ti ti-alert-circle"></i> Warning
+      </div>
+      <button class="modal-x" onclick="closeModal('warnModal')">×</button>
+    </div>
+    <div class="modal-body-center">
+      <div class="mfb-icon mfb-icon-warn">
+        <i class="ti ti-alert-triangle" style="font-size:28px"></i>
+      </div>
+      <div class="mfb-title">Warning title</div>
+      <div class="mfb-desc">
+        Describe the warning condition and its implications.
+        User can dismiss or take the recommended action.
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end;gap:8px">
+      <button class="btn" onclick="closeModal('warnModal')">
+        <i class="ti ti-x"></i> Dismiss
+      </button>
+      <button class="btn btn-primary"
+        style="background:var(--warn);border-color:var(--warn)"
+        onclick="closeModal('warnModal')">
+        <i class="ti ti-arrow-right"></i> Take action
+      </button>
+    </div>
+  </div>
+</div>
+
+/* CSS */
+.modal-head-warn { background: var(--warn); }
+.mfb-icon-warn { background:var(--warnbg);color:var(--warn);
+  border:2.5px solid #fde68a; }`,
+
 'snip-settings':`<div class="setting-card">
   <div class="sc-title">
     <i class="ti ti-bell"></i> Alert thresholds
