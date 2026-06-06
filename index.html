@@ -2090,39 +2090,29 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
 
         <div class="batch-section">
-          <!-- Table header always visible -->
-          <table class="batch-tbl" style="table-layout:fixed">
-            <colgroup>
-              <col style="width:28%"><col style="width:15%"><col style="width:13%">
-              <col style="width:8%"><col style="width:14%"><col style="width:14%"><col style="width:8%">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>Medicine (SKU)</th>
-                <th>Batch No.</th>
-                <th>Expiry Date</th>
-                <th>Qty</th>
-                <th>Unit Price (S$)</th>
-                <th>Line Total</th>
-                <th></th>
-              </tr>
-            </thead>
-          </table>
-          <!-- Scrollable body -->
-          <div style="max-height:210px;overflow-y:auto">
-            <table class="batch-tbl" style="table-layout:fixed">
-              <colgroup>
-                <col style="width:26%"><col style="width:16%"><col style="width:13%">
-                <col style="width:9%"><col style="width:13%"><col style="width:13%"><col style="width:10%">
-              </colgroup>
+          <!-- Single scrollable table — auto layout -->
+          <div style="overflow-x:auto;overflow-y:auto;max-height:240px">
+            <table class="batch-tbl" style="min-width:680px;table-layout:auto;width:100%">
+              <thead>
+                <tr>
+                  <th style="min-width:210px">Medicine (SKU)</th>
+                  <th style="min-width:120px">Batch No.</th>
+                  <th style="min-width:125px">Expiry Date</th>
+                  <th style="min-width:72px;text-align:right">Qty</th>
+                  <th style="min-width:110px;text-align:right">Unit Price (S$)</th>
+                  <th style="min-width:110px;text-align:right">Line Total</th>
+                  <th style="min-width:52px"></th>
+                </tr>
+              </thead>
               <tbody id="shipBatchTbody">
                 <!-- rows injected by JS -->
               </tbody>
             </table>
-            <div id="shipBatchEmpty" style="padding:24px;text-align:center;color:var(--txt3);font-size:13px">
-              <i class="ti ti-layers-intersect" style="font-size:28px;display:block;margin-bottom:8px;opacity:.3" aria-hidden="true"></i>
-              No batch items yet — click <strong>Add batch</strong> to add medicines to this shipment
-            </div>
+          </div>
+          <!-- Empty state -->
+          <div id="shipBatchEmpty" style="padding:28px 16px;text-align:center;color:var(--txt3);font-size:13px;border-top:1px solid var(--border)">
+            <i class="ti ti-layers-intersect" style="font-size:30px;display:block;margin-bottom:8px;opacity:.25" aria-hidden="true"></i>
+            No batch items yet &mdash; click <strong style="color:var(--p)">Add batch</strong> above to add medicines to this shipment
           </div>
           <!-- Add row trigger -->
           <button class="batch-add-row" onclick="addShipBatch()" type="button" aria-label="Add batch line">
@@ -2131,7 +2121,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <!-- Grand total -->
           <div class="batch-total-bar">
             <span style="font-size:12px;color:var(--txt2)">
-              <span id="shipBatchCountFoot">0 line items</span> &nbsp;·&nbsp; All prices in SGD
+              <span id="shipBatchCountFoot">0 line items</span>&nbsp;&middot;&nbsp;All prices in SGD
             </span>
             <div style="display:flex;align-items:center;gap:10px">
               <span style="font-size:12px;color:var(--txt2);font-weight:500">Shipment total</span>
@@ -3074,25 +3064,28 @@ function addShipBatch(){
   const tr=document.createElement('tr');
   tr.id='sbr-'+idx;
   tr.innerHTML=`
-    <td>
+    <td style="padding:6px 8px">
       <select class="batch-inp" onchange="updateShipBatch(${idx},'med',this.value)" aria-label="Medicine">
-        <option value="">— Select —</option>${opts}
+        <option value="">— Select medicine —</option>${opts}
       </select>
     </td>
-    <td><input class="batch-inp" type="text" placeholder="SG2026-XXX" oninput="updateShipBatch(${idx},'batch',this.value)" aria-label="Batch number"/></td>
-    <td><input class="batch-inp" type="date" oninput="updateShipBatch(${idx},'expiry',this.value)" aria-label="Expiry date"/></td>
-    <td><input class="batch-inp" type="number" min="1" placeholder="0" oninput="updateShipBatch(${idx},'qty',this.value)" aria-label="Quantity"/></td>
-    <td>
-      <div style="display:flex;align-items:center;gap:3px">
-        <span style="font-size:11px;color:var(--txt3);flex-shrink:0">S$</span>
-        <input class="batch-inp" type="number" min="0" step="0.01" placeholder="0.00" oninput="updateShipBatch(${idx},'unit',this.value)" aria-label="Unit price"/>
-      </div>
+    <td style="padding:6px 8px">
+      <input class="batch-inp" type="text" placeholder="e.g. SG2026-011" oninput="updateShipBatch(${idx},'batch',this.value)" aria-label="Batch number"/>
     </td>
-    <td>
-      <div id="sbr-total-${idx}" style="font-size:13px;font-weight:700;color:var(--txt);text-align:right;padding:0 6px">S$0.00</div>
+    <td style="padding:6px 8px">
+      <input class="batch-inp" type="date" oninput="updateShipBatch(${idx},'expiry',this.value)" aria-label="Expiry date"/>
     </td>
-    <td style="text-align:center">
-      <button class="tbl-btn tbl-btn-danger" style="padding:4px 7px" onclick="removeShipBatch(${idx})" type="button" aria-label="Remove row">
+    <td style="padding:6px 8px">
+      <input class="batch-inp" type="number" min="1" placeholder="0" oninput="updateShipBatch(${idx},'qty',this.value)" aria-label="Quantity" style="text-align:right"/>
+    </td>
+    <td style="padding:6px 8px">
+      <input class="batch-inp" type="number" min="0" step="0.01" placeholder="0.00" oninput="updateShipBatch(${idx},'unit',this.value)" aria-label="Unit price (S$)" style="text-align:right"/>
+    </td>
+    <td style="padding:6px 12px 6px 8px;text-align:right;white-space:nowrap">
+      <span id="sbr-total-${idx}" style="font-size:13px;font-weight:700;color:var(--txt3)">S$0.00</span>
+    </td>
+    <td style="padding:6px 8px;text-align:center">
+      <button class="tbl-btn tbl-btn-danger" style="padding:4px 7px;margin:0" onclick="removeShipBatch(${idx})" type="button" aria-label="Remove row">
         <i class="ti ti-trash" aria-hidden="true"></i>
       </button>
     </td>`;
