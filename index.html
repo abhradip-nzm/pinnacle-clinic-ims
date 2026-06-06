@@ -489,7 +489,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <div style="text-align:center;margin-bottom:16px">
         <div style="width:54px;height:54px;background:var(--infobg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><i class="ti ti-mail-opened" style="font-size:26px;color:var(--p)" aria-hidden="true"></i></div>
         <div class="login-welcome" style="text-align:center">Check your email</div>
-        <div class="login-hint" style="text-align:center">We sent a 6-digit code to<br><strong style="color:var(--txt)" id="otpEmailDisplay">dr.chan@pinnacle.sg</strong></div>
+        <div class="login-hint" style="text-align:center">We sent a 6-digit code to<br><strong style="color:var(--txt)" id="otpEmailDisplay">ahmad.y@pinnacle.sg</strong></div>
       </div>
       <div class="otp-wrap">
         <input class="otp-inp" type="text" maxlength="1" id="otp0" oninput="otpAdvance(this,0)" onkeydown="otpBack(event,0)" aria-label="OTP digit 1"/>
@@ -730,7 +730,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
                 <div class="ds-type-item"><span class="ds-type-meta">H1 · 20px · 700</span><span style="font-size:20px;font-weight:700;color:var(--txt)">Inventory Overview</span></div>
                 <div class="ds-type-item"><span class="ds-type-meta">H2 · 16px · 700</span><span style="font-size:16px;font-weight:700;color:var(--txt)">Medicine Categories</span></div>
                 <div class="ds-type-item"><span class="ds-type-meta">Body · 13px · 400</span><span style="font-size:13px;color:var(--txt)">Amoxicillin 500mg — batch #SG2026-011</span></div>
-                <div class="ds-type-item"><span class="ds-type-meta">Caption · 11px · 500</span><span style="font-size:11px;color:var(--txt2)">Expires 31 Dec 2026 · MOH Approved</span></div>
+                <div class="ds-type-item"><span class="ds-type-meta">Caption · 11px · 500</span><span style="font-size:11px;color:var(--txt2)">Expires 31 Dec 2026 · SHP-2026-0118 batch received</span></div>
               </div>
             </div>
             <div style="display:flex;gap:28px;flex-wrap:wrap">
@@ -781,7 +781,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 
         <div class="filter-bar">
           <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input id="srchInp" oninput="filterTbl()" placeholder="Search medicine, batch, supplier..." aria-label="Search medicines"/></div>
-          <select class="fsel" id="catSel" onchange="filterTbl()" aria-label="Filter by category"><option value="">All categories</option><option value="Antibiotic">Antibiotics</option><option value="Analgesic">Analgesics</option><option value="Controlled">Controlled drugs</option><option value="Cardiovascular">Cardiovascular</option><option value="Respiratory">Respiratory</option></select>
+          <select class="fsel" id="catSel" onchange="filterTbl()" aria-label="Filter by category"><option value="">All categories</option><option value="Antibiotic">Antibiotic</option><option value="Analgesic">Analgesic</option><option value="Controlled">Controlled</option><option value="Cardiovascular">Cardiovascular</option><option value="Respiratory">Respiratory</option></select>
           <select class="fsel" id="stSel" onchange="filterTbl()" aria-label="Filter by status"><option value="">All status</option><option value="In Stock">In stock</option><option value="Low Stock">Low stock</option><option value="Out of Stock">Out of stock</option></select>
           <div class="tabs" role="tablist">
             <button class="tab on" onclick="setView(this,'all')" role="tab" aria-selected="true">All</button>
@@ -949,7 +949,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- ANALYTICS PAGE -->
       <div class="page-content" id="page-analytics">
         <div class="pg-header">
-          <div><div class="pg-title">Analytics</div><div class="pg-sub"><i class="ti ti-chart-bar" aria-hidden="true"></i> Inventory & dispensing insights</div></div>
+          <div><div class="pg-title">Analytics</div><div class="pg-sub"><i class="ti ti-chart-bar" aria-hidden="true"></i> Supply chain insights — shipments, stock movements &amp; branch stock levels</div></div>
           <div class="pg-actions">
             <select class="fsel" aria-label="Time period"><option>Last 30 days</option><option>Last 90 days</option><option>This year</option></select>
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -957,45 +957,60 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
           <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
-            <div class="stat-top"><div class="stat-lbl">Total dispensed (30d)</div><div class="stat-icon si-blue"><i class="ti ti-activity" aria-hidden="true"></i></div></div>
-            <div class="stat-val">3,842</div>
-            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 8.1%</span> vs prior period</div>
+            <div class="stat-top"><div class="stat-lbl">Shipments (30d)</div><div class="stat-icon si-blue"><i class="ti ti-truck-delivery" aria-hidden="true"></i></div></div>
+            <div class="stat-val">8</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 14%</span> vs prior period</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
-            <div class="stat-top"><div class="stat-lbl">Reorders initiated</div><div class="stat-icon si-green"><i class="ti ti-refresh" aria-hidden="true"></i></div></div>
-            <div class="stat-val">14</div>
-            <div class="stat-foot">Avg lead time <span style="font-weight:600;color:var(--txt)">3.2 days</span></div>
+            <div class="stat-top"><div class="stat-lbl">Stock-IN movements</div><div class="stat-icon si-green"><i class="ti ti-arrow-down-left" aria-hidden="true"></i></div></div>
+            <div class="stat-val">5</div>
+            <div class="stat-foot">SHIPMENT_IN &amp; ACK_RECEIPT ledger entries</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
-            <div class="stat-top"><div class="stat-lbl">Stockouts prevented</div><div class="stat-icon si-amber"><i class="ti ti-shield" aria-hidden="true"></i></div></div>
-            <div class="stat-val">6</div>
-            <div class="stat-foot">Via <span style="font-weight:600;color:var(--txt)">low stock alerts</span></div>
+            <div class="stat-top"><div class="stat-lbl">Stock-OUT movements</div><div class="stat-icon si-amber"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+            <div class="stat-val">5</div>
+            <div class="stat-foot">DISBURSEMENT &amp; RETURN_DISBURSEMENT</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
-            <div class="stat-top"><div class="stat-lbl">Inventory value</div><div class="stat-icon si-blue"><i class="ti ti-currency-dollar" aria-hidden="true"></i></div></div>
+            <div class="stat-top"><div class="stat-lbl">Total inventory value</div><div class="stat-icon si-blue"><i class="ti ti-currency-dollar" aria-hidden="true"></i></div></div>
             <div class="stat-val">S$48k</div>
-            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 2.4%</span> vs last month</div>
+            <div class="stat-foot"><span class="trend-up"><i class="ti ti-trending-up" style="font-size:12px" aria-hidden="true"></i> 2.4%</span> across all branches</div>
           </div>
         </div>
         <div class="analytics-grid">
           <div class="a-card">
-            <div class="a-card-title"><i class="ti ti-chart-bar" aria-hidden="true"></i> Top dispensed medicines</div>
-            <div class="bar-chart" role="img" aria-label="Bar chart: top dispensed medicines">
-              <div class="bc-row"><span class="bc-label">Paracetamol</span><div class="bc-track"><div class="bc-bar" style="width:90%;background:var(--p)">842</div></div><span class="bc-val">842</span></div>
-              <div class="bc-row"><span class="bc-label">Amoxicillin</span><div class="bc-track"><div class="bc-bar" style="width:72%;background:var(--p)">674</div></div><span class="bc-val">674</span></div>
-              <div class="bc-row"><span class="bc-label">Metformin</span><div class="bc-track"><div class="bc-bar" style="width:58%;background:var(--ps)">543</div></div><span class="bc-val">543</span></div>
-              <div class="bc-row"><span class="bc-label">Cetirizine</span><div class="bc-track"><div class="bc-bar" style="width:44%;background:var(--ps)">412</div></div><span class="bc-val">412</span></div>
-              <div class="bc-row"><span class="bc-label">Atorvastatin</span><div class="bc-track"><div class="bc-bar" style="width:38%;background:var(--ps)">356</div></div><span class="bc-val">356</span></div>
+            <div class="a-card-title"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Shipments by type (30d)</div>
+            <div class="bar-chart" role="img" aria-label="Bar chart: shipments by type">
+              <div class="bc-row"><span class="bc-label" style="width:130px">SUPPLIER_TO_WH</span><div class="bc-track"><div class="bc-bar" style="width:75%;background:var(--p)">3</div></div><span class="bc-val">3</span></div>
+              <div class="bc-row"><span class="bc-label" style="width:130px">SUPPLIER_TO_CLINIC</span><div class="bc-track"><div class="bc-bar" style="width:50%;background:var(--p)">2</div></div><span class="bc-val">2</span></div>
+              <div class="bc-row"><span class="bc-label" style="width:130px">INTERNAL_TRANSFER</span><div class="bc-track"><div class="bc-bar" style="width:75%;background:var(--purple)">3</div></div><span class="bc-val">3</span></div>
+            </div>
+            <div style="margin-top:14px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><i class="ti ti-flag" aria-hidden="true"></i> Shipment status breakdown</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <div style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--ok)">5</div><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">RECEIVED</div></div>
+                <div style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--warn)">2</div><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">IN_TRANSIT</div></div>
+                <div style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--p)">1</div><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">CONFIRMED</div></div>
+              </div>
             </div>
           </div>
           <div class="a-card">
-            <div class="a-card-title"><i class="ti ti-chart-donut" aria-hidden="true"></i> Stock by category</div>
+            <div class="a-card-title"><i class="ti ti-building-warehouse" aria-hidden="true"></i> Stock level by branch (qty on hand)</div>
             <div class="bar-chart">
-              <div class="bc-row"><span class="bc-label">Analgesics</span><div class="bc-track"><div class="bc-bar" style="width:85%;background:#1a7f4b">28%</div></div><span class="bc-val">28%</span></div>
-              <div class="bc-row"><span class="bc-label">Antibiotics</span><div class="bc-track"><div class="bc-bar" style="width:62%;background:var(--p)">22%</div></div><span class="bc-val">22%</span></div>
-              <div class="bc-row"><span class="bc-label">Cardiovascular</span><div class="bc-track"><div class="bc-bar" style="width:48%;background:#d97706">18%</div></div><span class="bc-val">18%</span></div>
-              <div class="bc-row"><span class="bc-label">Respiratory</span><div class="bc-track"><div class="bc-bar" style="width:36%;background:#0891b2">15%</div></div><span class="bc-val">15%</span></div>
-              <div class="bc-row"><span class="bc-label">Controlled</span><div class="bc-track"><div class="bc-bar" style="width:20%;background:#b91c1c">10%</div></div><span class="bc-val">10%</span></div>
+              <div class="bc-row"><span class="bc-label">Central WH</span><div class="bc-track"><div class="bc-bar" style="width:90%;background:var(--p)">3,200</div></div><span class="bc-val">3,200</span></div>
+              <div class="bc-row"><span class="bc-label">Clinic Orchard</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:#1a7f4b">1,284</div></div><span class="bc-val">1,284</span></div>
+              <div class="bc-row"><span class="bc-label">Clinic Tampines</span><div class="bc-track"><div class="bc-bar" style="width:27%;background:#1a7f4b">856</div></div><span class="bc-val">856</span></div>
+              <div class="bc-row"><span class="bc-label">Telemedicine</span><div class="bc-track"><div class="bc-bar" style="width:8%;background:var(--purple)">240</div></div><span class="bc-val">240</span></div>
+            </div>
+            <div style="margin-top:16px">
+              <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><i class="ti ti-stack-2" aria-hidden="true"></i> SKU coverage by category</div>
+              <div class="bar-chart">
+                <div class="bc-row"><span class="bc-label">Antibiotic</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:var(--p)">2</div></div><span class="bc-val">2</span></div>
+                <div class="bc-row"><span class="bc-label">Analgesic</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:#1a7f4b">2</div></div><span class="bc-val">2</span></div>
+                <div class="bc-row"><span class="bc-label">Cardiovascular</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:#d97706">2</div></div><span class="bc-val">2</span></div>
+                <div class="bc-row"><span class="bc-label">Respiratory</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:#0891b2">2</div></div><span class="bc-val">2</span></div>
+                <div class="bc-row"><span class="bc-label">Controlled</span><div class="bc-track"><div class="bc-bar" style="width:40%;background:#b91c1c">2</div></div><span class="bc-val">2</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1004,7 +1019,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- SETTINGS PAGE -->
       <div class="page-content" id="page-settings">
         <div class="pg-header">
-          <div><div class="pg-title">System settings</div><div class="pg-sub"><i class="ti ti-settings" aria-hidden="true"></i> Clinic configuration & access management</div></div>
+          <div><div class="pg-title">System settings</div><div class="pg-sub"><i class="ti ti-settings" aria-hidden="true"></i> System configuration &amp; user access management</div></div>
           <div class="pg-actions"><button class="btn btn-primary"><i class="ti ti-device-floppy" aria-hidden="true"></i> Save changes</button></div>
         </div>
         <div class="settings-grid">
@@ -1326,7 +1341,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <button class="tab" role="tab">Critical</button>
             <button class="tab" role="tab">Procurement</button>
           </div>
-          <select class="fsel" aria-label="Filter by branch"><option>All branches</option><option>Main Clinic</option><option>Tampines</option><option>Jurong East</option></select>
+          <select class="fsel" aria-label="Filter by branch"><option>All branches</option><option>Clinic Orchard</option><option>Clinic Tampines</option><option>Central Warehouse</option></select>
         </div>
         <div class="tbl-wrap">
           <div class="tbl-hdr"><div class="tbl-title">Notification feed</div><div class="tbl-meta" id="notifCount"></div></div>
@@ -1656,7 +1671,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-suppliers')"><i class="ti ti-truck-delivery" style="font-size:14px" aria-hidden="true"></i> Suppliers</button>
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-categories')"><i class="ti ti-tags" style="font-size:14px" aria-hidden="true"></i> Categories</button>
             <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-units')"><i class="ti ti-ruler" style="font-size:14px" aria-hidden="true"></i> Units of Measure</button>
-            <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-schedules')"><i class="ti ti-shield-lock" style="font-size:14px" aria-hidden="true"></i> Drug Schedules</button>
+            <button class="mdm-tab" onclick="switchMdmTab(this,'mdm-batches')"><i class="ti ti-layers-intersect" style="font-size:14px" aria-hidden="true"></i> Inventory Batches</button>
           </div>
 
           <!-- Medicine Master -->
@@ -1720,19 +1735,20 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             </div>
           </div>
 
-          <!-- Drug Schedules -->
-          <div id="mdm-schedules" class="mdm-panel">
+          <!-- Inventory Batches (inventory_batches table) -->
+          <div id="mdm-batches" class="mdm-panel">
             <div class="tbl-hdr" style="border-top:1px solid var(--border)">
-              <div class="tbl-title">Drug schedules — MOH Singapore</div>
-              <div class="tbl-meta">4 schedules defined</div>
+              <div class="tbl-title">inventory_batches</div>
+              <div class="tbl-meta" id="mdmBatchCount"></div>
             </div>
             <div style="overflow-x:auto">
             <table>
-              <colgroup><col style="width:10%"><col style="width:15%"><col style="width:36%"><col style="width:29%"><col style="width:10%"></colgroup>
-              <thead><tr><th>ID</th><th>Schedule</th><th>Description</th><th>Examples</th><th>Actions</th></tr></thead>
-              <tbody id="mdmSchBody"></tbody>
+              <colgroup><col style="width:10%"><col style="width:18%"><col style="width:12%"><col style="width:11%"><col style="width:12%"><col style="width:10%"><col style="width:10%"><col style="width:12%"><col style="width:5%"></colgroup>
+              <thead><tr><th>Branch</th><th>Medicine (SKU)</th><th>batch_number</th><th>expiry_date</th><th>qty_remaining</th><th>unit_price</th><th>Shipment ref</th><th>received_at</th><th>Actions</th></tr></thead>
+              <tbody id="mdmBatchBody"></tbody>
             </table>
             </div>
+            <div class="pg-wrap" id="pg-mdm-batches"></div>
           </div>
 
         </div><!-- /tbl-wrap -->
@@ -1742,34 +1758,54 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- MEDICINE MODAL (medicines table) -->
 <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
+  <div class="modal-box" style="width:540px">
     <div class="modal-head">
-      <div class="modal-head-title" id="modalTitle"><i class="ti ti-plus" aria-hidden="true"></i> Add new medicine</div>
+      <div class="modal-head-title" id="modalTitle"><i class="ti ti-pill" aria-hidden="true"></i> Add medicine — medicines table</div>
       <button class="modal-x" onclick="closeModal()" aria-label="Close dialog">×</button>
     </div>
     <div class="modal-body">
       <div class="form-row">
-        <div class="fg"><label class="fl">Medicine name</label><input class="fi" type="text" placeholder="e.g. Amoxicillin" aria-label="Medicine name"/></div>
-        <div class="fg"><label class="fl">Generic name</label><input class="fi" type="text" placeholder="INN / generic name" aria-label="Generic name"/></div>
+        <div class="fg"><label class="fl">SKU <span style="color:var(--err)">*</span></label><input class="fi" type="text" placeholder="e.g. MED-011" aria-label="SKU (unique)"/></div>
+        <div class="fg"><label class="fl">Brand name</label><input class="fi" type="text" placeholder="e.g. Augmentin" aria-label="Brand name"/></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Category</label><select class="fi" aria-label="Category"><option>Antibiotic</option><option>Analgesic</option><option>Controlled drug</option><option>Cardiovascular</option><option>Respiratory</option></select></div>
-        <div class="fg"><label class="fl">Batch number</label><input class="fi" type="text" placeholder="e.g. SG2026-099" aria-label="Batch number"/></div>
+        <div class="fg"><label class="fl">Medicine name <span style="color:var(--err)">*</span></label><input class="fi" type="text" placeholder="e.g. Amoxicillin/Clavulanate 625mg" aria-label="Medicine name"/></div>
+        <div class="fg"><label class="fl">Generic name (INN)</label><input class="fi" type="text" placeholder="e.g. Co-amoxiclav" aria-label="Generic name"/></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Quantity</label><input class="fi" type="number" placeholder="0" aria-label="Quantity"/></div>
-        <div class="fg"><label class="fl">Unit</label><select class="fi" aria-label="Unit"><option>Tablet</option><option>Capsule</option><option>Vial</option><option>Syrup (ml)</option><option>Inhaler</option></select></div>
+        <div class="fg"><label class="fl">Category (category_id) <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Category">
+            <option>Antibiotic</option><option>Analgesic</option><option>Controlled</option>
+            <option>Cardiovascular</option><option>Respiratory</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Unit of measure (uom_id) <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Unit of measure">
+            <option>Tablet</option><option>Capsule</option><option>Vial</option>
+            <option>Inhaler</option><option>Syrup (ml)</option><option>Patch</option><option>Suppository</option>
+          </select>
+        </div>
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Expiry date</label><input class="fi" type="date" aria-label="Expiry date"/></div>
-        <div class="fg"><label class="fl">Supplier</label><select class="fi" aria-label="Supplier"><option>Zuellig Pharma SG</option><option>DKSH Healthcare</option><option>Pharmaniaga SG</option><option>Other</option></select></div>
+        <div class="fg"><label class="fl">Reorder level</label><input class="fi" type="number" placeholder="0" aria-label="Reorder level (global default)"/></div>
+        <div class="fg" style="justify-content:flex-end;padding-top:20px">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;color:var(--txt)">
+            <button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-label="requires_prescription"></button>
+            <span>requires_prescription</span>
+          </label>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Description</label><input class="fi" type="text" placeholder="Optional description or notes" aria-label="Description"/></div>
+      <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--p);display:flex;align-items:flex-start;gap:8px;margin-top:2px">
+        <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
+        Batch details (batch_number, expiry_date, unit_price) belong to <strong>inventory_batches</strong> and are recorded when a shipment is received.
       </div>
     </div>
     <div class="modal-foot">
       <button class="btn" onclick="closeModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
-      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Add to inventory</button>
+      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Create medicine</button>
     </div>
   </div>
 </div>
@@ -1790,8 +1826,8 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       </div>
       <div class="fg"><label class="fl">Address</label><input class="fi" type="text" placeholder="Street address, unit, postal code"/></div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Manager in charge</label><select class="fi"><option>— Assign later —</option><option>Dr. Chan Wei Ling</option><option>Dr. Lim Ah Kow</option><option>Dr. Wong Siew Lian</option></select></div>
-        <div class="fg"><label class="fl">MOH licence no.</label><input class="fi" type="text" placeholder="e.g. MHC-2024-XXXX"/></div>
+        <div class="fg"><label class="fl">City</label><input class="fi" type="text" placeholder="e.g. Singapore"/></div>
+        <div class="fg"><label class="fl">Phone</label><input class="fi" type="text" placeholder="+65 XXXX XXXX"/></div>
       </div>
       <div class="form-row">
         <div class="fg"><label class="fl">Phone</label><input class="fi" type="text" placeholder="+65 XXXX XXXX"/></div>
@@ -1809,13 +1845,13 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 <div class="modal-bg" id="staffModal" role="dialog" aria-modal="true" aria-labelledby="staffModalTitle">
   <div class="modal-box">
     <div class="modal-head">
-      <div class="modal-head-title" id="staffModalTitle"><i class="ti ti-user-plus" aria-hidden="true"></i> Add staff member</div>
+      <div class="modal-head-title" id="staffModalTitle"><i class="ti ti-user-plus" aria-hidden="true"></i> Add user account</div>
       <button class="modal-x" onclick="closeStaffModal()" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
       <div class="form-row">
         <div class="fg"><label class="fl">Full name</label><input class="fi" type="text" placeholder="e.g. Dr. Lee Xiu Ying"/></div>
-        <div class="fg"><label class="fl">Staff ID</label><input class="fi" type="text" placeholder="Auto-generated" readonly style="opacity:.6"/></div>
+        <div class="fg"><label class="fl">User ID (auto)</label><input class="fi" type="text" placeholder="Auto-generated" readonly style="opacity:.6"/></div>
       </div>
       <div class="form-row">
         <div class="fg"><label class="fl">Email address</label><input class="fi" type="email" placeholder="name@pinnacle.sg"/></div>
@@ -1846,7 +1882,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       </div>
       <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--p);display:flex;align-items:flex-start;gap:8px">
         <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
-        Staff will receive a welcome email with login instructions and must change their password on first login.
+        User will receive a welcome email with login instructions and must change their password on first login.
       </div>
     </div>
     <div class="modal-foot">
@@ -1872,37 +1908,38 @@ const meds=[
 
 const ICONS=[
   {icon:"ti-layout-dashboard",name:"Dashboard",usage:"Main dashboard nav"},
-  {icon:"ti-pill",name:"Medicines",usage:"Medicine inventory nav"},
-  {icon:"ti-shopping-cart",name:"Procurement",usage:"Purchase orders"},
-  {icon:"ti-calendar-x",name:"Expiry alerts",usage:"Expiry warnings"},
-  {icon:"ti-notebook",name:"Dispensing log",usage:"Clinical records"},
-  {icon:"ti-file-certificate",name:"Compliance",usage:"MOH reports nav"},
-  {icon:"ti-chart-bar",name:"Analytics",usage:"Reports & insights"},
-  {icon:"ti-users",name:"Staff access",usage:"User management"},
-  {icon:"ti-settings",name:"Settings",usage:"System configuration"},
-  {icon:"ti-shield-lock",name:"Controlled",usage:"Controlled drugs badge"},
-  {icon:"ti-medical-cross",name:"Clinic logo",usage:"Sidebar & login brand"},
-  {icon:"ti-bell",name:"Notifications",usage:"Topbar alerts"},
-  {icon:"ti-search",name:"Search",usage:"Filter bar & sidebar"},
-  {icon:"ti-plus",name:"Add item",usage:"Primary action buttons"},
+  {icon:"ti-building-warehouse",name:"Warehouse branch",usage:"WAREHOUSE branch type badge"},
+  {icon:"ti-building-hospital",name:"Clinic branch",usage:"CLINIC branch type badge"},
+  {icon:"ti-video",name:"Telemedicine",usage:"TELEMEDICINE branch type badge"},
+  {icon:"ti-stack-2",name:"Stock Overview",usage:"branch_inventory nav"},
+  {icon:"ti-layers-intersect",name:"Inv. Batches",usage:"inventory_batches tab"},
+  {icon:"ti-truck-delivery",name:"Shipments",usage:"Shipments nav + type badge"},
+  {icon:"ti-file-invoice",name:"Disbursements",usage:"disbursement_notes nav"},
+  {icon:"ti-arrows-exchange-2",name:"Returns",usage:"return_disbursement_notes nav"},
+  {icon:"ti-book",name:"Stock Ledger",usage:"stock_ledger nav (append-only)"},
+  {icon:"ti-shield-check",name:"Audit Trail",usage:"audit_trail nav"},
+  {icon:"ti-chart-bar",name:"Analytics",usage:"Reports & supply chain insights"},
+  {icon:"ti-users",name:"Users",usage:"User management nav"},
+  {icon:"ti-database",name:"Master Data",usage:"MDM nav"},
+  {icon:"ti-settings",name:"Settings",usage:"System configuration nav"},
+  {icon:"ti-pill",name:"Medicine",usage:"Medicines table / SKU reference"},
+  {icon:"ti-calendar-x",name:"Batch expiry",usage:"inventory_batches expiry_date warning"},
+  {icon:"ti-bell",name:"Notifications",usage:"Topbar alerts bell"},
+  {icon:"ti-search",name:"Search",usage:"Filter bar & sidebar search"},
+  {icon:"ti-plus",name:"Add record",usage:"Primary action buttons"},
   {icon:"ti-edit",name:"Edit",usage:"Table row edit action"},
-  {icon:"ti-eye",name:"View",usage:"Table row view action"},
+  {icon:"ti-eye",name:"View",usage:"Table row view detail"},
   {icon:"ti-download",name:"Export",usage:"Export data action"},
-  {icon:"ti-upload",name:"Import",usage:"CSV import action"},
-  {icon:"ti-alert-triangle",name:"Low stock",usage:"Warning badges"},
-  {icon:"ti-circle-check",name:"In stock",usage:"Success status badge"},
-  {icon:"ti-circle-x",name:"Out of stock",usage:"Error status badge"},
-  {icon:"ti-trending-up",name:"Trend up",usage:"Stat card footer"},
-  {icon:"ti-truck-delivery",name:"Supplier",usage:"Procurement sub-nav"},
-  {icon:"ti-chevron-down",name:"Expand",usage:"Submenu chevron"},
+  {icon:"ti-alert-triangle",name:"Low stock",usage:"qty < reorder_threshold badge"},
+  {icon:"ti-circle-check",name:"In stock",usage:"Stock OK badge"},
+  {icon:"ti-circle-x",name:"Out of stock",usage:"qty = 0 badge"},
+  {icon:"ti-trending-up",name:"Trend up",usage:"Stat card positive trend"},
+  {icon:"ti-arrow-down-left",name:"Stock IN",usage:"movement_type IN badge"},
+  {icon:"ti-arrow-up-right",name:"Stock OUT",usage:"movement_type OUT badge"},
+  {icon:"ti-adjustments",name:"Adjust",usage:"movement_type ADJUST badge"},
+  {icon:"ti-lock",name:"Append-only",usage:"stock_ledger / audit_trail lock indicator"},
   {icon:"ti-login",name:"Sign in",usage:"Login button"},
-  {icon:"ti-logout",name:"Sign out",usage:"Topbar sign out"},
-  {icon:"ti-lock",name:"Password",usage:"Login password field"},
-  {icon:"ti-shield-check",name:"Secure",usage:"Login security badge"},
-  {icon:"ti-map-pin",name:"Location",usage:"Singapore topbar chip"},
-  {icon:"ti-help-circle",name:"Help",usage:"Topbar help button"},
-  {icon:"ti-clock",name:"Timestamp",usage:"Page last-updated"},
-  {icon:"ti-rotate",name:"Reorder",usage:"Expiry alert action"}
+  {icon:"ti-logout",name:"Sign out",usage:"Topbar sign out"}
 ];
 
 let curView='all';
@@ -1979,13 +2016,15 @@ const auditData=[
   {tbl:'medicines',record:'MED-005',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',session:'sess_a1b2c3',ip:'10.1.1.45',at:'20 May 2026, 09:10'},
 ];
 const notifData=[
-  {id:1,type:'err',icon:'ti-alert-circle',title:'Critical: Diazepam 5mg expiring in 4 days',msg:'Batch SG2025-202 · 18 tabs remaining · Main Clinic',time:'2 hours ago',read:false},
-  {id:2,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Paracetamol 500mg below threshold',msg:'Current qty: 150 tabs · Threshold: 200 · Main Clinic',time:'3 hours ago',read:false},
-  {id:3,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Azithromycin 500mg',msg:'Current qty: 88 tabs · Threshold: 100 · Main Clinic',time:'5 hours ago',read:false},
-  {id:4,type:'info',icon:'ti-truck-delivery',title:'PO-2026-0119 delivery expected today',msg:'DKSH Healthcare · Salbutamol inhaler, Cetirizine 10mg',time:'6 hours ago',read:true},
-  {id:5,type:'ok',icon:'ti-circle-check',title:'PO-2026-0118 delivered and confirmed',msg:'Zuellig Pharma SG · 2 items received · Main Clinic',time:'Yesterday',read:true},
-  {id:6,type:'err',icon:'ti-calendar-x',title:'Amlodipine 5mg expiring in 9 days',msg:'Batch SG2025-198 · 30 tabs remaining · Main Clinic',time:'Yesterday',read:true},
-  {id:7,type:'info',icon:'ti-user-plus',title:'New staff added: Ms. Rachel Chua',msg:'Dispenser role · Tampines branch',time:'2 days ago',read:true},
+  {id:1,type:'err',icon:'ti-alert-circle',title:'Critical: Diazepam 5mg batch expiring in 4 days',msg:'batch_number: SG2025-202 · qty_remaining: 18 · Clinic Orchard',time:'2 hours ago',read:false},
+  {id:2,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Paracetamol 500mg below reorder_threshold',msg:'quantity: 150 · reorder_threshold: 200 · Clinic Tampines',time:'3 hours ago',read:false},
+  {id:3,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Azithromycin 500mg below reorder_threshold',msg:'quantity: 88 · reorder_threshold: 100 · Clinic Orchard',time:'5 hours ago',read:false},
+  {id:4,type:'info',icon:'ti-truck-delivery',title:'SHP-2026-0119 IN_TRANSIT — arrival expected today',msg:'DKSH Healthcare · SUPPLIER_TO_WAREHOUSE · Central Warehouse',time:'6 hours ago',read:true},
+  {id:5,type:'ok',icon:'ti-circle-check',title:'SHP-2026-0118 RECEIVED — stock_ledger updated',msg:'Zuellig Pharma SG · 2 shipment_batches · Clinic Orchard',time:'Yesterday',read:true},
+  {id:6,type:'err',icon:'ti-calendar-x',title:'Amlodipine 5mg batch expiring in 9 days',msg:'batch_number: SG2025-198 · qty_remaining: 30 · Clinic Orchard',time:'Yesterday',read:true},
+  {id:7,type:'info',icon:'ti-file-invoice',title:'DN-2026-00003 SUBMITTED — awaiting ACK from clinic',msg:'Warehouse → Clinic Orchard · Disbursement Note',time:'Yesterday',read:true},
+  {id:8,type:'warn',icon:'ti-arrows-exchange-2',title:'RDN-2026-00002 return submitted by Clinic Orchard',msg:'Azithromycin batch SG2026-066 · 6 tabs · return_disbursement_items',time:'2 days ago',read:true},
+  {id:9,type:'info',icon:'ti-user-plus',title:'New user created: Ms. Rachel Chua',msg:'CLINIC_ADMIN · branch_id: BR-003 (Clinic Tampines)',time:'2 days ago',read:true},
 ];
 const suppliersData=[
   {id:'SUP-001',name:'Zuellig Pharma SG',contact_person:'Mr. Lee Boon Hock',email:'orders@zuellig.sg',phone:'+65 6226 7788',reg_no:'UEN-200201234K',is_active:true,items:142},
@@ -2010,12 +2049,20 @@ const unitsData=[
   {id:'UNT-006',name:'Patch',abbr:'patch',type:'Transdermal'},
   {id:'UNT-007',name:'Suppository',abbr:'supp',type:'Rectal'},
 ];
-const schedulesData=[
-  {id:'SCH-001',schedule:'Schedule A',desc:'Prescription-only medicines',examples:'Amoxicillin, Morphine sulfate',color:'var(--err)'},
-  {id:'SCH-002',schedule:'Schedule B',desc:'Restricted prescription medicines requiring special authority',examples:'Diazepam, Codeine phosphate',color:'#d97706'},
-  {id:'SCH-003',schedule:'Schedule C',desc:'Pharmacy-only medicines — sold by pharmacist',examples:'Cetirizine, Ibuprofen 400mg',color:'var(--p)'},
-  {id:'SCH-004',schedule:'Schedule D',desc:'Pharmacy restricted — records required at point of sale',examples:'Pseudoephedrine, Promethazine',color:'var(--ok)'},
+/* inventory_batches — batch-level stock within branch_inventory */
+const invBatchesData=[
+  {branch:'Clinic Orchard',sku:'MED-001',med:'Amoxicillin 500mg',batch:'SG2026-011',expiry:'2027-03-15',qty_remaining:820,unit_price:1.24,ship_ref:'SHP-2026-0118',received_at:'22 May 2026, 10:00'},
+  {branch:'Clinic Tampines',sku:'MED-002',med:'Paracetamol 500mg',batch:'SG2026-034',expiry:'2026-06-10',qty_remaining:150,unit_price:0.12,ship_ref:'SHP-2026-0116',received_at:'10 May 2026, 14:30'},
+  {branch:'Central Warehouse',sku:'MED-003',med:'Morphine 10mg/ml',batch:'SG2026-007',expiry:'2026-12-01',qty_remaining:45,unit_price:18.50,ship_ref:'SHP-2026-0117',received_at:'12 May 2026, 09:00'},
+  {branch:'Clinic Orchard',sku:'MED-004',med:'Amlodipine 5mg',batch:'SG2025-198',expiry:'2026-06-04',qty_remaining:30,unit_price:0.58,ship_ref:'SHP-2026-0118',received_at:'22 May 2026, 10:00'},
+  {branch:'Clinic Orchard',sku:'MED-005',med:'Salbutamol inhaler',batch:'SG2026-055',expiry:'2027-08-22',qty_remaining:0,unit_price:8.40,ship_ref:'SHP-2026-0118',received_at:'22 May 2026, 10:00'},
+  {branch:'Clinic Orchard',sku:'MED-006',med:'Metformin 850mg',batch:'SG2026-021',expiry:'2027-01-30',qty_remaining:680,unit_price:0.34,ship_ref:'SHP-2026-0118',received_at:'22 May 2026, 10:00'},
+  {branch:'Clinic Orchard',sku:'MED-007',med:'Diazepam 5mg',batch:'SG2025-202',expiry:'2026-05-30',qty_remaining:18,unit_price:0.95,ship_ref:'SHP-2026-0117',received_at:'12 May 2026, 09:00'},
+  {branch:'Clinic Tampines',sku:'MED-008',med:'Atorvastatin 20mg',batch:'SG2026-043',expiry:'2028-02-14',qty_remaining:410,unit_price:0.62,ship_ref:'SHP-2026-0116',received_at:'10 May 2026, 14:30'},
+  {branch:'Clinic Orchard',sku:'MED-009',med:'Azithromycin 500mg',batch:'SG2026-066',expiry:'2027-11-05',qty_remaining:88,unit_price:1.10,ship_ref:'SHP-2026-0118',received_at:'22 May 2026, 10:00'},
+  {branch:'Telemedicine Hub',sku:'MED-010',med:'Cetirizine 10mg',batch:'SG2026-012',expiry:'2028-06-18',qty_remaining:560,unit_price:0.18,ship_ref:'SHP-2026-0120',received_at:'24 May 2026, 16:00'},
 ];
+let mdmBatchPage=1;
 
 function fmtDate(d){const dt=new Date(d);return dt.toLocaleDateString('en-SG',{day:'2-digit',month:'short',year:'numeric'});}
 function isSoon(d){return (new Date(d)-new Date('2026-06-06'))/(864e5)<=30;}
@@ -2235,7 +2282,7 @@ function showScreen(id){SCREENS.forEach(s=>{const el=document.getElementById(s);
 function goApp(){showScreen('appScreen');}
 function goLogin(){showScreen('loginScreen');}
 function goForgot(){showScreen('forgotScreen');}
-function goOtp(){const e=document.getElementById('forgotEmail');const disp=document.getElementById('otpEmailDisplay');if(disp&&e)disp.textContent=e.value||'your email';showScreen('otpScreen');setTimeout(()=>{const o=document.getElementById('otp0');if(o)o.focus();},100);startResendTimer();}
+function goOtp(){const e=document.getElementById('forgotEmail');const disp=document.getElementById('otpEmailDisplay');if(disp&&e)disp.textContent=e.value||'ahmad.y@pinnacle.sg';showScreen('otpScreen');setTimeout(()=>{const o=document.getElementById('otp0');if(o)o.focus();},100);startResendTimer();}
 function goReset(){showScreen('resetScreen');}
 function goResetSuccess(){showScreen('resetSuccessScreen');}
 function otpAdvance(el,idx){el.value=el.value.replace(/[^0-9]/g,'');if(el.value&&idx<5){const next=document.getElementById('otp'+(idx+1));if(next)next.focus();}}
@@ -2440,19 +2487,31 @@ function renderMdmTab(tabId){
       <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button></td>
     </tr>`).join('');
   }
-  if(tabId==='mdm-schedules'){
-    const b=document.getElementById('mdmSchBody');if(!b)return;
-    b.innerHTML=schedulesData.map(s=>`<tr>
-      <td style="font-family:monospace;font-size:12px">${s.id}</td>
-      <td><span style="font-weight:700;color:${s.color}">${s.schedule}</span></td>
-      <td style="font-size:12px;color:var(--txt2)">${s.desc}</td>
-      <td style="font-size:12px">${s.examples}</td>
-      <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button></td>
-    </tr>`).join('');
+  if(tabId==='mdm-batches'){
+    const b=document.getElementById('mdmBatchBody');if(!b)return;
+    const pg=invBatchesData.slice((mdmBatchPage-1)*PER_PAGE,mdmBatchPage*PER_PAGE);
+    b.innerHTML=pg.map(bt=>{
+      const expCls=isSoon(bt.expiry)?'color:var(--err);font-weight:700':'color:var(--txt2)';
+      return`<tr>
+        <td style="font-size:12px">${bt.branch}</td>
+        <td><span style="font-family:monospace;font-size:11px;color:var(--p)">${bt.sku}</span><br><span style="font-size:12px">${bt.med}</span></td>
+        <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${bt.batch}</td>
+        <td style="font-size:12px;${expCls}">${fmtDate(bt.expiry)}${isSoon(bt.expiry)?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:11px;color:var(--err)" aria-hidden="true"></i>':''}</td>
+        <td style="font-weight:600;color:${bt.qty_remaining===0?'var(--err)':bt.qty_remaining<30?'var(--warn)':'var(--ok)'};text-align:right">${bt.qty_remaining}</td>
+        <td style="font-size:12px;text-align:right">S$${bt.unit_price.toFixed(2)}</td>
+        <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${bt.ship_ref}</td>
+        <td style="font-size:12px;color:var(--txt2)">${bt.received_at}</td>
+        <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i></button></td>
+      </tr>`;
+    }).join('');
+    const mc=document.getElementById('mdmBatchCount');
+    if(mc)mc.textContent=invBatchesData.length+' batches';
+    renderPagination('pg-mdm-batches',invBatchesData.length,mdmBatchPage,PER_PAGE,'changeMdmBatchPage');
   }
 }
 function switchMdmTab(btn,panelId){renderMdmTab(panelId);}
 function changeMdmMedPage(p){mdmMedPage=p;renderMdmTab('mdm-meds');}
+function changeMdmBatchPage(p){mdmBatchPage=p;renderMdmTab('mdm-batches');}
 function openMdmAddModal(){openModal();}
 
 function openBranchModal(){document.getElementById('branchModal').classList.add('open');}
