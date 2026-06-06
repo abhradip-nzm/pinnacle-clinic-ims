@@ -775,7 +775,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="stat-card"><div class="stat-accent" style="background:var(--err)"></div>
             <div class="stat-top"><div class="stat-lbl">Batches expiring</div><div class="stat-icon si-red"><i class="ti ti-calendar-x" aria-hidden="true"></i></div></div>
             <div class="stat-val">7</div>
-            <div class="stat-foot">Within <span style="font-weight:700;color:var(--err)">30 days</span> · inventory_batches</div>
+            <div class="stat-foot">Within <span style="font-weight:700;color:var(--err)">30 days</span> · batch tracking</div>
           </div>
         </div>
 
@@ -814,7 +814,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- STOCK OVERVIEW PAGE (branch_inventory) -->
       <div class="page-content" id="page-inventory">
         <div class="pg-header">
-          <div><div class="pg-title">Stock Overview</div><div class="pg-sub"><i class="ti ti-stack-2" aria-hidden="true"></i> branch_inventory · current qty vs reorder threshold per branch</div></div>
+          <div><div class="pg-title">Stock Overview</div><div class="pg-sub"><i class="ti ti-stack-2" aria-hidden="true"></i> Current stock quantity vs reorder threshold, per branch</div></div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
             <button class="btn btn-primary" onclick="openModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add medicine</button>
@@ -827,7 +827,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <select class="fsel" aria-label="Status"><option value="">All status</option><option value="In Stock">In Stock</option><option value="Low Stock">Low Stock</option><option value="Out of Stock">Out of Stock</option></select>
         </div>
         <div class="tbl-wrap">
-          <div class="tbl-hdr"><div class="tbl-title">branch_inventory</div><div class="tbl-meta" id="invCount">Showing 5 of 10</div></div>
+          <div class="tbl-hdr"><div class="tbl-title">Branch Stock</div><div class="tbl-meta" id="invCount">Showing 5 of 10</div></div>
           <div style="overflow-x:auto">
           <table>
             <colgroup><col style="width:10%"><col style="width:20%"><col style="width:11%"><col style="width:10%"><col style="width:9%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:8%"></colgroup>
@@ -842,10 +842,10 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- SHIPMENTS PAGE -->
       <div class="page-content" id="page-shipments">
         <div class="pg-header">
-          <div><div class="pg-title">Shipments</div><div class="pg-sub"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Supplier inbound &amp; internal transfers — shipment_type / shipment_status</div></div>
+          <div><div class="pg-title">Shipments</div><div class="pg-sub"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Supplier inbound shipments and internal transfers — with type and status tracking</div></div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
-            <button class="btn btn-primary"><i class="ti ti-plus" aria-hidden="true"></i> New shipment</button>
+            <button class="btn btn-primary" onclick="openShipmentModal()"><i class="ti ti-plus" aria-hidden="true"></i> New shipment</button>
           </div>
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
@@ -870,17 +870,17 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search shipment ref, supplier..." aria-label="Search"/></div>
           <select class="fsel" aria-label="Type">
             <option value="">All types</option>
-            <option value="SUPPLIER_TO_CLINIC">SUPPLIER_TO_CLINIC</option>
-            <option value="SUPPLIER_TO_WAREHOUSE">SUPPLIER_TO_WAREHOUSE</option>
-            <option value="INTERNAL_TRANSFER">INTERNAL_TRANSFER</option>
+            <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
+            <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
+            <option value="INTERNAL_TRANSFER">Internal Transfer</option>
           </select>
           <select class="fsel" aria-label="Status">
             <option value="">All status</option>
-            <option value="DRAFT">DRAFT</option>
-            <option value="CONFIRMED">CONFIRMED</option>
-            <option value="IN_TRANSIT">IN_TRANSIT</option>
-            <option value="RECEIVED">RECEIVED</option>
-            <option value="CANCELLED">CANCELLED</option>
+            <option value="DRAFT">Draft</option>
+            <option value="CONFIRMED">Confirmed</option>
+            <option value="IN_TRANSIT">In Transit</option>
+            <option value="RECEIVED">Received</option>
+            <option value="CANCELLED">Cancelled</option>
           </select>
         </div>
         <div class="tbl-wrap">
@@ -899,7 +899,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- BATCH EXPIRY PAGE (inventory_batches) -->
       <div class="page-content" id="page-expiry">
         <div class="pg-header">
-          <div><div class="pg-title">Batch Expiry Tracker</div><div class="pg-sub"><i class="ti ti-calendar-x" aria-hidden="true"></i> inventory_batches · expiry_date · 7 batches expiring within 30 days</div></div>
+          <div><div class="pg-title">Batch Expiry Tracker</div><div class="pg-sub"><i class="ti ti-calendar-x" aria-hidden="true"></i> Batch-level stock tracking — 7 batches expiring within 30 days</div></div>
           <div class="pg-actions"><button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button></div>
         </div>
         <div class="filter-bar" style="margin-bottom:14px">
@@ -911,7 +911,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="exp-icon-wrap si-red"><i class="ti ti-alert-circle" style="font-size:20px;color:var(--err)" aria-hidden="true"></i></div>
             <div class="exp-info">
               <div class="exp-name">Diazepam 5mg <span class="badge bgb" style="margin-left:6px;font-size:10px"><i class="ti ti-shield-lock" style="font-size:9px"></i>Rx</span></div>
-              <div class="exp-meta"><span>batch_number: SG2025-202</span><span>qty_remaining: 18 tabs</span><span>Branch: Clinic Orchard</span></div>
+              <div class="exp-meta"><span>Batch: SG2025-202</span><span>18 tabs remaining</span><span>Branch: Clinic Orchard</span></div>
             </div>
             <div class="exp-days" style="color:var(--err)">4 days</div>
             <button class="btn btn-danger" style="padding:6px 12px;font-size:12px"><i class="ti ti-trash" style="font-size:13px" aria-hidden="true"></i> Write off</button>
@@ -920,7 +920,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="exp-icon-wrap si-red"><i class="ti ti-alert-circle" style="font-size:20px;color:var(--err)" aria-hidden="true"></i></div>
             <div class="exp-info">
               <div class="exp-name">Amlodipine 5mg</div>
-              <div class="exp-meta"><span>batch_number: SG2025-198</span><span>qty_remaining: 30 tabs</span><span>Branch: Clinic Orchard</span></div>
+              <div class="exp-meta"><span>Batch: SG2025-198</span><span>30 tabs remaining</span><span>Branch: Clinic Orchard</span></div>
             </div>
             <div class="exp-days" style="color:var(--err)">9 days</div>
             <button class="btn btn-danger" style="padding:6px 12px;font-size:12px"><i class="ti ti-trash" style="font-size:13px" aria-hidden="true"></i> Write off</button>
@@ -929,7 +929,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="exp-icon-wrap si-amber"><i class="ti ti-clock" style="font-size:20px;color:var(--warn)" aria-hidden="true"></i></div>
             <div class="exp-info">
               <div class="exp-name">Paracetamol 500mg</div>
-              <div class="exp-meta"><span>batch_number: SG2026-034</span><span>qty_remaining: 150 tabs</span><span>Branch: Clinic Tampines</span></div>
+              <div class="exp-meta"><span>Batch: SG2026-034</span><span>150 tabs remaining</span><span>Branch: Clinic Tampines</span></div>
             </div>
             <div class="exp-days" style="color:var(--warn)">15 days</div>
             <button class="btn" style="padding:6px 12px;font-size:12px"><i class="ti ti-arrows-exchange" style="font-size:13px" aria-hidden="true"></i> Return</button>
@@ -938,7 +938,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="exp-icon-wrap si-amber"><i class="ti ti-clock" style="font-size:20px;color:var(--warn)" aria-hidden="true"></i></div>
             <div class="exp-info">
               <div class="exp-name">Azithromycin 500mg</div>
-              <div class="exp-meta"><span>batch_number: SG2026-019</span><span>qty_remaining: 44 tabs</span><span>Branch: Central Warehouse</span></div>
+              <div class="exp-meta"><span>Batch: SG2026-019</span><span>44 tabs remaining</span><span>Branch: Central Warehouse</span></div>
             </div>
             <div class="exp-days" style="color:var(--warn)">22 days</div>
             <button class="btn" style="padding:6px 12px;font-size:12px"><i class="ti ti-arrows-exchange" style="font-size:13px" aria-hidden="true"></i> Return</button>
@@ -1032,9 +1032,9 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           </div>
           <div class="setting-card">
             <div class="sc-title"><i class="ti ti-users" aria-hidden="true"></i> User access</div>
-            <div class="sc-row"><div><div class="sc-lbl">Ahmad Bin Yusof</div><div class="sc-desc">SUPER_ADMIN · branch_id: null</div></div><span class="badge bg-super">SUPER_ADMIN</span></div>
-            <div class="sc-row"><div><div class="sc-lbl">Mr. Rajan Kumar</div><div class="sc-desc">WAREHOUSE_ADMIN · Central Warehouse</div></div><span class="badge bg-wh-admin">WAREHOUSE</span></div>
-            <div class="sc-row"><div><div class="sc-lbl">Dr. Chan Wei Ling</div><div class="sc-desc">CLINIC_ADMIN · Clinic Orchard</div></div><span class="badge bg-clinic-admin">CLINIC</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Ahmad Bin Yusof</div><div class="sc-desc">Super Admin · No branch assignment</div></div><span class="badge bg-super">Super Admin</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Mr. Rajan Kumar</div><div class="sc-desc">Warehouse Admin · Central Warehouse</div></div><span class="badge bg-wh-admin">Warehouse Admin</span></div>
+            <div class="sc-row"><div><div class="sc-lbl">Dr. Chan Wei Ling</div><div class="sc-desc">Clinic Admin · Clinic Orchard</div></div><span class="badge bg-clinic-admin">Clinic Admin</span></div>
             <div class="sc-row" style="border-bottom:none"><button class="btn" style="font-size:12px;padding:6px 12px" onclick="openStaffModal()"><i class="ti ti-user-plus" style="font-size:13px" aria-hidden="true"></i> Add user</button></div>
           </div>
           <div class="setting-card">
@@ -1355,7 +1355,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Branches</div>
-            <div class="pg-sub"><i class="ti ti-building-warehouse" aria-hidden="true"></i> branch_type: WAREHOUSE · CLINIC · TELEMEDICINE</div>
+            <div class="pg-sub"><i class="ti ti-building-warehouse" aria-hidden="true"></i> Types: Warehouse · Clinic · Telemedicine</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -1412,7 +1412,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Users</div>
-            <div class="pg-sub"><i class="ti ti-users" aria-hidden="true"></i> user_role: SUPER_ADMIN · CLINIC_ADMIN · WAREHOUSE_ADMIN · TELEMEDICINE_ADMIN</div>
+            <div class="pg-sub"><i class="ti ti-users" aria-hidden="true"></i> Roles: Super Admin · Clinic Admin · Warehouse Admin · Telemedicine Admin</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -1426,15 +1426,15 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:#9d174d"></div>
             <div class="stat-top"><div class="stat-lbl">Super Admins</div><div class="stat-icon" style="background:#fdf2f8;color:#9d174d"><i class="ti ti-crown" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">SUPER_ADMIN · branch_id: null</div>
+            <div class="stat-val">1</div><div class="stat-foot">Super Admin · no branch assignment</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
             <div class="stat-top"><div class="stat-lbl">Warehouse admins</div><div class="stat-icon si-amber"><i class="ti ti-building-warehouse" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">WAREHOUSE_ADMIN</div>
+            <div class="stat-val">1</div><div class="stat-foot">Warehouse Admin</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--purple)"></div>
             <div class="stat-top"><div class="stat-lbl">Telemedicine admins</div><div class="stat-icon" style="background:var(--purplebg);color:var(--purple)"><i class="ti ti-video" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">TELEMEDICINE_ADMIN</div>
+            <div class="stat-val">1</div><div class="stat-foot">Telemedicine Admin</div>
           </div>
         </div>
         <div class="filter-bar">
@@ -1442,10 +1442,10 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <select class="fsel" aria-label="Branch"><option value="">All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option><option>Telemedicine Hub</option></select>
           <select class="fsel" aria-label="Role">
             <option value="">All roles</option>
-            <option value="SUPER_ADMIN">SUPER_ADMIN</option>
-            <option value="CLINIC_ADMIN">CLINIC_ADMIN</option>
-            <option value="WAREHOUSE_ADMIN">WAREHOUSE_ADMIN</option>
-            <option value="TELEMEDICINE_ADMIN">TELEMEDICINE_ADMIN</option>
+            <option value="SUPER_ADMIN">Super Admin</option>
+            <option value="CLINIC_ADMIN">Clinic Admin</option>
+            <option value="WAREHOUSE_ADMIN">Warehouse Admin</option>
+            <option value="TELEMEDICINE_ADMIN">Telemedicine Admin</option>
           </select>
           <select class="fsel" aria-label="Status"><option>All status</option><option>Active</option><option>Inactive</option></select>
         </div>
@@ -1467,17 +1467,17 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Stock Ledger</div>
-            <div class="pg-sub"><i class="ti ti-book" aria-hidden="true"></i> stock_ledger · append-only · movement_type: IN / OUT / ADJUST</div>
+            <div class="pg-sub"><i class="ti ti-book" aria-hidden="true"></i> Append-only journal — Stock In, Stock Out and Adjustment entries</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export CSV</button>
-            <button class="btn btn-primary" onclick="openModal()"><i class="ti ti-pencil-plus" aria-hidden="true"></i> Manual adjustment</button>
+            <button class="btn btn-primary" onclick="openAdjustmentModal()"><i class="ti ti-adjustments" aria-hidden="true"></i> Record adjustment</button>
           </div>
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
           <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
             <div class="stat-top"><div class="stat-lbl">Total entries</div><div class="stat-icon si-blue"><i class="ti ti-book" aria-hidden="true"></i></div></div>
-            <div class="stat-val">11</div><div class="stat-foot">Append-only · no UPDATE/DELETE</div>
+            <div class="stat-val">11</div><div class="stat-foot">Read-only journal — no edits or deletions permitted</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
             <div class="stat-top"><div class="stat-lbl">IN movements</div><div class="stat-icon si-green"><i class="ti ti-arrow-down-left" aria-hidden="true"></i></div></div>
@@ -1496,31 +1496,31 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search medicine, batch, reference ID..." aria-label="Search"/></div>
           <select class="fsel" aria-label="Movement type">
             <option value="">All movements</option>
-            <option value="IN">IN</option>
-            <option value="OUT">OUT</option>
-            <option value="ADJUST">ADJUST</option>
+            <option value="IN">Stock In</option>
+            <option value="OUT">Stock Out</option>
+            <option value="ADJUST">Adjustment</option>
           </select>
           <select class="fsel" aria-label="Reference type">
-            <option value="">All references</option>
-            <option>SHIPMENT_IN</option>
-            <option>SHIPMENT_INTERNAL</option>
-            <option>DISBURSEMENT</option>
-            <option>ACK_RECEIPT</option>
-            <option>RETURN_DISBURSEMENT</option>
-            <option>RETURN_ACK</option>
-            <option>MANUAL_ADJUSTMENT</option>
+            <option value="">All reference types</option>
+            <option value="SHIPMENT_IN">Shipment In</option>
+            <option value="SHIPMENT_INTERNAL">Internal Transfer</option>
+            <option value="DISBURSEMENT">Disbursement</option>
+            <option value="ACK_RECEIPT">Acknowledgement Receipt</option>
+            <option value="RETURN_DISBURSEMENT">Return Note</option>
+            <option value="RETURN_ACK">Return Acknowledgement</option>
+            <option value="MANUAL_ADJUSTMENT">Manual Adjustment</option>
           </select>
           <select class="fsel" aria-label="Branch"><option>All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option></select>
         </div>
         <div class="tbl-wrap">
           <div class="tbl-hdr">
-            <div class="tbl-title">stock_ledger</div>
+            <div class="tbl-title">Stock Ledger</div>
             <div style="display:flex;align-items:center;gap:8px"><span class="badge bga" style="font-size:10px"><i class="ti ti-lock" style="font-size:10px"></i>Append-only</span><span class="tbl-meta" id="txnCount"></span></div>
           </div>
           <div style="overflow-x:auto">
           <table>
             <colgroup><col style="width:16%"><col style="width:12%"><col style="width:9%"><col style="width:10%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:12%"><col style="width:14%"></colgroup>
-            <thead><tr><th>reference_type</th><th>Medicine</th><th>Batch no.</th><th>movement_type</th><th>qty_before</th><th>qty_change</th><th>qty_after</th><th>performed_by</th><th>created_at</th></tr></thead>
+            <thead><tr><th>Reference Type</th><th>Medicine</th><th>Batch No.</th><th>Movement</th><th>Qty Before</th><th>Qty Change</th><th>Qty After</th><th>Performed By</th><th>Date / Time</th></tr></thead>
             <tbody id="txnBody"></tbody>
           </table>
           </div>
@@ -1533,11 +1533,11 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Disbursements</div>
-            <div class="pg-sub"><i class="ti ti-file-invoice" aria-hidden="true"></i> disbursement_notes (DN) → acknowledgement_receipts (AR) · Warehouse → Clinic flow</div>
+            <div class="pg-sub"><i class="ti ti-file-invoice" aria-hidden="true"></i> Disbursement Notes (DN) → Acknowledgement Receipts (AR) · Warehouse to Clinic workflow</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
-            <button class="btn btn-primary"><i class="ti ti-plus" aria-hidden="true"></i> New DN</button>
+            <button class="btn btn-primary" onclick="openDnModal()"><i class="ti ti-plus" aria-hidden="true"></i> New disbursement note</button>
           </div>
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
@@ -1576,11 +1576,11 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Returns</div>
-            <div class="pg-sub"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> return_disbursement_notes (RDN) → return_acknowledgement_receipts (RAR) · Clinic → Warehouse</div>
+            <div class="pg-sub"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Return Notes (RDN) → Return Acknowledgement Receipts (RAR) · Clinic to Warehouse workflow</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
-            <button class="btn btn-primary"><i class="ti ti-plus" aria-hidden="true"></i> New return</button>
+            <button class="btn btn-primary" onclick="openRdnModal()"><i class="ti ti-plus" aria-hidden="true"></i> New return note</button>
           </div>
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
@@ -1619,7 +1619,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Audit Trail</div>
-            <div class="pg-sub"><i class="ti ti-shield-check" aria-hidden="true"></i> audit_trail · append-only · INSERT / UPDATE / DELETE captured via DB triggers</div>
+            <div class="pg-sub"><i class="ti ti-shield-check" aria-hidden="true"></i> Append-only change log — Insert, Update and Delete operations captured via database triggers</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -1629,12 +1629,20 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search table, record ID, actor..." aria-label="Search"/></div>
           <select class="fsel" aria-label="Table">
             <option value="">All tables</option>
-            <option>shipments</option><option>disbursement_notes</option><option>acknowledgement_receipts</option>
-            <option>return_disbursement_notes</option><option>branch_inventory</option><option>users</option><option>medicines</option><option>suppliers</option>
+            <option value="shipments">Shipments</option>
+            <option value="disbursement_notes">Disbursement Notes</option>
+            <option value="acknowledgement_receipts">Acknowledgement Receipts</option>
+            <option value="return_disbursement_notes">Return Notes</option>
+            <option value="branch_inventory">Branch Inventory</option>
+            <option value="users">Users</option>
+            <option value="medicines">Medicines</option>
+            <option value="suppliers">Suppliers</option>
           </select>
           <select class="fsel" aria-label="Operation">
             <option value="">All operations</option>
-            <option>INSERT</option><option>UPDATE</option><option>DELETE</option>
+            <option value="INSERT">Insert</option>
+            <option value="UPDATE">Update</option>
+            <option value="DELETE">Delete</option>
           </select>
           <select class="fsel" aria-label="Branch"><option>All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option></select>
         </div>
@@ -1646,7 +1654,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div style="overflow-x:auto">
           <table>
             <colgroup><col style="width:14%"><col style="width:12%"><col style="width:10%"><col style="width:12%"><col style="width:10%"><col style="width:18%"><col style="width:12%"><col style="width:12%"></colgroup>
-            <thead><tr><th>table_name</th><th>record_id</th><th>operation</th><th>actor</th><th>branch</th><th>session_id</th><th>ip_address</th><th>created_at</th></tr></thead>
+            <thead><tr><th>Table</th><th>Record ID</th><th>Operation</th><th>Actor</th><th>Branch</th><th>Session ID</th><th>IP Address</th><th>Date / Time</th></tr></thead>
             <tbody id="auditBody"></tbody>
           </table>
           </div>
@@ -1662,7 +1670,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="pg-sub"><i class="ti ti-database" aria-hidden="true"></i> Medicines, suppliers, categories, units &amp; drug schedules</div>
           </div>
           <div class="pg-actions" id="mdmActions">
-            <button class="btn btn-primary" onclick="openMdmAddModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add record</button>
+            <button class="btn btn-primary" id="mdmAddBtn" onclick="openMdmAddModal()"><i class="ti ti-plus" aria-hidden="true"></i> Add medicine</button>
           </div>
         </div>
         <div class="tbl-wrap">
@@ -1683,7 +1691,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div style="overflow-x:auto">
             <table>
               <colgroup><col style="width:9%"><col style="width:10%"><col style="width:18%"><col style="width:12%"><col style="width:8%"><col style="width:9%"><col style="width:8%"><col style="width:10%"><col style="width:8%"><col style="width:8%"></colgroup>
-              <thead><tr><th>SKU</th><th>Brand name</th><th>Medicine / Generic name</th><th>Category</th><th>UoM</th><th>Reorder lvl</th><th>Rx reqd</th><th>is_active</th><th>Actions</th></tr></thead>
+              <thead><tr><th>SKU</th><th>Brand Name</th><th>Medicine / Generic Name</th><th>Category</th><th>Unit</th><th>Reorder Level</th><th>Prescription</th><th>Status</th><th>Actions</th></tr></thead>
               <tbody id="mdmMedBody"></tbody>
             </table>
             </div>
@@ -1738,13 +1746,13 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <!-- Inventory Batches (inventory_batches table) -->
           <div id="mdm-batches" class="mdm-panel">
             <div class="tbl-hdr" style="border-top:1px solid var(--border)">
-              <div class="tbl-title">inventory_batches</div>
+              <div class="tbl-title">Inventory Batches</div>
               <div class="tbl-meta" id="mdmBatchCount"></div>
             </div>
             <div style="overflow-x:auto">
             <table>
               <colgroup><col style="width:10%"><col style="width:18%"><col style="width:12%"><col style="width:11%"><col style="width:12%"><col style="width:10%"><col style="width:10%"><col style="width:12%"><col style="width:5%"></colgroup>
-              <thead><tr><th>Branch</th><th>Medicine (SKU)</th><th>batch_number</th><th>expiry_date</th><th>qty_remaining</th><th>unit_price</th><th>Shipment ref</th><th>received_at</th><th>Actions</th></tr></thead>
+              <thead><tr><th>Branch</th><th>Medicine / SKU</th><th>Batch No.</th><th>Expiry Date</th><th>Qty Remaining</th><th>Unit Price</th><th>Shipment Ref</th><th>Received At</th><th>Actions</th></tr></thead>
               <tbody id="mdmBatchBody"></tbody>
             </table>
             </div>
@@ -1793,14 +1801,14 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="fg" style="justify-content:flex-end;padding-top:20px">
           <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13px;color:var(--txt)">
             <button class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')" role="switch" aria-label="requires_prescription"></button>
-            <span>requires_prescription</span>
+            <span>Requires Prescription</span>
           </label>
         </div>
       </div>
       <div class="fg"><label class="fl">Description</label><input class="fi" type="text" placeholder="Optional description or notes" aria-label="Description"/></div>
       <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--p);display:flex;align-items:flex-start;gap:8px;margin-top:2px">
         <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
-        Batch details (batch_number, expiry_date, unit_price) belong to <strong>inventory_batches</strong> and are recorded when a shipment is received.
+        Batch details (batch_number, expiry_date, unit_price) belong to the Inventory Batches record and are recorded when a shipment is received.
       </div>
     </div>
     <div class="modal-foot">
@@ -1860,19 +1868,19 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <div class="form-row">
         <div class="fg"><label class="fl">Role</label>
           <select class="fi">
-            <option>CLINIC_ADMIN</option>
-            <option>WAREHOUSE_ADMIN</option>
-            <option>TELEMEDICINE_ADMIN</option>
-            <option>SUPER_ADMIN</option>
+            <option value="CLINIC_ADMIN">Clinic Admin</option>
+            <option value="WAREHOUSE_ADMIN">Warehouse Admin</option>
+            <option value="TELEMEDICINE_ADMIN">Telemedicine Admin</option>
+            <option value="SUPER_ADMIN">Super Admin</option>
           </select>
         </div>
-        <div class="fg"><label class="fl">Branch (branch_id)</label>
+        <div class="fg"><label class="fl">Assigned Branch</label>
           <select class="fi">
             <option>Central Warehouse</option>
             <option>Clinic Orchard</option>
             <option>Clinic Tampines</option>
             <option>Telemedicine Hub</option>
-            <option>— null (SUPER_ADMIN only) —</option>
+            <option value="">— No branch (Super Admin only) —</option>
           </select>
         </div>
       </div>
@@ -1888,6 +1896,267 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
     <div class="modal-foot">
       <button class="btn" onclick="closeStaffModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
       <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Create account</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHIPMENT MODAL -->
+<div class="modal-bg" id="shipmentModal" role="dialog" aria-modal="true" aria-labelledby="shipmentModalTitle">
+  <div class="modal-box" style="width:540px">
+    <div class="modal-head">
+      <div class="modal-head-title" id="shipmentModalTitle"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Create new shipment</div>
+      <button class="modal-x" onclick="closeShipmentModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="fg"><label class="fl">Shipment type <span style="color:var(--err)">*</span></label>
+          <select class="fi" id="shipTypeSelect" onchange="toggleShipmentFields()" aria-label="Shipment type">
+            <option value="">— Select type —</option>
+            <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
+            <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
+            <option value="INTERNAL_TRANSFER">Internal Transfer</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Shipment reference</label>
+          <input class="fi" type="text" placeholder="Auto-generated (e.g. SHP-2026-0122)" readonly style="opacity:.6"/>
+        </div>
+      </div>
+      <div id="shipSupplierRow" class="form-row">
+        <div class="fg"><label class="fl">Supplier <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Supplier">
+            <option value="">— Select supplier —</option>
+            <option>Zuellig Pharma SG</option>
+            <option>DKSH Healthcare</option>
+            <option>Pharmaniaga SG</option>
+            <option>YCH Lifesciences</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Destination">
+            <option value="">— Select branch —</option>
+            <option>Central Warehouse</option>
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+            <option>Telemedicine Hub</option>
+          </select>
+        </div>
+      </div>
+      <div id="shipTransferRow" style="display:none" class="form-row">
+        <div class="fg"><label class="fl">Source branch <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Source branch">
+            <option value="">— Select source —</option>
+            <option>Central Warehouse</option>
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Destination branch">
+            <option value="">— Select destination —</option>
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+            <option>Telemedicine Hub</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Remarks</label>
+        <input class="fi" type="text" placeholder="Optional remarks or instructions"/>
+      </div>
+      <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--p);display:flex;align-items:flex-start;gap:8px;margin-top:2px">
+        <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
+        Batch line items (medicines, quantities, unit prices) are added after the shipment is confirmed.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeShipmentModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Create shipment</button>
+    </div>
+  </div>
+</div>
+
+<!-- DISBURSEMENT NOTE MODAL -->
+<div class="modal-bg" id="dnModal" role="dialog" aria-modal="true" aria-labelledby="dnModalTitle">
+  <div class="modal-box" style="width:540px">
+    <div class="modal-head">
+      <div class="modal-head-title" id="dnModalTitle"><i class="ti ti-file-invoice" aria-hidden="true"></i> Create disbursement note</div>
+      <button class="modal-x" onclick="closeDnModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px;font-size:12px;color:var(--txt2);margin-bottom:4px">
+        <strong style="color:var(--txt);display:block;margin-bottom:4px">What is a Disbursement Note?</strong>
+        A Disbursement Note (DN) is raised by the warehouse to authorise the release of stock to a clinic branch. The receiving clinic must then raise an Acknowledgement Receipt (AR) to confirm receipt.
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Linked shipment <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Linked shipment">
+            <option value="">— Select received shipment —</option>
+            <option>SHP-2026-0118 · Clinic Orchard</option>
+            <option>SHP-2026-0119 · Central Warehouse</option>
+            <option>SHP-2026-0120 · Clinic Orchard (internal)</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">DN reference</label>
+          <input class="fi" type="text" placeholder="Auto-generated (e.g. DN-2026-00007)" readonly style="opacity:.6"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Destination clinic <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Destination clinic">
+            <option value="">— Select clinic —</option>
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+            <option>Telemedicine Hub</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Submitted by</label>
+          <input class="fi" type="text" value="Ahmad Bin Yusof" readonly style="opacity:.6"/>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Remarks</label>
+        <input class="fi" type="text" placeholder="Optional remarks for the receiving clinic"/>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeDnModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-primary"><i class="ti ti-send" aria-hidden="true"></i> Submit disbursement note</button>
+    </div>
+  </div>
+</div>
+
+<!-- RETURN NOTE MODAL -->
+<div class="modal-bg" id="rdnModal" role="dialog" aria-modal="true" aria-labelledby="rdnModalTitle">
+  <div class="modal-box" style="width:560px">
+    <div class="modal-head">
+      <div class="modal-head-title" id="rdnModalTitle"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Create return note</div>
+      <button class="modal-x" onclick="closeRdnModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px;font-size:12px;color:var(--txt2);margin-bottom:4px">
+        <strong style="color:var(--txt);display:block;margin-bottom:4px">What is a Return Note?</strong>
+        A Return Disbursement Note (RDN) allows a clinic to return stock to the warehouse — for example, expired batches, excess stock, or damaged items. The warehouse acknowledges via a Return Acknowledgement Receipt (RAR).
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Original shipment <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Original shipment">
+            <option value="">— Select original shipment —</option>
+            <option>SHP-2026-0118 · Amoxicillin, Amlodipine · Clinic Orchard</option>
+            <option>SHP-2026-0116 · Paracetamol, Atorvastatin · Clinic Tampines</option>
+            <option>SHP-2026-0117 · Diazepam, Metformin · Clinic Orchard</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Return note reference</label>
+          <input class="fi" type="text" placeholder="Auto-generated (e.g. RDN-2026-00005)" readonly style="opacity:.6"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Medicine <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Medicine">
+            <option value="">— Select medicine —</option>
+            <option>MED-001 · Amoxicillin 500mg</option>
+            <option>MED-002 · Paracetamol 500mg</option>
+            <option>MED-004 · Amlodipine 5mg</option>
+            <option>MED-009 · Azithromycin 500mg</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Batch number <span style="color:var(--err)">*</span></label>
+          <input class="fi" type="text" placeholder="e.g. SG2026-011"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Quantity to return <span style="color:var(--err)">*</span></label>
+          <input class="fi" type="number" placeholder="0"/>
+        </div>
+        <div class="fg"><label class="fl">Return reason <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Return reason">
+            <option value="">— Select reason —</option>
+            <option>Batch expiring soon</option>
+            <option>Excess stock</option>
+            <option>Damaged / compromised packaging</option>
+            <option>Wrong item received</option>
+            <option>Quantity discrepancy</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Additional notes</label>
+        <input class="fi" type="text" placeholder="Any additional details for the warehouse"/>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeRdnModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-primary"><i class="ti ti-send" aria-hidden="true"></i> Submit return note</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANUAL ADJUSTMENT MODAL -->
+<div class="modal-bg" id="adjustmentModal" role="dialog" aria-modal="true" aria-labelledby="adjModalTitle">
+  <div class="modal-box" style="width:520px">
+    <div class="modal-head">
+      <div class="modal-head-title" id="adjModalTitle"><i class="ti ti-adjustments" aria-hidden="true"></i> Record stock adjustment</div>
+      <button class="modal-x" onclick="closeAdjustmentModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--warnbg);border:1px solid #fde68a;border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--warn);display:flex;align-items:flex-start;gap:8px;margin-bottom:4px">
+        <i class="ti ti-alert-triangle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
+        Manual adjustments create an immutable entry in the Stock Ledger with reference type <strong>Manual Adjustment</strong>. Use only for corrections that cannot be captured via a shipment or return.
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Branch <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Branch">
+            <option value="">— Select branch —</option>
+            <option>Central Warehouse</option>
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+            <option>Telemedicine Hub</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Medicine (SKU) <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Medicine">
+            <option value="">— Select medicine —</option>
+            <option value="MED-001">MED-001 · Amoxicillin 500mg</option>
+            <option value="MED-002">MED-002 · Paracetamol 500mg</option>
+            <option value="MED-003">MED-003 · Morphine 10mg/ml</option>
+            <option value="MED-004">MED-004 · Amlodipine 5mg</option>
+            <option value="MED-005">MED-005 · Salbutamol inhaler</option>
+            <option value="MED-006">MED-006 · Metformin 850mg</option>
+            <option value="MED-007">MED-007 · Diazepam 5mg</option>
+            <option value="MED-008">MED-008 · Atorvastatin 20mg</option>
+            <option value="MED-009">MED-009 · Azithromycin 500mg</option>
+            <option value="MED-010">MED-010 · Cetirizine 10mg</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Batch number <span style="color:var(--err)">*</span></label>
+          <input class="fi" type="text" placeholder="e.g. SG2026-011"/>
+        </div>
+        <div class="fg"><label class="fl">Adjustment quantity <span style="color:var(--err)">*</span></label>
+          <input class="fi" type="number" placeholder="Use negative for write-down (e.g. -5)" style="font-weight:600"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label class="fl">Adjustment reason <span style="color:var(--err)">*</span></label>
+          <select class="fi" aria-label="Reason">
+            <option value="">— Select reason —</option>
+            <option>Physical count correction</option>
+            <option>Write-off — expired stock</option>
+            <option>Write-off — damaged goods</option>
+            <option>System reconciliation</option>
+            <option>Data entry correction</option>
+            <option>Other (explain in notes)</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Authorised by</label>
+          <input class="fi" type="text" value="Ahmad Bin Yusof" readonly style="opacity:.6"/>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Supporting notes</label>
+        <input class="fi" type="text" placeholder="Describe the reason in detail for the audit trail"/>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeAdjustmentModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Record adjustment</button>
     </div>
   </div>
 </div>
@@ -2016,15 +2285,15 @@ const auditData=[
   {tbl:'medicines',record:'MED-005',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',session:'sess_a1b2c3',ip:'10.1.1.45',at:'20 May 2026, 09:10'},
 ];
 const notifData=[
-  {id:1,type:'err',icon:'ti-alert-circle',title:'Critical: Diazepam 5mg batch expiring in 4 days',msg:'batch_number: SG2025-202 · qty_remaining: 18 · Clinic Orchard',time:'2 hours ago',read:false},
+  {id:1,type:'err',icon:'ti-alert-circle',title:'Critical: Diazepam 5mg batch expiring in 4 days',msg:'Batch: SG2025-202 · qty_remaining: 18 · Clinic Orchard',time:'2 hours ago',read:false},
   {id:2,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Paracetamol 500mg below reorder_threshold',msg:'quantity: 150 · reorder_threshold: 200 · Clinic Tampines',time:'3 hours ago',read:false},
   {id:3,type:'warn',icon:'ti-alert-triangle',title:'Low stock: Azithromycin 500mg below reorder_threshold',msg:'quantity: 88 · reorder_threshold: 100 · Clinic Orchard',time:'5 hours ago',read:false},
   {id:4,type:'info',icon:'ti-truck-delivery',title:'SHP-2026-0119 IN_TRANSIT — arrival expected today',msg:'DKSH Healthcare · SUPPLIER_TO_WAREHOUSE · Central Warehouse',time:'6 hours ago',read:true},
   {id:5,type:'ok',icon:'ti-circle-check',title:'SHP-2026-0118 RECEIVED — stock_ledger updated',msg:'Zuellig Pharma SG · 2 shipment_batches · Clinic Orchard',time:'Yesterday',read:true},
-  {id:6,type:'err',icon:'ti-calendar-x',title:'Amlodipine 5mg batch expiring in 9 days',msg:'batch_number: SG2025-198 · qty_remaining: 30 · Clinic Orchard',time:'Yesterday',read:true},
+  {id:6,type:'err',icon:'ti-calendar-x',title:'Amlodipine 5mg batch expiring in 9 days',msg:'Batch: SG2025-198 · qty_remaining: 30 · Clinic Orchard',time:'Yesterday',read:true},
   {id:7,type:'info',icon:'ti-file-invoice',title:'DN-2026-00003 SUBMITTED — awaiting ACK from clinic',msg:'Warehouse → Clinic Orchard · Disbursement Note',time:'Yesterday',read:true},
   {id:8,type:'warn',icon:'ti-arrows-exchange-2',title:'RDN-2026-00002 return submitted by Clinic Orchard',msg:'Azithromycin batch SG2026-066 · 6 tabs · return_disbursement_items',time:'2 days ago',read:true},
-  {id:9,type:'info',icon:'ti-user-plus',title:'New user created: Ms. Rachel Chua',msg:'CLINIC_ADMIN · branch_id: BR-003 (Clinic Tampines)',time:'2 days ago',read:true},
+  {id:9,type:'info',icon:'ti-user-plus',title:'New user created: Ms. Rachel Chua',msg:'Clinic Admin · Clinic Tampines',time:'2 days ago',read:true},
 ];
 const suppliersData=[
   {id:'SUP-001',name:'Zuellig Pharma SG',contact_person:'Mr. Lee Boon Hock',email:'orders@zuellig.sg',phone:'+65 6226 7788',reg_no:'UEN-200201234K',is_active:true,items:142},
@@ -2089,6 +2358,34 @@ function renderTbl(data,bodyId){
 <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye" aria-label="View details"></i></button></td></tr>`;
   }).join('');
 }
+
+/* ── ENUM → PROPER CASE ── */
+const ENUM_LABELS={
+  // Branch types
+  WAREHOUSE:'Warehouse', CLINIC:'Clinic', TELEMEDICINE:'Telemedicine',
+  // User roles
+  SUPER_ADMIN:'Super Admin', CLINIC_ADMIN:'Clinic Admin',
+  WAREHOUSE_ADMIN:'Warehouse Admin', TELEMEDICINE_ADMIN:'Telemedicine Admin',
+  // Shipment types
+  SUPPLIER_TO_CLINIC:'Supplier → Clinic', SUPPLIER_TO_WAREHOUSE:'Supplier → Warehouse',
+  INTERNAL_TRANSFER:'Internal Transfer',
+  // Shipment status
+  DRAFT:'Draft', CONFIRMED:'Confirmed', IN_TRANSIT:'In Transit',
+  RECEIVED:'Received', CANCELLED:'Cancelled',
+  // DN / AR / Return status
+  PENDING:'Pending', SUBMITTED:'Submitted', ACKNOWLEDGED:'Acknowledged',
+  REJECTED:'Rejected', ACCEPTED:'Accepted', PARTIAL:'Partial',
+  // Stock ledger movement_type
+  IN:'Stock In', OUT:'Stock Out', ADJUST:'Adjustment',
+  // Stock ledger reference_type
+  SHIPMENT_IN:'Shipment In', SHIPMENT_INTERNAL:'Internal Transfer',
+  DISBURSEMENT:'Disbursement', ACK_RECEIPT:'Acknowledgement Receipt',
+  RETURN_DISBURSEMENT:'Return Note', RETURN_ACK:'Return Acknowledgement',
+  MANUAL_ADJUSTMENT:'Manual Adjustment',
+  // Audit trail operations
+  INSERT:'Insert', UPDATE:'Update', DELETE:'Delete'
+};
+function fmtEnum(v){return ENUM_LABELS[v]||v;}
 
 /* ── PAGINATION ENGINE ── */
 function renderPagination(cid,total,page,perPage,fnName){
@@ -2157,10 +2454,10 @@ function renderShipments(){
   const pg=shipmentsData.slice((shipPage-1)*PER_PAGE,shipPage*PER_PAGE);
   b.innerHTML=pg.map(s=>`<tr>
     <td style="font-family:monospace;font-size:12px;color:var(--p)">${s.ref}</td>
-    <td><div style="display:flex;align-items:center;gap:6px"><i class="ti ${typeIcon[s.type]||'ti-package'}" style="font-size:14px;color:var(--txt3)" aria-hidden="true"></i><span style="font-size:12px">${s.type}</span></div></td>
+    <td><div style="display:flex;align-items:center;gap:6px"><i class="ti ${typeIcon[s.type]||'ti-package'}" style="font-size:14px;color:var(--txt3)" aria-hidden="true"></i><span style="font-size:12px">${fmtEnum(s.type)}</span></div></td>
     <td style="font-size:12px">${s.supplier||s.src||'—'}</td>
     <td style="font-size:12px">${s.dest}</td>
-    <td><span class="badge ${statusBadge[s.status]||'bg-draft'}">${s.status}</span></td>
+    <td><span class="badge ${statusBadge[s.status]||'bg-draft'}">${fmtEnum(s.status)}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${s.created}</td>
     <td style="text-align:center;font-weight:600">${s.batches}</td>
     <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i></button></td>
@@ -2180,11 +2477,11 @@ function renderDisbursements(){
   b.innerHTML=pg.map(d=>`<tr>
     <td style="font-family:monospace;font-size:12px;color:var(--p)">${d.dn}</td>
     <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${d.ship}</td>
-    <td><span class="badge ${dnBadge[d.dn_status]||'bg-draft'}">${d.dn_status}</span></td>
+    <td><span class="badge ${dnBadge[d.dn_status]||'bg-draft'}">${fmtEnum(d.dn_status)}</span></td>
     <td style="font-size:12px">${d.dest}</td>
     <td style="font-size:12px">${d.by}</td>
     <td style="font-size:12px;color:var(--txt2)">${d.at}</td>
-    <td><span class="badge ${arBadge[d.ar_status]||'bg-draft'}">${d.ar_status}</span></td>
+    <td><span class="badge ${arBadge[d.ar_status]||'bg-draft'}">${d.ar_status==='—'?'—':fmtEnum(d.ar_status)}</span></td>
     <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
   </tr>`).join('');
   const dc=document.getElementById('dnCount');
@@ -2201,11 +2498,11 @@ function renderReturns(){
   b.innerHTML=pg.map(r=>`<tr>
     <td style="font-family:monospace;font-size:12px;color:var(--p)">${r.rdn}</td>
     <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${r.orig_ship}</td>
-    <td><span class="badge ${retBadge[r.rdn_status]||'bg-draft'}">${r.rdn_status}</span></td>
+    <td><span class="badge ${retBadge[r.rdn_status]||'bg-draft'}">${fmtEnum(r.rdn_status)}</span></td>
     <td style="font-size:12px">${r.src}</td>
     <td style="font-size:12px">${r.by}</td>
     <td style="font-size:12px;color:var(--txt2)">${r.at}</td>
-    <td><span class="badge ${retBadge[r.rar_status]||'bg-draft'}">${r.rar_status}</span></td>
+    <td><span class="badge ${retBadge[r.rar_status]||'bg-draft'}">${r.rar_status==='—'?'—':fmtEnum(r.rar_status)}</span></td>
     <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
   </tr>`).join('');
   const rc=document.getElementById('rdnCount');
@@ -2222,7 +2519,7 @@ function renderAudit(){
   b.innerHTML=pg.map(a=>`<tr>
     <td style="font-size:12px;font-weight:600;color:var(--p)">${a.tbl}</td>
     <td style="font-family:monospace;font-size:11px;color:var(--txt2)">${a.record}</td>
-    <td><span class="badge ${opBadge[a.op]||'bgb'}">${a.op}</span></td>
+    <td><span class="badge ${opBadge[a.op]||'bgb'}">${fmtEnum(a.op)}</span></td>
     <td style="font-size:12px">${a.actor}</td>
     <td style="font-size:12px">${a.branch}</td>
     <td style="font-family:monospace;font-size:11px;color:var(--txt3)">${a.session}</td>
@@ -2332,7 +2629,7 @@ function renderBranches(){
     <div class="branch-card-top">
       <div><div class="branch-name">${b.name}</div><div class="branch-id">${b.id}</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-        <span class="badge ${branchTypeBadge(b.branch_type)}"><i class="ti ${branchTypeIcon(b.branch_type)}" style="font-size:10px"></i>${b.branch_type}</span>
+        <span class="badge ${branchTypeBadge(b.branch_type)}"><i class="ti ${branchTypeIcon(b.branch_type)}" style="font-size:10px"></i>${fmtEnum(b.branch_type)}</span>
         <span class="badge ${b.is_active?'bge':'bgr'}">${b.is_active?'Active':'Inactive'}</span>
       </div>
     </div>
@@ -2356,7 +2653,7 @@ function renderBranchTbl(){
   b.innerHTML=pg.map(br=>`<tr>
     <td style="font-family:monospace;font-size:12px">${br.id}</td>
     <td><div style="font-weight:600">${br.name}</div><div style="font-size:11px;color:var(--txt3)">${br.city}</div></td>
-    <td><span class="badge ${branchTypeBadge(br.branch_type)}"><i class="ti ${branchTypeIcon(br.branch_type)}" style="font-size:10px"></i>${br.branch_type}</span></td>
+    <td><span class="badge ${branchTypeBadge(br.branch_type)}"><i class="ti ${branchTypeIcon(br.branch_type)}" style="font-size:10px"></i>${fmtEnum(br.branch_type)}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${br.address}</td>
     <td style="text-align:center;font-weight:600">${br.staff}</td>
     <td style="text-align:center;font-weight:600">${br.meds.toLocaleString()}</td>
@@ -2372,7 +2669,7 @@ function viewBranchInventory(branchId){
   const br=branches.find(b=>b.id===branchId);
   const t=document.getElementById('branchInvTitle'),s=document.getElementById('branchInvSub');
   if(br&&t)t.textContent=br.name+' — Inventory';
-  if(br&&s)s.innerHTML='<span class="badge '+branchTypeBadge(br.branch_type)+'" style="margin-right:8px">'+br.branch_type+'</span>'+br.address+' · '+br.meds.toLocaleString()+' SKUs';
+  if(br&&s)s.innerHTML='<span class="badge '+branchTypeBadge(br.branch_type)+'" style="margin-right:8px">'+fmtEnum(br.branch_type)+'</span>'+br.address+' · '+br.meds.toLocaleString()+' SKUs';
   branchInvPage=1;
   const paged=meds.slice(0,PER_PAGE);
   renderTbl(paged,'branchInvBody');
@@ -2397,7 +2694,7 @@ function renderStaff(){
   b.innerHTML=pg.map(s=>`<tr>
     <td style="font-family:monospace;font-size:12px">${s.id}</td>
     <td><div style="font-weight:600">${s.name}</div><div style="font-size:11px;color:var(--txt3)">${s.email}</div></td>
-    <td><span class="badge ${roleClass(s.role)}">${s.role}</span></td>
+    <td><span class="badge ${roleClass(s.role)}">${fmtEnum(s.role)}</span></td>
     <td style="font-size:12px">${s.branch}</td>
     <td><span class="badge ${s.is_active?'bge':'bgr'}">${s.is_active?'Active':'Inactive'}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${s.lastLogin}</td>
@@ -2415,10 +2712,10 @@ function renderTxn(){
   const refIcon={'SHIPMENT_IN':'ti-package','SHIPMENT_INTERNAL':'ti-arrows-exchange','DISBURSEMENT':'ti-file-invoice','ACK_RECEIPT':'ti-circle-check','RETURN_DISBURSEMENT':'ti-arrow-back','RETURN_ACK':'ti-check','MANUAL_ADJUSTMENT':'ti-pencil'};
   const pg=transactions.slice((txnPage-1)*PER_PAGE,txnPage*PER_PAGE);
   b.innerHTML=pg.map(t=>`<tr>
-    <td><div style="display:flex;align-items:center;gap:5px"><i class="ti ${refIcon[t.ref_type]||'ti-circle'}" style="font-size:13px;color:var(--txt3)" aria-hidden="true"></i><span style="font-size:12px;font-weight:600">${t.ref_type}</span></div><div style="font-family:monospace;font-size:10px;color:var(--txt3);margin-top:1px">${t.ref_id}</div></td>
-    <td><div style="font-weight:600;font-size:13px">${t.med}</div><div style="font-size:11px;color:var(--txt3)">batch: ${t.batch}</div></td>
+    <td><div style="display:flex;align-items:center;gap:5px"><i class="ti ${refIcon[t.ref_type]||'ti-circle'}" style="font-size:13px;color:var(--txt3)" aria-hidden="true"></i><span style="font-size:12px;font-weight:600">${fmtEnum(t.ref_type)}</span></div><div style="font-family:monospace;font-size:10px;color:var(--txt3);margin-top:1px">${t.ref_id}</div></td>
+    <td><div style="font-weight:600;font-size:13px">${t.med}</div><div style="font-size:11px;color:var(--txt3)">Batch: ${t.batch}</div></td>
     <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${t.batch}</td>
-    <td><span class="badge ${moveClass[t.move]||'bgb'}">${t.move}</span></td>
+    <td><span class="badge ${moveClass[t.move]||'bgb'}">${fmtEnum(t.move)}</span></td>
     <td style="font-size:12px;text-align:right">${t.before}</td>
     <td style="font-weight:700;color:${t.change<0?'var(--err)':'var(--ok)'};text-align:right">${t.change>0?'+':''}${t.change}</td>
     <td style="font-size:12px;font-weight:600;text-align:right">${t.after}</td>
@@ -2509,7 +2806,12 @@ function renderMdmTab(tabId){
     renderPagination('pg-mdm-batches',invBatchesData.length,mdmBatchPage,PER_PAGE,'changeMdmBatchPage');
   }
 }
-function switchMdmTab(btn,panelId){renderMdmTab(panelId);}
+function switchMdmTab(btn,panelId){
+  currentMdmTab=panelId;
+  renderMdmTab(panelId);
+  const addBtn=document.getElementById('mdmAddBtn');
+  if(addBtn){const lbl=MDM_ADD_LABELS[panelId]||'Add record';addBtn.innerHTML='<i class="ti ti-plus" aria-hidden="true"></i> '+lbl;}
+}
 function changeMdmMedPage(p){mdmMedPage=p;renderMdmTab('mdm-meds');}
 function changeMdmBatchPage(p){mdmBatchPage=p;renderMdmTab('mdm-batches');}
 function openMdmAddModal(){openModal();}
@@ -2520,6 +2822,38 @@ function openStaffModal(){document.getElementById('staffModal').classList.add('o
 function closeStaffModal(){document.getElementById('staffModal').classList.remove('open');}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 function openModal(){document.getElementById('modal').classList.add('open');}
+function openShipmentModal(){document.getElementById('shipmentModal').classList.add('open');}
+function closeShipmentModal(){document.getElementById('shipmentModal').classList.remove('open');}
+function openDnModal(){document.getElementById('dnModal').classList.add('open');}
+function closeDnModal(){document.getElementById('dnModal').classList.remove('open');}
+function openRdnModal(){document.getElementById('rdnModal').classList.add('open');}
+function closeRdnModal(){document.getElementById('rdnModal').classList.remove('open');}
+function openAdjustmentModal(){document.getElementById('adjustmentModal').classList.add('open');}
+function closeAdjustmentModal(){document.getElementById('adjustmentModal').classList.remove('open');}
+function toggleShipmentFields(){
+  const t=document.getElementById('shipTypeSelect').value;
+  const supRow=document.getElementById('shipSupplierRow');
+  const trnRow=document.getElementById('shipTransferRow');
+  if(t==='INTERNAL_TRANSFER'){supRow.style.display='none';trnRow.style.display='';}
+  else{supRow.style.display='';trnRow.style.display='none';}
+}
+/* MDM context-aware "Add record" button */
+const MDM_ADD_LABELS={
+  'mdm-meds':'Add medicine',
+  'mdm-suppliers':'Add supplier',
+  'mdm-categories':'Add category',
+  'mdm-units':'Add unit',
+  'mdm-batches':'Add batch record'
+};
+const MDM_ADD_ACTIONS={
+  'mdm-meds':()=>openModal(),
+  'mdm-suppliers':()=>alert('Add supplier form coming soon.'),
+  'mdm-categories':()=>alert('Add category form coming soon.'),
+  'mdm-units':()=>alert('Add unit form coming soon.'),
+  'mdm-batches':()=>alert('Batch records are created automatically when a shipment is received.')
+};
+let currentMdmTab='mdm-meds';
+function openMdmAddModal(){const fn=MDM_ADD_ACTIONS[currentMdmTab];if(fn)fn();}
 
 /* ── COMPONENT LIBRARY ── */
 function copyCode(btn,id){
