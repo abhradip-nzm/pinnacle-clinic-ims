@@ -214,6 +214,22 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .tbl-btn-danger{border-color:#fca5a5;color:var(--err);background:var(--errbg)}
 .tbl-btn-danger:hover{border-color:#f87171;color:#991b1b;background:#fee2e2}
 
+/* SHIPMENT BATCH TABLE */
+.batch-section{border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.batch-tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.batch-tbl th{background:var(--surface2);padding:8px 8px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);white-space:nowrap}
+.batch-tbl td{padding:5px 6px;border-bottom:1px solid var(--border);vertical-align:middle}
+.batch-tbl tr:last-child td{border-bottom:none}
+.batch-inp{width:100%;padding:6px 8px;border:1.5px solid var(--border);border-radius:5px;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--txt);background:var(--surface2);outline:none;transition:border .12s;min-width:0}
+.batch-inp:focus{border-color:var(--p);background:#fff}
+.batch-inp[type="number"]{text-align:right}
+.batch-add-row{display:flex;align-items:center;justify-content:center;padding:9px 14px;cursor:pointer;color:var(--p);font-size:12px;font-weight:600;gap:6px;background:var(--pl);transition:background .15s;border:none;width:100%;font-family:'Noto Sans JP',sans-serif;border-top:1px dashed var(--border2)}
+.batch-add-row:hover{background:var(--infobg)}
+.batch-total-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface2);border-top:1px solid var(--border)}
+.batch-grand-total{font-size:16px;font-weight:700;color:var(--txt)}
+.modal-box-wide{width:860px;max-width:97%}
+.modal-body-scroll{max-height:72vh;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+
 /* DEVELOPER PAGES */
 .dev-banner{background:linear-gradient(135deg,#0d2137 0%,#0a73be 100%);border-radius:var(--rl);padding:22px 28px;margin-bottom:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .dev-banner-left{display:flex;flex-direction:column;gap:4px}
@@ -1994,74 +2010,151 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 
 <!-- SHIPMENT MODAL -->
 <div class="modal-bg" id="shipmentModal" role="dialog" aria-modal="true" aria-labelledby="shipmentModalTitle">
-  <div class="modal-box" style="width:540px">
+  <div class="modal-box modal-box-wide">
     <div class="modal-head">
       <div class="modal-head-title" id="shipmentModalTitle"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Create new shipment</div>
       <button class="modal-x" onclick="closeShipmentModal()" aria-label="Close">×</button>
     </div>
-    <div class="modal-body">
-      <div class="form-row">
-        <div class="fg"><label class="fl">Shipment type <span style="color:var(--err)">*</span></label>
-          <select class="fi" id="shipTypeSelect" onchange="toggleShipmentFields()" aria-label="Shipment type">
-            <option value="">— Select type —</option>
-            <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
-            <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
-            <option value="INTERNAL_TRANSFER">Internal Transfer</option>
-          </select>
+
+    <div class="modal-body-scroll">
+
+      <!-- ── Section 1: Shipment details ── -->
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:6px">
+          <i class="ti ti-clipboard-list" style="color:var(--p);font-size:14px" aria-hidden="true"></i> Shipment details
         </div>
-        <div class="fg"><label class="fl">Shipment reference</label>
-          <input class="fi" type="text" placeholder="Auto-generated (e.g. SHP-2026-0122)" readonly style="opacity:.6"/>
+        <div class="form-row">
+          <div class="fg"><label class="fl">Shipment type <span style="color:var(--err)">*</span></label>
+            <select class="fi" id="shipTypeSelect" onchange="toggleShipmentFields()" aria-label="Shipment type">
+              <option value="">— Select type —</option>
+              <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
+              <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
+              <option value="INTERNAL_TRANSFER">Internal Transfer</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Shipment reference</label>
+            <input class="fi" type="text" placeholder="Auto-generated (e.g. SHP-2026-0122)" readonly style="opacity:.55;cursor:not-allowed"/>
+          </div>
+        </div>
+        <div id="shipSupplierRow" class="form-row">
+          <div class="fg"><label class="fl">Supplier <span style="color:var(--err)">*</span></label>
+            <select class="fi" aria-label="Supplier">
+              <option value="">— Select supplier —</option>
+              <option>Zuellig Pharma SG</option>
+              <option>DKSH Healthcare</option>
+              <option>Pharmaniaga SG</option>
+              <option>YCH Lifesciences</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
+            <select class="fi" aria-label="Destination">
+              <option value="">— Select branch —</option>
+              <option>Central Warehouse</option>
+              <option>Clinic Orchard</option>
+              <option>Clinic Tampines</option>
+              <option>Telemedicine Hub</option>
+            </select>
+          </div>
+        </div>
+        <div id="shipTransferRow" style="display:none" class="form-row">
+          <div class="fg"><label class="fl">Source branch <span style="color:var(--err)">*</span></label>
+            <select class="fi" aria-label="Source branch">
+              <option value="">— Select source —</option>
+              <option>Central Warehouse</option>
+              <option>Clinic Orchard</option>
+              <option>Clinic Tampines</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
+            <select class="fi" aria-label="Destination branch">
+              <option value="">— Select destination —</option>
+              <option>Clinic Orchard</option>
+              <option>Clinic Tampines</option>
+              <option>Telemedicine Hub</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div id="shipSupplierRow" class="form-row">
-        <div class="fg"><label class="fl">Supplier <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Supplier">
-            <option value="">— Select supplier —</option>
-            <option>Zuellig Pharma SG</option>
-            <option>DKSH Healthcare</option>
-            <option>Pharmaniaga SG</option>
-            <option>YCH Lifesciences</option>
-          </select>
+
+      <!-- ── Section 2: Batch line items ── -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:6px">
+            <i class="ti ti-layers-intersect" style="color:var(--p);font-size:14px" aria-hidden="true"></i>
+            Batch line items
+            <span id="shipBatchCount" style="font-weight:400;color:var(--txt3);text-transform:none;letter-spacing:0">· 0 items</span>
+          </div>
+          <button class="btn" style="padding:4px 10px;font-size:11px" onclick="addShipBatch()" type="button">
+            <i class="ti ti-plus" aria-hidden="true"></i> Add batch
+          </button>
         </div>
-        <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Destination">
-            <option value="">— Select branch —</option>
-            <option>Central Warehouse</option>
-            <option>Clinic Orchard</option>
-            <option>Clinic Tampines</option>
-            <option>Telemedicine Hub</option>
-          </select>
+
+        <div class="batch-section">
+          <!-- Table header always visible -->
+          <table class="batch-tbl" style="table-layout:fixed">
+            <colgroup>
+              <col style="width:26%"><col style="width:16%"><col style="width:13%">
+              <col style="width:9%"><col style="width:13%"><col style="width:13%"><col style="width:10%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Medicine (SKU)</th>
+                <th>Batch No.</th>
+                <th>Expiry Date</th>
+                <th>Qty</th>
+                <th>Unit Price (S$)</th>
+                <th>Line Total</th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
+          <!-- Scrollable body -->
+          <div style="max-height:210px;overflow-y:auto">
+            <table class="batch-tbl" style="table-layout:fixed">
+              <colgroup>
+                <col style="width:26%"><col style="width:16%"><col style="width:13%">
+                <col style="width:9%"><col style="width:13%"><col style="width:13%"><col style="width:10%">
+              </colgroup>
+              <tbody id="shipBatchTbody">
+                <!-- rows injected by JS -->
+              </tbody>
+            </table>
+            <div id="shipBatchEmpty" style="padding:24px;text-align:center;color:var(--txt3);font-size:13px">
+              <i class="ti ti-layers-intersect" style="font-size:28px;display:block;margin-bottom:8px;opacity:.3" aria-hidden="true"></i>
+              No batch items yet — click <strong>Add batch</strong> to add medicines to this shipment
+            </div>
+          </div>
+          <!-- Add row trigger -->
+          <button class="batch-add-row" onclick="addShipBatch()" type="button" aria-label="Add batch line">
+            <i class="ti ti-plus" style="font-size:14px" aria-hidden="true"></i> Add another batch line
+          </button>
+          <!-- Grand total -->
+          <div class="batch-total-bar">
+            <span style="font-size:12px;color:var(--txt2)">
+              <span id="shipBatchCountFoot">0 line items</span> &nbsp;·&nbsp; All prices in SGD
+            </span>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:12px;color:var(--txt2);font-weight:500">Shipment total</span>
+              <span class="batch-grand-total" id="shipBatchTotal">S$0.00</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div id="shipTransferRow" style="display:none" class="form-row">
-        <div class="fg"><label class="fl">Source branch <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Source branch">
-            <option value="">— Select source —</option>
-            <option>Central Warehouse</option>
-            <option>Clinic Orchard</option>
-            <option>Clinic Tampines</option>
-          </select>
-        </div>
-        <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Destination branch">
-            <option value="">— Select destination —</option>
-            <option>Clinic Orchard</option>
-            <option>Clinic Tampines</option>
-            <option>Telemedicine Hub</option>
-          </select>
-        </div>
+
+      <!-- ── Section 3: Remarks ── -->
+      <div class="fg">
+        <label class="fl">Remarks</label>
+        <input class="fi" type="text" placeholder="Optional remarks or delivery instructions"/>
       </div>
-      <div class="fg"><label class="fl">Remarks</label>
-        <input class="fi" type="text" placeholder="Optional remarks or instructions"/>
+
+    </div><!-- /modal-body-scroll -->
+
+    <div class="modal-foot" style="justify-content:space-between;align-items:center">
+      <span style="font-size:12px;color:var(--txt3)"><i class="ti ti-info-circle" aria-hidden="true"></i> Each batch row creates one record in shipment_batches</span>
+      <div style="display:flex;gap:8px">
+        <button class="btn" onclick="closeShipmentModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
+        <button class="btn btn-primary" onclick="submitShipment()"><i class="ti ti-circle-check" aria-hidden="true"></i> Create shipment</button>
       </div>
-      <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--p);display:flex;align-items:flex-start;gap:8px;margin-top:2px">
-        <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
-        Batch line items (medicines, quantities, unit prices) are added after the shipment is confirmed.
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn" onclick="closeShipmentModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
-      <button class="btn btn-primary"><i class="ti ti-circle-check" aria-hidden="true"></i> Create shipment</button>
     </div>
   </div>
 </div>
@@ -2955,8 +3048,99 @@ function openStaffModal(){document.getElementById('staffModal').classList.add('o
 function closeStaffModal(){document.getElementById('staffModal').classList.remove('open');}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 function openModal(){document.getElementById('modal').classList.add('open');}
-function openShipmentModal(){document.getElementById('shipmentModal').classList.add('open');}
+/* ── SHIPMENT BATCH MANAGEMENT ── */
+let shipBatches=[];
+let _sbIdx=0;
+
+function openShipmentModal(){
+  shipBatches=[];_sbIdx=0;
+  const tb=document.getElementById('shipBatchTbody');if(tb)tb.innerHTML='';
+  const empty=document.getElementById('shipBatchEmpty');if(empty)empty.style.display='';
+  const sel=document.getElementById('shipTypeSelect');if(sel)sel.value='';
+  const sup=document.getElementById('shipSupplierRow');if(sup)sup.style.display='';
+  const trn=document.getElementById('shipTransferRow');if(trn)trn.style.display='none';
+  _updateShipTotal();
+  document.getElementById('shipmentModal').classList.add('open');
+  addShipBatch();
+}
 function closeShipmentModal(){document.getElementById('shipmentModal').classList.remove('open');}
+
+function addShipBatch(){
+  const tb=document.getElementById('shipBatchTbody');if(!tb)return;
+  const empty=document.getElementById('shipBatchEmpty');if(empty)empty.style.display='none';
+  const idx=_sbIdx++;
+  shipBatches[idx]={med:'',batch:'',expiry:'',qty:0,unit:0,active:true};
+  const opts=meds.map(m=>`<option value="${m.sku}">${m.sku} · ${m.name}</option>`).join('');
+  const tr=document.createElement('tr');
+  tr.id='sbr-'+idx;
+  tr.innerHTML=`
+    <td>
+      <select class="batch-inp" onchange="updateShipBatch(${idx},'med',this.value)" aria-label="Medicine">
+        <option value="">— Select —</option>${opts}
+      </select>
+    </td>
+    <td><input class="batch-inp" type="text" placeholder="SG2026-XXX" oninput="updateShipBatch(${idx},'batch',this.value)" aria-label="Batch number"/></td>
+    <td><input class="batch-inp" type="date" oninput="updateShipBatch(${idx},'expiry',this.value)" aria-label="Expiry date"/></td>
+    <td><input class="batch-inp" type="number" min="1" placeholder="0" oninput="updateShipBatch(${idx},'qty',this.value)" aria-label="Quantity"/></td>
+    <td>
+      <div style="display:flex;align-items:center;gap:3px">
+        <span style="font-size:11px;color:var(--txt3);flex-shrink:0">S$</span>
+        <input class="batch-inp" type="number" min="0" step="0.01" placeholder="0.00" oninput="updateShipBatch(${idx},'unit',this.value)" aria-label="Unit price"/>
+      </div>
+    </td>
+    <td>
+      <div id="sbr-total-${idx}" style="font-size:13px;font-weight:700;color:var(--txt);text-align:right;padding:0 6px">S$0.00</div>
+    </td>
+    <td style="text-align:center">
+      <button class="tbl-btn tbl-btn-danger" style="padding:4px 7px" onclick="removeShipBatch(${idx})" type="button" aria-label="Remove row">
+        <i class="ti ti-trash" aria-hidden="true"></i>
+      </button>
+    </td>`;
+  tb.appendChild(tr);
+  _updateShipTotal();
+  setTimeout(()=>{const inp=tr.querySelectorAll('.batch-inp')[1];if(inp)inp.focus();},40);
+}
+
+function updateShipBatch(idx,field,value){
+  if(!shipBatches[idx]||!shipBatches[idx].active)return;
+  if(field==='qty'||field==='unit'){shipBatches[idx][field]=parseFloat(value)||0;}
+  else{shipBatches[idx][field]=value;}
+  const row=shipBatches[idx];
+  const lineTotal=(row.qty||0)*(row.unit||0);
+  const cell=document.getElementById('sbr-total-'+idx);
+  if(cell){
+    cell.textContent='S$'+lineTotal.toFixed(2);
+    cell.style.color=lineTotal>0?'var(--ok)':'var(--txt3)';
+  }
+  _updateShipTotal();
+}
+
+function removeShipBatch(idx){
+  const row=document.getElementById('sbr-'+idx);if(row)row.remove();
+  if(shipBatches[idx])shipBatches[idx].active=false;
+  const tb=document.getElementById('shipBatchTbody');
+  const empty=document.getElementById('shipBatchEmpty');
+  if(empty&&tb&&tb.children.length===0)empty.style.display='';
+  _updateShipTotal();
+}
+
+function _updateShipTotal(){
+  const active=shipBatches.filter(b=>b&&b.active);
+  const total=active.reduce((s,b)=>s+(b.qty||0)*(b.unit||0),0);
+  const cnt=active.length;
+  const el=document.getElementById('shipBatchTotal');if(el)el.textContent='S$'+total.toFixed(2);
+  const c1=document.getElementById('shipBatchCount');if(c1)c1.textContent='· '+cnt+' item'+(cnt!==1?'s':'');
+  const c2=document.getElementById('shipBatchCountFoot');if(c2)c2.textContent=cnt+' line item'+(cnt!==1?'s':'');
+}
+
+function submitShipment(){
+  const active=shipBatches.filter(b=>b&&b.active);
+  const incomplete=active.filter(b=>!b.med||!b.batch||!b.expiry||b.qty<=0||b.unit<=0);
+  if(active.length===0){alert('Please add at least one batch line item.');return;}
+  if(incomplete.length>0){alert('Please complete all fields in every batch row (medicine, batch no., expiry date, quantity and unit price).');return;}
+  closeShipmentModal();
+  // In production this would POST to the API
+}
 function openDnModal(){document.getElementById('dnModal').classList.add('open');}
 function closeDnModal(){document.getElementById('dnModal').classList.remove('open');}
 function openRdnModal(){document.getElementById('rdnModal').classList.add('open');}
