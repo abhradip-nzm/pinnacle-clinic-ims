@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found · Pinnacle IMS</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#0a73be;--pd:#085a96;--pdd:#064880;--pl:#e8f3fb;--ps:#b5d5ec;
+  --bg:#f0f4f8;--surface:#ffffff;--surface2:#f7fafd;
+  --border:#dde6ef;--border2:#c8d8e8;
+  --txt:#0d1f2d;--txt2:#4a6278;--txt3:#8aa2b3;
+  --ok:#1a7f4b;--okbg:#e6f5ee;
+  --warn:#a16207;--warnbg:#fef9e7;
+  --err:#b91c1c;--errbg:#fef2f2;
+  --info:#0a73be;--infobg:#e8f3fb;
+  --purple:#6d28d9;--purplebg:#f5f3ff;
+  --sb:#0d2137;--sb2:#162d45;--sb3:#1d3a56;
+  --r:8px;--rl:12px;--rxl:16px;
+  font-family:'Noto Sans JP',sans-serif;
+}
+html,body{height:100%;background:var(--bg);color:var(--txt)}
+
+/* ── LAYOUT ── */
+.wrapper{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 20px;
+  background:var(--bg);
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle grid backdrop */
+.wrapper::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:40px 40px;
+  opacity:.35;
+  pointer-events:none;
+}
+
+/* floating orbs */
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  pointer-events:none;
+  opacity:.12;
+  animation:drift 12s ease-in-out infinite alternate;
+}
+.orb1{width:420px;height:420px;background:var(--p);top:-80px;left:-120px;animation-delay:0s}
+.orb2{width:280px;height:280px;background:var(--purple);bottom:-60px;right:-80px;animation-delay:3s}
+.orb3{width:200px;height:200px;background:var(--ok);bottom:30%;right:35%;animation-delay:6s;opacity:.08}
+
+@keyframes drift{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(20px,30px) scale(1.05)}
+}
+
+/* ── CARD ── */
+.card{
+  position:relative;
+  z-index:1;
+  display:flex;
+  width:100%;
+  max-width:980px;
+  min-height:580px;
+  border-radius:var(--rxl);
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(13,33,55,.14),0 4px 16px rgba(13,33,55,.08);
+  border:1px solid var(--border);
+}
+
+/* ── LEFT PANEL (dark) ── */
+.panel-left{
+  flex:0 0 340px;
+  background:linear-gradient(160deg, var(--sb) 0%, #0f3460 60%, #0a73be 140%);
+  padding:44px 36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+}
+/* subtle mesh overlay */
+.panel-left::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.brand-logo{
+  width:42px;height:42px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);
+}
+.brand-logo .ti{font-size:21px;color:#fff}
+.brand-name{color:#fff;font-size:14px;font-weight:700;line-height:1.3}
+.brand-sub{color:var(--ps);font-size:11px;font-weight:400;letter-spacing:.4px}
+
+/* status badge */
+.sys-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(26,127,75,.2);
+  border:1px solid rgba(26,127,75,.35);
+  color:#6ee7b7;
+  font-size:11px;font-weight:600;
+  padding:5px 12px;border-radius:20px;
+  margin-bottom:28px;
+}
+.sys-badge-dot{width:6px;height:6px;border-radius:50%;background:#6ee7b7;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+.hero-eyebrow{color:var(--ps);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.hero-title{color:#fff;font-size:24px;font-weight:700;line-height:1.35;margin-bottom:14px}
+.hero-body{color:#93b8d4;font-size:13px;line-height:1.75;margin-bottom:32px}
+
+/* quick nav links */
+.quick-label{color:var(--ps);font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
+.quick-links{display:flex;flex-direction:column;gap:4px}
+.ql-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:var(--r);
+  color:#93b8d4;font-size:13px;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:all .15s;
+  border:1px solid transparent;
+}
+.ql-item:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.12);
+  color:#fff;
+}
+.ql-item .ti{font-size:15px;color:rgba(181,213,236,.6);flex-shrink:0;transition:color .15s}
+.ql-item:hover .ti{color:#7dd3fc}
+.ql-item-arr{margin-left:auto;font-size:12px;opacity:0;transition:opacity .15s,transform .15s;transform:translateX(-4px)}
+.ql-item:hover .ql-item-arr{opacity:1;transform:translateX(0)}
+
+.left-footer{color:rgba(147,184,212,.4);font-size:10px;line-height:1.6;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ── RIGHT PANEL (light) ── */
+.panel-right{
+  flex:1;
+  background:var(--surface);
+  padding:44px 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ── 404 ILLUSTRATION ── */
+.illus-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  margin-bottom:32px;
+  height:120px;
+}
+
+.num-404{
+  font-size:112px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-4px;
+  background:linear-gradient(135deg, var(--pl) 0%, var(--ps) 50%, var(--p) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  user-select:none;
+  position:relative;
+  z-index:1;
+}
+
+/* icon floating in the 0 */
+.illus-icon-wrap{
+  position:absolute;
+  left:138px; /* sits inside the first zero */
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+}
+.illus-badge{
+  width:52px;height:52px;
+  border-radius:50%;
+  background:var(--errbg);
+  border:2.5px solid #fca5a5;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(185,28,28,.18);
+  animation:float 3.5s ease-in-out infinite;
+}
+.illus-badge .ti{font-size:24px;color:var(--err)}
+
+@keyframes float{
+  0%,100%{transform:translateY(-50%) translateY(0)}
+  50%{transform:translateY(-50%) translateY(-8px)}
+}
+
+/* deco circles behind 404 */
+.deco-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1.5px dashed var(--border2);
+  opacity:.5;
+  animation:spin-slow 28s linear infinite;
+}
+.deco-ring1{width:320px;height:320px;top:50%;left:50%;transform:translate(-50%,-50%);animation-direction:normal}
+.deco-ring2{width:240px;height:240px;top:50%;left:50%;transform:translate(-50%,-50%);animation-direction:reverse;animation-duration:20s}
+@keyframes spin-slow{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* small floating dots */
+.dot-particle{
+  position:absolute;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--ps);
+  opacity:.6;
+  animation:particle-float 4s ease-in-out infinite;
+}
+.dp1{top:12px;right:80px;animation-delay:0s}
+.dp2{top:55px;right:30px;animation-delay:.8s;width:4px;height:4px;background:var(--p)}
+.dp3{bottom:8px;right:110px;animation-delay:1.6s;background:var(--purple);opacity:.4}
+.dp4{top:28px;right:140px;animation-delay:2.4s;width:5px;height:5px;background:var(--ok);opacity:.5}
+@keyframes particle-float{
+  0%,100%{transform:translate(0,0)}
+  33%{transform:translate(6px,-8px)}
+  66%{transform:translate(-4px,5px)}
+}
+
+/* ── ERROR TEXT ── */
+.err-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--errbg);color:var(--err);
+  font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;
+  margin-bottom:14px;
+  border:1px solid #fca5a5;
+}
+.err-eyebrow .ti{font-size:12px}
+
+.err-title{font-size:26px;font-weight:700;color:var(--txt);line-height:1.3;margin-bottom:10px}
+.err-body{font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:28px;max-width:460px}
+
+/* ── SEARCH ── */
+.search-wrap{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface2);
+  border:1.5px solid var(--border);
+  border-radius:var(--rl);
+  padding:12px 16px;
+  margin-bottom:28px;
+  max-width:460px;
+  transition:border .15s,background .15s;
+}
+.search-wrap:focus-within{border-color:var(--p);background:#fff;box-shadow:0 0 0 3px rgba(10,115,190,.08)}
+.search-wrap .ti{font-size:18px;color:var(--txt3);flex-shrink:0}
+.search-inp{
+  flex:1;border:none;background:transparent;outline:none;
+  font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--txt);
+}
+.search-inp::placeholder{color:var(--txt3)}
+.search-kbd{
+  background:var(--border);color:var(--txt3);
+  font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;
+  flex-shrink:0;letter-spacing:.3px;
+}
+
+/* ── ACTION BUTTONS ── */
+.action-row{display:flex;align-items:center;gap:10px;margin-bottom:36px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 20px;border-radius:var(--r);
+  font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--txt2);
+  transition:all .15s;text-decoration:none;
+}
+.btn:hover{border-color:var(--ps);color:var(--p);background:var(--pl)}
+.btn .ti{font-size:15px}
+.btn-primary{background:var(--p);color:#fff;border-color:var(--p);box-shadow:0 2px 8px rgba(10,115,190,.25)}
+.btn-primary:hover{background:var(--pd);border-color:var(--pd);color:#fff;box-shadow:0 4px 14px rgba(10,115,190,.35)}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--txt2)}
+.btn-ghost:hover{background:var(--surface2);border-color:var(--border2);color:var(--txt)}
+
+/* ── DIVIDER ── */
+.divider{display:flex;align-items:center;gap:12px;margin-bottom:20px;max-width:460px}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-txt{font-size:11px;color:var(--txt3);white-space:nowrap}
+
+/* ── SHORTCUT CHIPS ── */
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  font-size:12px;font-weight:500;color:var(--txt2);
+  cursor:pointer;text-decoration:none;
+  transition:all .15s;
+}
+.chip:hover{background:var(--pl);border-color:var(--ps);color:var(--p)}
+.chip .ti{font-size:13px}
+
+/* ── ERROR META ── */
+.err-meta{
+  display:flex;align-items:center;gap:20px;
+  padding:12px 16px;border-radius:var(--rl);
+  background:var(--surface2);border:1px solid var(--border);
+  max-width:460px;
+}
+.em-item{display:flex;flex-direction:column;gap:2px}
+.em-label{font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.5px;text-transform:uppercase}
+.em-val{font-size:12px;font-weight:600;color:var(--txt2);font-variant-numeric:tabular-nums}
+.em-sep{width:1px;height:32px;background:var(--border);flex-shrink:0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .card{flex-direction:column;max-width:480px;min-height:auto}
+  .panel-left{flex:none;padding:32px 28px}
+  .panel-right{padding:36px 28px}
+  .quick-links{display:none}
+  .hero-body{display:none}
+  .num-404{font-size:80px}
+  .illus-icon-wrap{left:98px}
+  .deco-ring{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- floating orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="card">
+
+    <!-- ── LEFT PANEL ── -->
+    <div class="panel-left">
+      <div>
+        <!-- Brand -->
+        <div class="brand">
+          <div class="brand-logo"><i class="ti ti-medical-cross"></i></div>
+          <div>
+            <div class="brand-name">Pinnacle IMS</div>
+            <div class="brand-sub">Supply Chain · Enterprise</div>
+          </div>
+        </div>
+
+        <!-- System status -->
+        <div class="sys-badge">
+          <span class="sys-badge-dot"></span>
+          All systems operational
+        </div>
+
+        <div class="hero-eyebrow">Error 404</div>
+        <div class="hero-title">Lost in the<br>supply chain?</div>
+        <div class="hero-body">The route you requested doesn't exist or may have been relocated. Your inventory data is safe — let us get you back on track.</div>
+
+        <!-- Quick nav -->
+        <div class="quick-label">Navigate to</div>
+        <div class="quick-links">
+          <a class="ql-item" href="index.html">
+            <i class="ti ti-layout-dashboard"></i>
+            Dashboard
+            <i class="ti ti-arrow-right ql-item-arr"></i>
+          </a>
+          <a class="ql-item" href="index.html">
+            <i class="ti ti-package"></i>
+            Inventory
+            <i class="ti ti-arrow-right ql-item-arr"></i>
+          </a>
+          <a class="ql-item" href="index.html">
+            <i class="ti ti-truck-delivery"></i>
+            Shipments
+            <i class="ti ti-arrow-right ql-item-arr"></i>
+          </a>
+          <a class="ql-item" href="index.html">
+            <i class="ti ti-building-hospital"></i>
+            Branches
+            <i class="ti ti-arrow-right ql-item-arr"></i>
+          </a>
+          <a class="ql-item" href="index.html">
+            <i class="ti ti-users"></i>
+            Staff Management
+            <i class="ti ti-arrow-right ql-item-arr"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="left-footer">
+        © 2026 Pinnacle Healthcare Network Pte. Ltd.<br>
+        Inventory Management System · Singapore
+      </div>
+    </div>
+
+    <!-- ── RIGHT PANEL ── -->
+    <div class="panel-right">
+
+      <!-- Decorative rings & particles -->
+      <div class="deco-ring deco-ring1"></div>
+      <div class="deco-ring deco-ring2"></div>
+      <div class="dot-particle dp1"></div>
+      <div class="dot-particle dp2"></div>
+      <div class="dot-particle dp3"></div>
+      <div class="dot-particle dp4"></div>
+
+      <!-- 404 illustration -->
+      <div class="illus-wrap">
+        <div class="num-404">404</div>
+        <div class="illus-icon-wrap">
+          <div class="illus-badge">
+            <i class="ti ti-route-x"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error text -->
+      <div class="err-eyebrow">
+        <i class="ti ti-alert-triangle"></i>
+        Page Not Found
+      </div>
+      <div class="err-title">We couldn't find that page</div>
+      <div class="err-body">
+        The page you're looking for doesn't exist, has been moved, or you may not have permission to view it. Check the URL or use the search below to find what you need.
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <i class="ti ti-search"></i>
+        <input class="search-inp" id="searchInp" type="text" placeholder="Search for a page, SKU, or shipment…" autocomplete="off" oninput="handleSearch(this.value)" onkeydown="handleKey(event)">
+        <span class="search-kbd">↵ Enter</span>
+      </div>
+
+      <!-- Search suggestions (hidden by default) -->
+      <div id="searchSuggestions" style="display:none;margin-top:-20px;margin-bottom:20px;max-width:460px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 8px 24px rgba(13,33,55,.1)"></div>
+
+      <!-- Action buttons -->
+      <div class="action-row">
+        <a href="index.html" class="btn btn-primary">
+          <i class="ti ti-home"></i>
+          Go to Dashboard
+        </a>
+        <button class="btn btn-ghost" onclick="history.back()">
+          <i class="ti ti-arrow-left"></i>
+          Go Back
+        </button>
+        <button class="btn btn-ghost" onclick="location.reload()">
+          <i class="ti ti-refresh"></i>
+          Reload
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-txt">Or jump to a section</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Shortcut chips -->
+      <div class="chip-row">
+        <a href="index.html" class="chip"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+        <a href="index.html" class="chip"><i class="ti ti-pill"></i> Medicines</a>
+        <a href="index.html" class="chip"><i class="ti ti-truck-delivery"></i> Shipments</a>
+        <a href="index.html" class="chip"><i class="ti ti-file-invoice"></i> Disbursements</a>
+        <a href="index.html" class="chip"><i class="ti ti-building-hospital"></i> Branches</a>
+        <a href="index.html" class="chip"><i class="ti ti-book"></i> Stock Ledger</a>
+        <a href="index.html" class="chip"><i class="ti ti-report-analytics"></i> Reports</a>
+      </div>
+
+      <!-- Error metadata -->
+      <div class="err-meta">
+        <div class="em-item">
+          <span class="em-label">HTTP Status</span>
+          <span class="em-val" style="color:var(--err)">404 Not Found</span>
+        </div>
+        <div class="em-sep"></div>
+        <div class="em-item">
+          <span class="em-label">Request Path</span>
+          <span class="em-val" id="reqPath">—</span>
+        </div>
+        <div class="em-sep"></div>
+        <div class="em-item">
+          <span class="em-label">Timestamp</span>
+          <span class="em-val" id="reqTime">—</span>
+        </div>
+        <div class="em-sep"></div>
+        <div class="em-item">
+          <span class="em-label">Session</span>
+          <span class="em-val" id="reqSession">—</span>
+        </div>
+      </div>
+
+    </div><!-- /panel-right -->
+  </div><!-- /card -->
+</div><!-- /wrapper -->
+
+<script>
+// ── Metadata ──────────────────────────────────────────
+(function(){
+  // Path
+  const p = window.location.pathname || '/';
+  document.getElementById('reqPath').textContent = p.length > 28 ? p.slice(0,28)+'…' : p;
+
+  // Timestamp
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('reqTime').textContent =
+    pad(now.getDate())+' '+now.toLocaleString('en-SG',{month:'short'})+' '+now.getFullYear()+
+    ', '+pad(now.getHours())+':'+pad(now.getMinutes());
+
+  // Session ID (random enterprise-looking token)
+  const hex = ()=>Math.floor(Math.random()*0xFFFF).toString(16).toUpperCase().padStart(4,'0');
+  document.getElementById('reqSession').textContent = 'SID-'+hex()+'-'+hex();
+})();
+
+// ── Page definitions for search ──────────────────────
+const PAGES = [
+  {label:'Dashboard',      desc:'Overview & KPIs',               icon:'ti-layout-dashboard', href:'index.html'},
+  {label:'Medicines',      desc:'Medicine master catalog',        icon:'ti-pill',             href:'index.html'},
+  {label:'Inventory',      desc:'Branch inventory levels',        icon:'ti-package',          href:'index.html'},
+  {label:'Shipments',      desc:'Inbound & outbound shipments',   icon:'ti-truck-delivery',   href:'index.html'},
+  {label:'Disbursements',  desc:'Disbursement notes & ACKs',      icon:'ti-file-invoice',     href:'index.html'},
+  {label:'Returns',        desc:'Return disbursements & receipts',icon:'ti-package-import',   href:'index.html'},
+  {label:'Stock Ledger',   desc:'Full stock movement ledger',     icon:'ti-book',             href:'index.html'},
+  {label:'Audit Trail',    desc:'System audit log',               icon:'ti-clipboard-list',   href:'index.html'},
+  {label:'Batches',        desc:'Inventory batch tracker',        icon:'ti-layers-subtract',  href:'index.html'},
+  {label:'Branches',       desc:'Clinic & warehouse branches',    icon:'ti-building-hospital',href:'index.html'},
+  {label:'Staff',          desc:'Staff & role management',        icon:'ti-users',            href:'index.html'},
+  {label:'Notifications',  desc:'System notifications & alerts',  icon:'ti-bell',             href:'index.html'},
+  {label:'Transaction Log',desc:'All transaction events',         icon:'ti-list-details',     href:'index.html'},
+  {label:'Master Data',    desc:'Reference & configuration data', icon:'ti-database',         href:'index.html'},
+  {label:'Design System',  desc:'UI components & tokens',         icon:'ti-palette',          href:'index.html'},
+];
+
+let activeSugIdx = -1;
+let filteredSugs = [];
+
+function handleSearch(val){
+  const q = val.trim().toLowerCase();
+  const box = document.getElementById('searchSuggestions');
+  if(!q){box.style.display='none';return;}
+  filteredSugs = PAGES.filter(p=>
+    p.label.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)
+  ).slice(0,5);
+  if(!filteredSugs.length){
+    box.style.display='none';return;
+  }
+  activeSugIdx=-1;
+  box.innerHTML = filteredSugs.map((p,i)=>`
+    <a href="${p.href}" class="sug-row" data-idx="${i}"
+       style="display:flex;align-items:center;gap:12px;padding:10px 16px;
+              border-bottom:1px solid var(--border);text-decoration:none;
+              background:var(--surface);transition:background .1s;cursor:pointer;"
+       onmouseenter="setSugActive(${i})"
+       onmouseleave="setSugActive(-1)">
+      <span style="width:32px;height:32px;border-radius:var(--r);background:var(--infobg);
+                   display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <i class="ti ${p.icon}" style="font-size:15px;color:var(--p)"></i>
+      </span>
+      <span>
+        <span style="display:block;font-size:13px;font-weight:600;color:var(--txt)">${p.label}</span>
+        <span style="display:block;font-size:11px;color:var(--txt3)">${p.desc}</span>
+      </span>
+      <i class="ti ti-arrow-right" style="margin-left:auto;font-size:13px;color:var(--txt3)"></i>
+    </a>
+  `).join('')+`
+    <div style="padding:8px 16px;background:var(--surface2);font-size:11px;color:var(--txt3)">
+      Showing ${filteredSugs.length} result${filteredSugs.length!==1?'s':''} — press ↵ to navigate
+    </div>`;
+  box.style.display='block';
+}
+
+function setSugActive(idx){
+  activeSugIdx=idx;
+  document.querySelectorAll('.sug-row').forEach((el,i)=>{
+    el.style.background = i===idx ? 'var(--pl)' : 'var(--surface)';
+  });
+}
+
+function handleKey(e){
+  const rows = document.querySelectorAll('.sug-row');
+  if(e.key==='ArrowDown'){
+    e.preventDefault();
+    activeSugIdx = Math.min(activeSugIdx+1, rows.length-1);
+    setSugActive(activeSugIdx);
+  } else if(e.key==='ArrowUp'){
+    e.preventDefault();
+    activeSugIdx = Math.max(activeSugIdx-1, 0);
+    setSugActive(activeSugIdx);
+  } else if(e.key==='Enter'){
+    e.preventDefault();
+    if(activeSugIdx>=0 && filteredSugs[activeSugIdx]){
+      window.location.href = filteredSugs[activeSugIdx].href;
+    } else if(filteredSugs.length){
+      window.location.href = filteredSugs[0].href;
+    } else {
+      window.location.href = 'index.html';
+    }
+  } else if(e.key==='Escape'){
+    document.getElementById('searchSuggestions').style.display='none';
+    activeSugIdx=-1;
+  }
+}
+
+// close suggestions on outside click
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.search-wrap') && !e.target.closest('#searchSuggestions')){
+    document.getElementById('searchSuggestions').style.display='none';
+  }
+});
+
+// auto-focus search input on load
+window.addEventListener('load', ()=>{
+  setTimeout(()=>document.getElementById('searchInp').focus(), 300);
+});
+</script>
+</body>
+</html>
