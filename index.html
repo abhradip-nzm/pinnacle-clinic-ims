@@ -512,6 +512,26 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .mdm-tab.on{color:var(--p);border-bottom-color:var(--p);font-weight:600}
 .mdm-panel{display:none}
 .mdm-panel.on{display:block}
+
+/* DEMO ROLE SWITCHER (login screen) */
+.demo-selector{margin-bottom:20px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rl)}
+.demo-selector-lbl{font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.demo-selector-lbl::before{content:'';flex:1;height:1px;background:var(--border)}
+.demo-selector-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.demo-chips{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.demo-chip{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface);cursor:pointer;transition:all .15s;text-align:left}
+.demo-chip:hover{border-color:var(--ps);background:var(--pl)}
+.demo-chip.sel{border-color:var(--p);background:var(--pl)}
+.demo-chip-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.demo-chip-name{font-size:11px;font-weight:600;color:var(--txt);line-height:1.3}
+.demo-chip-role{font-size:10px;color:var(--txt3)}
+
+/* SIDEBAR ROLE BADGE */
+.sb-role-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-top:2px}
+.rb-super{background:var(--purplebg);color:var(--purple)}
+.rb-clinic{background:var(--okbg);color:var(--ok)}
+.rb-warehouse{background:var(--infobg);color:var(--p)}
+.rb-tele{background:var(--warnbg);color:var(--warn)}
 </style>
 
 <div style="position:relative;min-height:760px;overflow:hidden;border-radius:var(--rl)">
@@ -542,11 +562,35 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
     <div class="login-right">
       <div class="login-welcome">Welcome back</div>
       <div class="login-hint">Sign in to your inventory dashboard</div>
+
+      <!-- Demo role switcher -->
+      <div class="demo-selector">
+        <div class="demo-selector-lbl">Try a demo account</div>
+        <div class="demo-chips">
+          <div class="demo-chip sel" data-email="ahmad.y@pinnacle.sg" onclick="selectDemoUser('ahmad.y@pinnacle.sg')">
+            <div class="demo-chip-icon rb-super"><i class="ti ti-shield-half"></i></div>
+            <div><div class="demo-chip-name">Ahmad Bin Yusof</div><div class="demo-chip-role">Super Admin</div></div>
+          </div>
+          <div class="demo-chip" data-email="dr.chan@pinnacle.sg" onclick="selectDemoUser('dr.chan@pinnacle.sg')">
+            <div class="demo-chip-icon rb-clinic"><i class="ti ti-building-hospital"></i></div>
+            <div><div class="demo-chip-name">Dr. Chan Wei Ling</div><div class="demo-chip-role">Clinic Admin</div></div>
+          </div>
+          <div class="demo-chip" data-email="rajan.k@pinnacle.sg" onclick="selectDemoUser('rajan.k@pinnacle.sg')">
+            <div class="demo-chip-icon rb-warehouse"><i class="ti ti-building-warehouse"></i></div>
+            <div><div class="demo-chip-name">Mr. Rajan Kumar</div><div class="demo-chip-role">Warehouse Admin</div></div>
+          </div>
+          <div class="demo-chip" data-email="priya.n@pinnacle.sg" onclick="selectDemoUser('priya.n@pinnacle.sg')">
+            <div class="demo-chip-icon rb-tele"><i class="ti ti-device-laptop-medical"></i></div>
+            <div><div class="demo-chip-name">Dr. Priya Nair</div><div class="demo-chip-role">Telemedicine Admin</div></div>
+          </div>
+        </div>
+      </div>
+
       <div class="login-field">
         <label class="login-label">Staff ID or Email</label>
         <div class="login-input-wrap">
           <i class="ti ti-user" aria-hidden="true"></i>
-          <input class="login-input" type="text" placeholder="e.g. ahmad.y@pinnacle.sg" value="ahmad.y@pinnacle.sg" />
+          <input class="login-input" id="loginEmail" type="text" placeholder="e.g. ahmad.y@pinnacle.sg" value="ahmad.y@pinnacle.sg" />
         </div>
       </div>
       <div class="login-field">
@@ -742,75 +786,75 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <input placeholder="Search menu..." aria-label="Search navigation" />
     </div>
     <div class="sb-body">
-      <div class="sb-section">Overview</div>
-      <div class="nav-item active" onclick="navTo(this,'dashboard')" role="menuitem" tabindex="0">
+      <div class="sb-section" data-sb-section="overview">Overview</div>
+      <div class="nav-item active" onclick="navTo(this,'dashboard')" role="menuitem" tabindex="0" data-perm="dashboard">
         <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard
       </div>
 
-      <div class="sb-section">Inventory</div>
-      <div class="nav-item" onclick="toggleSub('stockSub',this)" role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true">
+      <div class="sb-section" data-sb-section="inventory">Inventory</div>
+      <div class="nav-item" onclick="toggleSub('stockSub',this)" role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true" data-perm="stock-parent">
         <i class="ti ti-stack-2" aria-hidden="true"></i> Stock <span class="nb warn">4</span>
         <i class="ti ti-chevron-down nav-chevron" id="chevron-stockSub" aria-hidden="true"></i>
       </div>
-      <div class="nav-sub" id="stockSub" role="menu">
-        <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem"><i class="ti ti-list" aria-hidden="true"></i> Stock Overview</div>
-        <div class="nav-sub-item" onclick="navTo(null,'batches')" role="menuitem"><i class="ti ti-layers-intersect" aria-hidden="true"></i> Inventory Batches</div>
-        <div class="nav-sub-item" onclick="navTo(null,'expiry')" role="menuitem"><i class="ti ti-calendar-x" aria-hidden="true"></i> Batch Expiry <span style="margin-left:4px;background:var(--err);color:#fff;font-size:10px;padding:1px 5px;border-radius:8px">7</span></div>
+      <div class="nav-sub" id="stockSub" role="menu" data-perm="stock-parent">
+        <div class="nav-sub-item" onclick="navTo(null,'inventory')" role="menuitem" data-perm="inventory"><i class="ti ti-list" aria-hidden="true"></i> Stock Overview</div>
+        <div class="nav-sub-item" onclick="navTo(null,'batches')" role="menuitem" data-perm="batches"><i class="ti ti-layers-intersect" aria-hidden="true"></i> Inventory Batches</div>
+        <div class="nav-sub-item" onclick="navTo(null,'expiry')" role="menuitem" data-perm="expiry"><i class="ti ti-calendar-x" aria-hidden="true"></i> Batch Expiry <span style="margin-left:4px;background:var(--err);color:#fff;font-size:10px;padding:1px 5px;border-radius:8px">7</span></div>
       </div>
 
-      <div class="sb-section">Supply Chain</div>
-      <div class="nav-item" onclick="navTo(this,'shipments')" role="menuitem" tabindex="0">
+      <div class="sb-section" data-sb-section="supply-chain">Supply Chain</div>
+      <div class="nav-item" onclick="navTo(this,'shipments')" role="menuitem" tabindex="0" data-perm="shipments">
         <i class="ti ti-truck-delivery" aria-hidden="true"></i> Shipments <span class="nb warn">2</span>
       </div>
-      <div class="nav-item" onclick="navTo(this,'disbursements')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'disbursements')" role="menuitem" tabindex="0" data-perm="disbursements">
         <i class="ti ti-file-invoice" aria-hidden="true"></i> Disbursements
       </div>
-      <div class="nav-item" onclick="navTo(this,'returns')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'returns')" role="menuitem" tabindex="0" data-perm="returns">
         <i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Returns
       </div>
-      <div class="nav-item" onclick="navTo(this,'ledger')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'ledger')" role="menuitem" tabindex="0" data-perm="ledger">
         <i class="ti ti-book" aria-hidden="true"></i> Stock Ledger
       </div>
 
-      <div class="sb-section">Reports</div>
-      <div class="nav-item" onclick="navTo(this,'analytics')" role="menuitem" tabindex="0">
+      <div class="sb-section" data-sb-section="reports">Reports</div>
+      <div class="nav-item" onclick="navTo(this,'analytics')" role="menuitem" tabindex="0" data-perm="analytics">
         <i class="ti ti-chart-bar" aria-hidden="true"></i> Analytics
       </div>
-      <div class="nav-item" onclick="navTo(this,'txn-log')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'txn-log')" role="menuitem" tabindex="0" data-perm="txn-log">
         <i class="ti ti-list-details" aria-hidden="true"></i> Transaction Log
       </div>
-      <div class="nav-item" onclick="navTo(this,'audit')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'audit')" role="menuitem" tabindex="0" data-perm="audit">
         <i class="ti ti-shield-check" aria-hidden="true"></i> Audit Trail
       </div>
 
-      <div class="sb-section">Admin</div>
-      <div class="nav-item" onclick="navTo(this,'branches')" role="menuitem" tabindex="0">
+      <div class="sb-section" data-sb-section="admin">Admin</div>
+      <div class="nav-item" onclick="navTo(this,'branches')" role="menuitem" tabindex="0" data-perm="branches">
         <i class="ti ti-building-warehouse" aria-hidden="true"></i> Branches
       </div>
-      <div class="nav-item" onclick="navTo(this,'staff')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'staff')" role="menuitem" tabindex="0" data-perm="staff">
         <i class="ti ti-users" aria-hidden="true"></i> Users
       </div>
-      <div class="nav-item" onclick="navTo(this,'mdm')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'mdm')" role="menuitem" tabindex="0" data-perm="mdm">
         <i class="ti ti-database" aria-hidden="true"></i> Master Data
       </div>
-      <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0" data-perm="settings">
         <i class="ti ti-settings" aria-hidden="true"></i> System Settings
       </div>
 
-      <div class="sb-section">Developer</div>
-      <div class="nav-item" onclick="navTo(this,'design-system')" role="menuitem" tabindex="0">
+      <div class="sb-section" data-sb-section="developer">Developer</div>
+      <div class="nav-item" onclick="navTo(this,'design-system')" role="menuitem" tabindex="0" data-perm="design-system">
         <i class="ti ti-palette" aria-hidden="true"></i> Design System
       </div>
-      <div class="nav-item" onclick="navTo(this,'components')" role="menuitem" tabindex="0">
+      <div class="nav-item" onclick="navTo(this,'components')" role="menuitem" tabindex="0" data-perm="components">
         <i class="ti ti-components" aria-hidden="true"></i> Component Library
       </div>
     </div>
     <div class="sb-footer">
       <div class="sb-user" role="button" tabindex="0" aria-label="User profile menu">
-        <div class="sb-avatar">AY</div>
+        <div class="sb-avatar" id="sbAvatar">AY</div>
         <div>
-          <div class="sb-uname">Ahmad Bin Yusof</div>
-          <div class="sb-urole">Super Admin</div>
+          <div class="sb-uname" id="sbUname">Ahmad Bin Yusof</div>
+          <div id="sbRoleBadge" class="sb-role-badge rb-super"><i class="ti ti-shield-half" style="font-size:10px"></i> Super Admin</div>
         </div>
         <i class="ti ti-dots-vertical" aria-hidden="true"></i>
       </div>
@@ -3548,7 +3592,76 @@ function toggleDS(){document.getElementById('dsPanel').classList.toggle('open');
 function togglePw(){const i=document.getElementById('pwInput');const e=document.getElementById('eyeIcon');i.type=i.type==='password'?'text':'password';e.className=i.type==='password'?'ti ti-eye':'ti ti-eye-off';}
 const SCREENS=['loginScreen','forgotScreen','otpScreen','resetScreen','resetSuccessScreen','appScreen'];
 function showScreen(id){SCREENS.forEach(s=>{const el=document.getElementById(s);if(el)el.classList.remove('active');});const t=document.getElementById(id);if(t)t.classList.add('active');}
-function goApp(){showScreen('appScreen');}
+
+/* ── Role-Based Access Control ─────────────────────────────── */
+let currentUser=null;
+const ROLE_PERMS={
+  SUPER_ADMIN:       ['dashboard','stock-parent','inventory','batches','expiry','shipments','disbursements','returns','ledger','analytics','txn-log','audit','branches','staff','mdm','settings','design-system','components'],
+  CLINIC_ADMIN:      ['dashboard','stock-parent','inventory','batches','expiry','disbursements','returns','ledger','analytics'],
+  WAREHOUSE_ADMIN:   ['dashboard','stock-parent','inventory','batches','expiry','shipments','disbursements','returns','ledger','analytics','txn-log','branches'],
+  TELEMEDICINE_ADMIN:['dashboard','stock-parent','inventory','batches','expiry','disbursements','returns','ledger','analytics'],
+};
+const ROLE_META={
+  SUPER_ADMIN:       {label:'Super Admin',       badgeClass:'rb-super',    icon:'ti-shield-half'},
+  CLINIC_ADMIN:      {label:'Clinic Admin',       badgeClass:'rb-clinic',   icon:'ti-building-hospital'},
+  WAREHOUSE_ADMIN:   {label:'Warehouse Admin',    badgeClass:'rb-warehouse',icon:'ti-building-warehouse'},
+  TELEMEDICINE_ADMIN:{label:'Telemedicine Admin', badgeClass:'rb-tele',     icon:'ti-device-laptop-medical'},
+};
+
+function applyRoleNav(){
+  if(!currentUser)return;
+  const role=currentUser.role;
+  const allowed=ROLE_PERMS[role]||ROLE_PERMS.SUPER_ADMIN;
+
+  /* show/hide individual nav items */
+  document.querySelectorAll('[data-perm]').forEach(el=>{
+    el.style.display=allowed.includes(el.dataset.perm)?'':'none';
+  });
+
+  /* hide sections whose every child nav-item is hidden */
+  document.querySelectorAll('[data-sb-section]').forEach(sec=>{
+    let sib=sec.nextElementSibling,hasVis=false;
+    while(sib&&!sib.hasAttribute('data-sb-section')){
+      if(sib.hasAttribute('data-perm')&&sib.style.display!=='none'){hasVis=true;break;}
+      sib=sib.nextElementSibling;
+    }
+    sec.style.display=hasVis?'':'none';
+  });
+
+  /* update sidebar footer */
+  const meta=ROLE_META[role]||ROLE_META.SUPER_ADMIN;
+  const parts=currentUser.name.split(' ');
+  const initials=(parts[0][0]+(parts[parts.length-1][0]||'')).toUpperCase();
+  const av=document.getElementById('sbAvatar');if(av)av.textContent=initials;
+  const un=document.getElementById('sbUname');if(un)un.textContent=currentUser.name;
+  const rb=document.getElementById('sbRoleBadge');
+  if(rb){rb.className='sb-role-badge '+meta.badgeClass;rb.innerHTML=`<i class="ti ${meta.icon}" style="font-size:10px"></i> ${meta.label}`;}
+  /* update topbar avatar */
+  const tb=document.querySelector('.tb-avatar-btn');if(tb)tb.textContent=initials;
+  /* update dashboard greeting — strip honorific prefix */
+  const gr=document.querySelector('.dash-greeting-sub');
+  if(gr){const fn=currentUser.name.replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.|Prof\.)\s*/i,'').split(' ')[0];gr.textContent='Good morning, '+fn+' · Friday 6 Jun 2026, 09:14 SGT · All branches reporting normally';}
+  /* redirect away from now-forbidden page */
+  const ap=document.querySelector('.page-content.active');
+  if(ap){const pid=ap.id.replace('page-','');if(!allowed.includes(pid)&&pid!=='dashboard')navTo(document.querySelector('[data-perm="dashboard"]'),'dashboard');}
+  /* update branch context chip if non-global */
+  const bc=document.querySelector('.tb-chip');
+  if(bc&&currentUser.branch&&currentUser.branch!=='— (global)'){bc.innerHTML=`<i class="ti ti-building-hospital" style="font-size:12px" aria-hidden="true"></i> ${currentUser.branch}`;}
+  else if(bc){bc.innerHTML=`<i class="ti ti-map-pin" style="font-size:12px" aria-hidden="true"></i> Singapore`;}
+}
+
+function selectDemoUser(email){
+  const inp=document.getElementById('loginEmail');
+  if(inp)inp.value=email;
+  document.querySelectorAll('.demo-chip').forEach(c=>c.classList.toggle('sel',c.dataset.email===email));
+}
+
+function goApp(){
+  const email=(document.getElementById('loginEmail')||{}).value||'ahmad.y@pinnacle.sg';
+  currentUser=staffData.find(u=>u.email===email)||staffData[0];
+  showScreen('appScreen');
+  applyRoleNav();
+}
 function goLogin(){showScreen('loginScreen');}
 function goForgot(){showScreen('forgotScreen');}
 function goOtp(){const e=document.getElementById('forgotEmail');const disp=document.getElementById('otpEmailDisplay');if(disp&&e)disp.textContent=e.value||'ahmad.y@pinnacle.sg';showScreen('otpScreen');setTimeout(()=>{const o=document.getElementById('otp0');if(o)o.focus();},100);startResendTimer();}
