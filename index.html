@@ -513,6 +513,15 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .mdm-panel{display:none}
 .mdm-panel.on{display:block}
 
+/* PHONE SPLIT INPUT */
+.phone-field{display:flex;border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--surface2);transition:border .15s;width:100%}
+.phone-field:focus-within{border-color:var(--p);background:#fff}
+.phone-code-sel{width:94px;padding:9px 8px 9px 10px;border:none;border-right:1.5px solid var(--border);background:transparent;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;color:var(--txt);cursor:pointer;outline:none;flex-shrink:0}
+.phone-num-inp{flex:1;padding:9px 12px;border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--txt);outline:none;min-width:0}
+.phone-num-inp::placeholder{color:var(--txt3)}
+/* phone display badge (in tables/cards) */
+.ph-code{display:inline-flex;align-items:center;padding:1px 6px;background:var(--infobg);color:var(--p);font-size:10px;font-weight:700;border-radius:5px;margin-right:4px;font-variant-numeric:tabular-nums;letter-spacing:.2px}
+
 /* DEMO ROLE SWITCHER (login screen) */
 .demo-selector{margin-bottom:20px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rl)}
 .demo-selector-lbl{font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
@@ -2090,9 +2099,9 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="tbl-wrap">
           <div class="tbl-hdr"><div class="tbl-title">All branches</div><div class="tbl-meta" id="branchCount"></div></div>
           <div style="overflow-x:auto">
-          <table>
-            <colgroup><col style="width:10%"><col style="width:22%"><col style="width:24%"><col style="width:16%"><col style="width:6%"><col style="width:8%"><col style="width:8%"><col style="width:6%"></colgroup>
-            <thead><tr><th>Branch ID</th><th>Name</th><th>Type</th><th>Address</th><th>Users</th><th>SKUs</th><th>Status</th><th>Actions</th></tr></thead>
+          <table style="table-layout:auto">
+            <colgroup><col style="width:90px"><col style="width:200px"><col style="width:120px"><col><col style="width:130px"><col style="width:60px"><col style="width:70px"><col style="width:75px"><col style="width:100px"></colgroup>
+            <thead><tr><th>Branch ID</th><th>Name</th><th>Type</th><th>Address</th><th>Phone</th><th>Users</th><th>SKUs</th><th>Status</th><th>Actions</th></tr></thead>
             <tbody id="branchTblBody"></tbody>
           </table>
           </div>
@@ -2624,11 +2633,23 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <div class="fg"><label class="fl">Address</label><input class="fi" type="text" placeholder="Street address, unit, postal code"/></div>
       <div class="form-row">
         <div class="fg"><label class="fl">City</label><input class="fi" type="text" placeholder="e.g. Singapore"/></div>
-        <div class="fg"><label class="fl">Phone</label><input class="fi" type="text" placeholder="+65 XXXX XXXX"/></div>
-      </div>
-      <div class="form-row">
-        <div class="fg"><label class="fl">Phone</label><input class="fi" type="text" placeholder="+65 XXXX XXXX"/></div>
         <div class="fg"><label class="fl">Operating hours</label><input class="fi" type="text" placeholder="e.g. Mon–Fri 8am–6pm"/></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Phone</label>
+        <div class="phone-field">
+          <select class="phone-code-sel" aria-label="Country code">
+            <option value="+65">SG +65</option>
+            <option value="+60">MY +60</option>
+            <option value="+62">ID +62</option>
+            <option value="+66">TH +66</option>
+            <option value="+91">IN +91</option>
+            <option value="+1">US +1</option>
+            <option value="+44">GB +44</option>
+            <option value="+61">AU +61</option>
+          </select>
+          <input class="phone-num-inp" type="tel" placeholder="e.g. 6862 0011" aria-label="Phone number"/>
+        </div>
       </div>
     </div>
     <div class="modal-foot">
@@ -2652,7 +2673,22 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       </div>
       <div class="form-row">
         <div class="fg"><label class="fl">Email address</label><input class="fi" type="email" placeholder="name@pinnacle.sg"/></div>
-        <div class="fg"><label class="fl">Phone</label><input class="fi" type="text" placeholder="+65 XXXX XXXX"/></div>
+        <div class="fg">
+          <label class="fl">Phone</label>
+          <div class="phone-field">
+            <select class="phone-code-sel" aria-label="Country code">
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+62">🇮🇩 +62</option>
+              <option value="+66">🇹🇭 +66</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+            </select>
+            <input class="phone-num-inp" type="tel" placeholder="e.g. 9123 4567" aria-label="Phone number"/>
+          </div>
+        </div>
       </div>
       <div class="form-row">
         <div class="fg"><label class="fl">Role</label>
@@ -3173,11 +3209,11 @@ let filteredMeds=[...meds];
 
 /* ── NEW DATA ── */
 const branches=[
-  {id:'BR-001',name:'Pinnacle Central Warehouse',address:'10 Tuas South Ave 2, #05-01, S637304',city:'Singapore',phone:'+65 6862 0011',branch_type:'WAREHOUSE',is_active:true,manager:'Ahmad Bin Yusof',staff:4,meds:3200},
-  {id:'BR-002',name:'Pinnacle Clinic Orchard',address:'391 Orchard Rd, #01-01, S238872',city:'Singapore',phone:'+65 6735 8800',branch_type:'CLINIC',is_active:true,manager:'Dr. Chan Wei Ling',staff:8,meds:1284},
-  {id:'BR-003',name:'Pinnacle Clinic Tampines',address:'4 Tampines Central 5, #03-22, S529510',city:'Singapore',phone:'+65 6785 1100',branch_type:'CLINIC',is_active:true,manager:'Dr. Lim Ah Kow',staff:5,meds:856},
-  {id:'BR-004',name:'Pinnacle Telemedicine Hub',address:'71 Ayer Rajah Crescent, #03-18, S139951',city:'Singapore',phone:'+65 6779 0055',branch_type:'TELEMEDICINE',is_active:true,manager:'Dr. Priya Nair',staff:3,meds:240},
-  {id:'BR-005',name:'Pinnacle Clinic Woodlands',address:'900 South Woodlands Dr, #08-05, S730900',city:'Singapore',phone:'+65 6366 2200',branch_type:'CLINIC',is_active:false,manager:'—',staff:0,meds:0},
+  {id:'BR-001',name:'Pinnacle Central Warehouse',address:'10 Tuas South Ave 2, #05-01, S637304',city:'Singapore',phone_code:'+65',phone:'6862 0011',branch_type:'WAREHOUSE',is_active:true,manager:'Ahmad Bin Yusof',staff:4,meds:3200},
+  {id:'BR-002',name:'Pinnacle Clinic Orchard',address:'391 Orchard Rd, #01-01, S238872',city:'Singapore',phone_code:'+65',phone:'6735 8800',branch_type:'CLINIC',is_active:true,manager:'Dr. Chan Wei Ling',staff:8,meds:1284},
+  {id:'BR-003',name:'Pinnacle Clinic Tampines',address:'4 Tampines Central 5, #03-22, S529510',city:'Singapore',phone_code:'+65',phone:'6785 1100',branch_type:'CLINIC',is_active:true,manager:'Dr. Lim Ah Kow',staff:5,meds:856},
+  {id:'BR-004',name:'Pinnacle Telemedicine Hub',address:'71 Ayer Rajah Crescent, #03-18, S139951',city:'Singapore',phone_code:'+65',phone:'6779 0055',branch_type:'TELEMEDICINE',is_active:true,manager:'Dr. Priya Nair',staff:3,meds:240},
+  {id:'BR-005',name:'Pinnacle Clinic Woodlands',address:'900 South Woodlands Dr, #08-05, S730900',city:'Singapore',phone_code:'+65',phone:'6366 2200',branch_type:'CLINIC',is_active:false,manager:'—',staff:0,meds:0},
 ];
 const staffData=[
   {id:'USR-001',name:'Ahmad Bin Yusof',email:'ahmad.y@pinnacle.sg',role:'SUPER_ADMIN',branch:'— (global)',is_active:true,lastLogin:'26 May 2026, 08:30 AM'},
@@ -3266,10 +3302,10 @@ const notifData=[
   {id:9,type:'info',icon:'ti-user-plus',title:'New user created: Ms. Rachel Chua',msg:'Clinic Admin · Clinic Tampines',time:'2 days ago',read:true},
 ];
 const suppliersData=[
-  {id:'SUP-001',name:'Zuellig Pharma SG',contact_person:'Mr. Lee Boon Hock',email:'orders@zuellig.sg',phone:'+65 6226 7788',reg_no:'UEN-200201234K',is_active:true,items:142},
-  {id:'SUP-002',name:'DKSH Healthcare',contact_person:'Ms. Tan Hui Xian',email:'orders@dksh.sg',phone:'+65 6749 8800',reg_no:'UEN-199904567M',is_active:true,items:98},
-  {id:'SUP-003',name:'Pharmaniaga SG',contact_person:'Mr. Raj Subramaniam',email:'sg@pharmaniaga.com',phone:'+65 6511 2200',reg_no:'UEN-201312345Z',is_active:true,items:76},
-  {id:'SUP-004',name:'YCH Lifesciences',contact_person:'Ms. Wong Mei Ling',email:'life@ych.com',phone:'+65 6378 5678',reg_no:'UEN-200567891A',is_active:false,items:12},
+  {id:'SUP-001',name:'Zuellig Pharma SG',contact_person:'Mr. Lee Boon Hock',email:'orders@zuellig.sg',phone_code:'+65',phone:'6226 7788',reg_no:'UEN-200201234K',is_active:true,items:142},
+  {id:'SUP-002',name:'DKSH Healthcare',contact_person:'Ms. Tan Hui Xian',email:'orders@dksh.sg',phone_code:'+65',phone:'6749 8800',reg_no:'UEN-199904567M',is_active:true,items:98},
+  {id:'SUP-003',name:'Pharmaniaga SG',contact_person:'Mr. Raj Subramaniam',email:'sg@pharmaniaga.com',phone_code:'+65',phone:'6511 2200',reg_no:'UEN-201312345Z',is_active:true,items:76},
+  {id:'SUP-004',name:'YCH Lifesciences',contact_person:'Ms. Wong Mei Ling',email:'life@ych.com',phone_code:'+65',phone:'6378 5678',reg_no:'UEN-200567891A',is_active:false,items:12},
 ];
 const categoriesData=[
   {id:'CAT-001',name:'Antibiotic',desc:'Antibacterial medications',items:186,status:'Active'},
@@ -3371,6 +3407,8 @@ const TABLE_LABELS={
   audit_trail:'Audit Trail'
 };
 function fmtTable(v){return TABLE_LABELS[v]||v.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());}
+function fmtPhone(code,num){if(!code&&!num)return'—';return`<span class="ph-code">${code||''}</span>${num||''}`;}
+
 
 /* ── PAGINATION ENGINE ── */
 function renderPagination(cid,total,page,perPage,fnName){
@@ -3719,6 +3757,7 @@ function renderBranches(){
       </div>
     </div>
     <div class="branch-addr"><i class="ti ti-map-pin" style="font-size:12px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>${b.address}</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);margin-bottom:12px"><i class="ti ti-phone" style="font-size:12px;color:var(--txt3)" aria-hidden="true"></i>${fmtPhone(b.phone_code,b.phone)}</div>
     <div class="branch-stats">
       <div><div class="branch-stat-val">${b.meds.toLocaleString()}</div><div class="branch-stat-lbl">SKUs</div></div>
       <div><div class="branch-stat-val">${b.staff}</div><div class="branch-stat-lbl">Users</div></div>
@@ -3740,6 +3779,7 @@ function renderBranchTbl(){
     <td><div style="font-weight:600">${br.name}</div><div style="font-size:11px;color:var(--txt3)">${br.city}</div></td>
     <td><span class="badge ${branchTypeBadge(br.branch_type)}"><i class="ti ${branchTypeIcon(br.branch_type)}" style="font-size:10px"></i>${fmtEnum(br.branch_type)}</span></td>
     <td style="font-size:12px;color:var(--txt2)">${br.address}</td>
+    <td style="font-size:12px;white-space:nowrap">${fmtPhone(br.phone_code,br.phone)}</td>
     <td style="text-align:center;font-weight:600">${br.staff}</td>
     <td style="text-align:center;font-weight:600">${br.meds.toLocaleString()}</td>
     <td><span class="badge ${br.is_active?'bge':'bgr'}">${br.is_active?'Active':'Inactive'}</span></td>
@@ -3842,7 +3882,7 @@ function renderMdmTab(tabId){
       <td style="font-size:12px">${s.contact_person}</td>
       <td style="font-size:12px;color:var(--txt2)">${s.email}</td>
       <td style="font-family:monospace;font-size:12px;color:var(--txt3)">${s.reg_no}</td>
-      <td style="font-size:12px">${s.phone}</td>
+      <td style="font-size:12px;white-space:nowrap">${fmtPhone(s.phone_code,s.phone)}</td>
       <td style="font-weight:600;text-align:center">${s.items}</td>
       <td><span class="badge ${s.is_active?'bge':'bgr'}">${s.is_active?'Active':'Inactive'}</span></td>
       <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button></td>
