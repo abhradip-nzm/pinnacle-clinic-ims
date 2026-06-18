@@ -890,6 +890,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="tb-avatar-btn" role="button" tabindex="0" aria-label="Profile menu">AY</div>
         <button class="btn" onclick="navTo(null,'design-system')" style="padding:6px 12px;font-size:12px"><i class="ti ti-palette" aria-hidden="true" style="font-size:13px"></i> Design System</button>
         <button class="btn" onclick="navTo(null,'components')" style="padding:6px 12px;font-size:12px"><i class="ti ti-components" aria-hidden="true" style="font-size:13px"></i> Components</button>
+        <button class="btn" onclick="navTo(null,'flow-reference')" style="padding:6px 12px;font-size:12px"><i class="ti ti-sitemap" aria-hidden="true" style="font-size:13px"></i> Flow Reference</button>
         <button class="btn" onclick="goLogin()" style="padding:6px 12px;font-size:12px"><i class="ti ti-logout" aria-hidden="true" style="font-size:13px"></i> Sign out</button>
       </div>
     </header>
@@ -973,7 +974,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               <div class="kpi-icon-wrap si-blue"><i class="ti ti-file-invoice" aria-hidden="true"></i></div>
             </div>
             <div class="kpi-val">2</div>
-            <div class="kpi-foot">Awaiting clinic ACK</div>
+            <div class="kpi-foot">Awaiting fulfillment</div>
           </div>
 
         </div>
@@ -1088,21 +1089,29 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
                   <div style="flex:1;height:7px;background:var(--surface2);border-radius:4px;overflow:hidden"><div style="width:25%;height:100%;background:var(--p);border-radius:4px"></div></div>
                   <span style="font-size:12px;font-weight:600;color:var(--txt);width:16px;text-align:right">2</span>
                 </div>
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:11px;color:var(--txt2);width:140px;white-space:nowrap">Internal Transfer</span>
-                  <div style="flex:1;height:7px;background:var(--surface2);border-radius:4px;overflow:hidden"><div style="width:37.5%;height:100%;background:var(--purple);border-radius:4px"></div></div>
-                  <span style="font-size:12px;font-weight:600;color:var(--txt);width:16px;text-align:right">3</span>
-                </div>
               </div>
             </div>
-            <!-- DN / ACK summary -->
+            <!-- DN status summary -->
             <div style="margin:0 18px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px">
               <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Disbursement Status</div>
-              <div style="display:flex;gap:0">
-                <div style="flex:1;text-align:center;border-right:1px solid var(--border)"><div style="font-size:16px;font-weight:700;color:var(--warn)">2</div><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px;margin-top:2px">Pending ACK</div></div>
-                <div style="flex:1;text-align:center;border-right:1px solid var(--border)"><div style="font-size:16px;font-weight:700;color:var(--ok)">3</div><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px;margin-top:2px">Acknowledged</div></div>
-                <div style="flex:1;text-align:center"><div style="font-size:16px;font-weight:700;color:var(--warn)">1</div><div style="font-size:9px;color:var(--txt3);text-transform:uppercase;letter-spacing:.4px;margin-top:2px">Partial</div></div>
-              </div>
+              <div style="display:flex;gap:0;border-top:1px solid var(--border);margin-top:12px">
+  <div style="flex:1;padding:10px 14px;border-right:1px solid var(--border);text-align:center">
+    <div style="font-size:18px;font-weight:700;color:var(--p)">2</div>
+    <div style="font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Submitted</div>
+  </div>
+  <div style="flex:1;padding:10px 14px;border-right:1px solid var(--border);text-align:center">
+    <div style="font-size:18px;font-weight:700;color:#0891b2">1</div>
+    <div style="font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Accepted</div>
+  </div>
+  <div style="flex:1;padding:10px 14px;border-right:1px solid var(--border);text-align:center">
+    <div style="font-size:18px;font-weight:700;color:var(--warn)">1</div>
+    <div style="font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Fulfilled</div>
+  </div>
+  <div style="flex:1;padding:10px 14px;text-align:center">
+    <div style="font-size:18px;font-weight:700;color:var(--ok)">2</div>
+    <div style="font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Received</div>
+  </div>
+</div>
             </div>
           </div>
 
@@ -1208,7 +1217,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             </div>
             <div class="act-row">
               <div class="act-icon" style="background:var(--infobg);color:var(--p)"><i class="ti ti-circle-check" aria-hidden="true"></i></div>
-              <div style="flex:1"><div class="act-title">DN-2026-00004 approved — awaiting Clinic Orchard ACK</div><div class="act-meta">Disbursement Note · Ahmad Bin Yusof</div></div>
+              <div style="flex:1"><div class="act-title">DN-2026-00004 accepted — awaiting fulfillment by Central Warehouse</div><div class="act-meta">Disbursement Note · Ahmad Bin Yusof</div></div>
               <div class="act-time">24 May, 15:30</div>
             </div>
             <div class="act-row">
@@ -1218,12 +1227,12 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             </div>
             <div class="act-row">
               <div class="act-icon" style="background:var(--okbg);color:var(--ok)"><i class="ti ti-circle-check" aria-hidden="true"></i></div>
-              <div style="flex:1"><div class="act-title">AR-2026-00004 acknowledged by Clinic Tampines</div><div class="act-meta">Atorvastatin 20mg · 40 tabs received · Ms. Rachel Chua</div></div>
+              <div style="flex:1"><div class="act-title">DN-2026-00004 received by Clinic Tampines · DAR-2026-00004 issued</div><div class="act-meta">Atorvastatin 20mg · 40 tabs received · Ms. Rachel Chua</div></div>
               <div class="act-time">23 May, 12:00</div>
             </div>
             <div class="act-row">
               <div class="act-icon" style="background:var(--purplebg);color:var(--purple)"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i></div>
-              <div style="flex:1"><div class="act-title">RDN-2026-00002 submitted — Azithromycin return</div><div class="act-meta">Clinic Orchard → Central Warehouse · 6 tabs · expiring batch</div></div>
+              <div style="flex:1"><div class="act-title">RN-2026-00002 submitted — Azithromycin return · DISBURSEMENT_RETURN</div><div class="act-meta">Clinic Orchard → Central Warehouse · 6 tabs · expiring batch</div></div>
               <div class="act-time">22 May, 14:55</div>
             </div>
             <div class="act-row">
@@ -1242,12 +1251,12 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               </div>
               <div class="pa-row" onclick="navTo(null,'disbursements')">
                 <div class="pa-badge" style="background:var(--warnbg);color:var(--warn)"><i class="ti ti-file-invoice" aria-hidden="true"></i></div>
-                <div style="flex:1"><div class="pa-title">DN-2026-00003 awaiting ACK</div><div class="pa-sub">Clinic Orchard — submitted 22 May</div></div>
+                <div style="flex:1"><div class="pa-title">DN-2026-00003 awaiting fulfillment</div><div class="pa-sub">Source branch action required</div></div>
                 <span class="pa-action">Review <i class="ti ti-arrow-right" style="font-size:10px" aria-hidden="true"></i></span>
               </div>
               <div class="pa-row" onclick="navTo(null,'disbursements')">
                 <div class="pa-badge" style="background:var(--warnbg);color:var(--warn)"><i class="ti ti-file-invoice" aria-hidden="true"></i></div>
-                <div style="flex:1"><div class="pa-title">DN-2026-00004 awaiting ACK</div><div class="pa-sub">Clinic Orchard — submitted 24 May</div></div>
+                <div style="flex:1"><div class="pa-title">DN-2026-00004 awaiting receipt</div><div class="pa-sub">Destination branch action required</div></div>
                 <span class="pa-action">Review <i class="ti ti-arrow-right" style="font-size:10px" aria-hidden="true"></i></span>
               </div>
               <div class="pa-row" onclick="navTo(null,'batches')">
@@ -1257,7 +1266,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               </div>
               <div class="pa-row" onclick="navTo(null,'returns')">
                 <div class="pa-badge" style="background:var(--purplebg);color:var(--purple)"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i></div>
-                <div style="flex:1"><div class="pa-title">RDN-2026-00002 pending warehouse ACK</div><div class="pa-sub">Azithromycin return · Clinic Orchard</div></div>
+                <div style="flex:1"><div class="pa-title">RN-2026-00002 pending receipt</div><div class="pa-sub">Azithromycin return · DISBURSEMENT_RETURN</div></div>
                 <span class="pa-action">Review <i class="ti ti-arrow-right" style="font-size:10px" aria-hidden="true"></i></span>
               </div>
             </div>
@@ -1323,7 +1332,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       <!-- SHIPMENTS PAGE -->
       <div class="page-content" id="page-shipments">
         <div class="pg-header">
-          <div><div class="pg-title">Shipments</div><div class="pg-sub"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Supplier inbound shipments and internal transfers — with type and status tracking</div></div>
+          <div><div class="pg-title">Shipments</div><div class="pg-sub"><i class="ti ti-truck-delivery" aria-hidden="true"></i> Supplier inbound shipments from external vendors — with type and status tracking</div></div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
             <button class="btn btn-primary" onclick="openShipmentModal()"><i class="ti ti-plus" aria-hidden="true"></i> New shipment</button>
@@ -1342,10 +1351,12 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="stat-top"><div class="stat-lbl">Received</div><div class="stat-icon si-green"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
             <div class="stat-val">5</div><div class="stat-foot">Inventory updated</div>
           </div>
-          <div class="stat-card"><div class="stat-accent" style="background:#8b5cf6"></div>
-            <div class="stat-top"><div class="stat-lbl">Internal transfers</div><div class="stat-icon" style="background:var(--purplebg);color:var(--purple)"><i class="ti ti-arrows-exchange" aria-hidden="true"></i></div></div>
-            <div class="stat-val">3</div><div class="stat-foot">Warehouse → Clinic</div>
-          </div>
+          <div class="stat-card">
+  <div class="stat-accent" style="background:var(--txt3)"></div>
+  <div class="stat-top"><div class="stat-lbl">Cancelled</div><div class="stat-icon si-red"><i class="ti ti-ban" aria-hidden="true"></i></div></div>
+  <div class="stat-val">0</div>
+  <div class="stat-foot">No cancellations this month</div>
+</div>
         </div>
         <div class="filter-bar">
           <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search shipment ref, supplier..." aria-label="Search"/></div>
@@ -1353,7 +1364,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <option value="">All types</option>
             <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
             <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
-            <option value="INTERNAL_TRANSFER">Internal Transfer</option>
           </select>
           <select class="fsel" aria-label="Status">
             <option value="">All status</option>
@@ -1445,12 +1455,12 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
             <div class="stat-top"><div class="stat-lbl">Stock-IN movements</div><div class="stat-icon si-green"><i class="ti ti-arrow-down-left" aria-hidden="true"></i></div></div>
             <div class="stat-val">5</div>
-            <div class="stat-foot">SHIPMENT_IN &amp; ACK_RECEIPT ledger entries</div>
+            <div class="stat-foot">SHIPMENT_IN &amp; Disbursement Receive ledger entries</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
             <div class="stat-top"><div class="stat-lbl">Stock-OUT movements</div><div class="stat-icon si-amber"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
             <div class="stat-val">5</div>
-            <div class="stat-foot">DISBURSEMENT &amp; RETURN_DISBURSEMENT</div>
+            <div class="stat-foot">Disbursement Fulfill, Shipment Return &amp; Disbursement Return</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
             <div class="stat-top"><div class="stat-lbl">Total inventory value</div><div class="stat-icon si-blue"><i class="ti ti-currency-dollar" aria-hidden="true"></i></div></div>
@@ -1464,7 +1474,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="bar-chart" role="img" aria-label="Bar chart: shipments by type">
               <div class="bc-row"><span class="bc-label" style="width:130px">SUPPLIER_TO_WH</span><div class="bc-track"><div class="bc-bar" style="width:75%;background:var(--p)">3</div></div><span class="bc-val">3</span></div>
               <div class="bc-row"><span class="bc-label" style="width:130px">SUPPLIER_TO_CLINIC</span><div class="bc-track"><div class="bc-bar" style="width:50%;background:var(--p)">2</div></div><span class="bc-val">2</span></div>
-              <div class="bc-row"><span class="bc-label" style="width:130px">INTERNAL_TRANSFER</span><div class="bc-track"><div class="bc-bar" style="width:75%;background:var(--purple)">3</div></div><span class="bc-val">3</span></div>
             </div>
             <div style="margin-top:14px">
               <div class="a-card-title" style="font-size:12px;margin-bottom:10px"><i class="ti ti-flag" aria-hidden="true"></i> Shipment status breakdown</div>
@@ -2236,11 +2245,10 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <select class="fsel" aria-label="Reference type">
             <option value="">All reference types</option>
             <option value="SHIPMENT_IN">Shipment In</option>
-            <option value="SHIPMENT_INTERNAL">Internal Transfer</option>
-            <option value="DISBURSEMENT">Disbursement</option>
-            <option value="ACK_RECEIPT">Acknowledgement Receipt</option>
-            <option value="RETURN_DISBURSEMENT">Return Note</option>
-            <option value="RETURN_ACK">Return Acknowledgement</option>
+            <option value="DISBURSEMENT">Disbursement Fulfill</option>
+            <option value="ACK_RECEIPT">Disbursement Receive</option>
+            <option value="SHIPMENT_RETURN">Shipment Return</option>
+            <option value="DISBURSEMENT_RETURN">Disbursement Return</option>
             <option value="MANUAL_ADJUSTMENT">Manual Adjustment</option>
           </select>
           <select class="fsel" aria-label="Branch"><option>All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option></select>
@@ -2261,12 +2269,206 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
       </div>
 
-      <!-- DISBURSEMENTS PAGE (DN → AR workflow) -->
+      <!-- FLOW REFERENCE PAGE -->
+      <div class="page-content" id="page-flow-reference">
+  <div class="pg-header">
+    <div>
+      <div class="pg-title">API Flow Reference</div>
+      <div class="pg-sub"><i class="ti ti-sitemap" aria-hidden="true"></i> Supply chain lifecycle, roles, endpoints and inventory rules</div>
+    </div>
+  </div>
+
+  <!-- Section 1: System Overview -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-building-warehouse" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>System Overview</div></div>
+    <div style="padding:16px 20px;font-size:13px;color:var(--txt2);line-height:1.7;border-bottom:1px solid var(--border)">
+      Pinnacle IMS manages medicine supply across three branch types (Warehouse, Clinic, Telemedicine). Three main flows: <strong>Shipments</strong> (supplier → branch), <strong>Disbursements</strong> (branch → branch stock transfer), and <strong>Returns</strong> (branch → supplier or branch → branch).
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Role</th><th>Branch Type</th><th>Can Create</th><th>Key Actions</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge bg-super" style="font-size:11px;padding:3px 10px">SUPER_ADMIN</span></td><td style="color:var(--txt3);font-size:12px">None (global)</td><td style="font-size:12px">Everything</td><td style="font-size:12px">Full system access, all branches</td></tr>
+        <tr><td><span class="badge bg-wh-admin" style="font-size:11px;padding:3px 10px">WAREHOUSE_ADMIN</span></td><td style="color:var(--txt3);font-size:12px">WAREHOUSE</td><td style="font-size:12px">Shipments, W→C Disbursements</td><td style="font-size:12px">Fulfill disbursements, Confirm shipment returns · Cannot see C→C disbursements</td></tr>
+        <tr><td><span class="badge bg-clinic-admin" style="font-size:11px;padding:3px 10px">CLINIC_ADMIN</span></td><td style="color:var(--txt3);font-size:12px">CLINIC</td><td style="font-size:12px">C→C Disbursements, Returns</td><td style="font-size:12px">Submit/Receive disbursements, Create/submit returns</td></tr>
+        <tr><td><span class="badge bg-tele-admin" style="font-size:11px;padding:3px 10px">TELEMEDICINE_ADMIN</span></td><td style="color:var(--txt3);font-size:12px">TELEMEDICINE</td><td style="font-size:12px">Same as CLINIC_ADMIN</td><td style="font-size:12px">Same as CLINIC_ADMIN</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 2: Shipments -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-truck-delivery" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>Shipments Flow</div><div class="tbl-meta">Types: SUPPLIER_TO_CLINIC · SUPPLIER_TO_WAREHOUSE</div></div>
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap">
+        <span class="badge bg-draft" style="padding:5px 14px;font-size:12px">DRAFT</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px" aria-hidden="true"></i>
+        <span class="badge bgb" style="padding:5px 14px;font-size:12px">CONFIRMED</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px" aria-hidden="true"></i>
+        <span class="badge bga" style="padding:5px 14px;font-size:12px">IN TRANSIT</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px" aria-hidden="true"></i>
+        <span class="badge bge" style="padding:5px 14px;font-size:12px">RECEIVED</span>
+        <span style="margin:0 8px;color:var(--txt3);font-size:12px">or</span>
+        <span class="badge bgr" style="padding:5px 14px;font-size:12px">CANCELLED</span>
+        <span class="badge bga" style="margin-left:16px;font-size:11px;padding:3px 8px"><i class="ti ti-arrow-up-right" style="font-size:10px"></i> Inventory IN at RECEIVED</span>
+      </div>
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Who Can Call</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/shipments</td><td style="font-size:12px">SUPER_ADMIN, WAREHOUSE_ADMIN</td><td style="font-size:12px;color:var(--txt2)">Creates in DRAFT</td></tr>
+        <tr><td><span class="badge bga" style="font-size:10px">PUT</span></td><td style="font-family:monospace;font-size:12px">/api/v1/shipments/:id</td><td style="font-size:12px">SUPER_ADMIN, WAREHOUSE_ADMIN</td><td style="font-size:12px;color:var(--txt2)">Updates DRAFT only</td></tr>
+        <tr><td><span class="badge" style="font-size:10px;background:#fdf4ff;color:#7c3aed">PATCH</span></td><td style="font-family:monospace;font-size:12px">/api/v1/shipments/:id/status</td><td style="font-size:12px">SUPER_ADMIN, WAREHOUSE_ADMIN, CLINIC_ADMIN</td><td style="font-size:12px;color:var(--txt2)">Advances status; inventory updates at RECEIVED</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/shipments</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">Visibility unfiltered</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/shipments/:id</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">Full detail with batches</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 3: Disbursements -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-file-invoice" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>Disbursements Flow</div><div class="tbl-meta">Types: WAREHOUSE_TO_CLINIC · CLINIC_TO_CLINIC</div></div>
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:12px">
+        <span class="badge bg-draft" style="padding:5px 14px;font-size:12px">PENDING</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px"></i>
+        <span class="badge bgb" style="padding:5px 14px;font-size:12px">SUBMITTED</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px"></i>
+        <span class="badge" style="padding:5px 14px;font-size:12px;background:#e0f2fe;color:#0891b2">ACCEPTED</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px"></i>
+        <span class="badge bga" style="padding:5px 14px;font-size:12px">FULFILLED</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;color:var(--txt3);margin:0 4px"></i>
+        <span class="badge bge" style="padding:5px 14px;font-size:12px">RECEIVED</span>
+        <span style="margin:0 8px;color:var(--txt3);font-size:12px">or</span>
+        <span class="badge bgr" style="padding:5px 14px;font-size:12px">REJECTED</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-size:11px">
+        <div style="background:var(--surface2);border-radius:var(--r);padding:8px 10px"><div style="font-weight:700;color:var(--txt);margin-bottom:2px">PENDING→SUBMITTED</div><div style="color:var(--txt3)">Any authenticated user</div></div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:8px 10px"><div style="font-weight:700;color:var(--txt);margin-bottom:2px">→ACCEPTED/REJECTED</div><div style="color:var(--txt3)">Source branch admin</div></div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:8px 10px"><div style="font-weight:700;color:var(--txt);margin-bottom:2px">→FULFILLED</div><div style="color:var(--txt3)">Source branch admin · picks batches</div></div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:8px 10px"><div style="font-weight:700;color:var(--txt);margin-bottom:2px">→RECEIVED</div><div style="color:var(--txt3)">Destination branch admin · inventory moves</div></div>
+        <div style="background:var(--okbg);border-radius:var(--r);padding:8px 10px;border:1px solid #bbf7d0"><div style="font-weight:700;color:var(--ok);margin-bottom:2px">PDFs</div><div style="color:var(--ok)">DFR at FULFILLED · DAR at RECEIVED</div></div>
+      </div>
+      <div style="margin-top:10px;padding:8px 12px;background:var(--warnbg);border-radius:var(--r);font-size:11px;color:var(--warn);border:1px solid #fcd34d"><i class="ti ti-alert-triangle" style="font-size:12px;margin-right:4px"></i><strong>WAREHOUSE_ADMIN:</strong> Cannot see or act on CLINIC_TO_CLINIC disbursements.</div>
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Who Can Call</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">Creates in PENDING</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/submit</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">PENDING → SUBMITTED</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/accept-reject</td><td style="font-size:12px">Source branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">SUBMITTED → ACCEPTED / REJECTED</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/fulfill</td><td style="font-size:12px">Source branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">ACCEPTED → FULFILLED · picks batches</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/receive</td><td style="font-size:12px">Destination branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">FULFILLED → RECEIVED · inventory moves</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/fulfillment-receipt</td><td style="font-size:12px">Involved branches, SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">PDF: DFR · available from FULFILLED</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements/:id/receipt</td><td style="font-size:12px">Involved branches, SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">PDF: DAR · available at RECEIVED</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/disbursements</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">Visibility filtered by role</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 4: Returns -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-package-import" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>Returns Flow</div><div class="tbl-meta">Two paths: SHIPMENT_RETURN · DISBURSEMENT_RETURN</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border)">
+      <div style="padding:16px 20px;border-right:1px solid var(--border)">
+        <div style="font-size:12px;font-weight:700;color:var(--txt);margin-bottom:10px;display:flex;align-items:center;gap:6px"><span class="badge bga" style="font-size:10px">SHIPMENT_RETURN</span> Branch → Supplier</div>
+        <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:10px">
+          <span class="badge bg-draft" style="font-size:11px;padding:4px 10px">PENDING</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge bgb" style="font-size:11px;padding:4px 10px">SUBMITTED</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge bge" style="font-size:11px;padding:4px 10px">CONFIRMED</span>
+          <span style="color:var(--txt3);font-size:11px;margin:0 4px">or</span>
+          <span class="badge bgr" style="font-size:11px;padding:4px 10px">REJECTED</span>
+        </div>
+        <div style="font-size:11px;color:var(--txt3);line-height:1.6"><div>Inventory <strong style="color:var(--err)">OUT</strong> at CONFIRMED (source branch)</div><div style="margin-top:4px"><span class="badge bge" style="font-size:10px">SCR PDF</span> generated at CONFIRMED</div></div>
+      </div>
+      <div style="padding:16px 20px">
+        <div style="font-size:12px;font-weight:700;color:var(--txt);margin-bottom:10px;display:flex;align-items:center;gap:6px"><span class="badge bgp" style="font-size:10px">DISBURSEMENT_RETURN</span> Branch ↔ Branch</div>
+        <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:10px">
+          <span class="badge bg-draft" style="font-size:11px;padding:4px 10px">PENDING</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge bgb" style="font-size:11px;padding:4px 10px">SUBMITTED</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge" style="font-size:11px;padding:4px 10px;background:#e0f2fe;color:#0891b2">ACCEPTED</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge bga" style="font-size:11px;padding:4px 10px">FULFILLED</span>
+          <i class="ti ti-arrow-right" style="font-size:12px;color:var(--txt3)"></i>
+          <span class="badge bge" style="font-size:11px;padding:4px 10px">RECEIVED</span>
+        </div>
+        <div style="font-size:11px;color:var(--txt3);line-height:1.6"><div>Inventory moves at RECEIVED (source OUT, destination IN)</div><div style="margin-top:4px;display:flex;gap:6px"><span class="badge bga" style="font-size:10px">RFR PDF</span> at FULFILLED · <span class="badge bgp" style="font-size:10px">RAR PDF</span> at RECEIVED</div></div>
+      </div>
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Who Can Call</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">return_type required</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns/:id/submit</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">PENDING → SUBMITTED</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns/:id/confirm</td><td style="font-size:12px">Source branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">SHIPMENT_RETURN only · inventory deducted</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns/:id/accept-reject</td><td style="font-size:12px">Destination branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">DISBURSEMENT_RETURN only</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns/:id/fulfill</td><td style="font-size:12px">Source branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">DISBURSEMENT_RETURN only</td></tr>
+        <tr><td><span class="badge bgb" style="font-size:10px">POST</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns/:id/receive</td><td style="font-size:12px">Destination branch or SUPER_ADMIN</td><td style="font-size:12px;color:var(--txt2)">DISBURSEMENT_RETURN only · inventory moves</td></tr>
+        <tr><td><span class="badge bge" style="font-size:10px">GET</span></td><td style="font-family:monospace;font-size:12px">/api/v1/returns</td><td style="font-size:12px">Any authenticated</td><td style="font-size:12px;color:var(--txt2)">Visibility filtered by role</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 5: Stock Ledger -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-book" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>Inventory &amp; Stock Ledger</div></div>
+    <div style="padding:14px 20px;font-size:12px;color:var(--txt2);border-bottom:1px solid var(--border);line-height:1.6">
+      Inventory state = <code style="background:var(--surface2);padding:1px 5px;border-radius:4px;font-size:11px">branch_inventory</code> (current qty per branch+medicine) + <code style="background:var(--surface2);padding:1px 5px;border-radius:4px;font-size:11px">inventory_batches</code> (batch-level detail). The stock ledger is <strong>append-only</strong> — every movement creates a new row.
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Reference Type</th><th>DB Value</th><th>Movement</th><th>Trigger</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">Shipment In</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">SHIPMENT_IN</code></td><td><span class="badge bge" style="font-size:10px">IN</span></td><td style="font-size:12px;color:var(--txt2)">Shipment → RECEIVED</td></tr>
+        <tr><td style="font-weight:600">Disbursement Fulfill</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">DISBURSEMENT</code></td><td><span class="badge bgr" style="font-size:10px">OUT</span></td><td style="font-size:12px;color:var(--txt2)">Disbursement → FULFILLED (source branch)</td></tr>
+        <tr><td style="font-weight:600">Disbursement Receive</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">ACK_RECEIPT</code></td><td><span class="badge bge" style="font-size:10px">IN</span></td><td style="font-size:12px;color:var(--txt2)">Disbursement → RECEIVED (destination branch)</td></tr>
+        <tr><td style="font-weight:600">Shipment Return</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">SHIPMENT_RETURN</code></td><td><span class="badge bgr" style="font-size:10px">OUT</span></td><td style="font-size:12px;color:var(--txt2)">Shipment Return → CONFIRMED (source branch)</td></tr>
+        <tr><td style="font-weight:600">Disbursement Return</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">DISBURSEMENT_RETURN</code></td><td><span class="badge bga" style="font-size:10px">OUT+IN</span></td><td style="font-size:12px;color:var(--txt2)">Return → RECEIVED (source OUT + destination IN)</td></tr>
+        <tr><td style="font-weight:600">Manual Adjustment</td><td><code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">MANUAL_ADJUSTMENT</code></td><td><span class="badge bga" style="font-size:10px">IN/OUT</span></td><td style="font-size:12px;color:var(--txt2)">Manual correction by authorised user</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section 6: Auth -->
+  <div class="tbl-wrap" style="margin-bottom:20px">
+    <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-lock" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>Auth &amp; Sessions</div></div>
+    <div style="padding:14px 20px;font-size:12px;color:var(--txt2);border-bottom:1px solid var(--border);line-height:1.6">
+      JWT access token (15 min) + refresh token (30 days). Token rotation on every refresh. Session revoked on password change.
+    </div>
+    <div style="overflow-x:auto">
+    <table style="table-layout:auto">
+      <thead><tr><th>Endpoint</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td style="font-family:monospace;font-size:12px">POST /api/v1/auth/login</td><td style="font-size:12px;color:var(--txt2)">Returns access + refresh tokens</td></tr>
+        <tr><td style="font-family:monospace;font-size:12px">POST /api/v1/auth/refresh</td><td style="font-size:12px;color:var(--txt2)">Rotates refresh token</td></tr>
+        <tr><td style="font-family:monospace;font-size:12px">POST /api/v1/auth/logout</td><td style="font-size:12px;color:var(--txt2)">Revokes session</td></tr>
+        <tr><td style="font-family:monospace;font-size:12px">POST /api/v1/auth/forgot-password</td><td style="font-size:12px;color:var(--txt2)">Sends OTP email (10-min expiry)</td></tr>
+        <tr><td style="font-family:monospace;font-size:12px">POST /api/v1/auth/reset-password</td><td style="font-size:12px;color:var(--txt2)">Resets password with OTP</td></tr>
+        <tr><td style="font-family:monospace;font-size:12px">PATCH /api/v1/auth/change-password</td><td style="font-size:12px;color:var(--txt2)">Changes own password · issues new tokens · revokes old sessions</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+      <!-- DISBURSEMENTS PAGE (M3 rework) -->
       <div class="page-content" id="page-disbursements">
         <div class="pg-header">
           <div>
             <div class="pg-title">Disbursements</div>
-            <div class="pg-sub"><i class="ti ti-file-invoice" aria-hidden="true"></i> Disbursement Notes (DN) → Acknowledgement Receipts (AR) · Warehouse to Clinic workflow</div>
+            <div class="pg-sub"><i class="ti ti-file-invoice" aria-hidden="true"></i> Disbursement Notes (DN) · WAREHOUSE_TO_CLINIC and CLINIC_TO_CLINIC · Lifecycle: PENDING → SUBMITTED → ACCEPTED → FULFILLED → RECEIVED</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -2278,25 +2480,42 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <div class="stat-top"><div class="stat-lbl">Total DNs</div><div class="stat-icon si-blue"><i class="ti ti-file-invoice" aria-hidden="true"></i></div></div>
             <div class="stat-val">6</div><div class="stat-foot">Last 30 days</div>
           </div>
-          <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
-            <div class="stat-top"><div class="stat-lbl">Pending ACK</div><div class="stat-icon si-amber"><i class="ti ti-clock" aria-hidden="true"></i></div></div>
-            <div class="stat-val">2</div><div class="stat-foot">Awaiting clinic receipt</div>
+          <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
+            <div class="stat-top"><div class="stat-lbl">Submitted</div><div class="stat-icon si-blue"><i class="ti ti-clock" aria-hidden="true"></i></div></div>
+            <div class="stat-val">2</div><div class="stat-foot">Awaiting acceptance</div>
+          </div>
+          <div class="stat-card"><div class="stat-accent" style="background:#0891b2"></div>
+            <div class="stat-top"><div class="stat-lbl">Accepted / Fulfilled</div><div class="stat-icon si-blue"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
+            <div class="stat-val">2</div><div class="stat-foot">In progress</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
-            <div class="stat-top"><div class="stat-lbl">Acknowledged</div><div class="stat-icon si-green"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
-            <div class="stat-val">3</div><div class="stat-foot">AR status: ACCEPTED</div>
+            <div class="stat-top"><div class="stat-lbl">Received</div><div class="stat-icon si-green"><i class="ti ti-package" aria-hidden="true"></i></div></div>
+            <div class="stat-val">2</div><div class="stat-foot">Completed</div>
           </div>
-          <div class="stat-card"><div class="stat-accent" style="background:var(--warn)"></div>
-            <div class="stat-top"><div class="stat-lbl">Partial</div><div class="stat-icon si-amber"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">AR status: PARTIAL</div>
-          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="srch"><i class="ti ti-search" aria-hidden="true"></i><input placeholder="Search DN ref, branch..." aria-label="Search"/></div>
+          <select class="fsel">
+            <option value="">All types</option>
+            <option value="WAREHOUSE_TO_CLINIC">Warehouse to Clinic</option>
+            <option value="CLINIC_TO_CLINIC">Clinic to Clinic</option>
+          </select>
+          <select class="fsel">
+            <option value="">All status</option>
+            <option value="PENDING">Pending</option>
+            <option value="SUBMITTED">Submitted</option>
+            <option value="ACCEPTED">Accepted</option>
+            <option value="FULFILLED">Fulfilled</option>
+            <option value="RECEIVED">Received</option>
+            <option value="REJECTED">Rejected</option>
+          </select>
         </div>
         <div class="tbl-wrap" style="margin-bottom:20px">
           <div class="tbl-hdr"><div class="tbl-title">Disbursement Notes (DN)</div><div class="tbl-meta" id="dnCount"></div></div>
           <div style="overflow-x:auto">
           <table>
-            <colgroup><col style="width:12%"><col style="width:14%"><col style="width:12%"><col style="width:16%"><col style="width:12%"><col style="width:14%"><col style="width:12%"><col style="width:8%"></colgroup>
-            <thead><tr><th>DN ref</th><th>Shipment ref</th><th>DN Status</th><th>Destination</th><th>Submitted by</th><th>Submitted at</th><th>AR Status</th><th>Actions</th></tr></thead>
+            <colgroup><col style="width:11%"><col style="width:8%"><col style="width:10%"><col style="width:15%"><col style="width:15%"><col style="width:13%"><col style="width:13%"><col style="width:8%"></colgroup>
+            <thead><tr><th>DN Ref</th><th>Type</th><th>Status</th><th>Source</th><th>Destination</th><th>Submitted By</th><th>Submitted At</th><th>Actions</th></tr></thead>
             <tbody id="dnBody"></tbody>
           </table>
           </div>
@@ -2309,7 +2528,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <div class="pg-header">
           <div>
             <div class="pg-title">Returns</div>
-            <div class="pg-sub"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Return Notes (RDN) → Return Acknowledgement Receipts (RAR) · Clinic to Warehouse workflow</div>
+            <div class="pg-sub"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Return Notes (RN) · SHIPMENT_RETURN (branch → supplier) and DISBURSEMENT_RETURN (branch ↔ branch)</div>
           </div>
           <div class="pg-actions">
             <button class="btn"><i class="ti ti-download" aria-hidden="true"></i> Export</button>
@@ -2318,28 +2537,28 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         </div>
         <div class="stat-grid" style="margin-bottom:20px">
           <div class="stat-card"><div class="stat-accent" style="background:var(--p)"></div>
-            <div class="stat-top"><div class="stat-lbl">Total RDNs</div><div class="stat-icon si-blue"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i></div></div>
+            <div class="stat-top"><div class="stat-lbl">Total RNs</div><div class="stat-icon si-blue"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i></div></div>
             <div class="stat-val">4</div><div class="stat-foot">Last 30 days</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:#d97706"></div>
-            <div class="stat-top"><div class="stat-lbl">Pending</div><div class="stat-icon si-amber"><i class="ti ti-clock" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">Awaiting submission</div>
+            <div class="stat-top"><div class="stat-lbl">Pending / Submitted</div><div class="stat-icon si-amber"><i class="ti ti-clock" aria-hidden="true"></i></div></div>
+            <div class="stat-val">2</div><div class="stat-foot">Awaiting action</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--ok)"></div>
-            <div class="stat-top"><div class="stat-lbl">Acknowledged</div><div class="stat-icon si-green"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
-            <div class="stat-val">2</div><div class="stat-foot">RAR accepted</div>
+            <div class="stat-top"><div class="stat-lbl">Confirmed / Received</div><div class="stat-icon si-green"><i class="ti ti-circle-check" aria-hidden="true"></i></div></div>
+            <div class="stat-val">1</div><div class="stat-foot">Completed</div>
           </div>
           <div class="stat-card"><div class="stat-accent" style="background:var(--err)"></div>
             <div class="stat-top"><div class="stat-lbl">Rejected</div><div class="stat-icon si-red"><i class="ti ti-circle-x" aria-hidden="true"></i></div></div>
-            <div class="stat-val">1</div><div class="stat-foot">RAR status: REJECTED</div>
+            <div class="stat-val">1</div><div class="stat-foot">Across both paths</div>
           </div>
         </div>
         <div class="tbl-wrap">
-          <div class="tbl-hdr"><div class="tbl-title">Return Disbursement Notes (RDN)</div><div class="tbl-meta" id="rdnCount"></div></div>
+          <div class="tbl-hdr"><div class="tbl-title">Return Notes (RN)</div><div class="tbl-meta" id="rdnCount"></div></div>
           <div style="overflow-x:auto">
           <table>
-            <colgroup><col style="width:12%"><col style="width:14%"><col style="width:11%"><col style="width:16%"><col style="width:13%"><col style="width:11%"><col style="width:12%"><col style="width:11%"></colgroup>
-            <thead><tr><th>RDN ref</th><th>Original shipment</th><th>RDN Status</th><th>Source branch</th><th>Submitted by</th><th>Submitted at</th><th>RAR Status</th><th>Actions</th></tr></thead>
+            <colgroup><col style="width:11%"><col style="width:13%"><col style="width:11%"><col style="width:15%"><col style="width:14%"><col style="width:13%"><col style="width:12%"><col style="width:11%"></colgroup>
+            <thead><tr><th>RN Ref</th><th>Return Type</th><th>Status</th><th>Original Document</th><th>Source Branch</th><th>Submitted By</th><th>Submitted At</th><th>Actions</th></tr></thead>
             <tbody id="rdnBody"></tbody>
           </table>
           </div>
@@ -2382,8 +2601,8 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <option value="">All entity types</option>
             <option value="SHIPMENT">Shipment</option>
             <option value="DISBURSEMENT">Disbursement</option>
-            <option value="ACK_RECEIPT">Acknowledgement Receipt</option>
-            <option value="RETURN">Return</option>
+            <option value="DISBURSEMENT_RECEIPT">Disbursement Receipt</option>
+            <option value="RETURN_NOTE">Return Note</option>
             <option value="INVENTORY">Inventory</option>
             <option value="USER">User</option>
             <option value="MEDICINE">Medicine</option>
@@ -2393,10 +2612,13 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <option value="">All actions</option>
             <option value="CREATE">Create</option>
             <option value="UPDATE">Update</option>
-            <option value="APPROVE">Approve</option>
+            <option value="SUBMIT">Submit</option>
+            <option value="ACCEPT">Accept</option>
             <option value="REJECT">Reject</option>
-            <option value="CANCEL">Cancel</option>
+            <option value="FULFILL">Fulfill</option>
             <option value="RECEIVE">Receive</option>
+            <option value="CANCEL">Cancel</option>
+            <option value="CONFIRM">Confirm</option>
           </select>
           <select class="fsel" aria-label="Branch"><option value="">All branches</option><option>Central Warehouse</option><option>Clinic Orchard</option><option>Clinic Tampines</option><option>Telemedicine Hub</option></select>
         </div>
@@ -2430,8 +2652,10 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <option value="">All tables</option>
             <option value="shipments">Shipments</option>
             <option value="disbursement_notes">Disbursement Notes</option>
-            <option value="acknowledgement_receipts">Acknowledgement Receipts</option>
-            <option value="return_disbursement_notes">Return Notes</option>
+            <option value="disbursement_items">Disbursement Items</option>
+            <option value="disbursement_fulfillment_items">Disbursement Fulfillment Items</option>
+            <option value="return_notes">Return Notes</option>
+            <option value="return_items">Return Items</option>
             <option value="branch_inventory">Branch Inventory</option>
             <option value="users">Users</option>
             <option value="medicines">Medicines</option>
@@ -2845,7 +3069,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               <option value="">— Select type —</option>
               <option value="SUPPLIER_TO_CLINIC">Supplier → Clinic</option>
               <option value="SUPPLIER_TO_WAREHOUSE">Supplier → Warehouse</option>
-              <option value="INTERNAL_TRANSFER">Internal Transfer</option>
             </select>
           </div>
           <div class="fg"><label class="fl">Shipment reference</label>
@@ -2866,24 +3089,6 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
             <select class="fi" aria-label="Destination">
               <option value="">— Select branch —</option>
               <option>Central Warehouse</option>
-              <option>Clinic Orchard</option>
-              <option>Clinic Tampines</option>
-              <option>Telemedicine Hub</option>
-            </select>
-          </div>
-        </div>
-        <div id="shipTransferRow" style="display:none" class="form-row">
-          <div class="fg"><label class="fl">Source branch <span style="color:var(--err)">*</span></label>
-            <select class="fi" aria-label="Source branch">
-              <option value="">— Select source —</option>
-              <option>Central Warehouse</option>
-              <option>Clinic Orchard</option>
-              <option>Clinic Tampines</option>
-            </select>
-          </div>
-          <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
-            <select class="fi" aria-label="Destination branch">
-              <option value="">— Select destination —</option>
               <option>Clinic Orchard</option>
               <option>Clinic Tampines</option>
               <option>Telemedicine Hub</option>
@@ -2967,45 +3172,54 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 
 <!-- DISBURSEMENT NOTE MODAL -->
 <div class="modal-bg" id="dnModal" role="dialog" aria-modal="true" aria-labelledby="dnModalTitle">
-  <div class="modal-box" style="width:540px">
+  <div class="modal-box" style="width:600px;max-width:min(600px,96vw)">
     <div class="modal-head">
       <div class="modal-head-title" id="dnModalTitle"><i class="ti ti-file-invoice" aria-hidden="true"></i> Create disbursement note</div>
       <button class="modal-x" onclick="closeDnModal()" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px;font-size:12px;color:var(--txt2);margin-bottom:4px">
-        <strong style="color:var(--txt);display:block;margin-bottom:4px">What is a Disbursement Note?</strong>
-        A Disbursement Note (DN) is raised by the warehouse to authorise the release of stock to a clinic branch. The receiving clinic must then raise an Acknowledgement Receipt (AR) to confirm receipt.
+      <div style="background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6">
+        A Disbursement Note (DN) authorises stock transfer between branches. Select type, source, destination and items requested. Inventory only moves when the destination branch confirms receipt (RECEIVED step).
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Linked shipment <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Linked shipment">
-            <option value="">— Select received shipment —</option>
-            <option>SHP-2026-0118 · Clinic Orchard</option>
-            <option>SHP-2026-0119 · Central Warehouse</option>
-            <option>SHP-2026-0120 · Clinic Orchard (internal)</option>
+        <div class="fg"><label class="fl">Disbursement type <span style="color:var(--err)">*</span></label>
+          <select class="fi" id="dnType">
+            <option value="WAREHOUSE_TO_CLINIC">Warehouse to Clinic (WAREHOUSE_TO_CLINIC)</option>
+            <option value="CLINIC_TO_CLINIC">Clinic to Clinic (CLINIC_TO_CLINIC)</option>
           </select>
         </div>
-        <div class="fg"><label class="fl">DN reference</label>
-          <input class="fi" type="text" placeholder="Auto-generated (e.g. DN-2026-00007)" readonly style="opacity:.6"/>
+        <div class="fg"><label class="fl">DN Reference</label>
+          <input class="fi" type="text" value="DN-2026-00007 (auto)" readonly style="opacity:.6"/>
         </div>
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">Destination clinic <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Destination clinic">
-            <option value="">— Select clinic —</option>
+        <div class="fg"><label class="fl">Source branch <span style="color:var(--err)">*</span></label>
+          <select class="fi">
+            <option>Central Warehouse</option>
             <option>Clinic Orchard</option>
             <option>Clinic Tampines</option>
             <option>Telemedicine Hub</option>
           </select>
         </div>
-        <div class="fg"><label class="fl">Submitted by</label>
-          <input class="fi" type="text" value="Ahmad Bin Yusof" readonly style="opacity:.6"/>
+        <div class="fg"><label class="fl">Destination branch <span style="color:var(--err)">*</span></label>
+          <select class="fi">
+            <option>Clinic Orchard</option>
+            <option>Clinic Tampines</option>
+            <option>Telemedicine Hub</option>
+          </select>
         </div>
       </div>
-      <div class="fg"><label class="fl">Remarks</label>
-        <input class="fi" type="text" placeholder="Optional remarks for the receiving clinic"/>
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Items requested</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead><tr><th style="background:var(--surface2);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)">Medicine (SKU)</th><th style="background:var(--surface2);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);width:140px">Qty Requested</th><th style="background:var(--surface2);padding:8px 12px;width:40px;border-bottom:1px solid var(--border)"></th></tr></thead>
+          <tbody id="dnItemsBody">
+            <tr><td style="padding:6px 12px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0"><option>MED-001 · Amoxicillin 500mg</option><option>MED-002 · Paracetamol 500mg</option><option>MED-003 · Metformin 850mg</option><option>MED-004 · Cetirizine 10mg</option><option>MED-005 · Atorvastatin 20mg</option><option>MED-006 · Amlodipine 5mg</option><option>MED-007 · Azithromycin 500mg</option><option>MED-008 · Salbutamol inhaler</option><option>MED-009 · Diazepam 5mg</option><option>MED-010 · Omeprazole 20mg</option></select></td><td style="padding:6px 12px;border-bottom:1px solid var(--border)"><input type="number" class="fi" style="margin:0" min="1" placeholder="0"/></td><td style="padding:6px 12px;border-bottom:1px solid var(--border)"><button onclick="this.closest('tr').remove()" style="background:none;border:none;cursor:pointer;color:var(--err);font-size:16px">×</button></td></tr>
+          </tbody>
+        </table>
+        <button class="btn" style="margin-top:8px;font-size:12px;width:100%;justify-content:center;border-style:dashed" onclick="addDnItem()"><i class="ti ti-plus" style="font-size:13px"></i> Add item</button>
       </div>
+      <div class="fg"><label class="fl">Remarks (optional)</label><textarea class="fi" rows="2" placeholder="Any notes for the receiving branch..."></textarea></div>
     </div>
     <div class="modal-foot">
       <button class="btn" onclick="closeDnModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
@@ -3014,63 +3228,153 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
   </div>
 </div>
 
+<!-- DN DETAIL VIEW MODAL -->
+<div class="modal-bg" id="dnViewModal" role="dialog" aria-modal="true" aria-labelledby="dnViewModalTitle">
+  <div class="modal-box" style="width:640px;max-width:min(640px,96vw)">
+    <div class="modal-head">
+      <div class="modal-head-title" id="dnViewModalTitle"><i class="ti ti-file-invoice" aria-hidden="true"></i> Disbursement Note Detail</div>
+      <button class="modal-x" onclick="document.getElementById('dnViewModal').classList.remove('open')" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" style="gap:16px">
+      <!-- Header row -->
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:monospace;font-size:15px;font-weight:700;color:var(--p)">DN-2026-00001</span>
+        <span class="badge bgb" style="font-size:10px">W→C</span>
+        <span class="badge bge" style="font-size:10px">Received</span>
+        <span style="font-size:12px;color:var(--txt3);margin-left:auto">Created: 12 May 2026</span>
+      </div>
+      <!-- Route -->
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:13px">
+        <span style="font-weight:600;color:var(--txt)">Central Warehouse</span>
+        <i class="ti ti-arrow-right" style="color:var(--p);font-size:16px"></i>
+        <span style="font-weight:600;color:var(--txt)">Clinic Orchard</span>
+        <span style="font-size:11px;color:var(--txt3);margin-left:auto">Submitted by: Ahmad Bin Yusof</span>
+      </div>
+      <!-- Timeline -->
+      <div style="display:flex;align-items:center;gap:0">
+        <div style="flex:1;text-align:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:13px"><i class="ti ti-check"></i></div>
+          <div style="font-size:10px;font-weight:700;color:var(--ok)">Created</div>
+        </div>
+        <div style="flex:1;height:2px;background:var(--ok);margin-bottom:20px"></div>
+        <div style="flex:1;text-align:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:13px"><i class="ti ti-check"></i></div>
+          <div style="font-size:10px;font-weight:700;color:var(--ok)">Submitted</div>
+        </div>
+        <div style="flex:1;height:2px;background:var(--ok);margin-bottom:20px"></div>
+        <div style="flex:1;text-align:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:13px"><i class="ti ti-check"></i></div>
+          <div style="font-size:10px;font-weight:700;color:var(--ok)">Accepted</div>
+        </div>
+        <div style="flex:1;height:2px;background:var(--ok);margin-bottom:20px"></div>
+        <div style="flex:1;text-align:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:13px"><i class="ti ti-check"></i></div>
+          <div style="font-size:10px;font-weight:700;color:var(--ok)">Fulfilled</div>
+        </div>
+        <div style="flex:1;height:2px;background:var(--ok);margin-bottom:20px"></div>
+        <div style="flex:1;text-align:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:13px"><i class="ti ti-check"></i></div>
+          <div style="font-size:10px;font-weight:700;color:var(--ok)">Received</div>
+        </div>
+      </div>
+      <!-- PDF downloads -->
+      <div style="display:flex;gap:8px">
+        <button class="btn" style="font-size:12px"><i class="ti ti-file-download" style="font-size:13px"></i> Download DFR · DFR-2026-00001</button>
+        <button class="btn bge" style="font-size:12px;background:var(--okbg);border-color:#bbf7d0;color:var(--ok)"><i class="ti ti-file-download" style="font-size:13px"></i> Download DAR · DAR-2026-00001</button>
+      </div>
+      <!-- Items table -->
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Items</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <thead><tr>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Medicine</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:right;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Qty Req.</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Batch No.</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Expiry</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:right;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Qty Fulfilled</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:7px 10px;border-bottom:1px solid var(--border)">Amoxicillin 500mg</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);text-align:right">100</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);font-family:monospace;font-size:11px">SG2026-011</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--txt2)">Dec 2027</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;font-weight:600;color:var(--ok)">100</td></tr>
+            <tr><td style="padding:7px 10px;border-bottom:1px solid var(--border)">Atorvastatin 20mg</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);text-align:right">40</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);font-family:monospace;font-size:11px">SG2026-043</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--txt2)">Mar 2028</td><td style="padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;font-weight:600;color:var(--ok)">40</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="document.getElementById('dnViewModal').classList.remove('open')"><i class="ti ti-x" aria-hidden="true"></i> Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- RETURN NOTE MODAL -->
 <div class="modal-bg" id="rdnModal" role="dialog" aria-modal="true" aria-labelledby="rdnModalTitle">
-  <div class="modal-box" style="width:560px">
+  <div class="modal-box" style="width:620px;max-width:min(620px,96vw)">
     <div class="modal-head">
       <div class="modal-head-title" id="rdnModalTitle"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i> Create return note</div>
       <button class="modal-x" onclick="closeRdnModal()" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px;font-size:12px;color:var(--txt2);margin-bottom:4px">
-        <strong style="color:var(--txt);display:block;margin-bottom:4px">What is a Return Note?</strong>
-        A Return Disbursement Note (RDN) allows a clinic to return stock to the warehouse — for example, expired batches, excess stock, or damaged items. The warehouse acknowledges via a Return Acknowledgement Receipt (RAR).
+      <div style="background:var(--warnbg);border:1px solid #fcd34d;border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6">
+        <strong>Two return paths:</strong> Shipment Return sends items back to the original supplier (inventory deducted at CONFIRMED). Disbursement Return returns items between branches (inventory moves at RECEIVED).
       </div>
-      <div class="form-row">
+      <div class="fg" style="margin-bottom:14px">
+        <label class="fl">Return type <span style="color:var(--err)">*</span></label>
+        <div style="display:flex;gap:8px">
+          <label style="flex:1;border:1.5px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;transition:border .15s" id="rnTypeShip">
+            <input type="radio" name="rnType" value="SHIPMENT_RETURN" style="margin-top:2px" onchange="toggleRnType('SHIPMENT_RETURN')">
+            <div><div style="font-size:13px;font-weight:600;color:var(--txt)">Shipment Return</div><div style="font-size:11px;color:var(--txt3)">Return items to supplier · inventory deducted at CONFIRMED</div></div>
+          </label>
+          <label style="flex:1;border:1.5px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;transition:border .15s" id="rnTypeDisb">
+            <input type="radio" name="rnType" value="DISBURSEMENT_RETURN" style="margin-top:2px" onchange="toggleRnType('DISBURSEMENT_RETURN')">
+            <div><div style="font-size:13px;font-weight:600;color:var(--txt)">Disbursement Return</div><div style="font-size:11px;color:var(--txt3)">Return to source branch · inventory moves at RECEIVED</div></div>
+          </label>
+        </div>
+      </div>
+      <div id="rnShipSection" style="display:none">
         <div class="fg"><label class="fl">Original shipment <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Original shipment">
-            <option value="">— Select original shipment —</option>
+          <select class="fi">
+            <option value="">Select received shipment...</option>
             <option>SHP-2026-0118 · Amoxicillin, Amlodipine · Clinic Orchard</option>
             <option>SHP-2026-0116 · Paracetamol, Atorvastatin · Clinic Tampines</option>
             <option>SHP-2026-0117 · Diazepam, Metformin · Clinic Orchard</option>
           </select>
         </div>
-        <div class="fg"><label class="fl">Return note reference</label>
-          <input class="fi" type="text" placeholder="Auto-generated (e.g. RDN-2026-00005)" readonly style="opacity:.6"/>
-        </div>
       </div>
-      <div class="form-row">
-        <div class="fg"><label class="fl">Medicine <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Medicine">
-            <option value="">— Select medicine —</option>
-            <option>MED-001 · Amoxicillin 500mg</option>
-            <option>MED-002 · Paracetamol 500mg</option>
-            <option>MED-004 · Amlodipine 5mg</option>
-            <option>MED-009 · Azithromycin 500mg</option>
-          </select>
-        </div>
-        <div class="fg"><label class="fl">Batch number <span style="color:var(--err)">*</span></label>
-          <input class="fi" type="text" placeholder="e.g. SG2026-011"/>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="fg"><label class="fl">Quantity to return <span style="color:var(--err)">*</span></label>
-          <input class="fi" type="number" placeholder="0"/>
-        </div>
-        <div class="fg"><label class="fl">Return reason <span style="color:var(--err)">*</span></label>
-          <select class="fi" aria-label="Return reason">
-            <option value="">— Select reason —</option>
-            <option>Batch expiring soon</option>
-            <option>Excess stock</option>
-            <option>Damaged / compromised packaging</option>
-            <option>Wrong item received</option>
-            <option>Quantity discrepancy</option>
+      <div id="rnDisbSection" style="display:none">
+        <div class="fg"><label class="fl">Original disbursement note <span style="color:var(--err)">*</span></label>
+          <select class="fi">
+            <option value="">Select received DN...</option>
+            <option>DN-2026-00001 · Clinic Orchard (from Central Warehouse)</option>
+            <option>DN-2026-00002 · Clinic Tampines (from Central Warehouse)</option>
           </select>
         </div>
       </div>
-      <div class="fg"><label class="fl">Additional notes</label>
-        <input class="fi" type="text" placeholder="Any additional details for the warehouse"/>
+      <div class="form-row">
+        <div class="fg"><label class="fl">RN Reference</label><input class="fi" type="text" value="RN-2026-00005 (auto)" readonly style="opacity:.6"/></div>
       </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Return items</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <thead><tr>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Medicine</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Batch / Lot No.</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border);width:80px">Qty</th>
+            <th style="background:var(--surface2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--border)">Reason</th>
+            <th style="background:var(--surface2);width:36px;border-bottom:1px solid var(--border)"></th>
+          </tr></thead>
+          <tbody id="rnItemsBody">
+            <tr>
+              <td style="padding:5px 8px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0;font-size:12px"><option>MED-001 · Amoxicillin 500mg</option><option>MED-002 · Paracetamol 500mg</option><option>MED-003 · Metformin 850mg</option><option>MED-004 · Cetirizine 10mg</option></select></td>
+              <td style="padding:5px 8px;border-bottom:1px solid var(--border)"><input type="text" class="fi" style="margin:0;font-size:12px" placeholder="SG2026-011"/></td>
+              <td style="padding:5px 8px;border-bottom:1px solid var(--border)"><input type="number" class="fi" style="margin:0;font-size:12px" min="1" placeholder="0"/></td>
+              <td style="padding:5px 8px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0;font-size:12px"><option>Batch expiring soon</option><option>Excess stock</option><option>Damaged packaging</option><option>Wrong item received</option><option>Quantity discrepancy</option></select></td>
+              <td style="padding:5px 8px;border-bottom:1px solid var(--border)"><button onclick="this.closest('tr').remove()" style="background:none;border:none;cursor:pointer;color:var(--err);font-size:16px">×</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn" style="margin-top:8px;font-size:12px;width:100%;justify-content:center;border-style:dashed" onclick="addRnItem()"><i class="ti ti-plus" style="font-size:13px"></i> Add item</button>
+      </div>
+      <div class="fg"><label class="fl">Remarks (optional)</label><textarea class="fi" rows="2" placeholder="Reason for return, condition of items..."></textarea></div>
     </div>
     <div class="modal-foot">
       <button class="btn" onclick="closeRdnModal()"><i class="ti ti-x" aria-hidden="true"></i> Cancel</button>
@@ -3229,52 +3533,53 @@ const transactions=[
   {ref_type:'SHIPMENT_IN',ref_id:'SHP-2026-0118',med:'Amoxicillin 500mg',batch:'SG2026-011',move:'IN',before:320,change:500,after:820,unit_price:1.24,by:'Ahmad Bin Yusof',branch:'Clinic Orchard',at:'22 May 2026, 10:00'},
   {ref_type:'DISBURSEMENT',ref_id:'DN-2026-00003',med:'Paracetamol 500mg',batch:'SG2026-034',move:'OUT',before:820,change:-200,after:620,unit_price:0.12,by:'Ahmad Bin Yusof',branch:'Clinic Tampines',at:'24 May 2026, 09:00'},
   {ref_type:'SHIPMENT_IN',ref_id:'SHP-2026-0119',med:'Metformin 850mg',batch:'SG2026-021',move:'IN',before:480,change:200,after:680,unit_price:0.34,by:'Ahmad Bin Yusof',branch:'Clinic Orchard',at:'25 May 2026, 14:00'},
-  {ref_type:'SHIPMENT_INTERNAL',ref_id:'SHP-2026-0120',med:'Cetirizine 10mg',batch:'SG2026-012',move:'OUT',before:600,change:-40,after:560,unit_price:0.18,by:'Ahmad Bin Yusof',branch:'Central Warehouse',at:'24 May 2026, 11:00'},
-  {ref_type:'ACK_RECEIPT',ref_id:'AR-2026-00003',med:'Cetirizine 10mg',batch:'SG2026-012',move:'IN',before:520,change:40,after:560,unit_price:0.18,by:'Dr. Lim Ah Kow',branch:'Clinic Tampines',at:'24 May 2026, 15:20'},
+  {ref_type:'ACK_RECEIPT',ref_id:'DN-2026-00003',med:'Cetirizine 10mg',batch:'SG2026-012',move:'IN',before:520,change:40,after:560,unit_price:0.18,by:'Dr. Lim Ah Kow',branch:'Clinic Tampines',at:'24 May 2026, 15:20'},
   {ref_type:'MANUAL_ADJUSTMENT',ref_id:'ADJ-2026-001',med:'Amlodipine 5mg',batch:'SG2025-198',move:'ADJUST',before:35,change:-5,after:30,unit_price:0.58,by:'Dr. Chan Wei Ling',branch:'Clinic Orchard',at:'24 May 2026, 10:05'},
-  {ref_type:'RETURN_ACK',ref_id:'RAR-2026-00001',med:'Salbutamol inhaler',batch:'SG2026-055',move:'IN',before:20,change:10,after:30,unit_price:8.40,by:'Ahmad Bin Yusof',branch:'Central Warehouse',at:'23 May 2026, 09:30'},
+  {ref_type:'ACK_RECEIPT',ref_id:'DN-2026-00001',med:'Salbutamol inhaler',batch:'SG2026-055',move:'IN',before:20,change:10,after:30,unit_price:8.40,by:'Ahmad Bin Yusof',branch:'Central Warehouse',at:'23 May 2026, 09:30'},
   {ref_type:'DISBURSEMENT',ref_id:'DN-2026-00004',med:'Atorvastatin 20mg',batch:'SG2026-043',move:'OUT',before:450,change:-40,after:410,unit_price:0.62,by:'Ahmad Bin Yusof',branch:'Central Warehouse',at:'23 May 2026, 08:30'},
-  {ref_type:'ACK_RECEIPT',ref_id:'AR-2026-00004',med:'Atorvastatin 20mg',batch:'SG2026-043',move:'IN',before:370,change:40,after:410,unit_price:0.62,by:'Ms. Rachel Chua',branch:'Clinic Tampines',at:'23 May 2026, 12:00'},
-  {ref_type:'RETURN_DISBURSEMENT',ref_id:'RDN-2026-00002',med:'Azithromycin 500mg',batch:'SG2026-066',move:'OUT',before:94,change:-6,after:88,unit_price:1.10,by:'Dr. Chan Wei Ling',branch:'Clinic Orchard',at:'22 May 2026, 14:55'},
+  {ref_type:'ACK_RECEIPT',ref_id:'DN-2026-00004',med:'Atorvastatin 20mg',batch:'SG2026-043',move:'IN',before:370,change:40,after:410,unit_price:0.62,by:'Ms. Rachel Chua',branch:'Clinic Tampines',at:'23 May 2026, 12:00'},
+  {ref_type:'DISBURSEMENT_RETURN',ref_id:'RN-2026-00002',med:'Azithromycin 500mg',batch:'SG2026-066',move:'OUT',before:94,change:-6,after:88,unit_price:1.10,by:'Dr. Chan Wei Ling',branch:'Clinic Orchard',at:'22 May 2026, 14:55'},
   {ref_type:'SHIPMENT_IN',ref_id:'SHP-2026-0117',med:'Diazepam 5mg',batch:'SG2025-202',move:'IN',before:0,change:20,after:20,unit_price:0.95,by:'Ahmad Bin Yusof',branch:'Clinic Orchard',at:'21 May 2026, 10:00'},
+  {ref_type:'SHIPMENT_RETURN',ref_id:'RN-2026-00001',med:'Paracetamol 500mg',batch:'SG2026-034',move:'OUT',before:620,change:-30,after:590,unit_price:0.12,by:'Ms. Rachel Chua',branch:'Clinic Tampines',at:'18 May 2026, 14:00'},
+  {ref_type:'DISBURSEMENT_RETURN',ref_id:'RN-2026-00002',med:'Azithromycin 500mg',batch:'SG2026-066',move:'OUT',before:88,change:-6,after:82,unit_price:1.10,by:'Dr. Chan Wei Ling',branch:'Clinic Orchard',at:'22 May 2026, 10:30'},
 ];
 /* Shipments data */
 const shipmentsData=[
   {ref:'SHP-2026-0118',type:'SUPPLIER_TO_CLINIC',supplier:'Zuellig Pharma SG',src:null,dest:'Clinic Orchard',status:'RECEIVED',created:'18 May 2026',batches:2},
   {ref:'SHP-2026-0119',type:'SUPPLIER_TO_WAREHOUSE',supplier:'DKSH Healthcare',src:null,dest:'Central Warehouse',status:'IN_TRANSIT',created:'23 May 2026',batches:3},
-  {ref:'SHP-2026-0120',type:'INTERNAL_TRANSFER',supplier:null,src:'Central Warehouse',dest:'Clinic Orchard',status:'CONFIRMED',created:'24 May 2026',batches:4},
+  {ref:'SHP-2026-0122',type:'SUPPLIER_TO_CLINIC',supplier:'Pharmaniaga SG',src:null,dest:'Clinic Woodlands',status:'DRAFT',created:'28 May 2026',batches:1},
   {ref:'SHP-2026-0121',type:'SUPPLIER_TO_CLINIC',supplier:'Pharmaniaga SG',src:null,dest:'Clinic Tampines',status:'IN_TRANSIT',created:'25 May 2026',batches:2},
   {ref:'SHP-2026-0117',type:'SUPPLIER_TO_WAREHOUSE',supplier:'Zuellig Pharma SG',src:null,dest:'Central Warehouse',status:'RECEIVED',created:'12 May 2026',batches:5},
-  {ref:'SHP-2026-0116',type:'INTERNAL_TRANSFER',supplier:null,src:'Central Warehouse',dest:'Clinic Tampines',status:'RECEIVED',created:'10 May 2026',batches:3},
+  {ref:'SHP-2026-0116',type:'SUPPLIER_TO_CLINIC',supplier:'Zuellig Pharma SG',src:null,dest:'Clinic Tampines',status:'RECEIVED',created:'10 May 2026',batches:3},
   {ref:'SHP-2026-0115',type:'SUPPLIER_TO_CLINIC',supplier:'YCH Lifesciences',src:null,dest:'Telemedicine Hub',status:'DRAFT',created:'26 May 2026',batches:1},
-  {ref:'SHP-2026-0114',type:'INTERNAL_TRANSFER',supplier:null,src:'Central Warehouse',dest:'Telemedicine Hub',status:'CANCELLED',created:'5 May 2026',batches:2},
+  {ref:'SHP-2026-0114',type:'SUPPLIER_TO_CLINIC',supplier:'YCH Lifesciences',src:null,dest:'Telemedicine Hub',status:'CANCELLED',created:'5 May 2026',batches:2},
 ];
 /* Disbursement Notes data */
 const dnData=[
-  {dn:'DN-2026-00001',ship:'SHP-2026-0117',dn_status:'ACKNOWLEDGED',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'12 May 2026',ar_status:'ACCEPTED'},
-  {dn:'DN-2026-00002',ship:'SHP-2026-0116',dn_status:'ACKNOWLEDGED',dest:'Clinic Tampines',by:'Ahmad Bin Yusof',at:'10 May 2026',ar_status:'PARTIAL'},
-  {dn:'DN-2026-00003',ship:'SHP-2026-0118',dn_status:'SUBMITTED',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'22 May 2026',ar_status:'PENDING'},
-  {dn:'DN-2026-00004',ship:'SHP-2026-0120',dn_status:'SUBMITTED',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'24 May 2026',ar_status:'PENDING'},
-  {dn:'DN-2026-00005',ship:'SHP-2026-0119',dn_status:'PENDING',dest:'Central Warehouse',by:'—',at:'—',ar_status:'—'},
-  {dn:'DN-2026-00006',ship:'SHP-2026-0121',dn_status:'PENDING',dest:'Clinic Tampines',by:'—',at:'—',ar_status:'—'},
+  {ref:'DN-2026-00001',type:'WAREHOUSE_TO_CLINIC',status:'RECEIVED',src:'Central Warehouse',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'12 May 2026'},
+  {ref:'DN-2026-00002',type:'WAREHOUSE_TO_CLINIC',status:'RECEIVED',src:'Central Warehouse',dest:'Clinic Tampines',by:'Ahmad Bin Yusof',at:'10 May 2026'},
+  {ref:'DN-2026-00003',type:'WAREHOUSE_TO_CLINIC',status:'FULFILLED',src:'Central Warehouse',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'22 May 2026'},
+  {ref:'DN-2026-00004',type:'WAREHOUSE_TO_CLINIC',status:'ACCEPTED',src:'Central Warehouse',dest:'Clinic Orchard',by:'Ahmad Bin Yusof',at:'24 May 2026'},
+  {ref:'DN-2026-00005',type:'CLINIC_TO_CLINIC',status:'SUBMITTED',src:'Clinic Orchard',dest:'Clinic Tampines',by:'Dr. Chan Wei Ling',at:'28 May 2026'},
+  {ref:'DN-2026-00006',type:'WAREHOUSE_TO_CLINIC',status:'PENDING',src:'Central Warehouse',dest:'Telemedicine Hub',by:'—',at:'—'},
 ];
 /* Return Disbursement Notes data */
-const rdnData=[
-  {rdn:'RDN-2026-00001',orig_ship:'SHP-2026-0116',rdn_status:'ACKNOWLEDGED',src:'Clinic Tampines',by:'Ms. Rachel Chua',at:'18 May 2026',rar_status:'ACCEPTED'},
-  {rdn:'RDN-2026-00002',orig_ship:'SHP-2026-0118',rdn_status:'SUBMITTED',src:'Clinic Orchard',by:'Dr. Chan Wei Ling',at:'22 May 2026',rar_status:'PENDING'},
-  {rdn:'RDN-2026-00003',orig_ship:'SHP-2026-0117',rdn_status:'ACKNOWLEDGED',src:'Clinic Orchard',by:'Dr. Chan Wei Ling',at:'15 May 2026',rar_status:'REJECTED'},
-  {rdn:'RDN-2026-00004',orig_ship:'SHP-2026-0115',rdn_status:'PENDING',src:'Telemedicine Hub',by:'—',at:'—',rar_status:'—'},
+const rnData=[
+  {ref:'RN-2026-00001',return_type:'SHIPMENT_RETURN',status:'CONFIRMED',orig_doc:'SHP-2026-0116',src:'Clinic Tampines',by:'Ms. Rachel Chua',at:'18 May 2026'},
+  {ref:'RN-2026-00002',return_type:'DISBURSEMENT_RETURN',status:'SUBMITTED',orig_doc:'DN-2026-00001',src:'Clinic Orchard',by:'Dr. Chan Wei Ling',at:'22 May 2026'},
+  {ref:'RN-2026-00003',return_type:'SHIPMENT_RETURN',status:'REJECTED',orig_doc:'SHP-2026-0117',src:'Clinic Orchard',by:'Dr. Chan Wei Ling',at:'15 May 2026'},
+  {ref:'RN-2026-00004',return_type:'DISBURSEMENT_RETURN',status:'PENDING',orig_doc:'DN-2026-00002',src:'Telemedicine Hub',by:'—',at:'—'},
 ];
 /* Audit Trail data */
 /* transaction_logs — application-level business events */
 const txnLogsData=[
   {id:'TL-001',at:'26 May 2026, 09:02',entity_type:'SHIPMENT',entity_id:'SHP-2026-0121',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
   {id:'TL-002',at:'25 May 2026, 14:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0119',action:'RECEIVE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
-  {id:'TL-003',at:'24 May 2026, 15:30',entity_type:'DISBURSEMENT',entity_id:'DN-2026-00004',action:'APPROVE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
-  {id:'TL-004',at:'24 May 2026, 11:05',entity_type:'SHIPMENT',entity_id:'SHP-2026-0120',action:'UPDATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
-  {id:'TL-005',at:'23 May 2026, 12:00',entity_type:'ACK_RECEIPT',entity_id:'AR-2026-00004',action:'CREATE',actor:'Ms. Rachel Chua',branch:'Clinic Tampines',ip:'192.168.1.22',ua:'Safari/17 · iOS'},
-  {id:'TL-006',at:'22 May 2026, 15:30',entity_type:'ACK_RECEIPT',entity_id:'AR-2026-00003',action:'CREATE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
-  {id:'TL-007',at:'22 May 2026, 14:55',entity_type:'RETURN',entity_id:'RDN-2026-00002',action:'CREATE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
+  {id:'TL-003',at:'24 May 2026, 15:30',entity_type:'DISBURSEMENT',entity_id:'DN-2026-00004',action:'ACCEPT',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-004',at:'24 May 2026, 11:05',entity_type:'SHIPMENT',entity_id:'SHP-2026-0122',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
+  {id:'TL-005',at:'23 May 2026, 12:00',entity_type:'DISBURSEMENT_RECEIPT',entity_id:'DN-2026-00004',action:'RECEIVE',actor:'Ms. Rachel Chua',branch:'Clinic Tampines',ip:'192.168.1.22',ua:'Safari/17 · iOS'},
+  {id:'TL-006',at:'22 May 2026, 15:30',entity_type:'DISBURSEMENT_RECEIPT',entity_id:'DN-2026-00003',action:'RECEIVE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
+  {id:'TL-007',at:'22 May 2026, 14:55',entity_type:'RETURN_NOTE',entity_id:'RN-2026-00002',action:'CREATE',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',ip:'192.168.1.12',ua:'Chrome/124 · Windows'},
   {id:'TL-008',at:'22 May 2026, 09:00',entity_type:'DISBURSEMENT',entity_id:'DN-2026-00003',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
   {id:'TL-009',at:'22 May 2026, 10:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0118',action:'RECEIVE',actor:'Ahmad Bin Yusof',branch:'Clinic Orchard',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
   {id:'TL-010',at:'20 May 2026, 14:22',entity_type:'USER',entity_id:'USR-007',action:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
@@ -3282,12 +3587,12 @@ const txnLogsData=[
   {id:'TL-012',at:'18 May 2026, 11:00',entity_type:'SHIPMENT',entity_id:'SHP-2026-0118',action:'CREATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',ip:'10.1.1.45',ua:'Chrome/124 · macOS'},
 ];
 const auditData=[
-  {tbl:'shipments',record:'SHP-2026-0120',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'24 May 2026, 11:05'},
+  {tbl:'shipments',record:'SHP-2026-0122',op:'INSERT',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'28 May 2026, 09:05'},
   {tbl:'disbursement_notes',record:'DN-2026-00003',op:'INSERT',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'22 May 2026, 09:00'},
+  {tbl:'disbursement_fulfillment_items',record:'DN-2026-00003',op:'INSERT',actor:'Ahmad Bin Yusof',branch:'Central Warehouse',session:'sess_a1b2c3',ip:'10.1.1.45',at:'22 May 2026, 15:30'},
   {tbl:'branch_inventory',record:'inv-uuid-0001',op:'UPDATE',actor:'SYSTEM',branch:'Clinic Orchard',session:'trigger',ip:'—',at:'22 May 2026, 10:01'},
   {tbl:'users',record:'USR-007',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',session:'sess_x9y8z7',ip:'10.1.1.45',at:'20 May 2026, 14:22'},
-  {tbl:'acknowledgement_receipts',record:'AR-2026-00003',op:'INSERT',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',session:'sess_b2c3d4',ip:'192.168.1.12',at:'22 May 2026, 15:30'},
-  {tbl:'return_disbursement_notes',record:'RDN-2026-00002',op:'INSERT',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',session:'sess_b2c3d4',ip:'192.168.1.12',at:'22 May 2026, 14:55'},
+  {tbl:'return_notes',record:'RN-2026-00002',op:'INSERT',actor:'Dr. Chan Wei Ling',branch:'Clinic Orchard',session:'sess_b2c3d4',ip:'192.168.1.12',at:'22 May 2026, 14:55'},
   {tbl:'medicines',record:'MED-005',op:'UPDATE',actor:'Ahmad Bin Yusof',branch:'—',session:'sess_a1b2c3',ip:'10.1.1.45',at:'20 May 2026, 09:10'},
 ];
 const notifData=[
@@ -3297,8 +3602,8 @@ const notifData=[
   {id:4,type:'info',icon:'ti-truck-delivery',title:'SHP-2026-0119 IN_TRANSIT — arrival expected today',msg:'DKSH Healthcare · SUPPLIER_TO_WAREHOUSE · Central Warehouse',time:'6 hours ago',read:true},
   {id:5,type:'ok',icon:'ti-circle-check',title:'SHP-2026-0118 RECEIVED — stock_ledger updated',msg:'Zuellig Pharma SG · 2 shipment_batches · Clinic Orchard',time:'Yesterday',read:true},
   {id:6,type:'err',icon:'ti-calendar-x',title:'Amlodipine 5mg batch expiring in 9 days',msg:'Batch: SG2025-198 · qty_remaining: 30 · Clinic Orchard',time:'Yesterday',read:true},
-  {id:7,type:'info',icon:'ti-file-invoice',title:'DN-2026-00003 SUBMITTED — awaiting ACK from clinic',msg:'Warehouse → Clinic Orchard · Disbursement Note',time:'Yesterday',read:true},
-  {id:8,type:'warn',icon:'ti-arrows-exchange-2',title:'RDN-2026-00002 return submitted by Clinic Orchard',msg:'Azithromycin batch SG2026-066 · 6 tabs · return_disbursement_items',time:'2 days ago',read:true},
+  {id:7,type:'info',icon:'ti-file-invoice',title:'DN-2026-00003 SUBMITTED — awaiting acceptance',msg:'Warehouse → Clinic Orchard · Disbursement Note',time:'Yesterday',read:true},
+  {id:8,type:'warn',icon:'ti-arrows-exchange-2',title:'RN-2026-00002 return submitted by Clinic Orchard',msg:'Azithromycin batch SG2026-066 · 6 tabs · DISBURSEMENT_RETURN',time:'2 days ago',read:true},
   {id:9,type:'info',icon:'ti-user-plus',title:'New user created: Ms. Rachel Chua',msg:'Clinic Admin · Clinic Tampines',time:'2 days ago',read:true},
 ];
 const suppliersData=[
@@ -3374,31 +3679,38 @@ const ENUM_LABELS={
   WAREHOUSE_ADMIN:'Warehouse Admin', TELEMEDICINE_ADMIN:'Telemedicine Admin',
   // Shipment types
   SUPPLIER_TO_CLINIC:'Supplier → Clinic', SUPPLIER_TO_WAREHOUSE:'Supplier → Warehouse',
-  INTERNAL_TRANSFER:'Internal Transfer',
+  // Disbursement types
+  WAREHOUSE_TO_CLINIC:'Warehouse to Clinic', CLINIC_TO_CLINIC:'Clinic to Clinic',
   // Shipment status
   DRAFT:'Draft', CONFIRMED:'Confirmed', IN_TRANSIT:'In Transit',
   RECEIVED:'Received', CANCELLED:'Cancelled',
-  // DN / AR / Return status
-  PENDING:'Pending', SUBMITTED:'Submitted', ACKNOWLEDGED:'Acknowledged',
-  REJECTED:'Rejected', ACCEPTED:'Accepted', PARTIAL:'Partial',
+  // DN / Return status
+  PENDING:'Pending', SUBMITTED:'Submitted', ACCEPTED:'Accepted',
+  FULFILLED:'Fulfilled', REJECTED:'Rejected',
   // Stock ledger movement_type
   IN:'Stock In', OUT:'Stock Out', ADJUST:'Adjustment',
   // Stock ledger reference_type
-  SHIPMENT_IN:'Shipment In', SHIPMENT_INTERNAL:'Internal Transfer',
-  DISBURSEMENT:'Disbursement', ACK_RECEIPT:'Acknowledgement Receipt',
-  RETURN_DISBURSEMENT:'Return Note', RETURN_ACK:'Return Acknowledgement',
+  SHIPMENT_IN:'Shipment In',
+  DISBURSEMENT:'Disbursement Fulfill', ACK_RECEIPT:'Disbursement Receive',
+  SHIPMENT_RETURN:'Shipment Return', DISBURSEMENT_RETURN:'Disbursement Return',
   MANUAL_ADJUSTMENT:'Manual Adjustment',
+  // Entity types
+  DISBURSEMENT_RECEIPT:'Disbursement Receipt', RETURN_NOTE:'Return Note',
+  INVENTORY:'Inventory', USER:'User', MEDICINE:'Medicine', SUPPLIER:'Supplier',
+  SHIPMENT:'Shipment', DISBURSEMENT_ENTITY:'Disbursement',
+  // Actions
+  SUBMIT:'Submit', ACCEPT:'Accept', FULFILL:'Fulfill', CONFIRM:'Confirm',
+  CREATE:'Create', UPDATE:'Update', RECEIVE:'Receive', CANCEL:'Cancel',
   // Audit trail operations
-  INSERT:'Insert', UPDATE:'Update', DELETE:'Delete'
+  INSERT:'Insert', DELETE:'Delete'
 };
 function fmtEnum(v){return ENUM_LABELS[v]||v;}
 
 const TABLE_LABELS={
   shipments:'Shipments', disbursement_notes:'Disbursement Notes',
-  acknowledgement_receipts:'Acknowledgement Receipts',
-  return_disbursement_notes:'Return Notes',
-  return_disbursement_items:'Return Items',
-  return_acknowledgement_receipts:'Return Acknowledgements',
+  disbursement_items:'Disbursement Items',
+  disbursement_fulfillment_items:'Disbursement Fulfillment Items',
+  return_notes:'Return Notes', return_items:'Return Items',
   branch_inventory:'Branch Inventory', inventory_batches:'Inventory Batches',
   shipment_batches:'Shipment Batches', medicines:'Medicines',
   suppliers:'Suppliers', users:'Users', branches:'Branches',
@@ -3473,7 +3785,7 @@ function changeInvPage(p){invPage=p;renderInv();}
 function renderShipments(){
   const b=document.getElementById('shipBody');if(!b)return;
   const statusBadge={'DRAFT':'bg-draft','CONFIRMED':'bg-confirmed','IN_TRANSIT':'bg-in-transit','RECEIVED':'bg-received','CANCELLED':'bg-cancelled'};
-  const typeIcon={'SUPPLIER_TO_CLINIC':'ti-truck-delivery','SUPPLIER_TO_WAREHOUSE':'ti-building-warehouse','INTERNAL_TRANSFER':'ti-arrows-exchange'};
+  const typeIcon={'SUPPLIER_TO_CLINIC':'ti-truck-delivery','SUPPLIER_TO_WAREHOUSE':'ti-building-warehouse'};
   const pg=shipmentsData.slice((shipPage-1)*PER_PAGE,shipPage*PER_PAGE);
   b.innerHTML=pg.map(s=>`<tr>
     <td style="font-family:monospace;font-size:12px;color:var(--p)">${s.ref}</td>
@@ -3494,43 +3806,59 @@ function changeShipPage(p){shipPage=p;renderShipments();}
 
 function renderDisbursements(){
   const b=document.getElementById('dnBody');if(!b)return;
-  const dnBadge={'PENDING':'bg-pending','SUBMITTED':'bg-submitted','ACKNOWLEDGED':'bg-acknowledged','REJECTED':'bg-rejected'};
-  const arBadge={'PENDING':'bg-pending','ACCEPTED':'bg-accepted','REJECTED':'bg-rejected','PARTIAL':'bg-partial','—':'bg-draft'};
-  const pg=dnData.slice((dnPage-1)*PER_PAGE,dnPage*PER_PAGE);
+  const dnTypeBadge=d=>d.type==='WAREHOUSE_TO_CLINIC'
+    ?'<span class="badge bgb" style="font-size:10px">W→C</span>'
+    :'<span class="badge bgp" style="font-size:10px">C→C</span>';
+  const dnStatusBadge=s=>{
+    const m={PENDING:'bg-draft',SUBMITTED:'bgb',FULFILLED:'bga',RECEIVED:'bge',REJECTED:'bgr'};
+    const label=s.charAt(0)+s.slice(1).toLowerCase();
+    if(s==='ACCEPTED')return`<span class="badge" style="background:#e0f2fe;color:#0891b2;font-size:10px">Accepted</span>`;
+    return`<span class="badge ${m[s]||'bg-draft'}" style="font-size:10px">${label}</span>`;
+  };
+  const filtered=dnData.filter(d=>!(currentUser&&currentUser.role==='WAREHOUSE_ADMIN'&&d.type==='CLINIC_TO_CLINIC'));
+  const pg=filtered.slice((dnPage-1)*PER_PAGE,dnPage*PER_PAGE);
   b.innerHTML=pg.map(d=>`<tr>
-    <td style="font-family:monospace;font-size:12px;color:var(--p)">${d.dn}</td>
-    <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${d.ship}</td>
-    <td><span class="badge ${dnBadge[d.dn_status]||'bg-draft'}">${fmtEnum(d.dn_status)}</span></td>
+    <td style="font-family:monospace;font-size:12px;color:var(--p)">${d.ref}</td>
+    <td>${dnTypeBadge(d)}</td>
+    <td>${dnStatusBadge(d.status)}</td>
+    <td style="font-size:12px">${d.src}</td>
     <td style="font-size:12px">${d.dest}</td>
     <td style="font-size:12px">${d.by}</td>
     <td style="font-size:12px;color:var(--txt2)">${d.at}</td>
-    <td><span class="badge ${arBadge[d.ar_status]||'bg-draft'}">${d.ar_status==='—'?'—':fmtEnum(d.ar_status)}</span></td>
     <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
   </tr>`).join('');
   const dc=document.getElementById('dnCount');
-  if(dc)dc.textContent=dnData.length+' disbursement notes';
-  renderPagination('pg-dn',dnData.length,dnPage,PER_PAGE,'changeDnPage');
+  if(dc)dc.textContent=filtered.length+' disbursement notes';
+  renderPagination('pg-dn',filtered.length,dnPage,PER_PAGE,'changeDnPage');
 }
 let dnPage=1;
 function changeDnPage(p){dnPage=p;renderDisbursements();}
 
 function renderReturns(){
   const b=document.getElementById('rdnBody');if(!b)return;
-  const retBadge={'PENDING':'bg-pending','SUBMITTED':'bg-submitted','ACKNOWLEDGED':'bg-acknowledged','REJECTED':'bg-rejected','—':'bg-draft'};
-  const pg=rdnData.slice((rdnPage-1)*PER_PAGE,rdnPage*PER_PAGE);
+  const rnTypeBadge=t=>t==='SHIPMENT_RETURN'
+    ?'<span class="badge bga" style="font-size:10px">Ship Return</span>'
+    :'<span class="badge bgp" style="font-size:10px">Disb Return</span>';
+  const rnStatusBadge=s=>{
+    const m={PENDING:'bg-draft',SUBMITTED:'bgb',FULFILLED:'bga',CONFIRMED:'bge',RECEIVED:'bge',REJECTED:'bgr'};
+    const label=s.charAt(0)+s.slice(1).toLowerCase();
+    if(s==='ACCEPTED')return`<span class="badge" style="background:#e0f2fe;color:#0891b2;font-size:10px">Accepted</span>`;
+    return`<span class="badge ${m[s]||'bg-draft'}" style="font-size:10px">${label}</span>`;
+  };
+  const pg=rnData.slice((rdnPage-1)*PER_PAGE,rdnPage*PER_PAGE);
   b.innerHTML=pg.map(r=>`<tr>
-    <td style="font-family:monospace;font-size:12px;color:var(--p)">${r.rdn}</td>
-    <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${r.orig_ship}</td>
-    <td><span class="badge ${retBadge[r.rdn_status]||'bg-draft'}">${fmtEnum(r.rdn_status)}</span></td>
+    <td style="font-family:monospace;font-size:12px;color:var(--p)">${r.ref}</td>
+    <td>${rnTypeBadge(r.return_type)}</td>
+    <td>${rnStatusBadge(r.status)}</td>
+    <td style="font-family:monospace;font-size:12px;color:var(--txt2)">${r.orig_doc}</td>
     <td style="font-size:12px">${r.src}</td>
     <td style="font-size:12px">${r.by}</td>
     <td style="font-size:12px;color:var(--txt2)">${r.at}</td>
-    <td><span class="badge ${retBadge[r.rar_status]||'bg-draft'}">${r.rar_status==='—'?'—':fmtEnum(r.rar_status)}</span></td>
     <td><button class="tbl-btn"><i class="ti ti-eye" aria-hidden="true"></i> View</button></td>
   </tr>`).join('');
   const rc=document.getElementById('rdnCount');
-  if(rc)rc.textContent=rdnData.length+' return notes';
-  renderPagination('pg-rdn',rdnData.length,rdnPage,PER_PAGE,'changeRdnPage');
+  if(rc)rc.textContent=rnData.length+' return notes';
+  renderPagination('pg-rdn',rnData.length,rdnPage,PER_PAGE,'changeRdnPage');
 }
 let rdnPage=1;
 function changeRdnPage(p){rdnPage=p;renderReturns();}
@@ -3538,12 +3866,14 @@ function changeRdnPage(p){rdnPage=p;renderReturns();}
 /* ── TRANSACTION LOG (transaction_logs table) ── */
 let txnLogPage=1;
 const ACTION_BADGE={
-  CREATE:'bge', UPDATE:'bgb', APPROVE:'bge', RECEIVE:'bge',
-  REJECT:'bgr', CANCEL:'bg-draft'
+  CREATE:'bge', UPDATE:'bgb', SUBMIT:'bgb', ACCEPT:'bge', FULFILL:'bga',
+  RECEIVE:'bge', CONFIRM:'bge', REJECT:'bgr', CANCEL:'bg-draft'
 };
 const ACTION_ICON={
-  CREATE:'ti-plus-circle', UPDATE:'ti-pencil', APPROVE:'ti-circle-check',
-  RECEIVE:'ti-package', REJECT:'ti-circle-x', CANCEL:'ti-ban'
+  CREATE:'ti-plus-circle', UPDATE:'ti-pencil', SUBMIT:'ti-send',
+  ACCEPT:'ti-circle-check', FULFILL:'ti-package-export',
+  RECEIVE:'ti-package', CONFIRM:'ti-circle-check',
+  REJECT:'ti-circle-x', CANCEL:'ti-ban'
 };
 function renderTxnLog(){
   const b=document.getElementById('txnLogBody');if(!b)return;
@@ -3598,7 +3928,7 @@ function navTo(el,page){
   const pg=document.getElementById('page-'+page);
   if(pg)pg.classList.add('active');
   const bc=document.getElementById('breadcrumb');
-  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data'};
+  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System','flow-reference':'Flow Reference',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data'};
   if(bc)bc.textContent=labels[page]||page;
   if(page==='inventory'){renderInv();}
   else if(page==='batches'){renderBatchesPage();}
@@ -3834,7 +4164,7 @@ function changeStaffPage(p){staffPage=p;renderStaff();}
 function renderTxn(){
   const b=document.getElementById('txnBody');if(!b)return;
   const moveClass={IN:'bge',OUT:'bgr',ADJUST:'bga'};
-  const refIcon={'SHIPMENT_IN':'ti-package','SHIPMENT_INTERNAL':'ti-arrows-exchange','DISBURSEMENT':'ti-file-invoice','ACK_RECEIPT':'ti-circle-check','RETURN_DISBURSEMENT':'ti-arrow-back','RETURN_ACK':'ti-check','MANUAL_ADJUSTMENT':'ti-pencil'};
+  const refIcon={'SHIPMENT_IN':'ti-package','DISBURSEMENT':'ti-file-invoice','ACK_RECEIPT':'ti-circle-check','SHIPMENT_RETURN':'ti-arrow-back','DISBURSEMENT_RETURN':'ti-arrows-exchange-2','MANUAL_ADJUSTMENT':'ti-pencil'};
   const pg=transactions.slice((txnPage-1)*PER_PAGE,txnPage*PER_PAGE);
   b.innerHTML=pg.map(t=>`<tr>
     <td><div style="display:flex;align-items:center;gap:5px"><i class="ti ${refIcon[t.ref_type]||'ti-circle'}" style="font-size:13px;color:var(--txt3)" aria-hidden="true"></i><span style="font-size:12px;font-weight:600">${fmtEnum(t.ref_type)}</span></div><div style="font-family:monospace;font-size:10px;color:var(--txt3);margin-top:1px">${t.ref_id}</div></td>
@@ -4070,16 +4400,17 @@ function submitShipment(){
 }
 function openDnModal(){document.getElementById('dnModal').classList.add('open');}
 function closeDnModal(){document.getElementById('dnModal').classList.remove('open');}
+function addDnItem(){const tb=document.getElementById('dnItemsBody');if(!tb)return;const tr=document.createElement('tr');tr.innerHTML='<td style="padding:6px 12px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0"><option>MED-001 · Amoxicillin 500mg</option><option>MED-002 · Paracetamol 500mg</option><option>MED-003 · Metformin 850mg</option><option>MED-004 · Cetirizine 10mg</option><option>MED-005 · Atorvastatin 20mg</option></select></td><td style="padding:6px 12px;border-bottom:1px solid var(--border)"><input type="number" class="fi" style="margin:0" min="1" placeholder="0"/></td><td style="padding:6px 12px;border-bottom:1px solid var(--border)"><button onclick="this.closest(\'tr\').remove()" style="background:none;border:none;cursor:pointer;color:var(--err);font-size:16px">×</button></td>';tb.appendChild(tr);}
 function openRdnModal(){document.getElementById('rdnModal').classList.add('open');}
 function closeRdnModal(){document.getElementById('rdnModal').classList.remove('open');}
+function toggleRnType(t){document.getElementById('rnShipSection').style.display=t==='SHIPMENT_RETURN'?'block':'none';document.getElementById('rnDisbSection').style.display=t==='DISBURSEMENT_RETURN'?'block':'none';}
+function addRnItem(){const tb=document.getElementById('rnItemsBody');if(!tb)return;const tr=document.createElement('tr');tr.innerHTML='<td style="padding:5px 8px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0;font-size:12px"><option>MED-001 · Amoxicillin 500mg</option><option>MED-002 · Paracetamol 500mg</option></select></td><td style="padding:5px 8px;border-bottom:1px solid var(--border)"><input type="text" class="fi" style="margin:0;font-size:12px" placeholder="Batch no."/></td><td style="padding:5px 8px;border-bottom:1px solid var(--border)"><input type="number" class="fi" style="margin:0;font-size:12px" min="1" placeholder="0"/></td><td style="padding:5px 8px;border-bottom:1px solid var(--border)"><select class="fi" style="margin:0;font-size:12px"><option>Batch expiring soon</option><option>Excess stock</option><option>Damaged packaging</option><option>Wrong item received</option></select></td><td style="padding:5px 8px;border-bottom:1px solid var(--border)"><button onclick="this.closest(\'tr\').remove()" style="background:none;border:none;cursor:pointer;color:var(--err);font-size:16px">×</button></td>';tb.appendChild(tr);}
 function openAdjustmentModal(){document.getElementById('adjustmentModal').classList.add('open');}
 function closeAdjustmentModal(){document.getElementById('adjustmentModal').classList.remove('open');}
 function toggleShipmentFields(){
   const t=document.getElementById('shipTypeSelect').value;
   const supRow=document.getElementById('shipSupplierRow');
-  const trnRow=document.getElementById('shipTransferRow');
-  if(t==='INTERNAL_TRANSFER'){supRow.style.display='none';trnRow.style.display='';}
-  else{supRow.style.display='';trnRow.style.display='none';}
+  if(supRow)supRow.style.display=t?'':'';
 }
 /* MDM context-aware "Add record" button */
 const MDM_ADD_LABELS={
