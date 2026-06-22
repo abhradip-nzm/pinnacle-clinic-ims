@@ -2140,8 +2140,8 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           <div class="tbl-hdr"><div class="tbl-title">Stock register</div><div class="tbl-meta" id="branchInvCount"></div></div>
           <div style="overflow-x:auto">
           <table>
-            <colgroup><col style="width:20%"><col style="width:11%"><col style="width:11%"><col style="width:10%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:16%"></colgroup>
-            <thead><tr><th>Medicine</th><th>Category</th><th>Batch no.</th><th>Stock level</th><th>Qty / unit</th><th>Expiry date</th><th>Status</th><th>Actions</th></tr></thead>
+            <colgroup><col style="width:36px"><col style="width:19%"><col style="width:10%"><col style="width:10%"><col style="width:10%"><col style="width:10%"><col style="width:11%"><col style="width:10%"><col style="width:15%"></colgroup>
+            <thead><tr><th></th><th>Medicine</th><th>Category</th><th>Batch no.</th><th>Stock level</th><th>Qty / unit</th><th>Expiry date</th><th>Status</th><th>Actions</th></tr></thead>
             <tbody id="branchInvBody"></tbody>
           </table>
           </div>
@@ -2283,6 +2283,12 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
     <div class="tbl-hdr"><div class="tbl-title"><i class="ti ti-building-warehouse" style="font-size:14px;margin-right:6px;color:var(--p)" aria-hidden="true"></i>System Overview</div></div>
     <div style="padding:16px 20px;font-size:13px;color:var(--txt2);line-height:1.7;border-bottom:1px solid var(--border)">
       Pinnacle IMS manages medicine supply across three branch types (Warehouse, Clinic, Telemedicine). Three main flows: <strong>Shipments</strong> (supplier → branch), <strong>Disbursements</strong> (branch → branch stock transfer), and <strong>Returns</strong> (branch → supplier or branch → branch).
+    </div>
+    <div style="padding:10px 20px 14px;background:var(--infobg);border-bottom:1px solid var(--ps);font-size:12px;color:var(--txt2);line-height:1.7">
+      <i class="ti ti-info-circle" style="font-size:13px;margin-right:5px;color:var(--p)"></i>
+      <strong style="color:var(--txt)">Embed policy — every response returns full objects, never bare IDs.</strong>
+      All related entities (branches, users, medicines, batches, suppliers, original documents) are embedded as complete objects in every API response.
+      The <em>Response Embeds</em> column in each table below lists exactly which objects are nested in the response body.
     </div>
     <div style="overflow-x:auto">
     <table style="table-layout:auto">
@@ -3458,16 +3464,26 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 
 <script>
 const meds=[
-  {sku:"MED-001",name:"Amoxicillin 500mg",gen:"Amoxicillin trihydrate",brand:"Amoxil",cat:"Antibiotic",batch:"SG2026-011",qty:820,reorder_threshold:100,unit:"Capsule",exp:"2027-03-15",requires_rx:true,status:"In Stock",branch:"Clinic Orchard"},
-  {sku:"MED-002",name:"Paracetamol 500mg",gen:"Acetaminophen",brand:"Panadol",cat:"Analgesic",batch:"SG2026-034",qty:150,reorder_threshold:200,unit:"Tablet",exp:"2026-06-10",requires_rx:false,status:"Low Stock",branch:"Clinic Tampines"},
-  {sku:"MED-003",name:"Morphine 10mg/ml",gen:"Morphine sulfate",brand:"MST Continus",cat:"Controlled",batch:"SG2026-007",qty:45,reorder_threshold:20,unit:"Vial",exp:"2026-12-01",requires_rx:true,status:"In Stock",branch:"Central Warehouse"},
-  {sku:"MED-004",name:"Amlodipine 5mg",gen:"Amlodipine besylate",brand:"Norvasc",cat:"Cardiovascular",batch:"SG2025-198",qty:30,reorder_threshold:50,unit:"Tablet",exp:"2026-06-04",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard"},
-  {sku:"MED-005",name:"Salbutamol inhaler",gen:"Albuterol sulfate",brand:"Ventolin",cat:"Respiratory",batch:"SG2026-055",qty:0,reorder_threshold:20,unit:"Inhaler",exp:"2027-08-22",requires_rx:true,status:"Out of Stock",branch:"Clinic Orchard"},
-  {sku:"MED-006",name:"Metformin 850mg",gen:"Metformin HCl",brand:"Glucophage",cat:"Analgesic",batch:"SG2026-021",qty:680,reorder_threshold:100,unit:"Tablet",exp:"2027-01-30",requires_rx:true,status:"In Stock",branch:"Clinic Orchard"},
-  {sku:"MED-007",name:"Diazepam 5mg",gen:"Diazepam",brand:"Valium",cat:"Controlled",batch:"SG2025-202",qty:18,reorder_threshold:10,unit:"Tablet",exp:"2026-05-30",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard"},
-  {sku:"MED-008",name:"Atorvastatin 20mg",gen:"Atorvastatin calcium",brand:"Lipitor",cat:"Cardiovascular",batch:"SG2026-043",qty:410,reorder_threshold:80,unit:"Tablet",exp:"2028-02-14",requires_rx:true,status:"In Stock",branch:"Clinic Tampines"},
-  {sku:"MED-009",name:"Azithromycin 500mg",gen:"Azithromycin dihydrate",brand:"Zithromax",cat:"Antibiotic",batch:"SG2026-066",qty:88,reorder_threshold:100,unit:"Tablet",exp:"2027-11-05",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard"},
-  {sku:"MED-010",name:"Cetirizine 10mg",gen:"Cetirizine HCl",brand:"Zyrtec",cat:"Respiratory",batch:"SG2026-012",qty:560,reorder_threshold:80,unit:"Tablet",exp:"2028-06-18",requires_rx:false,status:"In Stock",branch:"Telemedicine Hub"}
+  {sku:"MED-001",name:"Amoxicillin 500mg",gen:"Amoxicillin trihydrate",brand:"Amoxil",cat:"Antibiotic",batch:"SG2026-011",qty:820,reorder_threshold:100,unit:"Capsule",exp:"2027-03-15",requires_rx:true,status:"In Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2026-011",qty:620,exp:"2027-03-15"},{lot_no:"SG2025-088",qty:200,exp:"2026-09-20"}]},
+  {sku:"MED-002",name:"Paracetamol 500mg",gen:"Acetaminophen",brand:"Panadol",cat:"Analgesic",batch:"SG2026-034",qty:150,reorder_threshold:200,unit:"Tablet",exp:"2026-06-10",requires_rx:false,status:"Low Stock",branch:"Clinic Tampines",
+   batches:[{lot_no:"SG2026-034",qty:80,exp:"2026-06-10"},{lot_no:"SG2025-112",qty:70,exp:"2026-08-15"}]},
+  {sku:"MED-003",name:"Morphine 10mg/ml",gen:"Morphine sulfate",brand:"MST Continus",cat:"Controlled",batch:"SG2026-007",qty:45,reorder_threshold:20,unit:"Vial",exp:"2026-12-01",requires_rx:true,status:"In Stock",branch:"Central Warehouse",
+   batches:[{lot_no:"SG2026-007",qty:45,exp:"2026-12-01"}]},
+  {sku:"MED-004",name:"Amlodipine 5mg",gen:"Amlodipine besylate",brand:"Norvasc",cat:"Cardiovascular",batch:"SG2025-198",qty:30,reorder_threshold:50,unit:"Tablet",exp:"2026-06-04",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2025-198",qty:20,exp:"2026-06-04"},{lot_no:"SG2025-107",qty:10,exp:"2026-04-10"}]},
+  {sku:"MED-005",name:"Salbutamol inhaler",gen:"Albuterol sulfate",brand:"Ventolin",cat:"Respiratory",batch:"SG2026-055",qty:0,reorder_threshold:20,unit:"Inhaler",exp:"2027-08-22",requires_rx:true,status:"Out of Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2026-055",qty:0,exp:"2027-08-22"}]},
+  {sku:"MED-006",name:"Metformin 850mg",gen:"Metformin HCl",brand:"Glucophage",cat:"Analgesic",batch:"SG2026-021",qty:680,reorder_threshold:100,unit:"Tablet",exp:"2027-01-30",requires_rx:true,status:"In Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2026-021",qty:500,exp:"2027-01-30"},{lot_no:"SG2025-189",qty:180,exp:"2026-11-15"}]},
+  {sku:"MED-007",name:"Diazepam 5mg",gen:"Diazepam",brand:"Valium",cat:"Controlled",batch:"SG2025-202",qty:18,reorder_threshold:10,unit:"Tablet",exp:"2026-05-30",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2025-202",qty:12,exp:"2026-05-30"},{lot_no:"SG2025-155",qty:6,exp:"2026-03-01"}]},
+  {sku:"MED-008",name:"Atorvastatin 20mg",gen:"Atorvastatin calcium",brand:"Lipitor",cat:"Cardiovascular",batch:"SG2026-043",qty:410,reorder_threshold:80,unit:"Tablet",exp:"2028-02-14",requires_rx:true,status:"In Stock",branch:"Clinic Tampines",
+   batches:[{lot_no:"SG2026-043",qty:200,exp:"2028-02-14"},{lot_no:"SG2025-211",qty:140,exp:"2027-06-30"},{lot_no:"SG2026-001",qty:70,exp:"2027-11-11"}]},
+  {sku:"MED-009",name:"Azithromycin 500mg",gen:"Azithromycin dihydrate",brand:"Zithromax",cat:"Antibiotic",batch:"SG2026-066",qty:88,reorder_threshold:100,unit:"Tablet",exp:"2027-11-05",requires_rx:true,status:"Low Stock",branch:"Clinic Orchard",
+   batches:[{lot_no:"SG2026-066",qty:58,exp:"2027-11-05"},{lot_no:"SG2026-030",qty:30,exp:"2027-05-20"}]},
+  {sku:"MED-010",name:"Cetirizine 10mg",gen:"Cetirizine HCl",brand:"Zyrtec",cat:"Respiratory",batch:"SG2026-012",qty:560,reorder_threshold:80,unit:"Tablet",exp:"2028-06-18",requires_rx:false,status:"In Stock",branch:"Telemedicine Hub",
+   batches:[{lot_no:"SG2026-012",qty:360,exp:"2028-06-18"},{lot_no:"SG2025-190",qty:200,exp:"2027-10-25"}]},
 ];
 
 const ICONS=[
@@ -3668,6 +3684,78 @@ function renderTbl(data,bodyId){
 <td>${stBadge(m.status)}</td>
 <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td></tr>`;
   }).join('');
+}
+
+function renderBranchInvTbl(data,bodyId){
+  const b=document.getElementById(bodyId);
+  if(!b)return;
+  b.innerHTML=data.map(m=>{
+    const thresh=m.reorder_threshold||50;
+    const maxQ=Math.max(thresh*3,m.qty);
+    const pct=maxQ>0?Math.round((m.qty/maxQ)*100):0;
+    const bc=barColor(m.qty,thresh);
+    const expCls=isSoon(m.exp)?'style="color:var(--err);font-weight:700"':'';
+    const rxBadge=m.requires_rx?'<span class="badge bgb" style="margin-left:5px;font-size:10px;padding:2px 6px">Rx</span>':'';
+    const sid=m.sku.replace(/[^a-zA-Z0-9]/g,'-');
+    const now=new Date();
+    const batchRows=(m.batches||[]).map(bt=>{
+      const expired=new Date(bt.exp)<now;
+      const soon=isSoon(bt.exp);
+      const bSt=expired?'<span class="badge bgr" style="font-size:10px">Expired</span>':
+                bt.qty===0?'<span class="badge bgr" style="font-size:10px">Out of Stock</span>':
+                bt.qty<thresh/2?'<span class="badge bga" style="font-size:10px">Low Stock</span>':
+                '<span class="badge bge" style="font-size:10px">In Stock</span>';
+      const bExpStyle=expired||soon?'style="color:var(--err);font-weight:600"':'';
+      const bWarn=expired||soon?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:11px;color:var(--err)"></i>':'';
+      return`<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:6px 14px;font-family:monospace;font-size:12px;color:var(--txt)">${bt.lot_no}</td>
+        <td style="padding:6px 14px;font-size:12px;font-weight:600">${bt.qty.toLocaleString()} <span style="font-size:11px;font-weight:400;color:var(--txt3)">${m.unit}</span></td>
+        <td ${bExpStyle} style="padding:6px 14px;font-size:12px">${fmtDate(bt.exp)}${bWarn}</td>
+        <td style="padding:6px 14px">${bSt}</td>
+      </tr>`;
+    }).join('');
+    const bc2=(m.batches||[]).length;
+    return`<tr>
+      <td style="width:36px;padding:0 4px 0 8px;text-align:center">
+        <button onclick="toggleBatchExpand(this,'${sid}')" title="Show all batches" style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1.5px solid var(--border);border-radius:50%;background:transparent;cursor:pointer;color:var(--txt3);transition:all .15s"><i class="ti ti-plus" style="font-size:11px"></i></button>
+      </td>
+      <td><div class="drug-nm">${m.name}${rxBadge}</div><div class="drug-gen">${m.gen}</div></td>
+      <td style="font-size:12px;color:var(--txt2)">${m.cat}</td>
+      <td style="font-size:12px;font-family:monospace;color:var(--txt2)">${m.batch}</td>
+      <td><div style="display:flex;align-items:center;gap:7px"><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:${bc}"></div></div><span style="font-size:11px;color:var(--txt3)">${m.qty}</span></div></td>
+      <td style="font-weight:600">${m.qty.toLocaleString()}<span style="font-size:11px;color:var(--txt3);font-weight:400"> ${m.unit}</span></td>
+      <td ${expCls}>${fmtDate(m.exp)}${isSoon(m.exp)?'<i class="ti ti-alert-triangle" style="margin-left:4px;font-size:12px;color:var(--err)" aria-hidden="true"></i>':''}</td>
+      <td>${stBadge(m.status)}</td>
+      <td><button class="tbl-btn"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button><button class="tbl-btn"><i class="ti ti-eye"></i> View</button></td>
+    </tr>
+    <tr id="batch-expand-${sid}" style="display:none">
+      <td colspan="9" style="padding:0">
+        <div style="padding:0 16px 14px 50px;background:var(--surface2);border-bottom:2px solid var(--border)">
+          <div style="padding:8px 0 7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt3)">${bc2} batch${bc2!==1?'es':''} on hand</div>
+          <table style="width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+            <thead><tr style="background:var(--surface2)">
+              <th style="padding:7px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)">Lot / Batch No.</th>
+              <th style="padding:7px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);width:120px">Qty on Hand</th>
+              <th style="padding:7px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);width:140px">Expiry Date</th>
+              <th style="padding:7px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);width:120px">Batch Status</th>
+            </tr></thead>
+            <tbody>${batchRows}</tbody>
+          </table>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+function toggleBatchExpand(btn,sid){
+  const row=document.getElementById('batch-expand-'+sid);
+  if(!row)return;
+  const open=row.style.display!=='none';
+  row.style.display=open?'none':'table-row';
+  const ic=btn.querySelector('i');
+  if(ic){ic.className=open?'ti ti-plus':'ti ti-minus';}
+  btn.style.background=open?'transparent':'var(--pl)';
+  btn.style.color=open?'var(--txt3)':'var(--p)';
+  btn.style.borderColor=open?'var(--border)':'var(--p)';
 }
 
 /* ── ENUM → PROPER CASE ── */
@@ -4127,7 +4215,7 @@ function viewBranchInventory(branchId){
   if(br&&s)s.innerHTML='<span class="badge '+branchTypeBadge(br.branch_type)+'" style="margin-right:8px">'+fmtEnum(br.branch_type)+'</span>'+br.address+' · '+br.meds.toLocaleString()+' SKUs';
   branchInvPage=1;
   const paged=meds.slice(0,PER_PAGE);
-  renderTbl(paged,'branchInvBody');
+  renderBranchInvTbl(paged,'branchInvBody');
   const bc=document.getElementById('branchInvCount');
   if(bc)bc.textContent='Showing '+paged.length+' of '+meds.length;
   renderPagination('pg-branch-inv',meds.length,branchInvPage,PER_PAGE,'changeBranchInvPage');
@@ -4136,7 +4224,7 @@ function viewBranchInventory(branchId){
 function changeBranchInvPage(p){
   branchInvPage=p;
   const paged=meds.slice((p-1)*PER_PAGE,p*PER_PAGE);
-  renderTbl(paged,'branchInvBody');
+  renderBranchInvTbl(paged,'branchInvBody');
   const bc=document.getElementById('branchInvCount');
   if(bc)bc.textContent='Showing '+Math.min(p*PER_PAGE,meds.length)+' of '+meds.length;
   renderPagination('pg-branch-inv',meds.length,branchInvPage,PER_PAGE,'changeBranchInvPage');
