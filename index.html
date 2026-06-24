@@ -541,6 +541,33 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .rb-clinic{background:var(--okbg);color:var(--ok)}
 .rb-warehouse{background:var(--infobg);color:var(--p)}
 .rb-tele{background:var(--warnbg);color:var(--warn)}
+/* ── ROLES & PERMISSIONS PAGE ── */
+.perm-tabs{display:flex;gap:4px;padding:0 0 16px}
+.perm-tab{padding:7px 18px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface);font-size:13px;font-weight:600;color:var(--txt2);cursor:pointer;transition:all .15s}
+.perm-tab.on{border-color:var(--p);background:var(--pl);color:var(--p)}
+.perm-panel{display:none}.perm-panel.on{display:block}
+.perm-matrix{width:100%;border-collapse:collapse;font-size:12px}
+.perm-matrix th,.perm-matrix td{border:1px solid var(--border);padding:0}
+.perm-matrix .pm-role-cell{padding:10px 14px;white-space:nowrap;min-width:180px;background:var(--surface2)}
+.perm-matrix .pm-sect-hdr{background:var(--surface2);text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt3);padding:6px 8px;border-bottom:2px solid var(--border)}
+.perm-matrix .pm-col-hdr{width:48px;height:110px;vertical-align:bottom;padding:6px 4px;background:var(--surface2)}
+.pm-col-label{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;font-weight:600;color:var(--txt2);white-space:nowrap;display:inline-flex;align-items:center;gap:3px;height:90px}
+.pm-toggle-cell{text-align:center;padding:10px 6px;vertical-align:middle}
+.perm-matrix tr:hover .pm-toggle-cell{background:var(--surface2)}
+.perm-matrix .pm-locked .pm-toggle-cell{background:rgba(10,115,190,.03)}
+.pm-sect-sep{width:8px;background:var(--bg);border:none}
+.up-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)}
+.up-row:last-child{border-bottom:none}
+.up-user-meta{display:flex;align-items:center;gap:12px}
+.up-avatar{width:34px;height:34px;border-radius:50%;background:var(--p);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.up-name{font-size:13px;font-weight:600;color:var(--txt)}
+.up-detail{font-size:11px;color:var(--txt3);margin-top:1px}
+.up-controls{display:flex;align-items:center;gap:10px}
+.up-expand{background:var(--surface2);border-left:3px solid var(--p);padding:14px 16px 14px 20px;display:none}
+.up-expand.open{display:block}
+.up-perm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:10px}
+.up-perm-item{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);font-size:12px}
+.up-perm-item.sect-hdr{background:var(--surface2);border-color:transparent;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);grid-column:1/-1;padding:6px 2px 2px;justify-content:flex-start}
 </style>
 
 <div style="position:relative;min-height:760px;overflow:hidden;border-radius:var(--rl)">
@@ -848,6 +875,9 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
       </div>
       <div class="nav-item" onclick="navTo(this,'settings')" role="menuitem" tabindex="0" data-perm="settings">
         <i class="ti ti-settings" aria-hidden="true"></i> System Settings
+      </div>
+      <div class="nav-item" onclick="navTo(this,'permissions')" role="menuitem" tabindex="0" data-perm="permissions">
+        <i class="ti ti-shield-lock" aria-hidden="true"></i> Roles &amp; Permissions
       </div>
 
       <div class="sb-section" data-sb-section="developer">Developer</div>
@@ -1825,6 +1855,51 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
           </table>
           </div>
           <div class="pg-wrap" id="pg-batches"></div>
+        </div>
+      </div>
+
+      <!-- ROLES & PERMISSIONS PAGE -->
+      <div class="page-content" id="page-permissions">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Roles &amp; Permissions</div>
+            <div class="pg-sub"><i class="ti ti-shield-lock" aria-hidden="true"></i> Control which sidebar menus each role and individual user can access</div>
+          </div>
+        </div>
+        <div style="padding:10px 16px 0;background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);margin-bottom:20px;font-size:12px;color:var(--txt2);line-height:1.7">
+          <i class="ti ti-info-circle" style="font-size:13px;color:var(--p);margin-right:4px"></i>
+          <strong style="color:var(--txt)">Changes apply immediately.</strong> Role-level changes affect all users with that role. User-level custom permissions override the role. SUPER_ADMIN always has full access and cannot be restricted.
+          <div style="height:10px"></div>
+        </div>
+
+        <!-- Tab bar -->
+        <div class="perm-tabs">
+          <button class="perm-tab on" onclick="switchPermTab(this,'perm-roles')"><i class="ti ti-shield-half" style="font-size:13px;margin-right:5px"></i>Role Permissions</button>
+          <button class="perm-tab" onclick="switchPermTab(this,'perm-users')"><i class="ti ti-users" style="font-size:13px;margin-right:5px"></i>User Permissions</button>
+        </div>
+
+        <!-- Role permissions panel -->
+        <div id="perm-roles" class="perm-panel on">
+          <div class="tbl-wrap">
+            <div class="tbl-hdr">
+              <div class="tbl-title">Permission Matrix</div>
+              <div class="tbl-meta">Toggle to grant or revoke access per role · SUPER_ADMIN is always full access</div>
+            </div>
+            <div style="overflow-x:auto;padding-bottom:4px">
+              <table class="perm-matrix" id="permMatrix"></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- User permissions panel -->
+        <div id="perm-users" class="perm-panel">
+          <div class="tbl-wrap">
+            <div class="tbl-hdr">
+              <div class="tbl-title">User Permissions</div>
+              <div class="tbl-meta">Enable custom permissions to override a user's role defaults</div>
+            </div>
+            <div id="userPermList"></div>
+          </div>
         </div>
       </div>
 
@@ -3746,6 +3821,205 @@ function renderBranchInvTbl(data,bodyId){
     </tr>`;
   }).join('');
 }
+/* ── ROLES & PERMISSIONS ── */
+const ALL_PERMS=[
+  {perm:'dashboard',    label:'Dashboard',      section:'Overview',     icon:'ti-layout-dashboard'},
+  {perm:'stock-parent', label:'Stock',          section:'Inventory',    icon:'ti-stack-2'},
+  {perm:'inventory',    label:'Stock Ovw.',     section:'Inventory',    icon:'ti-list'},
+  {perm:'batches',      label:'Batches',        section:'Inventory',    icon:'ti-layers-intersect'},
+  {perm:'expiry',       label:'Expiry',         section:'Inventory',    icon:'ti-calendar-x'},
+  {perm:'shipments',    label:'Shipments',      section:'Supply Chain', icon:'ti-truck-delivery'},
+  {perm:'disbursements',label:'Disbursements',  section:'Supply Chain', icon:'ti-file-invoice'},
+  {perm:'returns',      label:'Returns',        section:'Supply Chain', icon:'ti-package-import'},
+  {perm:'ledger',       label:'Ledger',         section:'Supply Chain', icon:'ti-book'},
+  {perm:'analytics',    label:'Analytics',      section:'Reports',      icon:'ti-chart-bar'},
+  {perm:'txn-log',      label:'Txn Log',        section:'Reports',      icon:'ti-list-details'},
+  {perm:'audit',        label:'Audit',          section:'Reports',      icon:'ti-shield-check'},
+  {perm:'branches',     label:'Branches',       section:'Admin',        icon:'ti-building-warehouse'},
+  {perm:'staff',        label:'Users',          section:'Admin',        icon:'ti-users'},
+  {perm:'mdm',          label:'Master Data',    section:'Admin',        icon:'ti-database'},
+  {perm:'settings',     label:'Settings',       section:'Admin',        icon:'ti-settings'},
+  {perm:'permissions',  label:'Roles & Perms',  section:'Admin',        icon:'ti-shield-lock'},
+  {perm:'design-system',label:'Design Sys.',    section:'Developer',    icon:'ti-palette'},
+  {perm:'components',   label:'Components',     section:'Developer',    icon:'ti-components'},
+];
+
+function switchPermTab(btn,id){
+  document.querySelectorAll('.perm-tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.perm-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const panel=document.getElementById(id);
+  if(panel)panel.classList.add('on');
+}
+
+function renderPermMatrix(){
+  const tbl=document.getElementById('permMatrix');
+  if(!tbl)return;
+  const roles=['SUPER_ADMIN','CLINIC_ADMIN','WAREHOUSE_ADMIN','TELEMEDICINE_ADMIN'];
+  const sections=[...new Set(ALL_PERMS.map(p=>p.section))];
+
+  /* build section spans */
+  const sectSpan={};
+  ALL_PERMS.forEach(p=>{sectSpan[p.section]=(sectSpan[p.section]||0)+1;});
+
+  /* header row 1: section labels */
+  let h1=`<tr><th class="pm-role-cell" rowspan="2" style="border-bottom:2px solid var(--border)">Role</th>`;
+  sections.forEach((s,i)=>{
+    h1+=`<th class="pm-sect-hdr" colspan="${sectSpan[s]}">${s}</th>`;
+    if(i<sections.length-1)h1+=`<th class="pm-sect-sep" rowspan="2"></th>`;
+  });
+  h1+='</tr>';
+
+  /* header row 2: individual perm labels (vertical) */
+  let h2='<tr>';
+  let lastSect=null;
+  ALL_PERMS.forEach((p,i)=>{
+    if(i>0&&p.section!==ALL_PERMS[i-1].section)h2+=`<th class="pm-sect-sep"></th>`;
+    h2+=`<th class="pm-col-hdr"><div class="pm-col-label"><i class="ti ${p.icon}" style="font-size:10px"></i>${p.label}</div></th>`;
+  });
+  h2+='</tr>';
+
+  /* data rows — one per role */
+  let rows='';
+  roles.forEach(role=>{
+    const meta=ROLE_META[role];
+    const isSuper=role==='SUPER_ADMIN';
+    const allowed=ROLE_PERMS[role]||[];
+    rows+=`<tr class="${isSuper?'pm-locked':''}">
+      <td class="pm-role-cell">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge sb-role-badge ${meta.badgeClass}" style="font-size:11px;padding:3px 9px"><i class="ti ${meta.icon}" style="font-size:10px"></i> ${meta.label}</span>
+          ${isSuper?'<span style="font-size:10px;color:var(--txt3)">full access</span>':''}
+        </div>
+      </td>`;
+    ALL_PERMS.forEach((p,i)=>{
+      if(i>0&&p.section!==ALL_PERMS[i-1].section)rows+=`<td class="pm-sect-sep"></td>`;
+      const on=allowed.includes(p.perm);
+      if(isSuper){
+        rows+=`<td class="pm-toggle-cell"><button class="toggle on" disabled style="opacity:.45;cursor:not-allowed" title="SUPER_ADMIN always has full access"></button></td>`;
+      } else {
+        rows+=`<td class="pm-toggle-cell"><button class="toggle ${on?'on':'off'}" onclick="toggleRolePerm('${role}','${p.perm}',this)" title="${p.label}"></button></td>`;
+      }
+    });
+    rows+='</tr>';
+  });
+
+  tbl.innerHTML=`<thead>${h1}${h2}</thead><tbody>${rows}</tbody>`;
+}
+
+function toggleRolePerm(role,perm,btn){
+  const isOn=btn.classList.contains('on');
+  btn.classList.toggle('on',!isOn);
+  btn.classList.toggle('off',isOn);
+  if(!isOn){
+    if(!ROLE_PERMS[role].includes(perm))ROLE_PERMS[role].push(perm);
+  } else {
+    ROLE_PERMS[role]=ROLE_PERMS[role].filter(p=>p!==perm);
+  }
+  /* re-apply nav if the current user has this role */
+  if(currentUser&&currentUser.role===role)applyRoleNav();
+}
+
+function renderUsersPerms(){
+  const el=document.getElementById('userPermList');
+  if(!el)return;
+  el.innerHTML=staffData.map(u=>{
+    const meta=ROLE_META[u.role]||ROLE_META.SUPER_ADMIN;
+    const parts=(u.name||'').split(' ');
+    const initials=((parts[0]||'?')[0]+((parts[parts.length-1]||'')[0]||'')).toUpperCase();
+    const hasCustom=!!USER_OVERRIDES[u.email];
+    const safeId=u.email.replace(/[^a-zA-Z0-9]/g,'-');
+    return`<div>
+      <div class="up-row">
+        <div class="up-user-meta">
+          <div class="up-avatar">${initials}</div>
+          <div>
+            <div class="up-name">${u.name}</div>
+            <div class="up-detail">
+              <span class="badge sb-role-badge ${meta.badgeClass}" style="font-size:10px;padding:2px 7px;margin-right:6px"><i class="ti ${meta.icon}" style="font-size:10px"></i> ${meta.label}</span>
+              ${u.email} · ${u.branch||'Global'}
+            </div>
+          </div>
+        </div>
+        <div class="up-controls">
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px">Custom permissions</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-size:11px;color:var(--txt3)">${hasCustom?'<span style="color:var(--p);font-weight:600">Active</span>':'Inherits role'}</span>
+              <button class="toggle ${hasCustom?'on':'off'}" onclick="enableUserCustom('${u.email}','${safeId}',this)" title="Enable custom permissions for this user"></button>
+              <button class="btn" id="cfg-btn-${safeId}" onclick="expandUserPerms('${u.email}','${safeId}')" style="font-size:11px;padding:5px 10px;${hasCustom?'':'display:none'}"><i class="ti ti-adjustments-horizontal" style="font-size:12px"></i> Configure</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="up-expand" id="up-expand-${safeId}">
+        <div style="font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Custom permission set for <strong style="color:var(--txt)">${u.name}</strong></div>
+        <div class="up-perm-grid" id="up-grid-${safeId}"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function enableUserCustom(email,safeId,btn){
+  const isOn=btn.classList.contains('on');
+  /* turning OFF — remove custom overrides */
+  if(isOn){
+    btn.classList.replace('on','off');
+    delete USER_OVERRIDES[email];
+    const cfgBtn=document.getElementById('cfg-btn-'+safeId);
+    if(cfgBtn)cfgBtn.style.display='none';
+    const expand=document.getElementById('up-expand-'+safeId);
+    if(expand)expand.classList.remove('open');
+    if(currentUser&&currentUser.email===email)applyRoleNav();
+  } else {
+    /* turning ON — seed with current role perms */
+    btn.classList.replace('off','on');
+    const user=staffData.find(u=>u.email===email);
+    if(user){USER_OVERRIDES[email]=[...(ROLE_PERMS[user.role]||[])];}
+    const cfgBtn=document.getElementById('cfg-btn-'+safeId);
+    if(cfgBtn)cfgBtn.style.display='';
+    expandUserPerms(email,safeId);
+  }
+}
+
+function expandUserPerms(email,safeId){
+  const expand=document.getElementById('up-expand-'+safeId);
+  const grid=document.getElementById('up-grid-'+safeId);
+  if(!expand||!grid)return;
+  const isOpen=expand.classList.contains('open');
+  if(isOpen){expand.classList.remove('open');return;}
+  expand.classList.add('open');
+  const allowed=USER_OVERRIDES[email]||[];
+  const sections=[...new Set(ALL_PERMS.map(p=>p.section))];
+  let html='';
+  sections.forEach(sect=>{
+    html+=`<div class="up-perm-item sect-hdr">${sect}</div>`;
+    ALL_PERMS.filter(p=>p.section===sect).forEach(p=>{
+      const on=allowed.includes(p.perm);
+      html+=`<div class="up-perm-item">
+        <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--txt)">
+          <i class="ti ${p.icon}" style="font-size:12px;color:var(--txt3)"></i>${p.label}
+        </span>
+        <button class="toggle ${on?'on':'off'}" onclick="toggleUserPerm('${email}','${p.perm}',this)" title="${p.label}"></button>
+      </div>`;
+    });
+  });
+  grid.innerHTML=html;
+}
+
+function toggleUserPerm(email,perm,btn){
+  const isOn=btn.classList.contains('on');
+  btn.classList.toggle('on',!isOn);
+  btn.classList.toggle('off',isOn);
+  if(!USER_OVERRIDES[email])USER_OVERRIDES[email]=[];
+  if(!isOn){
+    if(!USER_OVERRIDES[email].includes(perm))USER_OVERRIDES[email].push(perm);
+  } else {
+    USER_OVERRIDES[email]=USER_OVERRIDES[email].filter(p=>p!==perm);
+  }
+  if(currentUser&&currentUser.email===email)applyRoleNav();
+}
+
 function toggleBatchExpand(btn,sid){
   const row=document.getElementById('batch-expand-'+sid);
   if(!row)return;
@@ -4016,7 +4290,7 @@ function navTo(el,page){
   const pg=document.getElementById('page-'+page);
   if(pg)pg.classList.add('active');
   const bc=document.getElementById('breadcrumb');
-  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System','flow-reference':'Flow Reference',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data'};
+  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System','flow-reference':'Flow Reference',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data',permissions:'Roles & Permissions'};
   if(bc)bc.textContent=labels[page]||page;
   if(page==='inventory'){renderInv();}
   else if(page==='batches'){renderBatchesPage();}
@@ -4030,6 +4304,7 @@ function navTo(el,page){
   else if(page==='txn-log'){renderTxnLog();}
   else if(page==='audit'){renderAudit();}
   else if(page==='mdm'){renderMdmTab('mdm-meds');}
+  else if(page==='permissions'){renderPermMatrix();renderUsersPerms();}
 }
 
 function toggleSub(id,el){
@@ -4052,11 +4327,13 @@ function showScreen(id){SCREENS.forEach(s=>{const el=document.getElementById(s);
 /* ── Role-Based Access Control ─────────────────────────────── */
 let currentUser=null;
 const ROLE_PERMS={
-  SUPER_ADMIN:       ['dashboard','stock-parent','inventory','batches','expiry','shipments','disbursements','returns','ledger','analytics','txn-log','audit','branches','staff','mdm','settings','design-system','components'],
+  SUPER_ADMIN:       ['dashboard','stock-parent','inventory','batches','expiry','shipments','disbursements','returns','ledger','analytics','txn-log','audit','branches','staff','mdm','settings','permissions','design-system','components'],
   CLINIC_ADMIN:      ['dashboard','stock-parent','inventory','batches','expiry','disbursements','returns','ledger','analytics'],
   WAREHOUSE_ADMIN:   ['dashboard','stock-parent','inventory','batches','expiry','shipments','disbursements','returns','ledger','analytics','txn-log','branches'],
   TELEMEDICINE_ADMIN:['dashboard','stock-parent','inventory','batches','expiry','disbursements','returns','ledger','analytics'],
 };
+let USER_OVERRIDES={};/* keyed by email; value=array of allowed perms, or null=use role */
+
 const ROLE_META={
   SUPER_ADMIN:       {label:'Super Admin',       badgeClass:'rb-super',    icon:'ti-shield-half'},
   CLINIC_ADMIN:      {label:'Clinic Admin',       badgeClass:'rb-clinic',   icon:'ti-building-hospital'},
@@ -4067,7 +4344,7 @@ const ROLE_META={
 function applyRoleNav(){
   if(!currentUser)return;
   const role=currentUser.role;
-  const allowed=ROLE_PERMS[role]||ROLE_PERMS.SUPER_ADMIN;
+  const allowed=USER_OVERRIDES[currentUser.email]||ROLE_PERMS[role]||ROLE_PERMS.SUPER_ADMIN;
 
   /* show/hide individual nav items */
   document.querySelectorAll('[data-perm]').forEach(el=>{
