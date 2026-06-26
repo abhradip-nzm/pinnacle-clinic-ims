@@ -541,6 +541,45 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
 .rb-clinic{background:var(--okbg);color:var(--ok)}
 .rb-warehouse{background:var(--infobg);color:var(--p)}
 .rb-tele{background:var(--warnbg);color:var(--warn)}
+/* ── DASHBOARD API REFERENCE ── */
+.api-ref-overview{padding:16px 20px;background:var(--infobg);border:1px solid var(--ps);border-radius:var(--r);margin-bottom:24px;font-size:13px;color:var(--txt2);line-height:1.75}
+.api-ref-section{margin-bottom:30px}
+.api-ref-section-hdr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--txt3);margin-bottom:12px;display:flex;align-items:center;gap:8px;padding-bottom:9px;border-bottom:2px solid var(--border)}
+.api-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:12px;overflow:hidden}
+.api-card-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px}
+.api-icon-tile{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.api-title{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:7px;line-height:1.2}
+.api-badges{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.api-method-pill{display:inline-flex;align-items:center;gap:5px;font-family:monospace;font-size:12px;font-weight:700;background:var(--okbg);color:var(--ok);border:1px solid #86efac;border-radius:5px;padding:3px 10px}
+.api-path{font-family:monospace;font-size:12px;color:var(--txt);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:3px 10px}
+.api-scope-sys{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:3px 9px;border-radius:10px;background:var(--infobg);color:var(--p);border:1px solid var(--ps)}
+.api-scope-branch{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:3px 9px;border-radius:10px;background:var(--purplebg);color:var(--purple);border:1px solid #d8b4fe}
+.api-divider{height:1px;background:var(--border)}
+.api-body{padding:16px 20px}
+.api-desc{font-size:13px;color:var(--txt2);line-height:1.75;margin-bottom:18px}
+.api-sub-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--txt3);margin-bottom:8px}
+.api-params-tbl{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.api-params-tbl thead td{background:var(--surface2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--txt3);padding:7px 12px;border-bottom:1px solid var(--border)}
+.api-params-tbl tbody td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.api-params-tbl tbody tr:last-child td{border-bottom:none}
+.api-params-tbl .pk{font-family:monospace;font-weight:700;color:var(--txt);white-space:nowrap}
+.api-params-tbl .pt{color:var(--txt3);font-size:11px}
+.api-params-tbl .pd{color:var(--txt2)}
+.api-opt{display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--txt3);font-weight:600;margin-left:4px}
+.api-returns-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.api-return-chip{display:inline-flex;align-items:center;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:4px 10px;font-family:monospace;font-size:11px;color:var(--txt2);font-weight:500}
+.api-return-chip.arr{border-color:var(--ps);color:var(--p);background:var(--infobg)}
+.api-usefor{display:flex;align-items:flex-start;gap:9px;padding:11px 14px;background:var(--surface2);border-left:3px solid var(--p);border-radius:0 var(--r) var(--r) 0;font-size:12px;color:var(--txt2);line-height:1.6}
+.api-load-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-top:28px}
+.api-load-hdr{padding:14px 20px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:13px;font-weight:700;color:var(--txt);display:flex;align-items:center;gap:8px}
+.api-load-step{display:flex;align-items:flex-start;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border)}
+.api-load-step:last-child{border-bottom:none}
+.api-load-num{width:26px;height:26px;border-radius:50%;background:var(--p);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.api-load-paths{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:3px}
+.api-load-path{font-family:monospace;font-size:12px;font-weight:700;color:var(--txt);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 8px}
+.api-load-desc{font-size:12px;color:var(--txt3)}
+.api-parallel-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:2px 7px;border-radius:8px;background:var(--okbg);color:var(--ok);border:1px solid #86efac}
+
 /* ── ROLES & PERMISSIONS PAGE ── */
 .perm-tabs{display:flex;gap:4px;padding:0 0 16px}
 .perm-tab{padding:7px 18px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface);font-size:13px;font-weight:600;color:var(--txt2);cursor:pointer;transition:all .15s}
@@ -921,6 +960,7 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
         <button class="btn" onclick="navTo(null,'design-system')" style="padding:6px 12px;font-size:12px"><i class="ti ti-palette" aria-hidden="true" style="font-size:13px"></i> Design System</button>
         <button class="btn" onclick="navTo(null,'components')" style="padding:6px 12px;font-size:12px"><i class="ti ti-components" aria-hidden="true" style="font-size:13px"></i> Components</button>
         <button class="btn" onclick="navTo(null,'flow-reference')" style="padding:6px 12px;font-size:12px"><i class="ti ti-sitemap" aria-hidden="true" style="font-size:13px"></i> Flow Reference</button>
+        <button class="btn" onclick="navTo(null,'dashboard-apis')" style="padding:6px 12px;font-size:12px"><i class="ti ti-api" aria-hidden="true" style="font-size:13px"></i> Dashboard APIs</button>
         <button class="btn" onclick="goLogin()" style="padding:6px 12px;font-size:12px"><i class="ti ti-logout" aria-hidden="true" style="font-size:13px"></i> Sign out</button>
       </div>
     </header>
@@ -1899,6 +1939,363 @@ tbody td{padding:10px 14px;color:var(--txt);vertical-align:middle;overflow:hidde
               <div class="tbl-meta">Enable custom permissions to override a user's role defaults</div>
             </div>
             <div id="userPermList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD API REFERENCE PAGE -->
+      <div class="page-content" id="page-dashboard-apis">
+        <div class="pg-header">
+          <div>
+            <div class="pg-title">Dashboard APIs</div>
+            <div class="pg-sub"><i class="ti ti-api" aria-hidden="true"></i> Reference guide for all GET /api/v1/dashboard/ endpoints</div>
+          </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="api-ref-overview">
+          <div style="font-weight:700;color:var(--txt);margin-bottom:6px;display:flex;align-items:center;gap:7px"><i class="ti ti-info-circle" style="color:var(--p);font-size:15px"></i> Overview</div>
+          All 7 endpoints live under <code style="background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;font-size:12px">GET /api/v1/dashboard/</code> and require a <strong style="color:var(--txt)">Bearer token</strong> in the Authorization header.
+          Branch admins (<span style="font-weight:600;color:var(--purple)">CLINIC_ADMIN</span>, <span style="font-weight:600;color:var(--p)">WAREHOUSE_ADMIN</span>, <span style="font-weight:600;color:var(--warn)">TELEMEDICINE_ADMIN</span>) are automatically scoped to their own branch — no <code style="background:var(--surface);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-size:12px">branch_id</code> needed.
+          <span style="color:var(--ok);font-weight:600">SUPER_ADMIN</span> sees system-wide data by default and can pass <code style="background:var(--surface);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-size:12px">?branch_id=&lt;uuid&gt;</code> to scope any endpoint to a single branch.
+        </div>
+
+        <!-- ── Section 1: KPIs ── -->
+        <div class="api-ref-section">
+          <div class="api-ref-section-hdr">
+            <i class="ti ti-report-analytics" style="font-size:13px"></i> Summary KPIs
+          </div>
+
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#eff6ff"><i class="ti ti-report-analytics" style="font-size:18px;color:#2563eb"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Dashboard KPIs</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/kpis</span>
+                  <span class="api-scope-sys">System-wide</span>
+                  <span class="api-scope-branch">Branch-scopeable</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Top-level number cards for the dashboard hero row. Returns a flat object of aggregated counts and values. <strong style="color:var(--txt)">Scope:</strong> system-wide by default; pass <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:4px">branch_id</code> to restrict to one branch.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">Scope to a specific branch. Omit for system-wide totals.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns</div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip"><i class="ti ti-pill"></i>active_medicines</span>
+                <span class="api-return-chip"><i class="ti ti-currency-dollar"></i>total_inventory_value</span>
+                <span class="api-return-chip"><i class="ti ti-currency-dollar"></i>inventory_value_last_month</span>
+                <span class="api-return-chip"><i class="ti ti-alert-triangle"></i>low_stock_count</span>
+                <span class="api-return-chip"><i class="ti ti-calendar-x"></i>expiring_30d</span>
+                <span class="api-return-chip"><i class="ti ti-calendar-x"></i>expiring_7d</span>
+                <span class="api-return-chip"><i class="ti ti-truck-delivery"></i>shipments_in_transit</span>
+                <span class="api-return-chip"><i class="ti ti-circle-check"></i>delivered_this_week</span>
+                <span class="api-return-chip"><i class="ti ti-file-invoice"></i>pending_disbursements</span>
+              </div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Hero stat cards at the top of the dashboard page — render these first for immediate visual feedback on page load.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 2: Stock & Inventory ── -->
+        <div class="api-ref-section">
+          <div class="api-ref-section-hdr">
+            <i class="ti ti-building-warehouse" style="font-size:13px"></i> Stock &amp; Inventory Widgets
+          </div>
+
+          <!-- branch-stock-health -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#f0fdf4"><i class="ti ti-heart-rate-monitor" style="font-size:18px;color:#16a34a"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Branch Stock Health</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/branch-stock-health</span>
+                  <span class="api-scope-sys">System-wide</span>
+                  <span class="api-scope-branch">Branch-scopeable</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Per-branch health summary — one row per branch showing aggregate stock condition. Status is computed server-side: <code style="font-size:12px;background:var(--okbg);color:var(--ok);padding:1px 5px;border-radius:4px">HEALTHY</code> when no issues, <code style="font-size:12px;background:var(--warnbg);color:var(--warn);padding:1px 5px;border-radius:4px">WARNING</code> when low stock or near-expiry batches exist, <code style="font-size:12px;background:var(--errbg);color:var(--err);padding:1px 5px;border-radius:4px">CRITICAL</code> when out-of-stock or expired batches are present.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">Return a single-element array for one branch. Omit for all branches.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns <span style="font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px">array — one object per branch</span></div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip arr"><i class="ti ti-building-warehouse"></i>name</span>
+                <span class="api-return-chip arr"><i class="ti ti-tag"></i>branch_type</span>
+                <span class="api-return-chip arr"><i class="ti ti-activity"></i>status</span>
+                <span class="api-return-chip arr"><i class="ti ti-pill"></i>medicine_count</span>
+                <span class="api-return-chip arr"><i class="ti ti-alert-triangle"></i>low_stock_count</span>
+                <span class="api-return-chip arr"><i class="ti ti-circle-x"></i>out_of_stock_count</span>
+                <span class="api-return-chip arr"><i class="ti ti-calendar-x"></i>expired_batch_count</span>
+                <span class="api-return-chip arr"><i class="ti ti-stack-2"></i>total_quantity</span>
+              </div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Branch health grid or table with color-coded HEALTHY / WARNING / CRITICAL status indicators per branch row.</span></div>
+            </div>
+          </div>
+
+          <!-- low-stock -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#fff7ed"><i class="ti ti-alert-triangle" style="font-size:18px;color:#d97706"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Low Stock</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/low-stock</span>
+                  <span class="api-scope-branch">Auto-scoped</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Medicines at or below their reorder threshold, sorted worst-first (lowest <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:4px">stock_coverage_pct</code> first). Branch admins receive only their own branch's medicines automatically.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">SUPER_ADMIN only — scope to a single branch.</td></tr>
+                  <tr><td class="pk">limit<span class="api-opt">optional</span></td><td class="pt">integer</td><td class="pd">Max results. Default <code style="font-size:11px">20</code>, max <code style="font-size:11px">100</code>.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns <span style="font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px">array — one object per medicine/branch combination</span></div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip arr"><i class="ti ti-pill"></i>medicine_name</span>
+                <span class="api-return-chip arr"><i class="ti ti-barcode"></i>sku</span>
+                <span class="api-return-chip arr"><i class="ti ti-alert-circle"></i>stock_status</span>
+                <span class="api-return-chip arr"><i class="ti ti-stack-2"></i>current_quantity</span>
+                <span class="api-return-chip arr"><i class="ti ti-arrow-down"></i>reorder_threshold</span>
+                <span class="api-return-chip arr"><i class="ti ti-percentage"></i>stock_coverage_pct</span>
+                <span class="api-return-chip arr"><i class="ti ti-building-warehouse"></i>branch_name</span>
+                <span class="api-return-chip arr"><i class="ti ti-ruler"></i>uom</span>
+              </div>
+              <div style="margin-bottom:14px;padding:8px 12px;background:var(--surface2);border-radius:var(--r);font-size:11px;color:var(--txt3)"><i class="ti ti-tag" style="margin-right:4px"></i><strong style="color:var(--txt)">stock_status values:</strong> <code style="font-size:11px">LOW_STOCK</code> (qty &gt; 0 but ≤ threshold) · <code style="font-size:11px">OUT_OF_STOCK</code> (qty = 0)</div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Low stock alert table, red/amber badge counts in the sidebar nav, and reorder planning lists.</span></div>
+            </div>
+          </div>
+
+          <!-- expiry-tracker -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#fef2f2"><i class="ti ti-calendar-x" style="font-size:18px;color:#dc2626"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Expiry Tracker</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/expiry-tracker</span>
+                  <span class="api-scope-branch">Auto-scoped</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Batches expiring within the next 60 days, pre-grouped into three severity buckets. Each bucket is an array of batch objects with full detail for display. Branch admins only see their own branch's batches.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">SUPER_ADMIN only — scope to a single branch.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns <span style="font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px">object with three severity buckets + count</span></div>
+              <div class="api-returns-grid" style="margin-bottom:10px">
+                <span class="api-return-chip" style="background:var(--errbg);border-color:#fca5a5;color:var(--err)"><i class="ti ti-flame"></i>critical[]</span>
+                <span class="api-return-chip" style="background:var(--warnbg);border-color:#fcd34d;color:var(--warn)"><i class="ti ti-alert-triangle"></i>warning[]</span>
+                <span class="api-return-chip" style="background:#fefce8;border-color:#fde68a;color:#92400e"><i class="ti ti-clock"></i>upcoming[]</span>
+                <span class="api-return-chip"><i class="ti ti-hash"></i>upcoming_30_60_count</span>
+              </div>
+              <div style="font-size:11px;color:var(--txt3);margin-bottom:14px;padding:8px 12px;background:var(--surface2);border-radius:var(--r)">
+                <i class="ti ti-layers-intersect" style="margin-right:4px"></i><strong style="color:var(--txt)">Each batch item contains:</strong>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">batch_number</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">expiry_date</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">qty_remaining</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">medicine_name</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">branch_name</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">days_until_expiry</span>
+                <span class="api-return-chip" style="font-size:10px;margin:0 2px">severity</span>
+              </div>
+              <div style="margin-bottom:14px;padding:8px 12px;background:var(--surface2);border-radius:var(--r);font-size:11px;color:var(--txt3)"><i class="ti ti-tag" style="margin-right:4px"></i><strong style="color:var(--txt)">Severity thresholds:</strong> <code style="font-size:11px">critical</code> ≤ 7 days · <code style="font-size:11px">warning</code> 8–14 days · <code style="font-size:11px">upcoming</code> 15–60 days</div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Expiry warning table with red/amber/yellow row highlights, batch disposal planning, and the expiry countdown widget on the dashboard.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 3: Supply Chain ── -->
+        <div class="api-ref-section">
+          <div class="api-ref-section-hdr">
+            <i class="ti ti-truck-delivery" style="font-size:13px"></i> Supply Chain Widgets
+          </div>
+
+          <!-- shipment-pipeline -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#eff6ff"><i class="ti ti-truck-delivery" style="font-size:18px;color:#2563eb"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Shipment Pipeline</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/shipment-pipeline</span>
+                  <span class="api-scope-sys">System-wide</span>
+                  <span class="api-scope-branch">Branch-scopeable</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Status distribution for both shipments and disbursement notes — gives a funnel view of the supply chain. The <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:4px">shipments_by_type_30d</code> field covers only the last 30 days and is useful for trend charts.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">Scope shipment and disbursement counts to one branch.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns</div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip arr"><i class="ti ti-truck-delivery"></i>shipments_by_status[]</span>
+                <span class="api-return-chip arr"><i class="ti ti-chart-bar"></i>shipments_by_type_30d</span>
+                <span class="api-return-chip arr"><i class="ti ti-file-invoice"></i>disbursements_by_status[]</span>
+              </div>
+              <div style="margin-bottom:14px;padding:8px 12px;background:var(--surface2);border-radius:var(--r);font-size:11px;color:var(--txt3)"><i class="ti ti-layers-intersect" style="margin-right:4px"></i><strong style="color:var(--txt)">Each status object:</strong> <code style="font-size:11px">{ status, cnt }</code> — where <code style="font-size:11px">cnt</code> is the integer count for that status value.</div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Shipment funnel chart, disbursement status breakdown bar, and the supply chain overview panel on the dashboard.</span></div>
+            </div>
+          </div>
+
+          <!-- actions-required -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#fef2f2"><i class="ti ti-bell-ringing" style="font-size:18px;color:#dc2626"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Actions Required</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/actions-required</span>
+                  <span class="api-scope-branch">Auto-scoped</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Outstanding items that require user action <strong style="color:var(--txt)">right now</strong>. Each array is capped at 10 items. Branch admins only see items relevant to their branch (e.g. a clinic sees disbursements awaiting their receipt; a warehouse sees disbursements awaiting their fulfillment).</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">SUPER_ADMIN only — view actions relevant to a specific branch.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns <span style="font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px">five arrays, max 10 items each</span></div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip arr"><i class="ti ti-file-invoice"></i>disbursements_awaiting_acceptance[]</span>
+                <span class="api-return-chip arr"><i class="ti ti-package"></i>disbursements_awaiting_fulfillment[]</span>
+                <span class="api-return-chip arr"><i class="ti ti-circle-check"></i>disbursements_awaiting_receipt[]</span>
+                <span class="api-return-chip arr"><i class="ti ti-package-import"></i>returns_pending[]</span>
+                <span class="api-return-chip arr"><i class="ti ti-calendar-x"></i>batches_expiring_7d[]</span>
+              </div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> To-do panel, notification badge counts on the topbar bell icon, and urgent action cards shown on login.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section 4: Activity Feed ── -->
+        <div class="api-ref-section">
+          <div class="api-ref-section-hdr">
+            <i class="ti ti-activity" style="font-size:13px"></i> Activity Feed
+          </div>
+
+          <!-- recent-activity -->
+          <div class="api-card">
+            <div class="api-card-head">
+              <div class="api-icon-tile" style="background:#fdf4ff"><i class="ti ti-activity" style="font-size:18px;color:#7c3aed"></i></div>
+              <div style="flex:1">
+                <div class="api-title">Recent Activity</div>
+                <div class="api-badges">
+                  <span class="api-method-pill">GET</span>
+                  <span class="api-path">/api/v1/dashboard/recent-activity</span>
+                  <span class="api-scope-branch">Auto-scoped</span>
+                </div>
+              </div>
+            </div>
+            <div class="api-divider"></div>
+            <div class="api-body">
+              <p class="api-desc">Latest transaction log entries across all modules (shipments, disbursements, returns, inventory adjustments), sorted newest first. Branch admins only see activity for their own branch. Useful as a live audit trail preview without loading the full Audit Trail page.</p>
+              <div class="api-sub-label">Query Parameters</div>
+              <table class="api-params-tbl">
+                <thead><tr><td>Parameter</td><td>Type</td><td>Notes</td></tr></thead>
+                <tbody>
+                  <tr><td class="pk">branch_id<span class="api-opt">optional</span></td><td class="pt">UUID</td><td class="pd">SUPER_ADMIN only — filter to one branch's activity.</td></tr>
+                  <tr><td class="pk">limit<span class="api-opt">optional</span></td><td class="pt">integer</td><td class="pd">Max results. Default <code style="font-size:11px">15</code>, max <code style="font-size:11px">100</code>.</td></tr>
+                </tbody>
+              </table>
+              <div class="api-sub-label">Returns <span style="font-size:10px;color:var(--txt3);font-weight:400;margin-left:4px">array — one object per log entry, newest first</span></div>
+              <div class="api-returns-grid">
+                <span class="api-return-chip arr"><i class="ti ti-hash"></i>tl_ref</span>
+                <span class="api-return-chip arr"><i class="ti ti-tag"></i>entity_type</span>
+                <span class="api-return-chip arr"><i class="ti ti-file-description"></i>entity_ref</span>
+                <span class="api-return-chip arr"><i class="ti ti-zap"></i>action</span>
+                <span class="api-return-chip arr"><i class="ti ti-user"></i>actor_name</span>
+                <span class="api-return-chip arr"><i class="ti ti-building-warehouse"></i>branch_name</span>
+                <span class="api-return-chip arr"><i class="ti ti-clock"></i>created_at</span>
+              </div>
+              <div class="api-usefor"><i class="ti ti-bolt" style="font-size:14px;color:var(--p);flex-shrink:0;margin-top:1px"></i><span><strong style="color:var(--txt)">Use for:</strong> Activity timeline on the dashboard, audit trail preview panel, and live-updating feed widget (poll every 30–60 s).</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Recommended Load Order ── -->
+        <div class="api-load-box">
+          <div class="api-load-hdr"><i class="ti ti-sort-ascending-numbers" style="color:var(--p);font-size:16px"></i> Recommended Load Order</div>
+          <div class="api-load-step">
+            <div class="api-load-num">1</div>
+            <div>
+              <div class="api-load-paths"><span class="api-load-path">/kpis</span></div>
+              <div class="api-load-desc">Render headline stat cards immediately — highest priority, fastest endpoint, sets the visual frame.</div>
+            </div>
+          </div>
+          <div class="api-load-step">
+            <div class="api-load-num">2</div>
+            <div>
+              <div class="api-load-paths"><span class="api-load-path">/actions-required</span></div>
+              <div class="api-load-desc">Surface urgent items early — drives notification badges and the to-do panel that users act on first.</div>
+            </div>
+          </div>
+          <div class="api-load-step">
+            <div class="api-load-num">3</div>
+            <div>
+              <div class="api-load-paths"><span class="api-load-path">/low-stock</span><span class="api-load-path">/expiry-tracker</span><span class="api-parallel-badge">parallel</span></div>
+              <div class="api-load-desc">Stock health section — fetch both simultaneously; neither depends on the other.</div>
+            </div>
+          </div>
+          <div class="api-load-step">
+            <div class="api-load-num">4</div>
+            <div>
+              <div class="api-load-paths"><span class="api-load-path">/branch-stock-health</span><span class="api-load-path">/shipment-pipeline</span><span class="api-parallel-badge">parallel</span></div>
+              <div class="api-load-desc">Charts section — fetch in parallel; used for the branch health grid and supply chain funnel.</div>
+            </div>
+          </div>
+          <div class="api-load-step">
+            <div class="api-load-num">5</div>
+            <div>
+              <div class="api-load-paths"><span class="api-load-path">/recent-activity</span></div>
+              <div class="api-load-desc">Activity feed — lowest priority, load last; users scroll down to reach it. Can be lazy-loaded on scroll.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -4298,7 +4695,7 @@ function navTo(el,page){
   const pg=document.getElementById('page-'+page);
   if(pg)pg.classList.add('active');
   const bc=document.getElementById('breadcrumb');
-  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System','flow-reference':'Flow Reference',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data',permissions:'Roles & Permissions'};
+  const labels={dashboard:'Dashboard',inventory:'Stock Overview',batches:'Inventory Batches',shipments:'Shipments',expiry:'Batch Expiry',analytics:'Analytics',settings:'Settings',components:'Component Library','design-system':'Design System','flow-reference':'Flow Reference',notifications:'Notifications',branches:'Branches','branch-inventory':'Branch Inventory',staff:'Users',ledger:'Stock Ledger',disbursements:'Disbursements',returns:'Returns','txn-log':'Transaction Log',audit:'Audit Trail',mdm:'Master Data',permissions:'Roles & Permissions','dashboard-apis':'Dashboard APIs'};
   if(bc)bc.textContent=labels[page]||page;
   if(page==='inventory'){renderInv();}
   else if(page==='batches'){renderBatchesPage();}
